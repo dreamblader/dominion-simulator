@@ -1,4 +1,11 @@
 import { setupDeck, setupProps } from "./actions/setup";
+import {
+  backToTopDeck,
+  backToBottomDeck,
+  backToDeck,
+  destroy,
+  finish,
+} from "./actions/hand";
 import Consts from "./utils/consts";
 import { draw, drawForTurn, search, shuffleDeck, mill } from "./actions/deck";
 
@@ -17,5 +24,10 @@ export const Simulator = {
     search,
     shuffleDeck,
     mill,
+    backToTopDeck,
+    backToBottomDeck,
+    backToDeck,
+    destroy,
+    finish,
   },
 };

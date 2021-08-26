@@ -1,4 +1,5 @@
 import Consts from "../utils/consts";
+import { moveToArray } from "../utils/help";
 
 export const draw = (G, ctx) => {
   let draw = G.deck[ctx.currentPlayer].pop();
@@ -12,8 +13,7 @@ export const drawForTurn = (G, ctx) => {
 };
 
 export const search = (G, ctx, index) => {
-  let card = G.deck[ctx.currentPlayer].splice(index, 1);
-  G.hand[ctx.currentPlayer].push(card);
+  moveToArray(G.deck[ctx.currentPlayer], G.hand[ctx.currentPlayer], index);
   shuffleDeck(G, ctx);
 };
 

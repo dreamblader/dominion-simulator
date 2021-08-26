@@ -1,13 +1,36 @@
+import { moveToArray } from "../utils/help";
+import { shuffleDeck } from "./deck";
+
 export const spawnFaceUp = (G, ctx, index) => {};
 
 export const spawnFaceDown = (G, ctx, index) => {};
 
-export const backToTopDeck = (G, ctx, index) => {};
+export const backToTopDeck = (G, ctx, index) => {
+  moveToArray(G.hand[ctx.currentPlayer], G.deck[ctx.currentPlayer], index);
+};
 
-export const backToBottomDeck = (G, ctx, index) => {};
+export const backToBottomDeck = (G, ctx, index) => {
+  moveToArray(
+    G.hand[ctx.currentPlayer],
+    G.deck[ctx.currentPlayer],
+    index,
+    true
+  );
+};
 
-export const backToDeck = (G, ctx, index) => {};
+export const backToDeck = (G, ctx, index) => {
+  moveToArray(G.hand[ctx.currentPlayer], G.deck[ctx.currentPlayer], index);
+  shuffleDeck(G, ctx);
+};
 
-export const destroy = (G, ctx, index) => {};
+export const destroy = (G, ctx, index) => {
+  moveToArray(
+    G.hand[ctx.currentPlayer],
+    G.destroyZone[ctx.currentPlayer],
+    index
+  );
+};
 
-export const finish = (G, ctx, index) => {};
+export const finish = (G, ctx, index) => {
+  moveToArray(G.hand[ctx.currentPlayer], G.out, index);
+};
