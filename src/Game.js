@@ -1,16 +1,21 @@
-import { setupDeck, setupHands } from "./actions/setup";
+import { setupDeck, setupProps } from "./actions/setup";
 import Consts from "./utils/consts";
-import { draw, drawForTurn, shuffleDeck } from "./actions/deck";
+import { draw, drawForTurn, search, shuffleDeck, mill } from "./actions/deck";
 
 export const Simulator = {
   setup: (ctx) => ({
     deck: setupDeck(Consts.deckSize, ctx),
-    hand: setupHands(ctx.numPlayers),
+    hand: setupProps(ctx.numPlayers),
+    destroyZone: setupProps(ctx.numPlayers),
+    out: [],
+    board: Consts.board,
   }),
 
   moves: {
     draw,
     drawForTurn,
+    search,
     shuffleDeck,
+    mill,
   },
 };

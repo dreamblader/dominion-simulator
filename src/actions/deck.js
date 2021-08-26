@@ -11,6 +11,20 @@ export const drawForTurn = (G, ctx) => {
   }
 };
 
+export const search = (G, ctx, index) => {
+  let card = G.deck[ctx.currentPlayer].splice(index, 1);
+  G.hand[ctx.currentPlayer].push(card);
+  shuffleDeck(G, ctx);
+};
+
 export const shuffleDeck = (G, ctx) => {
   G.deck[ctx.currentPlayer] = ctx.random.Shuffle(G.deck[ctx.currentPlayer]);
+};
+
+export const mill = (G, ctx, number) => {
+  let count = number || 1;
+  for (let i = 0; i < count; i++) {
+    let draw = G.deck[ctx.currentPlayer].pop();
+    G.destroyZone[ctx.currentPlayer].push(draw);
+  }
 };

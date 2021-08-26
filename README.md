@@ -10,6 +10,76 @@ The main idea for a V1 is to make a online board open to interactions similar to
 
 WIP
 
+## Actions
+
+Possible actions that you can do in the simulator and where you can do it:
+
+- Deck
+  - Draw Card
+    - Draw 1 card from the Top of the Deck
+  - Draw For Turn
+    - Draw until you reach the max cards for DRAW ACTION (4 cards)
+  - Search Card
+    - Get one specific card from Deck to Hand
+  - Shuffle Deck
+    - Shuffle entire Deck
+  - Mill
+    - Discard the top card from your deck
+- Card in Hand
+  - SPAWN Face-up
+    - Put card in Board in Face-up position
+  - SPAWN Face-down
+    - Put card in Board in Face-down position
+  - Back to TOP of the Deck
+    - Put card in the deck array at the DRAW position
+  - Back to BOTTOM of the Deck
+    - Put card at the end of deck array
+  - Back to Deck + Shuffle
+    - Put card at the top of deck and SHUFFLE
+  - Destroy
+    - Put card at the Destroyed Zone
+  - FINISH
+    - Put card OUT OF THE GAME
+- Card in Board
+  - Bounce
+  - Destroy
+  - FINISH
+  - Move
+  - Attack
+  - Flip
+  - Activate
+  - Status UP
+  - Status DOWN
+  - Add Effect
+  - TICK Cooldown
+- Card in Destroyed Zone
+  - Reborn
+    - Put card back to Board
+  - Back to Hand
+    - Put card back to Hand
+  - FINISH
+    - Put card OUT OF THE GAME
+- Card OUT OF THE GAME
+  - Recycle
+    - Put card back at the Destroyed Zone
+- Board Controls
+  - START Turn
+    - Start your turn
+  - TICK Phase
+    - Start your TICK Phase
+  - MOVE Phase
+    - Start your MOVE Phase
+  - BATTLE Phase
+    - Start your BATTLE Phase
+  - SPAWN Phase
+    - Start your SPAWN Phase
+  - END Turn
+    - Finish your turn
+  - REACTION
+    - Declare to your opponent that you have a REACTION
+  - OK
+    - Declare to your opponent that you accept the state and have NO REACTION
+
 ## Links
 
 - Boardgame.io Documentation: https://boardgame.io/documentation/#/

@@ -12,10 +12,10 @@ export const setupDeck = (size, ctx) => {
   return deck;
 };
 
-export const setupHands = (players) => {
-  const hands = [];
+export const setupProps = (players) => {
+  const prop = [];
   for (let i = 0; i < players; i++) {
-    hands.push([]);
+    prop.push([]);
   }
-  return hands;
+  return prop;
 };
