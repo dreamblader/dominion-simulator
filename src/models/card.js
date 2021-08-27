@@ -9,6 +9,10 @@ const Card = (id) => {
     unique: false,
     description: "none",
     tags: [],
+    status: [],
+    controller: -1,
+    inversed: false,
+    flipped: false,
   };
 
   return obj;
