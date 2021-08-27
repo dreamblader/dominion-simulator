@@ -1,5 +1,7 @@
 import { setupDeck, setupProps } from "./actions/setup";
 import {
+  spawnFaceUp,
+  spawnFaceDown,
   backToTopDeck,
   backToBottomDeck,
   backToDeck,
@@ -24,6 +26,8 @@ export const Simulator = {
     search,
     shuffleDeck,
     mill,
+    spawnFaceUp,
+    spawnFaceDown,
     backToTopDeck,
     backToBottomDeck,
     backToDeck,

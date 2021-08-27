@@ -1,0 +1,37 @@
+:root {
+  font-size: 100%;
+  --mainText: #f8f9fa;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+body {
+  background-image: url("images/back.jpg");
+  background-color: #000;
+  background-repeat: repeat;
+  color: var(--mainText);
+  padding-top: 85px;
+}
+
+body,
+input,
+button,
+textarea {
+  font: 500 1.6rem Poppins;
+}

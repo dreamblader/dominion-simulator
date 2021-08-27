@@ -1,7 +1,10 @@
-import { moveToArray } from "../utils/help";
+import { moveToArray, toBoard } from "../utils/help";
 import { shuffleDeck } from "./deck";
 
-export const spawnFaceUp = (G, ctx, index) => {};
+export const spawnFaceUp = (G, ctx, index, cordY, cordX) => {
+  let place = { x: cordX, y: cordY };
+  toBoard(G, G.hand[ctx.currentPlayer], index, place);
+};
 
 export const spawnFaceDown = (G, ctx, index) => {};
 

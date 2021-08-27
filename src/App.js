@@ -1,16 +1,15 @@
 //TODO default doc code -- change this
-import { Client } from 'boardgame.io/react';
+import { Client } from "boardgame.io/react";
 //import { SocketIO } from 'boardgame.io/multiplayer'
-import { Simulator } from './Game';
+import { Simulator } from "./Game";
+import Arena from "./ui/pages/arena";
 
-/*
-const TicTacToeClient = Client({
-  game: TicTacToe,
-  //board: TicTacToeBoard,
-  multiplayer: SocketIO({ server: 'localhost:8000' }),
+const SimulatorClient = Client({
+  game: Simulator,
+  board: Arena,
+  //multiplayer: SocketIO({ server: 'localhost:8000' }),
 });
-*/
 
-const App = Client({ game: Simulator }); //<****Client> in React
+const App = SimulatorClient; //<****Client> in React
 
 export default App;
