@@ -80,6 +80,11 @@ Possible actions that you can do in the simulator and where you can do it:
   - OK
     - Declare to your opponent that you accept the state and have NO REACTION
 
+## Layout
+
+Prototype Layout for simulator:
+![Prototype Layout](board.layout.png "Prototype Layout")
+
 ## Links
 
 - Boardgame.io Documentation: https://boardgame.io/documentation/#/
