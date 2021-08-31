@@ -13,20 +13,23 @@ html {
   box-sizing: border-box;
 }
 
-#root {
+/*
+#root,
+.bgio-client {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
+*/
 
 body {
-  background-image: url("images/back.jpg");
+  background-image: url("../images/back.jpg");
   background-color: #000;
   background-repeat: repeat;
   color: var(--mainText);
-  padding-top: 85px;
+  margin: 2rem;
 }
 
 body,

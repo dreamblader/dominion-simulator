@@ -1,0 +1,13 @@
+.arena {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.deck-col {
+  flex-grow: 1;
+}
+
+.hand-col {
+  flex-grow: 3;
+}
