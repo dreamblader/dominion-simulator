@@ -1,10 +1,11 @@
 import React from "react";
+import Card from "../components/card.jsx"    
 import "../styles/arena.css"
 
 const Arena = (props) =>(
     <div className="arena">
         <div className="deck-col">
-            DECK HERE
+            <Card></Card>
         </div>
         <div className="hand-col">
             HAND + BOARD HERE
