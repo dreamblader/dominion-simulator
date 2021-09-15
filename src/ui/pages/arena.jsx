@@ -5,7 +5,11 @@ import "../styles/arena.css"
 const Arena = (props) =>(
     <div className="arena">
         <div className="deck-col">
-            <Card></Card>
+            <Card>{props.G.deck[1].length}</Card>
+            <Card>{props.G.destroyZone[1].length}</Card>
+            {/* OUT ZONE HERE */}
+            <Card>{props.G.destroyZone[0].length}</Card>
+            <Card>{props.G.deck[0].length}</Card>
         </div>
         <div className="hand-col">
             HAND + BOARD HERE
