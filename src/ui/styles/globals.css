@@ -38,3 +38,17 @@ button,
 textarea {
   font: 500 1.6rem Poppins;
 }
+
+.hoverable {
+  display: flex;
+  border: 3px solid black;
+  background-color: gray;
+  justify-content: center;
+  align-items: center;
+  transition: border 0.5s;
+}
+
+.hoverable:hover {
+  cursor: pointer;
+  border: 3px solid white;
+}

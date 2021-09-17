@@ -9,7 +9,14 @@ import {
   finish,
 } from "./actions/hand";
 import Consts from "./utils/consts";
-import { draw, drawForTurn, search, shuffleDeck, mill } from "./actions/deck";
+import {
+  draw,
+  drawForTurn,
+  search,
+  shuffleDeck,
+  mill,
+  getDeckActionsOnMenu,
+} from "./actions/deck";
 
 export const Simulator = {
   setup: (ctx) => ({
@@ -18,6 +25,7 @@ export const Simulator = {
     destroyZone: setupProps(ctx.numPlayers),
     out: [],
     board: Consts.board,
+    menu: null,
   }),
 
   moves: {
@@ -26,6 +34,7 @@ export const Simulator = {
     search,
     shuffleDeck,
     mill,
+    getDeckActionsOnMenu,
     spawnFaceUp,
     spawnFaceDown,
     backToTopDeck,

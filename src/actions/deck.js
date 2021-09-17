@@ -1,5 +1,7 @@
 import Consts from "../utils/consts";
 import { moveToArray } from "../utils/help";
+import Action from "../models/action";
+import MenuData from "../models/menu";
 
 export const draw = (G, ctx) => {
   let draw = G.deck[ctx.currentPlayer].pop();
@@ -27,4 +29,13 @@ export const mill = (G, ctx, number) => {
     let draw = G.deck[ctx.currentPlayer].pop();
     G.destroyZone[ctx.currentPlayer].push(draw);
   }
+};
+
+export const getDeckActionsOnMenu = (G, ctx) => {
+  let actions = [
+    Action("Draw", draw(G, ctx)),
+    Action("Draw For Turn", drawForTurn(G, ctx)),
+    Action("Mill", mill(G, ctx, 1)),
+  ];
+  G.menu = MenuData(0, 0, actions);
 };

@@ -1,18 +1,29 @@
 import React from "react";
-import Card from "../components/card.jsx"    
+import Card from "../components/card"
+import Jar from "../components/jar"  
+import Hand from "../components/hand";
+import Menu from "../components/menu";
+import { getDeckActionsOnMenu } from "../../actions/deck";  
 import "../styles/arena.css"
 
-const Arena = (props) =>(
+
+const Arena = (props) => {
+    let deckMenu = () => {
+        props.moves.getDeckActionsOnMenu()
+    }; 
+    return (
     <div className="arena">
+        {props.G.menu && <Menu items={props.G.menu.actions}/>}
         <div className="deck-col">
-            <Card>{props.G.deck[1].length}</Card>
+            <Card onClick={() => console.log("yo")}>{props.G.deck[1].length} +1</Card>
             <Card>{props.G.destroyZone[1].length}</Card>
-            {/* OUT ZONE HERE */}
+            <Jar>OUT</Jar>
             <Card>{props.G.destroyZone[0].length}</Card>
             <Card>{props.G.deck[0].length}</Card>
         </div>
         <div className="hand-col">
-            HAND + BOARD HERE
+            <Hand list={props.G.hand[1]}/>
+            <Hand list={props.G.hand[0]}/>
         </div>
         <div className="control-col">
             CONTROLLERS HERE
@@ -21,6 +32,6 @@ const Arena = (props) =>(
             CARD STATUS HERE
         </div>
     </div> 
-);
+)};
 
 export default Arena;

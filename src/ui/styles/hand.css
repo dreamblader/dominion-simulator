@@ -1,0 +1,4 @@
+.hand {
+  display: flex;
+  justify-content: space-evenly;
+}

@@ -1,0 +1,19 @@
+.menu {
+  display: flex;
+  border: 2px solid black;
+  background-color: green;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.menu-item {
+  border: 1px solid black;
+  transition: border 0.5s, background-color 0.5;
+  padding: 0.1rem;
+}
+
+.menu-item:hover {
+  border: 1px solid white;
+  background-color: blue;
+}
