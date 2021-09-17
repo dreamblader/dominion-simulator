@@ -35,7 +35,7 @@ export const getDeckActionsOnMenu = (G, ctx) => {
   let actions = [
     Action("Draw", draw(G, ctx)),
     Action("Draw For Turn", drawForTurn(G, ctx)),
-    Action("Mill", mill(G, ctx, 1)),
+    Action("Mill", mill(G, ctx)),
   ];
   G.menu = MenuData(0, 0, actions);
 };
