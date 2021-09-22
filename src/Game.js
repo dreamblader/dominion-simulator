@@ -34,7 +34,6 @@ export const Simulator = {
     search,
     shuffleDeck,
     mill,
-    getDeckActionsOnMenu,
     spawnFaceUp,
     spawnFaceDown,
     backToTopDeck,
@@ -42,5 +41,6 @@ export const Simulator = {
     backToDeck,
     destroy,
     finish,
+    getDeckActionsOnMenu,
   },
 };

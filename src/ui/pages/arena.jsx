@@ -8,15 +8,14 @@ import "../styles/arena.css"
 
 const Arena = (props) => {
     let deckMenu = () => {
-        console.log("here");
         props.moves.getDeckActionsOnMenu();
     }; 
 
     return (
     <div className="arena">
-        {props.G.menu && <Menu items={props.G.menu.actions}/>}
+        {props.G.menu && <Menu items={props.G.menu.actions} moves={props.moves}/>}
         <div className="deck-col">
-            <Card onClick={() => deckMenu}>{props.G.deck[1].length} +1</Card>
+            <Card click={deckMenu}>{props.G.deck[1].length} +1</Card>
             <Card>{props.G.destroyZone[1].length}</Card>
             <Jar>OUT</Jar>
             <Card>{props.G.destroyZone[0].length}</Card>

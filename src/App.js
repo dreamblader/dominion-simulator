@@ -8,6 +8,7 @@ import "./ui/styles/globals.css";
 const SimulatorClient = Client({
   game: Simulator,
   board: Arena,
+  //debug: false,
   //multiplayer: SocketIO({ server: 'localhost:8000' }),
 });
 
