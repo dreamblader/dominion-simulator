@@ -9,7 +9,7 @@ import "../styles/arena.css"
 const Arena = (props) => {
     let deckMenu = () => {
         props.moves.getDeckActionsOnMenu();
-    }; 
+    };   
 
     return (
     <div className="arena">

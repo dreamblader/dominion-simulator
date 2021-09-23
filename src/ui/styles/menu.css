@@ -12,6 +12,7 @@
   border: 1px solid black;
   width: 100%;
   transition: border 0.5s, background-color 0.5s;
+  user-select: none;
   padding: 0.1rem;
 }
 

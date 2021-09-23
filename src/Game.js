@@ -1,4 +1,5 @@
 import { setupDeck, setupProps } from "./actions/setup";
+import Consts from "./utils/consts";
 import {
   spawnFaceUp,
   spawnFaceDown,
@@ -8,7 +9,6 @@ import {
   destroy,
   finish,
 } from "./actions/hand";
-import Consts from "./utils/consts";
 import {
   draw,
   drawForTurn,
@@ -17,6 +17,7 @@ import {
   mill,
   getDeckActionsOnMenu,
 } from "./actions/deck";
+import { clearMenu } from "./actions/out";
 
 export const Simulator = {
   setup: (ctx) => ({
@@ -42,5 +43,6 @@ export const Simulator = {
     destroy,
     finish,
     getDeckActionsOnMenu,
+    clearMenu,
   },
 };
