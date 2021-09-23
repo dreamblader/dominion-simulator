@@ -31,11 +31,11 @@ export const mill = (G, ctx, number) => {
   }
 };
 
-export const getDeckActionsOnMenu = (G, ctx) => {
+export const getDeckActionsOnMenu = (G, ctx, event) => {
   let actions = [
     Action("Draw", "draw"),
     Action("Draw For Turn", "drawForTurn"),
     Action("Mill", "mill"),
   ];
-  G.menu = MenuData(0, 0, actions);
+  G.menu = MenuData(event.pageX, event.pageY, actions);
 };

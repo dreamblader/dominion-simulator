@@ -7,19 +7,23 @@ import "../styles/arena.css"
 
 
 const Arena = (props) => {
-    let deckMenu = () => {
-        props.moves.getDeckActionsOnMenu();
+    let deckMenu = (e) => {
+        props.moves.getDeckActionsOnMenu(e);
     };   
 
     return (
     <div className="arena">
-        {props.G.menu && <Menu items={props.G.menu.actions} moves={props.moves}/>}
+        {props.G.menu && 
+        <Menu items={props.G.menu.actions} 
+        moves={props.moves} 
+        posX={props.G.menu.posX}
+        posY={props.G.menu.posY}/>}
         <div className="deck-col">
-            <Card click={deckMenu}>{props.G.deck[1].length} +1</Card>
+            <Card>{props.G.deck[1].length}</Card>
             <Card>{props.G.destroyZone[1].length}</Card>
             <Jar>OUT</Jar>
             <Card>{props.G.destroyZone[0].length}</Card>
-            <Card>{props.G.deck[0].length}</Card>
+            <Card click={(e) => deckMenu(e)}>{props.G.deck[0].length}</Card>
         </div>
         <div className="hand-col">
             <Hand list={props.G.hand[1]}/>
