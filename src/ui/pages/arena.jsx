@@ -27,7 +27,7 @@ const Arena = (props) => {
         </div>
         <div className="hand-col">
             <Hand list={props.G.hand[1]}/>
-            <Hand list={props.G.hand[0]}/>
+            <Hand list={props.G.hand[0]} moves={props.moves}/>
         </div>
         <div className="control-col">
             CONTROLLERS HERE

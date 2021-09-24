@@ -17,14 +17,19 @@ const Menu = (props) => {
         };
         
         document.body.addEventListener('mousedown', clearMenu );
-    },[clickRef, props.moves]);  
+    },[clickRef, props.moves]);
+    
+    let menuClick = (item) => {
+        props.moves[item.event](item.args);
+        props.moves.clearMenu();
+    }
 
     return(
         <div className="menu" 
         style={style} 
         ref={clickRef}>
             {props.items.map((item, index) => (
-            <div className="menu-item" onClick={() => props.moves[item.event]()} key={index}>{item.name}</div>
+            <div className="menu-item" onClick={() => menuClick(item)} key={index}>{item.name}</div>
         ))}
         </div>
 )}

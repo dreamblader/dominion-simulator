@@ -35,6 +35,8 @@ export const getDeckActionsOnMenu = (G, ctx, event) => {
   let actions = [
     Action("Draw", "draw"),
     Action("Draw For Turn", "drawForTurn"),
+    //SEARCH MENULIST HERE
+    Action("Shuffle Deck", "shuffleDeck"),
     Action("Mill", "mill"),
   ];
   G.menu = MenuData(event.pageX, event.pageY, actions);

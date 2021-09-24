@@ -8,6 +8,7 @@ import {
   backToDeck,
   destroy,
   finish,
+  getHandActionsOnMenu,
 } from "./actions/hand";
 import {
   draw,
@@ -43,6 +44,7 @@ export const Simulator = {
     destroy,
     finish,
     getDeckActionsOnMenu,
+    getHandActionsOnMenu,
     clearMenu,
   },
 };
