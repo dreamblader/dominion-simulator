@@ -3,6 +3,7 @@ import Card from "../components/card"
 import Jar from "../components/jar"  
 import Hand from "../components/hand";
 import Menu from "../components/menu";
+import Board from "../components/board";
 import "../styles/arena.css"
 
 
@@ -27,6 +28,7 @@ const Arena = (props) => {
         </div>
         <div className="hand-col">
             <Hand list={props.G.hand[1]}/>
+            <Board board={props.G.board} life={props.G.life}/>
             <Hand list={props.G.hand[0]} moves={props.moves}/>
         </div>
         <div className="control-col">

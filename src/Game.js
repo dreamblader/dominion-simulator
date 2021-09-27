@@ -1,4 +1,4 @@
-import { setupDeck, setupProps } from "./actions/setup";
+import { setupDeck, setupProps, setupBoard } from "./actions/setup";
 import Consts from "./utils/consts";
 import {
   spawnFaceUp,
@@ -26,7 +26,8 @@ export const Simulator = {
     hand: setupProps(ctx.numPlayers),
     destroyZone: setupProps(ctx.numPlayers),
     out: [],
-    board: Consts.board,
+    life: [Consts.maxLife, Consts.maxLife],
+    board: setupBoard(Consts.board),
     menu: null,
   }),
 

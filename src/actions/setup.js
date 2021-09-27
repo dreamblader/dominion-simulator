@@ -1,5 +1,6 @@
 import { randomInt } from "../utils/help";
 import Cards from "../models/card";
+import BoardTile from "../models/board-tile";
 
 export const setupDeck = (size, ctx) => {
   const deck = [];
@@ -19,4 +20,8 @@ export const setupProps = (players) => {
     prop.push([]);
   }
   return prop;
+};
+
+export const setupBoard = (board) => {
+  return board.map((row) => row.map((tile) => BoardTile(tile)));
 };

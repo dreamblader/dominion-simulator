@@ -1,0 +1,28 @@
+.board {
+  display: grid;
+  width: fit-content;
+  padding: 0.5rem 9rem 0.5rem 9.25rem;
+  background-color: black;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: auto 1fr;
+}
+
+.tile-holder {
+  height: 5rem;
+  width: 3.5rem;
+}
+
+.user {
+  background-color: blue !important;
+}
+
+.rival {
+  background-color: red !important;
+}
+
+.dominion {
+  display: flex;
+  border: 3px solid white;
+  justify-content: center;
+  align-items: center;
+}
