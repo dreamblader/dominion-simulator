@@ -21,7 +21,7 @@ const lobby = (
 );
 
 const App = () => {
-  let { playerID, setPlayerID } = useState(null);
+  const [playerID, setPlayerID] = useState(null);
 
   if (playerID) {
     return <SimulatorClient playerID={playerID} />;
