@@ -11,4 +11,5 @@ const server = Server({
   origins: [Origins.LOCALHOST],
 });
 
-server.run({ port: 8000, lobbyConfig });
+server.run(8000);
+//server.run({ port: 8000, lobbyConfig });

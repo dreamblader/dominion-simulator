@@ -6,49 +6,40 @@ import { Origin } from "../models/enums";
 import Temp from "../models/temp-select";
 
 export const spawnFaceUp = (G, ctx, index) => {
-  G.hand[ctx.currentPlayer][index].flipped = false;
+  G.hand[ctx.playerID][index].flipped = false;
   selectToField(G, ctx, index);
 };
 
 export const spawnFaceDown = (G, ctx, index) => {
-  G.hand[ctx.currentPlayer][index].flipped = true;
+  G.hand[ctx.playerID][index].flipped = true;
   selectToField(G, ctx, index);
 };
 
 export const backToTopDeck = (G, ctx, index) => {
-  moveToArray(G.hand[ctx.currentPlayer], G.deck[ctx.currentPlayer], index);
+  moveToArray(G.hand[ctx.playerID], G.deck[ctx.playerID], index);
 };
 
 export const backToBottomDeck = (G, ctx, index) => {
-  moveToArray(
-    G.hand[ctx.currentPlayer],
-    G.deck[ctx.currentPlayer],
-    index,
-    true
-  );
+  moveToArray(G.hand[ctx.playerID], G.deck[ctx.playerID], index, true);
 };
 
 export const backToDeck = (G, ctx, index) => {
-  moveToArray(G.hand[ctx.currentPlayer], G.deck[ctx.currentPlayer], index);
+  moveToArray(G.hand[ctx.playerID], G.deck[ctx.playerID], index);
   shuffleDeck(G, ctx);
 };
 
 export const destroy = (G, ctx, index) => {
-  moveToArray(
-    G.hand[ctx.currentPlayer],
-    G.destroyZone[ctx.currentPlayer],
-    index
-  );
+  moveToArray(G.hand[ctx.playerID], G.destroyZone[ctx.playerID], index);
 };
 
 export const finish = (G, ctx, index) => {
-  moveToArray(G.hand[ctx.currentPlayer], G.out, index);
+  moveToArray(G.hand[ctx.playerID], G.out, index);
 };
 
 export const selectToField = (G, ctx, index) => {
   let origin = {};
   origin[Origin.HAND] = index;
-  let card = G.hand[ctx.currentPlayer][index];
+  let card = G.hand[ctx.playerID][index];
   G.selectToBoard = Temp(origin, card);
 };
 
