@@ -1,4 +1,7 @@
 .hand {
   display: flex;
+  align-items: center;
   justify-content: space-evenly;
+  height: 11rem;
+  width: 100%;
 }
