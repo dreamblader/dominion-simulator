@@ -26,7 +26,13 @@ const App = () => {
   if (playerID) {
     return <SimulatorClient playerID={playerID} />;
   } else {
-    return lobby;
+    return (
+      <div>
+        <p>Play as</p>
+        <button onClick={() => setPlayerID("0")}>Player 0</button>
+        <button onClick={() => setPlayerID("1")}>Player 1</button>
+      </div>
+    );
   }
 };
 
