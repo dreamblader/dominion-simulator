@@ -28,8 +28,15 @@ const Arena = (props) => {
         </div>
         <div className="hand-col">
             <Hand list={props.G.hand[1]}/>
-            <Board board={props.G.board} life={props.G.life}/>
-            <Hand list={props.G.hand[0]} moves={props.moves}/>
+            <Board 
+            board={props.G.board} 
+            life={props.G.life} 
+            selected={props.G.selectToBoard}
+            moves={props.moves}/>
+            <Hand 
+            list={props.G.hand[0]} 
+            moves={props.moves}
+            selected={props.G.selectToBoard}/>
         </div>
         <div className="control-col">
             CONTROLLERS HERE

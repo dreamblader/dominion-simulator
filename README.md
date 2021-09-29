@@ -15,30 +15,30 @@ WIP
 Possible actions that you can do in the simulator and where you can do it:
 
 - Deck
-  - Draw Card
+  - [x] Draw Card
     - Draw 1 card from the Top of the Deck
-  - Draw For Turn
+  - [x] Draw For Turn
     - Draw until you reach the max cards for DRAW ACTION (4 cards)
-  - Search Card
+  - [ ] Search Card
     - Get one specific card from Deck to Hand
-  - Shuffle Deck
+  - [x] Shuffle Deck
     - Shuffle entire Deck
-  - Mill
+  - [x] Mill
     - Discard the top card from your deck
 - Card in Hand
-  - SPAWN Face-up
+  - [ ] SPAWN Face-up
     - Put card in Board in Face-up position
-  - SPAWN Face-down
+  - [ ] SPAWN Face-down
     - Put card in Board in Face-down position
-  - Back to TOP of the Deck
+  - [x] Back to TOP of the Deck
     - Put card in the deck array at the DRAW position
-  - Back to BOTTOM of the Deck
+  - [x] Back to BOTTOM of the Deck
     - Put card at the end of deck array
-  - Back to Deck + Shuffle
+  - [x] Back to Deck + Shuffle
     - Put card at the top of deck and SHUFFLE
-  - Destroy
+  - [x] Destroy
     - Put card at the Destroyed Zone
-  - FINISH
+  - [x] FINISH
     - Put card OUT OF THE GAME
 - Card in Board
   - Bounce

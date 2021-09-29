@@ -1,5 +1,7 @@
 import React from "react";
 import Card from "./card";
+import { Origin } from "../../models/enums";
+import { checkSelectionOrigin } from "../../utils/help";
 import "../styles/hand.css";
 
 const Hand = (props) => {
@@ -7,10 +9,21 @@ const Hand = (props) => {
         props.moves.getHandActionsOnMenu(e, i);
     }
 
+    let isSelected = (index) => {
+        if(props.selected){
+            let thisSelection = props.selected[Origin.HAND]
+            if(thisSelection === index){
+                return " selected";
+            }
+        }
+        return "";
+    }
+
     return(
     <div className="hand">
         {props.list.map((card, index) => (
-        <Card key={index} 
+        <Card key={index}
+        extraClass={isSelected(index)} 
         click={(e) => handMenu(e, index)}>
             {card.id}
         </Card>

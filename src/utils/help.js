@@ -14,14 +14,20 @@ export const moveToArray = (origin, destination, index, reverse = false) => {
 };
 
 export const toBoard = (G, origin, index, place) => {
-  let position = G.board[place.y][place.x];
-  let placeDoNotExist = position === -1 || position === undefined;
-  let placeIsOccupied = typeof position === "object" && position !== null;
+  let tile = G.board[place.y][place.x];
 
-  if (placeDoNotExist || placeIsOccupied) {
-    return INVALID_MOVE;
-  } else {
+  if (tile) {
     let item = origin.splice(index, 1)[0];
-    G.board[place.y].splice(place.x, 1, item);
+    tile.cards.push(item);
+  } else {
+    return INVALID_MOVE;
+  }
+};
+
+export const orNothing = (val) => {
+  if (val) {
+    return val;
+  } else {
+    return "";
   }
 };

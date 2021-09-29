@@ -1,4 +1,23 @@
+@keyframes glow {
+  from {
+    border: 3px solid black;
+  }
+  to {
+    border: 3px solid yellow;
+  }
+}
+
 .card-holder {
   height: 10rem;
   width: 7rem;
+}
+
+.selected {
+  animation-iteration-count: infinite;
+  animation-name: glow;
+  animation-duration: 2s;
+}
+
+.selected:hover {
+  border: 3px solid yellow;
 }

@@ -1,5 +1,6 @@
 import { setupDeck, setupProps, setupBoard } from "./actions/setup";
 import Consts from "./utils/consts";
+import { placeInHere } from "./actions/board";
 import {
   spawnFaceUp,
   spawnFaceDown,
@@ -10,6 +11,7 @@ import {
   finish,
   getHandActionsOnMenu,
 } from "./actions/hand";
+import { clearMenu } from "./actions/controls";
 import {
   draw,
   drawForTurn,
@@ -18,7 +20,6 @@ import {
   mill,
   getDeckActionsOnMenu,
 } from "./actions/deck";
-import { clearMenu } from "./actions/out";
 
 export const Simulator = {
   setup: (ctx) => ({
@@ -28,6 +29,7 @@ export const Simulator = {
     out: [],
     life: [Consts.maxLife, Consts.maxLife],
     board: setupBoard(Consts.board),
+    selectToBoard: null,
     menu: null,
   }),
 
@@ -47,5 +49,6 @@ export const Simulator = {
     getDeckActionsOnMenu,
     getHandActionsOnMenu,
     clearMenu,
+    placeInHere,
   },
 };
