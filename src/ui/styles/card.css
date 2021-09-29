@@ -15,9 +15,12 @@
 .selected {
   animation-iteration-count: infinite;
   animation-name: glow;
-  animation-duration: 2s;
+  animation-duration: 0.5s;
+  animation-direction: alternate;
+  transition: border 0.5s;
 }
 
 .selected:hover {
-  border: 3px solid yellow;
+  animation-name: none;
+  border: 3px solid yellow !important;
 }

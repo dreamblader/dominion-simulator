@@ -8,7 +8,7 @@ const Board = (props) => {
         return(<div 
         className={typeName+" tile-holder"}
          key={id}>
-             {getContent(tile, i, j)}
+             {getContent(tile, j, i)}
              </div>);
     }
 
@@ -35,12 +35,13 @@ const Board = (props) => {
     const getContent = (tile, x, y) =>{
         if(tile){
             if(tile.spawn === 3  || tile.spawn === 4){
-                return (<div>
+                return (<div className="content">
                     {props.life[tile.spawn-3]}
                     </div>);
             } else {
-                return (<div onClick={clickSpawnTile(x,y)}>
-                    {tile.cards[0]}
+                return (<div className="content"
+                 onClick={() => clickSpawnTile(x,y)}>
+                    {getCardView(tile.cards[0])}
                 </div>)
             }
         } else {
@@ -52,6 +53,14 @@ const Board = (props) => {
     const clickSpawnTile = (x, y) => {
         if(props.selected){
             props.moves.placeInHere(x,y);
+        }
+    }
+
+    const getCardView = (card) => {
+        if(card){
+            return card.id	
+        } else {
+            return "";
         }
     }
 

@@ -13,7 +13,7 @@ export const placeInHere = (G, ctx, x, y) => {
 
 const checkSelection = (G, player) => {
   let selected = G.selectToBoard;
-  let origin = Object.keys(selected.origin)[0];
+  let origin = Object.keys(selected.origin)[0]; //origin is null?
   let originContent = selected.origin[origin];
   let realCard = G[origin][player][originContent];
 

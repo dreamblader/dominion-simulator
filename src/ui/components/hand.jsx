@@ -1,7 +1,6 @@
 import React from "react";
 import Card from "./card";
 import { Origin } from "../../models/enums";
-import { checkSelectionOrigin } from "../../utils/help";
 import "../styles/hand.css";
 
 const Hand = (props) => {
@@ -11,7 +10,7 @@ const Hand = (props) => {
 
     let isSelected = (index) => {
         if(props.selected){
-            let thisSelection = props.selected[Origin.HAND]
+            let thisSelection = props.selected.origin[Origin.HAND]
             if(thisSelection === index){
                 return " selected";
             }

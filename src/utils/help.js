@@ -19,6 +19,7 @@ export const toBoard = (G, origin, index, place) => {
   if (tile) {
     let item = origin.splice(index, 1)[0];
     tile.cards.push(item);
+    G.selectToBoard = null;
   } else {
     return INVALID_MOVE;
   }
