@@ -9,17 +9,8 @@ import {
   backToDeck,
   destroy,
   finish,
-  getHandActionsOnMenu,
 } from "./actions/hand";
-import { clearMenu } from "./actions/controls";
-import {
-  draw,
-  drawForTurn,
-  search,
-  shuffleDeck,
-  mill,
-  getDeckActionsOnMenu,
-} from "./actions/deck";
+import { draw, drawForTurn, search, shuffleDeck, mill } from "./actions/deck";
 
 export const Simulator = {
   setup: (ctx) => ({

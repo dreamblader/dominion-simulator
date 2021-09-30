@@ -23,5 +23,5 @@ export const setupProps = (players, content) => {
 };
 
 export const setupBoard = (board) => {
-  return board.map((row) => row.map((tile) => BoardTile(tile)));
+  return board.map((row, y) => row.map((tile, x) => BoardTile(tile, x, y)));
 };

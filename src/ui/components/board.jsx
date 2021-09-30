@@ -2,26 +2,29 @@ import React from "react";
 import "../styles/board.css";
 
 const Board = (props) => {
+
+    const dominionIds = props.ids[0] === 1 ? [4, 3]: [3, 4];
+
     const renderTile = (tile, i, j) => {
         let id = i+"-"+j
         let typeName = getClassName(tile)
         return(<div 
         className={typeName+" tile-holder"}
          key={id}>
-             {getContent(tile, j, i)}
+             {getContent(tile)}
              </div>);
     }
 
     const getClassName = (tile) =>{
         if(tile){
             switch(tile.spawn){
-                case 1:
+                case props.ids[0]+1:
                     return "hoverable user";
-                case 2:
+                case props.ids[1]+1:
                     return "hoverable rival";
-                case 3:
+                case dominionIds[0]:
                     return "dominion user";
-                case 4:
+                case dominionIds[1]:
                     return "dominion rival";
                 default:
                     return "hoverable";
@@ -32,7 +35,7 @@ const Board = (props) => {
         
     }
 
-    const getContent = (tile, x, y) =>{
+    const getContent = (tile) =>{
         if(tile){
             if(tile.spawn === 3  || tile.spawn === 4){
                 return (<div className="content">
@@ -40,7 +43,7 @@ const Board = (props) => {
                     </div>);
             } else {
                 return (<div className="content"
-                 onClick={() => clickSpawnTile(x,y)}>
+                 onClick={() => clickSpawnTile(tile.originalX, tile.originalY)}>
                     {getCardView(tile.cards[0])}
                 </div>)
             }

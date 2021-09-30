@@ -6,6 +6,7 @@ import Menu from "../components/menu";
 import Board from "../components/board";
 import getDeckActionsOnMenu from "../../actions/deck";
 import getHandActionsOnMenu from "../../actions/hand";
+import { renderBoard } from "../../utils/help";
 import "../styles/arena.css"
 
 
@@ -47,7 +48,8 @@ const Arena = (props) => {
         <div className="hand-col">
             <Hand list={props.G.hand[rivalID]}/>
             <Board 
-            board={props.G.board} 
+            board={renderBoard(props.G.board, myID)} 
+            ids={[myID, rivalID]}
             life={props.G.life} 
             selected={props.G.selectToBoard}
             moves={props.moves}/>
