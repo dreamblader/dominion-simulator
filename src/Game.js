@@ -29,8 +29,6 @@ export const Simulator = {
     search,
     shuffleDeck,
     mill,
-    spawnFaceUp,
-    spawnFaceDown,
     backToTopDeck,
     backToBottomDeck,
     backToDeck,

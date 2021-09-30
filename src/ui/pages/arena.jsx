@@ -6,7 +6,7 @@ import Menu from "../components/menu";
 import Board from "../components/board";
 import Button from "../components/button";
 import getDeckActionsOnMenu from "../../actions/deck";
-import getHandActionsOnMenu from "../../actions/hand";
+import getHandActionsOnMenu, { spawnFaceDown,spawnFaceUp } from "../../actions/hand";
 import { renderBoard } from "../../utils/help";
 import "../styles/arena.css"
 
@@ -38,11 +38,16 @@ const Arena = (props) => {
         }
     }
 
+    const clientSideMoves = [
+        spawnFaceUp,
+        spawnFaceDown,
+    ];
+
     return (
     <div className="arena">
         {menu && 
         <Menu items={menu.actions} 
-        moves={props.moves} 
+        moves={props.moves.push.apply(clientSideMoves)} 
         posX={menu.posX}
         posY={menu.posY}
         clear={clearMenuCallback}/>}

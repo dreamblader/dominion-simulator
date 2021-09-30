@@ -5,18 +5,7 @@ import MenuData from "../models/menu";
 import { Origin } from "../models/enums";
 import Temp from "../models/temp-select";
 
-//TODO move this to client side
-export const spawnFaceUp = (G, ctx, index, setSelect) => {
-  console.log(setSelect);
-  G.hand[ctx.playerID][index].flipped = false;
-  setSelect(selectToField(G, ctx, index));
-};
-
-//TODO move this to client side
-export const spawnFaceDown = (G, ctx, index, setSelect) => {
-  G.hand[ctx.playerID][index].flipped = true;
-  setSelect(selectToField(G, ctx, index));
-};
+//SERVER
 
 export const backToTopDeck = (G, ctx, index) => {
   moveToArray(G.hand[ctx.playerID], G.deck[ctx.playerID], index);
@@ -37,6 +26,21 @@ export const destroy = (G, ctx, index) => {
 
 export const finish = (G, ctx, index) => {
   moveToArray(G.hand[ctx.playerID], G.out, index);
+};
+
+//CLIENT
+
+//TODO move this to client side
+export const spawnFaceUp = (G, ctx, index, setSelect) => {
+  console.log(setSelect);
+  G.hand[ctx.playerID][index].flipped = false;
+  setSelect(selectToField(G, ctx, index));
+};
+
+//TODO move this to client side
+export const spawnFaceDown = (G, ctx, index, setSelect) => {
+  G.hand[ctx.playerID][index].flipped = true;
+  setSelect(selectToField(G, ctx, index));
 };
 
 //TODO move this to client side
