@@ -20,7 +20,7 @@ const Menu = (props) => {
     },[clickRef, props]);
     
     let menuClick = (item) => {
-        props.moves[item.event](item.args);
+        props.moves[item.event].apply(this, item.args);
         props.clear();
     }
 

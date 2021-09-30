@@ -4,6 +4,7 @@ import Jar from "../components/jar"
 import Hand from "../components/hand";
 import Menu from "../components/menu";
 import Board from "../components/board";
+import Button from "../components/button";
 import getDeckActionsOnMenu from "../../actions/deck";
 import getHandActionsOnMenu from "../../actions/hand";
 import { renderBoard } from "../../utils/help";
@@ -15,19 +16,26 @@ const Arena = (props) => {
     const rivalID = myID === 0 ? 1 : 0;
 
     const [menu, setMenu] = useState(null);
+    const [selectToBoard, setSelectToBoard] = useState(null);
     
     const deckMenu = (e) => {
-        props.G.selectToBoard = null;
+        setSelectToBoard(null);
         setMenu(getDeckActionsOnMenu(e));
     };
 
     const handMenu = (e, i) => {
-        props.G.selectToBoard = null;
-        setMenu(getHandActionsOnMenu(e, i));
+        setSelectToBoard(null);
+        setMenu(getHandActionsOnMenu(e, i, setSelectToBoard));
     }
     
     const clearMenuCallback = () => {
         setMenu(null);
+    }
+
+    const endMyTurn = () => {
+        if(parseInt(props.ctx.currentPlayer) === myID){
+            props.events.endTurn()
+        }
     }
 
     return (
@@ -51,15 +59,18 @@ const Arena = (props) => {
             board={renderBoard(props.G.board, myID)} 
             ids={[myID, rivalID]}
             life={props.G.life} 
-            selected={props.G.selectToBoard}
+            selected={selectToBoard}
             moves={props.moves}/>
             <Hand 
             list={props.G.hand[myID]} 
             menuClick={handMenu}
-            selected={props.G.selectToBoard}/>
+            selected={selectToBoard}/>
         </div>
         <div className="control-col">
-            CONTROLLERS HERE
+            <Button click={() => endMyTurn()}
+            extraClass={parseInt(props.ctx.currentPlayer) !== myID ? " hidden" : ""}>
+                END TURN
+            </Button>
         </div>
         <div className="status-col">
             CARD STATUS HERE

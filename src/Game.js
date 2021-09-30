@@ -1,3 +1,4 @@
+import { PlayerView } from "boardgame.io/core";
 import { setupDeck, setupProps, setupBoard } from "./actions/setup";
 import Consts from "./utils/consts";
 import { placeInHere } from "./actions/board";
@@ -20,7 +21,6 @@ export const Simulator = {
     out: [],
     life: [Consts.maxLife, Consts.maxLife],
     board: setupBoard(Consts.board),
-    selectToBoard: setupProps(ctx.numPlayers, null),
   }),
 
   moves: {
@@ -38,4 +38,6 @@ export const Simulator = {
     finish,
     placeInHere,
   },
+
+  //playerView: PlayerView.STRIP_SECRETS,
 };

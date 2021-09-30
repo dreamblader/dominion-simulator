@@ -38,7 +38,6 @@ export const renderBoard = (board, playerID) => {
     case 0:
       return board;
     case 1:
-      console.log(flip(board));
       return flip(board);
     default:
       return board;
