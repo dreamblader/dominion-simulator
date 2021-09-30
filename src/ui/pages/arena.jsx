@@ -20,6 +20,8 @@ const Arena = (props) => {
     
     const deckMenu = (e) => {
         setSelectToBoard(null);
+        console.log(props.moves);
+        console.log(clientSideMoves);
         setMenu(getDeckActionsOnMenu(e));
     };
 
@@ -38,16 +40,16 @@ const Arena = (props) => {
         }
     }
 
-    const clientSideMoves = [
+    const clientSideMoves = {
         spawnFaceUp,
         spawnFaceDown,
-    ];
+    };
 
     return (
     <div className="arena">
         {menu && 
         <Menu items={menu.actions} 
-        moves={props.moves.push.apply(clientSideMoves)} 
+        moves={Object.assign(props.moves, clientSideMoves)} 
         posX={menu.posX}
         posY={menu.posY}
         clear={clearMenuCallback}/>}
