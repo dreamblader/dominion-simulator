@@ -1,3 +1,4 @@
+import { findAllByPlaceholderText } from "@testing-library/dom";
 import { INVALID_MOVE } from "boardgame.io/core";
 
 export const randomInt = (maxNumber, ctx) => {
@@ -31,4 +32,28 @@ export const orNothing = (val) => {
   } else {
     return "";
   }
+};
+
+export const renderBoard = (board, playerID) => {
+  switch (playerID) {
+    case 0:
+      return board;
+    case 1:
+      return flip(board);
+    default:
+      return board;
+  }
+};
+
+const flip = (board) => {
+  let flippedBoard = [];
+  const rowLength = board.length;
+  for (let y = 0; y < rowLength; y++) {
+    flippedBoard.push([]);
+    const columnLength = board[y].length;
+
+    for (let x = 0; x < columnLength; x++) {}
+  }
+
+  return flippedBoard();
 };

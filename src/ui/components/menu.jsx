@@ -12,16 +12,16 @@ const Menu = (props) => {
 
         let clearMenu = (event) => {
             if (clickRef.current && !clickRef.current.contains(event.target)) {
-                props.moves.clearMenu();
+                props.clear();
             }
         };
         
         document.body.addEventListener('mousedown', clearMenu );
-    },[clickRef, props.moves]);
+    },[clickRef, props]);
     
     let menuClick = (item) => {
         props.moves[item.event](item.args);
-        props.moves.clearMenu();
+        props.clear();
     }
 
     return(

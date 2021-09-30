@@ -43,8 +43,7 @@ export const selectToField = (G, ctx, index) => {
   G.selectToBoard = Temp(origin, card);
 };
 
-export const getHandActionsOnMenu = (G, ctx, event, pos) => {
-  G.selectToBoard = null;
+const getHandActionsOnMenu = (event, pos) => {
   let actions = [
     Action("Back to Top of the Deck", "backToTopDeck", pos),
     Action("Back to Bottom of the Deck", "backToBottomDeck", pos),
@@ -53,5 +52,7 @@ export const getHandActionsOnMenu = (G, ctx, event, pos) => {
     Action("Destroy", "destroy", pos),
     Action("Put OUT OF GAME", "finish", pos),
   ];
-  G.menu = MenuData(event.pageX, event.pageY, actions);
+  return MenuData(event.pageX, event.pageY, actions);
 };
+
+export default getHandActionsOnMenu;

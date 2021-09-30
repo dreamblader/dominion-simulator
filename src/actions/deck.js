@@ -31,8 +31,7 @@ export const mill = (G, ctx, number) => {
   }
 };
 
-export const getDeckActionsOnMenu = (G, ctx, event) => {
-  G.selectToBoard = null;
+const getDeckActionsOnMenu = (event) => {
   let actions = [
     Action("Draw", "draw"),
     Action("Draw For Turn", "drawForTurn"),
@@ -40,5 +39,7 @@ export const getDeckActionsOnMenu = (G, ctx, event) => {
     Action("Shuffle Deck", "shuffleDeck"),
     Action("Mill", "mill"),
   ];
-  G.menu = MenuData(event.pageX, event.pageY, actions);
+  return MenuData(event.pageX, event.pageY, actions);
 };
+
+export default getDeckActionsOnMenu;

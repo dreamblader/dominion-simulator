@@ -14,10 +14,10 @@ export const setupDeck = (size, ctx) => {
   return deck;
 };
 
-export const setupProps = (players) => {
+export const setupProps = (players, content) => {
   const prop = [];
   for (let i = 0; i < players; i++) {
-    prop.push([]);
+    prop.push(content);
   }
   return prop;
 };

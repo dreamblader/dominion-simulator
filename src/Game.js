@@ -24,13 +24,12 @@ import {
 export const Simulator = {
   setup: (ctx) => ({
     deck: setupDeck(Consts.deckSize, ctx),
-    hand: setupProps(ctx.numPlayers),
-    destroyZone: setupProps(ctx.numPlayers),
+    hand: setupProps(ctx.numPlayers, []),
+    destroyZone: setupProps(ctx.numPlayers, []),
     out: [],
     life: [Consts.maxLife, Consts.maxLife],
     board: setupBoard(Consts.board),
-    selectToBoard: null,
-    menu: null,
+    selectToBoard: setupProps(ctx.numPlayers, null),
   }),
 
   moves: {
@@ -46,9 +45,6 @@ export const Simulator = {
     backToDeck,
     destroy,
     finish,
-    getDeckActionsOnMenu,
-    getHandActionsOnMenu,
-    clearMenu,
     placeInHere,
   },
 };
