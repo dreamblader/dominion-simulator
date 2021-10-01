@@ -27,7 +27,7 @@ const Arena = (props) => {
 
     const handMenu = (e, i) => {
         setSelectToBoard(null);
-        setMenu(getHandActionsOnMenu(e, i, setSelectToBoard));
+        setMenu(getHandActionsOnMenu(e, i, setSelectToBoard, props.G.hand, myID));
     }
     
     const clearMenuCallback = () => {
