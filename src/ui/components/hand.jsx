@@ -5,7 +5,9 @@ import "../styles/hand.css";
 
 const Hand = (props) => {
     let handMenu = (e, i) => {
-        props.menuClick(e, i);
+        if(props.menuClick){
+            props.menuClick(e, i);
+        }
     }
 
     let isSelected = (index) => {
