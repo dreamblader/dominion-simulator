@@ -1,10 +1,8 @@
-import { PlayerView } from "boardgame.io/core";
+import { PlayerView, ActivePlayers, TurnOrder } from "boardgame.io/core";
 import { setupDeck, setupProps, setupBoard } from "./actions/setup";
 import Consts from "./utils/consts";
 import { placeInHere } from "./actions/board";
 import {
-  spawnFaceUp,
-  spawnFaceDown,
   backToTopDeck,
   backToBottomDeck,
   backToDeck,
@@ -35,6 +33,11 @@ export const Simulator = {
     destroy,
     finish,
     placeInHere,
+  },
+
+  turn: {
+    order: TurnOrder.DEFAULT,
+    activePlayers: ActivePlayers.ALL,
   },
 
   //playerView: PlayerView.STRIP_SECRETS,

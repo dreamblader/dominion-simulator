@@ -24,7 +24,7 @@ const Hand = (props) => {
         <Card key={index}
         extraClass={isSelected(index)} 
         click={(e) => handMenu(e, index)}>
-            {card.id}
+            {props.reveal ? card.id : ""}
         </Card>
     ))}</div>
 )}

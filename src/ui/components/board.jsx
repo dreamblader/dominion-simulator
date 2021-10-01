@@ -56,6 +56,7 @@ const Board = (props) => {
     const clickSpawnTile = (x, y) => {
         if(props.selected){
             props.moves.placeInHere(props.selected, x,y);
+            props.clear();
         }
     }
 

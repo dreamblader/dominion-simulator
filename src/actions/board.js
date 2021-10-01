@@ -2,11 +2,11 @@ import Place from "../models/place";
 import { toBoard } from "../utils/help";
 
 export const placeInHere = (G, ctx, selected, x, y) => {
-  if (checkSelection(G, selected, ctx.currentPlayer)) {
+  if (checkSelection(G, selected, ctx.playerID)) {
     let place = Place(x, y);
-    let originName = Object.keys(G.selectToBoard.origin)[0];
-    let originIndex = G.selectToBoard.origin[originName];
-    let origin = G[originName][ctx.currentPlayer];
+    let originName = Object.keys(selected.origin)[0];
+    let originIndex = selected.origin[originName];
+    let origin = G[originName][ctx.playerID];
     toBoard(G, origin, originIndex, place);
   }
 };

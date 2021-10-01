@@ -20,8 +20,6 @@ const Arena = (props) => {
     
     const deckMenu = (e) => {
         setSelectToBoard(null);
-        console.log(props.moves);
-        console.log(clientSideMoves);
         setMenu(getDeckActionsOnMenu(e));
     };
 
@@ -32,6 +30,10 @@ const Arena = (props) => {
     
     const clearMenuCallback = () => {
         setMenu(null);
+    }
+
+    const clearSelectionCallback = () => {
+        setSelectToBoard(null);
     }
 
     const endMyTurn = () => {
@@ -61,14 +63,18 @@ const Arena = (props) => {
             <Card click={(e) => deckMenu(e)}>{props.G.deck[myID].length}</Card>
         </div>
         <div className="hand-col">
-            <Hand list={props.G.hand[rivalID]}/>
+            <Hand 
+            reveal={false}
+            list={props.G.hand[rivalID]}/>
             <Board 
             board={renderBoard(props.G.board, myID)} 
             ids={[myID, rivalID]}
             life={props.G.life} 
             selected={selectToBoard}
-            moves={props.moves}/>
+            moves={props.moves}
+            clear={clearSelectionCallback}/>
             <Hand 
+            reveal={true}
             list={props.G.hand[myID]} 
             menuClick={handMenu}
             selected={selectToBoard}/>
