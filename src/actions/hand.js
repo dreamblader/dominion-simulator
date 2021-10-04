@@ -30,14 +30,14 @@ export const finish = (G, ctx, index) => {
 
 //CLIENT
 
-export const spawnFaceUp = (hand, myID, index, setSelect) => {
+export const spawnFaceUp = (hand, myID, index) => {
   hand[myID][index].flipped = false;
-  setSelect(selectToField(hand, myID, index));
+  return selectToField(hand, myID, index);
 };
 
-export const spawnFaceDown = (hand, myID, index, setSelect) => {
+export const spawnFaceDown = (hand, myID, index) => {
   hand[myID][index].flipped = true;
-  setSelect(selectToField(hand, myID, index));
+  return selectToField(hand, myID, index);
 };
 
 export const selectToField = (hand, myID, index) => {
@@ -47,15 +47,15 @@ export const selectToField = (hand, myID, index) => {
   return Temp(origin, card);
 };
 
-const getHandActionsOnMenu = (event, pos, setSelect, hand, myID) => {
+const getHandActionsOnMenu = (event, pos, hand, myID) => {
   let actions = [
-    Action("Back to Top of the Deck", "backToTopDeck", pos),
-    Action("Back to Bottom of the Deck", "backToBottomDeck", pos),
-    Action("Back to the Deck and Shuffle", "backToDeck", pos),
-    Action("SPAWN Face-up", "spawnFaceUp", [hand, myID, pos, setSelect]),
-    Action("SPAWN Face-down", "spawnFaceDown", [hand, myID, pos, setSelect]),
-    Action("Destroy", "destroy", pos),
-    Action("Put OUT OF GAME", "finish", pos),
+    Action("Back to Top of the Deck", "backToTopDeck", [pos]),
+    Action("Back to Bottom of the Deck", "backToBottomDeck", [pos]),
+    Action("Back to the Deck and Shuffle", "backToDeck", [pos]),
+    Action("SPAWN Face-up", "spawnFaceUp", [hand, myID, pos]),
+    Action("SPAWN Face-down", "spawnFaceDown", [hand, myID, pos]),
+    Action("Destroy", "destroy", [pos]),
+    Action("Put OUT OF GAME", "finish", [pos]),
   ];
   return MenuData(event.pageX, event.pageY, actions);
 };

@@ -1,5 +1,7 @@
 import React from "react";
+import Card from "./card";
 import "../styles/menu-list.css";
+import Button from "./button";
 
 const MenuList = (props) => {
     const clickRef = React.useRef(null);
@@ -8,24 +10,27 @@ const MenuList = (props) => {
 
         let clearMenu = (event) => {
             if (clickRef.current && !clickRef.current.contains(event.target)) {
-                props.moves.clearMenu();
+                props.clear();
             }
         };
         
         document.body.addEventListener('mousedown', clearMenu );
-    },[clickRef, props.moves]);
-    
-    let menuClick = (item) => {
-        props.moves[item.event](item.args);
-        props.moves.clearMenu();
-    }
+    },[clickRef, props]);
 
     return(
-        <div className="menu" 
+        <div className="menu-list-container"  
         ref={clickRef}>
-            {props.items.map((item, index) => (
-            <div className="menu-item" onClick={() => menuClick(item)} key={index}>{item.name}</div>
-        ))}
+            <div className="header">
+                HEADER HERE
+                <Button extraClass=" quit"
+                click={props.clear}
+                >X</Button>
+            </div>
+            <div className="menu-list">
+                {props.cards.map((card, index) => (
+                <Card click={() => props.click(index)} key={index}>{card.id}</Card>
+            ))}
+            </div>
         </div>
 )}
 

@@ -2,3 +2,11 @@
   padding: 0.5rem 1rem;
   color: white;
 }
+
+.quit {
+  border-radius: 50%;
+  font-weight: bolder;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  background-color: red !important;
+}

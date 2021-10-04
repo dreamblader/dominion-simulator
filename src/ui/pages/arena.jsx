@@ -2,34 +2,41 @@ import React, { useState } from "react";
 import Card from "../components/card"
 import Jar from "../components/jar"  
 import Hand from "../components/hand";
-import Menu from "../components/menu";
 import Board from "../components/board";
 import Button from "../components/button";
-import getDeckActionsOnMenu from "../../actions/deck";
+import MenuLayer from "../components/menu-layer";
+import getDeckActionsOnMenu, {getDeckForSearch} from "../../actions/deck";
 import getHandActionsOnMenu, { spawnFaceDown,spawnFaceUp } from "../../actions/hand";
 import { renderBoard } from "../../utils/help";
 import "../styles/arena.css"
+
 
 
 const Arena = (props) => {
     const myID = parseInt(props.playerID);
     const rivalID = myID === 0 ? 1 : 0;
 
-    const [menu, setMenu] = useState(null);
+    const [actionMenu, setActionMenu] = useState(null);
+    const [listMenu, setListMenu] = useState(null);
+    //const [lifeMenu, setLifeMenu] = useState(null);
     const [selectToBoard, setSelectToBoard] = useState(null);
     
     const deckMenu = (e) => {
         setSelectToBoard(null);
-        setMenu(getDeckActionsOnMenu(e));
+        setActionMenu(getDeckActionsOnMenu(e));
     };
 
     const handMenu = (e, i) => {
         setSelectToBoard(null);
-        setMenu(getHandActionsOnMenu(e, i, setSelectToBoard, props.G.hand, myID));
+        setActionMenu(getHandActionsOnMenu(e, i, props.G.hand, myID));
     }
     
     const clearMenuCallback = () => {
-        setMenu(null);
+        if(actionMenu){
+            setActionMenu(null);
+        } else if (listMenu) {
+            setListMenu(null);
+        }
     }
 
     const clearSelectionCallback = () => {
@@ -43,18 +50,18 @@ const Arena = (props) => {
     }
 
     const clientSideMoves = {
-        spawnFaceUp,
-        spawnFaceDown,
+        spawnFaceUp: (...args) => {setSelectToBoard(spawnFaceUp(...args))} ,
+        spawnFaceDown: (...args) => {setSelectToBoard(spawnFaceDown(...args))} ,
+        getDeckForSearch: (...args) => {setListMenu(getDeckForSearch(props.G, myID))}
     };
 
     return (
     <div className="arena">
-        {menu && 
-        <Menu items={menu.actions} 
-        moves={Object.assign(props.moves, clientSideMoves)} 
-        posX={menu.posX}
-        posY={menu.posY}
-        clear={clearMenuCallback}/>}
+        <MenuLayer
+        actionMenu={actionMenu}
+        listMenu={listMenu}
+        moves={Object.assign(props.moves, clientSideMoves)}
+        clear={clearMenuCallback}/>
         <div className="deck-col">
             <Card>{props.G.deck[rivalID].length}</Card>
             <Card>{props.G.destroyZone[rivalID].length}</Card>

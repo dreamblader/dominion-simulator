@@ -1,0 +1,38 @@
+.menu-list-container {
+  position: absolute;
+  top: 25%;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid grey;
+}
+
+.menu-list-container > .header {
+  width: 100%;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: bold;
+  background-color: black;
+  border-bottom: 2px solid grey;
+}
+
+.header > .button {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.25rem;
+}
+
+.menu-list {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  justify-items: center;
+  background-color: rgb(250, 250, 250, 0.75);
+  padding: 1rem;
+  width: 95vw;
+}
+
+.menu-list > * {
+  margin-top: 1rem;
+}

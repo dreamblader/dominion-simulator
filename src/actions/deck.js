@@ -31,11 +31,17 @@ export const mill = (G, ctx, number) => {
   }
 };
 
+//CLIENT
+
+export const getDeckForSearch = (G, id) => {
+  return G.deck[id];
+};
+
 const getDeckActionsOnMenu = (event) => {
   let actions = [
     Action("Draw", "draw"),
     Action("Draw For Turn", "drawForTurn"),
-    //SEARCH MENULIST HERE
+    Action("Search", "getDeckForSearch"),
     Action("Shuffle Deck", "shuffleDeck"),
     Action("Mill", "mill"),
   ];
