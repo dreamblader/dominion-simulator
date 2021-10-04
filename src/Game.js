@@ -1,6 +1,7 @@
-import { PlayerView, ActivePlayers, TurnOrder } from "boardgame.io/core";
+import { ActivePlayers, TurnOrder } from "boardgame.io/core";
 import { setupDeck, setupProps, setupBoard } from "./actions/setup";
 import Consts from "./utils/consts";
+import HideSecrets from "./utils/secret";
 import { placeInHere } from "./actions/board";
 import {
   backToTopDeck,
@@ -40,5 +41,5 @@ export const Simulator = {
     activePlayers: ActivePlayers.ALL,
   },
 
-  //playerView: PlayerView.STRIP_SECRETS,
+  playerView: HideSecrets,
 };

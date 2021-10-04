@@ -6,6 +6,8 @@ export const placeInHere = (G, ctx, selected, x, y) => {
     let place = Place(x, y);
     let originName = Object.keys(selected.origin)[0];
     let originIndex = selected.origin[originName];
+    //overrides original card with attrs of selected (flipped)
+    G[originName][ctx.playerID][originIndex] = selected.card;
     let origin = G[originName][ctx.playerID];
     toBoard(G, origin, originIndex, place);
   }

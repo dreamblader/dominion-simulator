@@ -30,20 +30,16 @@ export const finish = (G, ctx, index) => {
 
 //CLIENT
 
-//TODO move this to client side
 export const spawnFaceUp = (hand, myID, index, setSelect) => {
-  console.log(setSelect);
   hand[myID][index].flipped = false;
   setSelect(selectToField(hand, myID, index));
 };
 
-//TODO move this to client side
-export const spawnFaceDown = (G, ctx, index, setSelect) => {
-  G.hand[ctx.playerID][index].flipped = true;
-  setSelect(selectToField(G, ctx, index));
+export const spawnFaceDown = (hand, myID, index, setSelect) => {
+  hand[myID][index].flipped = true;
+  setSelect(selectToField(hand, myID, index));
 };
 
-//TODO move this to client side
 export const selectToField = (hand, myID, index) => {
   let origin = {};
   origin[Origin.HAND] = index;
@@ -57,6 +53,7 @@ const getHandActionsOnMenu = (event, pos, setSelect, hand, myID) => {
     Action("Back to Bottom of the Deck", "backToBottomDeck", pos),
     Action("Back to the Deck and Shuffle", "backToDeck", pos),
     Action("SPAWN Face-up", "spawnFaceUp", [hand, myID, pos, setSelect]),
+    Action("SPAWN Face-down", "spawnFaceDown", [hand, myID, pos, setSelect]),
     Action("Destroy", "destroy", pos),
     Action("Put OUT OF GAME", "finish", pos),
   ];

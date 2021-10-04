@@ -1,5 +1,4 @@
 import { INVALID_MOVE } from "boardgame.io/core";
-import Card from "../models/card";
 
 export const randomInt = (maxNumber, ctx) => {
   return parseInt(ctx.random.Number() * maxNumber);

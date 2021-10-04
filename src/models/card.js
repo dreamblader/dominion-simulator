@@ -1,4 +1,4 @@
-const Card = (id) => {
+const Card = (id, playerID) => {
   let obj = {
     id: id,
     title: "none",
@@ -10,7 +10,7 @@ const Card = (id) => {
     description: "none",
     tags: [],
     status: [],
-    controller: -1,
+    controller: playerID,
     inversed: false,
     flipped: false,
   };

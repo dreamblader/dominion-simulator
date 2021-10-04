@@ -7,7 +7,7 @@ export const setupDeck = (size, ctx) => {
   for (let i = 0; i < ctx.numPlayers; i++) {
     deck.push([]);
     for (let j = 0; j < size; j++) {
-      deck[i].push(Cards(randomInt(100, ctx)));
+      deck[i].push(Cards(randomInt(100, ctx), i));
     }
   }
 
