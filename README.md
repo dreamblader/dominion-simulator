@@ -59,9 +59,9 @@ Possible actions that you can do in the simulator and where you can do it:
 - Card in Destroyed Zone
   - [ ] Reborn
     - Put card back to Board
-  - [ ] Back to Hand
+  - [x] Back to Hand
     - Put card back to Hand
-  - [ ] FINISH
+  - [x] FINISH
     - Put card OUT OF THE GAME
 - Card OUT OF THE GAME
   - [ ] Recycle
