@@ -16,19 +16,20 @@ export const drawForTurn = (G, ctx) => {
   }
 };
 
+//TODO maybe the shuffles is not needed now bc is called when the menu pops
 export const searchToHand = (G, ctx, index) => {
   moveToArray(G.deck[ctx.playerID], G.hand[ctx.playerID], index);
-  shuffleDeck(G, ctx);
+  //shuffleDeck(G, ctx);
 };
 
 export const searchToDZ = (G, ctx, index) => {
   moveToArray(G.deck[ctx.playerID], G.destroyZone[ctx.playerID], index);
-  shuffleDeck(G, ctx);
+  //shuffleDeck(G, ctx);
 };
 
 export const searchToOOG = (G, ctx, index) => {
   moveToArray(G.deck[ctx.playerID], G.out, index);
-  shuffleDeck(G, ctx);
+  //shuffleDeck(G, ctx);
 };
 
 export const shuffleDeck = (G, ctx) => {

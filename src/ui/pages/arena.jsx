@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Strings from "../../utils/strings";
 import Card from "../components/card"
 import Jar from "../components/jar"  
 import Hand from "../components/hand";
@@ -8,6 +7,7 @@ import Button from "../components/button";
 import MenuLayer from "../components/menu-layer";
 import getDeckActionsOnMenu, {getDeckForSearch} from "../../actions/deck";
 import getHandActionsOnMenu, { spawnFaceDown,spawnFaceUp } from "../../actions/hand";
+import getDZForSearch from "../../actions/destroy";
 import { renderBoard } from "../../utils/help";
 import "../styles/arena.css"
 
@@ -32,16 +32,20 @@ const Arena = (props) => {
         setActionMenu(getHandActionsOnMenu(e, i, props.G.hand, myID));
     }
 
+    const dzMenu = (id, mine) => {
+        setListMenu(getDZForSearch(props.G, id, mine));
+    }
+
     const setMenu = (menu) => {
         setActionMenu(menu)
     }
     
     const clearMenuCallback = () => {
-        if (listMenu) {
-            setListMenu(null);
-        } else if(actionMenu){
+        if(actionMenu){
             setActionMenu(null);
-        }
+        } else if (listMenu) {
+            setListMenu(null);
+        }  
     }
 
     const clearSelectionCallback = () => {
@@ -70,9 +74,9 @@ const Arena = (props) => {
         clear={clearMenuCallback}/>
         <div className="deck-col">
             <Card>{props.G.deck[rivalID].length}</Card>
-            <Card>{props.G.destroyZone[rivalID].length}</Card>
+            <Card click={() => dzMenu(rivalID, false)}>{props.G.destroyZone[rivalID].length}</Card>
             <Jar>OUT</Jar>
-            <Card>{props.G.destroyZone[myID].length}</Card>
+            <Card click={() => dzMenu(myID, true)}>{props.G.destroyZone[myID].length}</Card>
             <Card click={(e) => deckMenu(e)}>{props.G.deck[myID].length}</Card>
         </div>
         <div className="hand-col">

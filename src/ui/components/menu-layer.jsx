@@ -1,5 +1,4 @@
 import React from "react";
-import Strings from "../../utils/strings";
 import MenuData from "../../models/menu";
 import Menu from "../components/menu";
 import MenuList from "../components/menu-list"

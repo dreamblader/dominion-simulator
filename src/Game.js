@@ -19,6 +19,7 @@ import {
   shuffleDeck,
   mill,
 } from "./actions/deck";
+import { reborn, backToHand, destroyToOOG } from "./actions/destroy";
 
 export const Simulator = {
   setup: (ctx) => ({
@@ -31,6 +32,7 @@ export const Simulator = {
   }),
 
   moves: {
+    //Deck
     draw,
     drawForTurn,
     searchToHand,
@@ -38,11 +40,17 @@ export const Simulator = {
     searchToOOG,
     shuffleDeck,
     mill,
+    //Hand
     backToTopDeck,
     backToBottomDeck,
     backToDeck,
     destroy,
     finish,
+    //DZ
+    reborn,
+    backToHand,
+    destroyToOOG,
+    //Board
     placeInHere,
   },
 
