@@ -1,4 +1,5 @@
 import React from "react";
+import { closeMenuWhenClickOutside } from "../../utils/menu";
 import "../styles/menu.css";
 
 const Menu = (props) => {
@@ -8,16 +9,7 @@ const Menu = (props) => {
         top: props.posY
     }
 
-    React.useEffect(() => {
-
-        let clearMenu = (event) => {
-            if (clickRef.current && !clickRef.current.contains(event.target)) {
-                props.clear();
-            }
-        };
-        
-        document.body.addEventListener('mousedown', clearMenu );
-    },[clickRef, props]);
+    React.useEffect(() => closeMenuWhenClickOutside(clickRef, props.clear),[clickRef, props]);
     
     let menuClick = (item) => {
         props.moves[item.event].apply(this, item.args);

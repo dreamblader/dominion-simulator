@@ -19,16 +19,20 @@ Possible actions that you can do in the simulator and where you can do it:
     - Draw 1 card from the Top of the Deck
   - [x] Draw For Turn
     - Draw until you reach the max cards for DRAW ACTION (4 cards)
-  - [ ] Search Card
+  - [x] Search Card To Hand
     - Get one specific card from Deck to Hand
+  - [x] Search Card To DZ
+    - Get one specific card from Deck to Destroy Zone
+  - [x] Search Card To OOG
+    - Get one specific card from Deck to OUT OF GAME
   - [x] Shuffle Deck
     - Shuffle entire Deck
   - [x] Mill
     - Discard the top card from your deck
 - Card in Hand
-  - [ ] SPAWN Face-up
+  - [x] SPAWN Face-up
     - Put card in Board in Face-up position
-  - [ ] SPAWN Face-down
+  - [x] SPAWN Face-down
     - Put card in Board in Face-down position
   - [x] Back to TOP of the Deck
     - Put card in the deck array at the DRAW position
@@ -53,31 +57,31 @@ Possible actions that you can do in the simulator and where you can do it:
   - Add Effect
   - TICK Cooldown
 - Card in Destroyed Zone
-  - Reborn
+  - [ ] Reborn
     - Put card back to Board
-  - Back to Hand
+  - [ ] Back to Hand
     - Put card back to Hand
-  - FINISH
+  - [ ] FINISH
     - Put card OUT OF THE GAME
 - Card OUT OF THE GAME
-  - Recycle
+  - [ ] Recycle
     - Put card back at the Destroyed Zone
 - Board Controls
-  - START Turn
+  - [ ] START Turn
     - Start your turn
-  - TICK Phase
+  - [ ] TICK Phase
     - Start your TICK Phase
-  - MOVE Phase
+  - [ ] MOVE Phase
     - Start your MOVE Phase
-  - BATTLE Phase
+  - [ ] BATTLE Phase
     - Start your BATTLE Phase
-  - SPAWN Phase
+  - [ ] SPAWN Phase
     - Start your SPAWN Phase
-  - END Turn
+  - [x] END Turn
     - Finish your turn
-  - REACTION
+  - [ ] REACTION
     - Declare to your opponent that you have a REACTION
-  - OK
+  - [ ] OK
     - Declare to your opponent that you accept the state and have NO REACTION
 
 ## Layout

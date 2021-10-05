@@ -1,34 +1,27 @@
 import React from "react";
 import Card from "./card";
-import "../styles/menu-list.css";
 import Button from "./button";
+import { closeMenuWhenClickOutside } from "../../utils/menu";
+import "../styles/menu-list.css";
+
 
 const MenuList = (props) => {
     const clickRef = React.useRef(null);
 
-    React.useEffect(() => {
-
-        let clearMenu = (event) => {
-            if (clickRef.current && !clickRef.current.contains(event.target)) {
-                props.clear();
-            }
-        };
-        
-        document.body.addEventListener('mousedown', clearMenu );
-    },[clickRef, props]);
+    React.useEffect(() => closeMenuWhenClickOutside(clickRef, props.clear),[clickRef, props]);
 
     return(
         <div className="menu-list-container"  
         ref={clickRef}>
             <div className="header">
-                HEADER HERE
+                {props.menu.header}
                 <Button extraClass=" quit"
                 click={props.clear}
                 >X</Button>
             </div>
             <div className="menu-list">
-                {props.cards.map((card, index) => (
-                <Card click={() => props.click(index)} key={index}>{card.id}</Card>
+                {props.menu.cards.map((card, index) => (
+                <Card click={(e) => props.click(e, index)} key={index}>{card.id}</Card>
             ))}
             </div>
         </div>

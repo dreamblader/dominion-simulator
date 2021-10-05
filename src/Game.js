@@ -10,7 +10,15 @@ import {
   destroy,
   finish,
 } from "./actions/hand";
-import { draw, drawForTurn, search, shuffleDeck, mill } from "./actions/deck";
+import {
+  draw,
+  drawForTurn,
+  searchToHand,
+  searchToDZ,
+  searchToOOG,
+  shuffleDeck,
+  mill,
+} from "./actions/deck";
 
 export const Simulator = {
   setup: (ctx) => ({
@@ -25,7 +33,9 @@ export const Simulator = {
   moves: {
     draw,
     drawForTurn,
-    search,
+    searchToHand,
+    searchToDZ,
+    searchToOOG,
     shuffleDeck,
     mill,
     backToTopDeck,

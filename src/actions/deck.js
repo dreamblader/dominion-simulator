@@ -1,6 +1,7 @@
 import Consts from "../utils/consts";
 import { moveToArray } from "../utils/help";
 import Action from "../models/action";
+import MenuListData from "../models/menu-list";
 import MenuData from "../models/menu";
 
 export const draw = (G, ctx) => {
@@ -14,9 +15,16 @@ export const drawForTurn = (G, ctx) => {
   }
 };
 
-export const search = (G, ctx, index) => {
+export const searchToHand = (G, ctx, index) => {
   moveToArray(G.deck[ctx.playerID], G.hand[ctx.currentPlayer], index);
-  shuffleDeck(G, ctx);
+};
+
+export const searchToDZ = (G, ctx, index) => {
+  moveToArray(G.deck[ctx.playerID], G.destroyZone[ctx.currentPlayer], index);
+};
+
+export const searchToOOG = (G, ctx, index) => {
+  moveToArray(G.deck[ctx.playerID], G.out, index);
 };
 
 export const shuffleDeck = (G, ctx) => {
@@ -34,7 +42,12 @@ export const mill = (G, ctx, number) => {
 //CLIENT
 
 export const getDeckForSearch = (G, id) => {
-  return G.deck[id];
+  let actions = [
+    Action("To Hand", "searchToHand"),
+    Action("To DZ", "searchToDZ"),
+    Action("To OOG", "searchToOOG"),
+  ];
+  return MenuListData("My Deck", G.deck[id], actions);
 };
 
 const getDeckActionsOnMenu = (event) => {

@@ -30,6 +30,10 @@ const Arena = (props) => {
         setSelectToBoard(null);
         setActionMenu(getHandActionsOnMenu(e, i, props.G.hand, myID));
     }
+
+    const setMenu = (menu) => {
+        setActionMenu(menu)
+    }
     
     const clearMenuCallback = () => {
         if(actionMenu){
@@ -52,7 +56,11 @@ const Arena = (props) => {
     const clientSideMoves = {
         spawnFaceUp: (...args) => {setSelectToBoard(spawnFaceUp(...args))} ,
         spawnFaceDown: (...args) => {setSelectToBoard(spawnFaceDown(...args))} ,
-        getDeckForSearch: (...args) => {setListMenu(getDeckForSearch(props.G, myID))}
+        getDeckForSearch: (...args) => {
+            props.moves.shuffleDeck();
+            setListMenu(getDeckForSearch(props.G, myID))
+        },
+        setMenu,
     };
 
     return (
