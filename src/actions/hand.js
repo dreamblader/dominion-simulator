@@ -49,13 +49,13 @@ export const selectToField = (hand, myID, index) => {
 
 const getHandActionsOnMenu = (event, pos, hand, myID) => {
   let actions = [
-    Action("Back to Top of the Deck", "backToTopDeck", [pos]),
-    Action("Back to Bottom of the Deck", "backToBottomDeck", [pos]),
-    Action("Back to the Deck and Shuffle", "backToDeck", [pos]),
-    Action("SPAWN Face-up", "spawnFaceUp", [hand, myID, pos]),
-    Action("SPAWN Face-down", "spawnFaceDown", [hand, myID, pos]),
-    Action("Destroy", "destroy", [pos]),
-    Action("Put OUT OF GAME", "finish", [pos]),
+    Action("Back to Top of the Deck", backToTopDeck.name, [pos]),
+    Action("Back to Bottom of the Deck", backToBottomDeck.name, [pos]),
+    Action("Back to the Deck and Shuffle", backToDeck.name, [pos]),
+    Action("SPAWN Face-up", spawnFaceUp.name, [hand, myID, pos]),
+    Action("SPAWN Face-down", spawnFaceDown.name, [hand, myID, pos]),
+    Action("Destroy", destroy.name, [pos]),
+    Action("Put OUT OF GAME", finish.name, [pos]),
   ];
   return MenuData(event.pageX, event.pageY, actions);
 };

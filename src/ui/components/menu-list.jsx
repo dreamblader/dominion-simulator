@@ -8,7 +8,8 @@ import "../styles/menu-list.css";
 const MenuList = (props) => {
     const clickRef = React.useRef(null);
 
-    React.useEffect(() => closeMenuWhenClickOutside(clickRef, props.clear),[clickRef, props]);
+    React.useEffect(() => closeMenuWhenClickOutside(clickRef, props.clear)
+    ,[clickRef, props]);
 
     return(
         <div className="menu-list-container"  

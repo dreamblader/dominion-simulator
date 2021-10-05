@@ -14,7 +14,7 @@ const Menu = (props) => {
     let menuClick = (item) => {
         props.moves[item.event].apply(this, item.args);
         props.clear();
-    }
+    };
 
     return(
         <div className="menu" 

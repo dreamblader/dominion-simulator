@@ -1,4 +1,5 @@
 import Consts from "../utils/consts";
+import Strings from "../utils/strings";
 import { moveToArray } from "../utils/help";
 import Action from "../models/action";
 import MenuListData from "../models/menu-list";
@@ -16,19 +17,22 @@ export const drawForTurn = (G, ctx) => {
 };
 
 export const searchToHand = (G, ctx, index) => {
-  moveToArray(G.deck[ctx.playerID], G.hand[ctx.currentPlayer], index);
+  moveToArray(G.deck[ctx.playerID], G.hand[ctx.playerID], index);
+  shuffleDeck(G, ctx);
 };
 
 export const searchToDZ = (G, ctx, index) => {
-  moveToArray(G.deck[ctx.playerID], G.destroyZone[ctx.currentPlayer], index);
+  moveToArray(G.deck[ctx.playerID], G.destroyZone[ctx.playerID], index);
+  shuffleDeck(G, ctx);
 };
 
 export const searchToOOG = (G, ctx, index) => {
   moveToArray(G.deck[ctx.playerID], G.out, index);
+  shuffleDeck(G, ctx);
 };
 
 export const shuffleDeck = (G, ctx) => {
-  G.deck[ctx.playerID] = ctx.random.Shuffle(G.deck[ctx.currentPlayer]);
+  G.deck[ctx.playerID] = ctx.random.Shuffle(G.deck[ctx.playerID]);
 };
 
 export const mill = (G, ctx, number) => {
@@ -43,20 +47,21 @@ export const mill = (G, ctx, number) => {
 
 export const getDeckForSearch = (G, id) => {
   let actions = [
-    Action("To Hand", "searchToHand"),
-    Action("To DZ", "searchToDZ"),
-    Action("To OOG", "searchToOOG"),
+    Action("To Hand", searchToHand.name),
+    Action("To DZ", searchToDZ.name),
+    Action("To OOG", searchToOOG.name),
   ];
-  return MenuListData("My Deck", G.deck[id], actions);
+  return MenuListData(Strings.deckHeader, G.deck[id], actions);
 };
 
-const getDeckActionsOnMenu = (event) => {
+const getDeckActionsOnMenu = (event, shuffle) => {
+  shuffle();
   let actions = [
-    Action("Draw", "draw"),
-    Action("Draw For Turn", "drawForTurn"),
-    Action("Search", "getDeckForSearch"),
-    Action("Shuffle Deck", "shuffleDeck"),
-    Action("Mill", "mill"),
+    Action("Draw", draw.name),
+    Action("Draw For Turn", drawForTurn.name),
+    Action("Search", getDeckForSearch.name),
+    Action("Shuffle Deck", shuffleDeck.name),
+    Action("Mill", mill.name),
   ];
   return MenuData(event.pageX, event.pageY, actions);
 };

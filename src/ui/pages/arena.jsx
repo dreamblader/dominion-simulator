@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Strings from "../../utils/strings";
 import Card from "../components/card"
 import Jar from "../components/jar"  
 import Hand from "../components/hand";
@@ -23,7 +24,7 @@ const Arena = (props) => {
     
     const deckMenu = (e) => {
         setSelectToBoard(null);
-        setActionMenu(getDeckActionsOnMenu(e));
+        setActionMenu(getDeckActionsOnMenu(e, props.moves.shuffleDeck));
     };
 
     const handMenu = (e, i) => {
@@ -36,10 +37,10 @@ const Arena = (props) => {
     }
     
     const clearMenuCallback = () => {
-        if(actionMenu){
-            setActionMenu(null);
-        } else if (listMenu) {
+        if (listMenu) {
             setListMenu(null);
+        } else if(actionMenu){
+            setActionMenu(null);
         }
     }
 
@@ -54,12 +55,9 @@ const Arena = (props) => {
     }
 
     const clientSideMoves = {
-        spawnFaceUp: (...args) => {setSelectToBoard(spawnFaceUp(...args))} ,
-        spawnFaceDown: (...args) => {setSelectToBoard(spawnFaceDown(...args))} ,
-        getDeckForSearch: (...args) => {
-            props.moves.shuffleDeck();
-            setListMenu(getDeckForSearch(props.G, myID))
-        },
+        spawnFaceUp: (...args) => {setSelectToBoard(spawnFaceUp(...args))},
+        spawnFaceDown: (...args) => {setSelectToBoard(spawnFaceDown(...args))},
+        getDeckForSearch: (...args) => {setListMenu(getDeckForSearch(props.G, myID))},
         setMenu,
     };
 

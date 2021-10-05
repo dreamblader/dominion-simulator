@@ -1,4 +1,5 @@
 import React from "react";
+import Strings from "../../utils/strings";
 import MenuData from "../../models/menu";
 import Menu from "../components/menu";
 import MenuList from "../components/menu-list"
@@ -27,6 +28,7 @@ const MenuLayer = (props) => {
             clear={props.clear}/>}
         {props.listMenu && 
             <MenuList menu={props.listMenu}
+            moves={props.moves}
             click={clickMenuList}
             clear={props.clear}/>}
         </div>
