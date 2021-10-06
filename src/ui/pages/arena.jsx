@@ -7,7 +7,7 @@ import Button from "../components/button";
 import MenuLayer from "../components/menu-layer";
 import getDeckActionsOnMenu, {getDeckForSearch} from "../../actions/deck";
 import getHandActionsOnMenu, { spawnFaceDown,spawnFaceUp } from "../../actions/hand";
-import getDZForSearch from "../../actions/destroy";
+import getDZForSearch, {reborn} from "../../actions/destroy";
 import { renderBoard } from "../../utils/help";
 import "../styles/arena.css"
 
@@ -61,6 +61,7 @@ const Arena = (props) => {
     const clientSideMoves = {
         spawnFaceUp: (...args) => {setSelectToBoard(spawnFaceUp(...args))},
         spawnFaceDown: (...args) => {setSelectToBoard(spawnFaceDown(...args))},
+        reborn: (...args) => {setSelectToBoard(reborn(...args))},
         getDeckForSearch: (...args) => {setListMenu(getDeckForSearch(props.G, myID))},
         setMenu,
     };

@@ -47,7 +47,6 @@ export const Simulator = {
     destroy,
     finish,
     //DZ
-    reborn,
     backToHand,
     destroyToOOG,
     //Board

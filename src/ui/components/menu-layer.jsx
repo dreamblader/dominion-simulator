@@ -9,7 +9,12 @@ const MenuLayer = (props) => {
     const clickMenuList = (event, index) => {
         let actions = props.listMenu.actions.map(action => {
             let args = [index];
-            action.args = args;
+            if(Array.isArray(action.args)) {
+                action.args.push(...args);
+            } else {
+                action.args = args;
+            }
+            
             return action
         });
         let menu = MenuData(event.pageX, event.pageY, actions);
@@ -20,12 +25,14 @@ const MenuLayer = (props) => {
     return(
         <div className="menu-layer"> 
         {props.actionMenu && 
+        props.actionMenu.actions.length > 0 &&
             <Menu items={props.actionMenu.actions} 
             moves={props.moves} 
             posX={props.actionMenu.posX}
             posY={props.actionMenu.posY}
             clear={props.clear}/>}
-        {props.listMenu && 
+        {props.listMenu &&  
+        props.listMenu.cards.length > 0 &&
             <MenuList menu={props.listMenu}
             moves={props.moves}
             click={clickMenuList}
