@@ -1,12 +1,21 @@
 import React from "react";
 import Card from "./card";
 import Button from "./button";
+import Strings from "../../utils/strings";
 import { closeMenuWhenClickOutside } from "../../utils/menu";
 import "../styles/menu-list.css";
 
 
 const MenuList = (props) => {
     const clickRef = React.useRef(null);
+
+    const getExtraCardClass = (card) => {
+        if(props.menu.header === Strings.oogHeader){
+            console.log(card.controller, props.ids[0]);
+            return card.controller === props.ids[0] ? " user-border" : " rival-border";
+        }
+        return ""
+    }
 
     React.useEffect(() => closeMenuWhenClickOutside(clickRef, props.clear)
     ,[clickRef, props]);
@@ -22,7 +31,12 @@ const MenuList = (props) => {
             </div>
             <div className="menu-list">
                 {props.menu.cards.map((card, index) => (
-                <Card click={(e) => props.click(e, index)} key={index}>{card.id}</Card>
+                <Card
+                extraClass={getExtraCardClass(card)} 
+                click={(e) => props.click(e, index)} 
+                key={index}>
+                    {card.id}
+                </Card>
             ))}
             </div>
         </div>

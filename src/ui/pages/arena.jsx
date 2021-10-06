@@ -5,9 +5,11 @@ import Hand from "../components/hand";
 import Board from "../components/board";
 import Button from "../components/button";
 import MenuLayer from "../components/menu-layer";
+import { Origin } from "../../models/enums";
 import getDeckActionsOnMenu, {getDeckForSearch} from "../../actions/deck";
 import getHandActionsOnMenu, { spawnFaceDown,spawnFaceUp } from "../../actions/hand";
 import getDZForSearch, {reborn} from "../../actions/destroy";
+import getOOGForSearch from "../../actions/out";
 import { renderBoard } from "../../utils/help";
 import "../styles/arena.css"
 
@@ -22,6 +24,14 @@ const Arena = (props) => {
     //const [lifeMenu, setLifeMenu] = useState(null);
     const [selectToBoard, setSelectToBoard] = useState(null);
     
+    const isSelected = (place) => {
+        if(selectToBoard && selectToBoard.origin[place] !== undefined){
+            return " selected";
+        }else{
+            return "";
+        }
+    } 
+
     const deckMenu = (e) => {
         setSelectToBoard(null);
         setActionMenu(getDeckActionsOnMenu(e, props.moves.shuffleDeck));
@@ -34,6 +44,10 @@ const Arena = (props) => {
 
     const dzMenu = (id, mine) => {
         setListMenu(getDZForSearch(props.G, id, mine));
+    }
+
+    const oogMenu = () => {
+        setListMenu(getOOGForSearch(props.G));
     }
 
     const setMenu = (menu) => {
@@ -71,14 +85,25 @@ const Arena = (props) => {
         <MenuLayer
         actionMenu={actionMenu}
         listMenu={listMenu}
+        ids={[myID, rivalID]}
         moves={Object.assign(props.moves, clientSideMoves)}
         clear={clearMenuCallback}/>
         <div className="deck-col">
             <Card>{props.G.deck[rivalID].length}</Card>
-            <Card click={() => dzMenu(rivalID, false)}>{props.G.destroyZone[rivalID].length}</Card>
-            <Jar>OUT</Jar>
-            <Card click={() => dzMenu(myID, true)}>{props.G.destroyZone[myID].length}</Card>
-            <Card click={(e) => deckMenu(e)}>{props.G.deck[myID].length}</Card>
+            <Card 
+            click={() => dzMenu(rivalID, false)}>
+                {props.G.destroyZone[rivalID].length}
+            </Card>
+            <Jar click={() => oogMenu()}>OUT</Jar>
+            <Card 
+            extraClass={isSelected(Origin.DZ)} 
+            click={() => dzMenu(myID, true)}>
+                {props.G.destroyZone[myID].length}
+            </Card>
+            <Card 
+            click={(e) => deckMenu(e)}>
+                {props.G.deck[myID].length}
+            </Card>
         </div>
         <div className="hand-col">
             <Hand 

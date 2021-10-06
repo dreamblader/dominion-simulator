@@ -1,5 +1,17 @@
 import { moveToArray } from "../utils/help";
+import Action from "../models/action";
+import MenuListData from "../models/menu-list";
+import Strings from "../utils/strings";
 
 export const recycle = (G, ctx, index) => {
-  moveToArray(G.out, G.destroyZone[ctx.currentPlayer], index);
+  let placeID = G.out[index].controller;
+  moveToArray(G.out, G.destroyZone[placeID], index);
 };
+
+//CLIENT
+const getOOGForSearch = (G) => {
+  let actions = [Action("Recycle", recycle.name)];
+  return MenuListData(Strings.oogHeader, G.out, actions);
+};
+
+export default getOOGForSearch;

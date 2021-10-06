@@ -34,6 +34,7 @@ const MenuLayer = (props) => {
         {props.listMenu &&  
         props.listMenu.cards.length > 0 &&
             <MenuList menu={props.listMenu}
+            ids={props.ids}
             moves={props.moves}
             click={clickMenuList}
             clear={props.clear}/>}

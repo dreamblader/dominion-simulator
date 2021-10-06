@@ -2,8 +2,8 @@
 
 ## 0.5v Closed Beta
   - [x] All Deck Base Mechanics working
-  - [ ] All DZ Base Mechanics working
-  - [ ] All OOG Base Mechanics working
+  - [x] All DZ Base Mechanics working
+  - [x] All OOG Base Mechanics working
   - [x] All Hand Base Mechanics working
   - [ ] All Board Base Mechanics working
   - [ ] All Basic Menus implemented

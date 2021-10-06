@@ -37,12 +37,13 @@ const Board = (props) => {
 
     const getContent = (tile) =>{
         if(tile){
+            let extraClass = props.selected ? " selected" : "";
             if(tile.spawn === 3  || tile.spawn === 4){
                 return (<div className="content">
                     {props.life[tile.spawn-3]}
                     </div>);
             } else {
-                return (<div className="content"
+                return (<div className={"content"+extraClass}
                  onClick={() => clickSpawnTile(tile.originalX, tile.originalY)}>
                     {getCardView(tile.cards[0])}
                 </div>)

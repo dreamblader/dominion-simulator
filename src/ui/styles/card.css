@@ -12,6 +12,14 @@
   width: 7rem;
 }
 
+.user-border {
+  border: 3px solid blue !important;
+}
+
+.rival-border {
+  border: 3px solid red !important;
+}
+
 .selected {
   animation-iteration-count: infinite;
   animation-name: glow;
@@ -21,6 +29,5 @@
 }
 
 .selected:hover {
-  animation-name: none;
   border: 3px solid yellow !important;
 }

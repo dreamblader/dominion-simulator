@@ -15,7 +15,6 @@ export const destroyToOOG = (G, ctx, index) => {
 
 //CLIENT
 export const reborn = (dz, myID, index) => {
-  console.log(dz, myID, index);
   return selectToField(dz, myID, index);
 };
 
