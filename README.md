@@ -91,4 +91,5 @@ Prototype Layout for simulator:
 
 ## Links
 
-- Boardgame.io Documentation: https://boardgame.io/documentation/#/
+- [Release Plans](RELEASES.md)
+- [Boardgame.io Documentation](https://boardgame.io/documentation/#/)
