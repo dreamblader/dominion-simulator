@@ -127,7 +127,8 @@ const Arena = (props) => {
             selected={selectToBoard}/>
         </div>
         <div className="control-col">
-        <Button click={() => props.moves.callReact(ReactImage)}>
+        <Button click={() => props.moves.callReact(ReactImage)}
+        extraClass={props.G.reveal[rivalID] ? " hidden" : ""}>
                 REACT!
             </Button>
             <Button click={() => endMyTurn()}
