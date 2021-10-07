@@ -11,6 +11,7 @@ import getHandActionsOnMenu, { spawnFaceDown,spawnFaceUp } from "../../actions/h
 import getDZForSearch, {reborn} from "../../actions/destroy";
 import getOOGForSearch from "../../actions/out";
 import { renderBoard } from "../../utils/help";
+import ReactImage from "../images/react-img.png";
 import "../styles/arena.css"
 
 
@@ -59,7 +60,9 @@ const Arena = (props) => {
             setActionMenu(null);
         } else if (listMenu) {
             setListMenu(null);
-        }  
+        } else if (props.G.reveal[myID]) {
+            props.moves.clearReveal()
+        }
     }
 
     const clearSelectionCallback = () => {
@@ -85,6 +88,7 @@ const Arena = (props) => {
         <MenuLayer
         actionMenu={actionMenu}
         listMenu={listMenu}
+        revealMenu={props.G.reveal[myID]}
         ids={[myID, rivalID]}
         moves={Object.assign(props.moves, clientSideMoves)}
         clear={clearMenuCallback}/>
@@ -123,6 +127,9 @@ const Arena = (props) => {
             selected={selectToBoard}/>
         </div>
         <div className="control-col">
+        <Button click={() => props.moves.callReact(ReactImage)}>
+                REACT!
+            </Button>
             <Button click={() => endMyTurn()}
             extraClass={parseInt(props.ctx.currentPlayer) !== myID ? " hidden" : ""}>
                 END TURN

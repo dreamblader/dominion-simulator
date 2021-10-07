@@ -21,6 +21,7 @@ import {
 } from "./actions/deck";
 import { backToHand, destroyToOOG } from "./actions/destroy";
 import { recycle } from "./actions/out";
+import { clearReveal, callReact } from "./actions/controls";
 
 export const Simulator = {
   setup: (ctx) => ({
@@ -29,6 +30,7 @@ export const Simulator = {
     destroyZone: setupProps(ctx.numPlayers, []),
     out: [],
     life: [Consts.maxLife, Consts.maxLife],
+    reveal: setupProps(ctx.numPlayers, null),
     board: setupBoard(Consts.board),
   }),
 
@@ -54,6 +56,9 @@ export const Simulator = {
     recycle,
     //Board
     placeInHere,
+    //MISC
+    clearReveal,
+    callReact,
   },
 
   turn: {

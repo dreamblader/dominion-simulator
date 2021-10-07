@@ -30,7 +30,6 @@ body {
   background-color: #000;
   background-repeat: repeat;
   color: var(--mainText);
-  margin: 2rem;
 }
 
 body,

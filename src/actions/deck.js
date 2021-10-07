@@ -1,7 +1,9 @@
 import Consts from "../utils/consts";
 import Strings from "../utils/strings";
 import { moveToArray } from "../utils/help";
+import { pushToReveal } from "../utils/menu";
 import Action from "../models/action";
+import MenuRevealData from "../models/menu-reveal";
 import MenuListData from "../models/menu-list";
 import MenuData from "../models/menu";
 
@@ -18,18 +20,23 @@ export const drawForTurn = (G, ctx) => {
 
 //TODO maybe the shuffles is not needed now bc is called when the menu pops
 export const searchToHand = (G, ctx, index) => {
+  let content = G.deck[ctx.playerID][index];
+  let topText =
+    'Your opponent have selected "' + content.title + '" from Deck to Hand';
+  G.reveal = pushToReveal(
+    G.reveal,
+    MenuRevealData(topText, content),
+    parseInt(ctx.playerID)
+  );
   moveToArray(G.deck[ctx.playerID], G.hand[ctx.playerID], index);
-  //shuffleDeck(G, ctx);
 };
 
 export const searchToDZ = (G, ctx, index) => {
   moveToArray(G.deck[ctx.playerID], G.destroyZone[ctx.playerID], index);
-  //shuffleDeck(G, ctx);
 };
 
 export const searchToOOG = (G, ctx, index) => {
   moveToArray(G.deck[ctx.playerID], G.out, index);
-  //shuffleDeck(G, ctx);
 };
 
 export const shuffleDeck = (G, ctx) => {

@@ -2,7 +2,7 @@ import React from "react";
 import Card from "./card";
 import Button from "./button";
 import Strings from "../../utils/strings";
-import { closeMenuWhenClickOutside } from "../../utils/menu";
+import { doWhenClickOutside } from "../../utils/menu";
 import "../styles/menu-list.css";
 
 
@@ -17,7 +17,7 @@ const MenuList = (props) => {
         return ""
     }
 
-    React.useEffect(() => closeMenuWhenClickOutside(clickRef, props.clear)
+    React.useEffect(() => doWhenClickOutside(clickRef, props.clear)
     ,[clickRef, props]);
 
     return(

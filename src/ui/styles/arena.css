@@ -9,6 +9,7 @@
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: space-around;
 }
 
@@ -18,4 +19,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+}
+
+.control-col {
+  display: flex;
+  margin-top: 2rem;
+  flex-direction: column;
+  align-items: center;
 }

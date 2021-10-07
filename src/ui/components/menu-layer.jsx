@@ -3,6 +3,7 @@ import MenuData from "../../models/menu";
 import Menu from "../components/menu";
 import MenuList from "../components/menu-list"
 import "../styles/menu-layer.css";
+import MenuReveal from "./menu-reveal";
 
 const MenuLayer = (props) => {
 
@@ -37,6 +38,10 @@ const MenuLayer = (props) => {
             ids={props.ids}
             moves={props.moves}
             click={clickMenuList}
+            clear={props.clear}/>}
+        {props.revealMenu && 
+            <MenuReveal 
+            menu={props.revealMenu}
             clear={props.clear}/>}
         </div>
 )};

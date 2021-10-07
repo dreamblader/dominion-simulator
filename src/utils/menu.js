@@ -1,9 +1,19 @@
-export const closeMenuWhenClickOutside = (ref, clear) => {
-  let clearMenu = (event) => {
+export const doWhenClickOutside = (ref, action) => {
+  let documentOverride = (event) => {
     if (ref.current && !ref.current.contains(event.target)) {
-      clear();
+      action();
     }
   };
 
-  document.body.addEventListener("mousedown", clearMenu);
+  document.body.addEventListener("mousedown", documentOverride);
+};
+
+export const pushToReveal = (reveal, menu, myID) => {
+  return reveal.map((e, i) => {
+    if (i !== myID) {
+      return menu;
+    } else {
+      return e;
+    }
+  });
 };
