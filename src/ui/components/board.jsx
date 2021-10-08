@@ -39,9 +39,7 @@ const Board = (props) => {
         if(tile){
             let extraClass = props.selected ? " selected" : "";
             if(tile.spawn === 3  || tile.spawn === 4){
-                return (<div className="content">
-                    {props.life[tile.spawn-3]}
-                    </div>);
+                return getLifeTile(tile.spawn);
             } else {
                 return (<div className={"content"+extraClass}
                  onClick={() => clickSpawnTile(tile.originalX, tile.originalY)}>
@@ -52,6 +50,19 @@ const Board = (props) => {
             return "";
         }
         
+    }
+
+    const getLifeTile = (spawn) => {
+        if(spawn === dominionIds[0]){
+            return(<div className="content" 
+            onClick={()=> props.moves.myLifeMenu()}>
+            {props.life[props.ids[0]]}
+            </div>);
+        } else if(spawn === dominionIds[1]){
+            return(<div className="content">
+            {props.life[props.ids[1]]}
+            </div>);
+        }
     }
 
     const clickSpawnTile = (x, y) => {

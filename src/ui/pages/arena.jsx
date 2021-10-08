@@ -10,6 +10,7 @@ import getDeckActionsOnMenu, {getDeckForSearch} from "../../actions/deck";
 import getHandActionsOnMenu, { spawnFaceDown,spawnFaceUp } from "../../actions/hand";
 import getDZForSearch, {reborn} from "../../actions/destroy";
 import getOOGForSearch from "../../actions/out";
+import { getLifeMenu } from "../../actions/controls";
 import { renderBoard } from "../../utils/help";
 import ReactImage from "../images/react-img.png";
 import "../styles/arena.css"
@@ -22,7 +23,7 @@ const Arena = (props) => {
 
     const [actionMenu, setActionMenu] = useState(null);
     const [listMenu, setListMenu] = useState(null);
-    //const [lifeMenu, setLifeMenu] = useState(null);
+    const [lifeMenu, setLifeMenu] = useState(null);
     const [selectToBoard, setSelectToBoard] = useState(null);
     
     const isSelected = (place) => {
@@ -44,10 +45,12 @@ const Arena = (props) => {
     }
 
     const dzMenu = (id, mine) => {
+        console.log("DZ");
         setListMenu(getDZForSearch(props.G, id, mine));
     }
 
     const oogMenu = () => {
+        console.log("OOG");
         setListMenu(getOOGForSearch(props.G));
     }
 
@@ -60,6 +63,8 @@ const Arena = (props) => {
             setActionMenu(null);
         } else if (listMenu) {
             setListMenu(null);
+        } else if (lifeMenu) {
+            setLifeMenu(null);
         } else if (props.G.reveal[myID]) {
             props.moves.clearReveal()
         }
@@ -79,7 +84,8 @@ const Arena = (props) => {
         spawnFaceUp: (...args) => {setSelectToBoard(spawnFaceUp(...args))},
         spawnFaceDown: (...args) => {setSelectToBoard(spawnFaceDown(...args))},
         reborn: (...args) => {setSelectToBoard(reborn(...args))},
-        getDeckForSearch: (...args) => {setListMenu(getDeckForSearch(props.G, myID))},
+        getDeckForSearch: () => {setListMenu(getDeckForSearch(props.G, myID))},
+        myLifeMenu: () => {setLifeMenu(getLifeMenu(props.G.life[myID]))},
         setMenu,
     };
 
@@ -89,6 +95,7 @@ const Arena = (props) => {
         actionMenu={actionMenu}
         listMenu={listMenu}
         revealMenu={props.G.reveal[myID]}
+        lifeMenu={lifeMenu}
         ids={[myID, rivalID]}
         moves={Object.assign(props.moves, clientSideMoves)}
         clear={clearMenuCallback}/>

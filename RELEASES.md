@@ -9,8 +9,8 @@
   - [ ] All Basic Menus implemented
     - [x] Action Menu
     - [x] List Menu
-    - [ ] Reveal Menu
-    - [ ] Life Menu
+    - [x] Reveal Menu
+    - [x] Life Menu
     - [ ] Card Attr Menu
   - [ ] Main Layout Finished
     - [x] Deck Column
@@ -18,7 +18,7 @@
     - [ ] Control Panel
       - [x] END TURN
       - [ ] CHANGE STAGE
-      - [ ] REACT BUTTON
+      - [x] REACT BUTTON
     - [ ] Card Info
   - [ ] Card Storage CSV
   - [ ] Storage Reader

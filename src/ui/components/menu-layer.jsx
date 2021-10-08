@@ -2,8 +2,9 @@ import React from "react";
 import MenuData from "../../models/menu";
 import Menu from "../components/menu";
 import MenuList from "../components/menu-list"
-import "../styles/menu-layer.css";
+import MenuLife from "./menu-life";
 import MenuReveal from "./menu-reveal";
+import "../styles/menu-layer.css";
 
 const MenuLayer = (props) => {
 
@@ -39,6 +40,11 @@ const MenuLayer = (props) => {
             moves={props.moves}
             click={clickMenuList}
             clear={props.clear}/>}
+        {props.lifeMenu &&
+            <MenuLife
+            life={props.lifeMenu.life}
+            clear={props.clear}
+            apply={(lp) => props.moves.setLife(lp)}/>}
         {props.revealMenu && 
             <MenuReveal 
             menu={props.revealMenu}

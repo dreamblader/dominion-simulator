@@ -21,7 +21,7 @@ import {
 } from "./actions/deck";
 import { backToHand, destroyToOOG } from "./actions/destroy";
 import { recycle } from "./actions/out";
-import { clearReveal, callReact } from "./actions/controls";
+import { clearReveal, callReact, setLife } from "./actions/controls";
 
 export const Simulator = {
   setup: (ctx) => ({
@@ -59,6 +59,7 @@ export const Simulator = {
     //MISC
     clearReveal,
     callReact,
+    setLife,
   },
 
   turn: {

@@ -1,0 +1,42 @@
+.menu-life-container {
+  display: flex;
+  position: absolute;
+  top: 25%;
+  left: 35%;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  background-color: rgb(250, 250, 250, 0.75);
+  border: 2px solid grey;
+  color: black;
+  padding: 1rem;
+  width: 25vw;
+}
+
+.menu-life-container > *:not(:last-child) {
+  margin-bottom: 2rem;
+}
+
+.life-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.life-container > input {
+  width: 5rem;
+  text-align: center;
+}
+
+.life-container > button {
+  font-weight: bold;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.life-container > input::-webkit-outer-spin-button,
+.life-container > input::-webkit-inner-spin-button,
+.life-container > input[type="number"] {
+  -webkit-appearance: none;
+  margin: 0;
+}
