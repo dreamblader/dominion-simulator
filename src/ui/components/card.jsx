@@ -3,7 +3,7 @@ import { orNothing } from "../../utils/help";
 import "../styles/card.css";
 
 const Card = (props) => (
-    <div className={"hoverable card-holder"+orNothing(props.extraClass)} 
+    <div className={"hoverable card-holder "+orNothing(props.extraClass)} 
     onClick={props.click}>
         {props.children}
     </div>

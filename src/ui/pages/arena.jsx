@@ -28,11 +28,15 @@ const Arena = (props) => {
     
     const isSelected = (place) => {
         if(selectToBoard && selectToBoard.origin[place] !== undefined){
-            return " selected";
+            return "selected";
         }else{
             return "";
         }
     } 
+
+    const isDisabled = (disable) => {
+        return disable ? "disabled" : "";
+    }
 
     const deckMenu = (e) => {
         setSelectToBoard(null);
@@ -45,12 +49,10 @@ const Arena = (props) => {
     }
 
     const dzMenu = (id, mine) => {
-        console.log("DZ");
         setListMenu(getDZForSearch(props.G, id, mine));
     }
 
     const oogMenu = () => {
-        console.log("OOG");
         setListMenu(getOOGForSearch(props.G));
     }
 
@@ -100,14 +102,17 @@ const Arena = (props) => {
         moves={Object.assign(props.moves, clientSideMoves)}
         clear={clearMenuCallback}/>
         <div className="deck-col">
-            <Card>{props.G.deck[rivalID].length}</Card>
-            <Card 
+            <Card extraClass="disabled">{props.G.deck[rivalID].length}</Card>
+            <Card
+            extraClass={isDisabled(props.G.destroyZone[rivalID].length<=0)} 
             click={() => dzMenu(rivalID, false)}>
                 {props.G.destroyZone[rivalID].length}
             </Card>
-            <Jar click={() => oogMenu()}>OUT</Jar>
+            <Jar
+            extraClass={isDisabled(props.G.out.length<=0)}
+            click={() => oogMenu()}>OUT</Jar>
             <Card 
-            extraClass={isSelected(Origin.DZ)} 
+            extraClass={isSelected(Origin.DZ)+isDisabled(props.G.destroyZone[myID].length<=0)} 
             click={() => dzMenu(myID, true)}>
                 {props.G.destroyZone[myID].length}
             </Card>
