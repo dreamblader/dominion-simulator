@@ -45,9 +45,9 @@ const MenuLayer = (props) => {
             life={props.lifeMenu.life}
             clear={props.clear}
             apply={(lp) => props.moves.setLife(lp)}/>}
-        {props.revealMenu && 
+        {props.revealMenu.length > 0 && 
             <MenuReveal 
-            menu={props.revealMenu}
+            menu={props.revealMenu[0]}
             clear={props.clear}/>}
         </div>
 )};

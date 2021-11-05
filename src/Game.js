@@ -30,7 +30,7 @@ export const Simulator = {
     destroyZone: setupProps(ctx.numPlayers, []),
     out: [],
     life: [Consts.maxLife, Consts.maxLife],
-    reveal: setupProps(ctx.numPlayers, null),
+    reveal: setupProps(ctx.numPlayers, []),
     board: setupBoard(Consts.board),
   }),
 

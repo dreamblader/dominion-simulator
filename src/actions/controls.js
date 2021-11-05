@@ -4,7 +4,7 @@ import MenuLifeData from "../models/menu-life";
 import MenuRevealData from "../models/menu-reveal";
 
 export const clearReveal = (G, ctx) => {
-  G.reveal[ctx.playerID] = null;
+  G.reveal[ctx.playerID].shift();
 };
 
 export const setLife = (G, ctx, lp) => {

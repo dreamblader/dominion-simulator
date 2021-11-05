@@ -53,6 +53,7 @@ export const mill = (G, ctx, number) => {
 
 //CLIENT
 
+//TODO Randomize the deck on screen
 export const getDeckForSearch = (G, id) => {
   let actions = [
     Action("To Hand", searchToHand.name),
@@ -63,7 +64,6 @@ export const getDeckForSearch = (G, id) => {
 };
 
 const getDeckActionsOnMenu = (event, shuffle) => {
-  shuffle();
   let actions = [
     Action("Draw", draw.name),
     Action("Draw For Turn", drawForTurn.name),

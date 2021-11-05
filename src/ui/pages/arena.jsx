@@ -140,7 +140,7 @@ const Arena = (props) => {
         </div>
         <div className="control-col">
             <Button click={() => props.moves.callReact(ReactImage)}
-            hidden={props.G.reveal[rivalID]}>
+            hidden={props.G.reveal[rivalID].length > 0}>
                     REACT!
             </Button>
             <Button click={() => endMyTurn()}

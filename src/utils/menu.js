@@ -9,11 +9,11 @@ export const doWhenClickOutside = (ref, action) => {
 };
 
 export const pushToReveal = (reveal, menu, myID) => {
-  return reveal.map((e, i) => {
-    if (i !== myID) {
-      return menu;
+  return reveal.map((item, id) => {
+    if (id !== myID) {
+      return [...item, menu];
     } else {
-      return e;
+      return item;
     }
   });
 };

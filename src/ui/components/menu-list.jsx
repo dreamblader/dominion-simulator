@@ -11,7 +11,6 @@ const MenuList = (props) => {
 
     const getExtraCardClass = (card) => {
         if(props.menu.header === Strings.oogHeader){
-            console.log(card.controller, props.ids[0]);
             return card.controller === props.ids[0] ? " user-border" : " rival-border";
         }
         return ""
