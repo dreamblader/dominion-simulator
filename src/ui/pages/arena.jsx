@@ -5,13 +5,14 @@ import Hand from "../components/hand";
 import Board from "../components/board";
 import Button from "../components/button";
 import MenuLayer from "../components/menu-layer";
+import Strings from "../../utils/strings";
 import { Origin } from "../../models/enums";
 import getDeckActionsOnMenu, {getDeckForSearch} from "../../actions/deck";
 import getHandActionsOnMenu, { spawnFaceDown,spawnFaceUp } from "../../actions/hand";
 import getDZForSearch, {reborn} from "../../actions/destroy";
 import getOOGForSearch from "../../actions/out";
 import { getLifeMenu } from "../../actions/controls";
-import { renderBoard } from "../../utils/help";
+import { renderBoard, sleep } from "../../utils/help";
 import ReactImage from "../images/react-img.png";
 import "../styles/arena.css"
 
@@ -59,12 +60,20 @@ const Arena = (props) => {
     const setMenu = (menu) => {
         setActionMenu(menu)
     }
+
+    const clearListMenu = () => {
+        let wasDeckMenu = listMenu.header === Strings.deckHeader;
+        setListMenu(null);
+        if(wasDeckMenu){
+            setTimeout(props.moves.shuffleDeck, 100);
+        }
+    }
     
     const clearMenuCallback = () => {
         if(actionMenu){
             setActionMenu(null);
         } else if (listMenu) {
-            setListMenu(null);
+            clearListMenu()
         } else if (lifeMenu) {
             setLifeMenu(null);
         } else if (props.G.reveal[myID]) {
@@ -86,7 +95,7 @@ const Arena = (props) => {
         spawnFaceUp: (...args) => {setSelectToBoard(spawnFaceUp(...args))},
         spawnFaceDown: (...args) => {setSelectToBoard(spawnFaceDown(...args))},
         reborn: (...args) => {setSelectToBoard(reborn(...args))},
-        getDeckForSearch: () => {setListMenu(getDeckForSearch(props.G, myID))},
+        getDeckForSearch: () => {setListMenu(getDeckForSearch(props.G.deck[myID]))},
         myLifeMenu: () => {setLifeMenu(getLifeMenu(props.G.life[myID]))},
         setMenu,
     };

@@ -11,9 +11,8 @@ export const doWhenClickOutside = (ref, action) => {
 export const pushToReveal = (reveal, menu, myID) => {
   return reveal.map((item, id) => {
     if (id !== myID) {
-      return [...item, menu];
-    } else {
-      return item;
+      item.push(menu);
     }
+    return item;
   });
 };

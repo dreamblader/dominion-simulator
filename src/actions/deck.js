@@ -18,7 +18,6 @@ export const drawForTurn = (G, ctx) => {
   }
 };
 
-//TODO maybe the shuffles is not needed now bc is called when the menu pops
 export const searchToHand = (G, ctx, index) => {
   let content = G.deck[ctx.playerID][index];
   let topText =
@@ -54,13 +53,13 @@ export const mill = (G, ctx, number) => {
 //CLIENT
 
 //TODO Randomize the deck on screen
-export const getDeckForSearch = (G, id) => {
+export const getDeckForSearch = (deck) => {
   let actions = [
     Action("To Hand", searchToHand.name),
     Action("To DZ", searchToDZ.name),
     Action("To OOG", searchToOOG.name),
   ];
-  return MenuListData(Strings.deckHeader, G.deck[id], actions);
+  return MenuListData(Strings.deckHeader, deck, actions);
 };
 
 const getDeckActionsOnMenu = (event, shuffle) => {
