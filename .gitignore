@@ -18,8 +18,6 @@
 .env.test.local
 .env.production.local
 
-#card game data
-*/data
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
