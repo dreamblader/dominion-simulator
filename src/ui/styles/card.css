@@ -8,8 +8,20 @@
 }
 
 .card-holder {
+  background: url("../images/card_back_hd.png") no-repeat center center;
+  background-size: cover;
   height: 10rem;
   width: 7rem;
+}
+
+.no-cover {
+  background: #000 !important;
+}
+
+.card-holder > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .user-border {

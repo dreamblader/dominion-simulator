@@ -1,4 +1,5 @@
 import React from "react";
+import { renderCard } from "../../utils/card";
 import "../styles/board.css";
 
 const Board = (props) => {
@@ -74,7 +75,13 @@ const Board = (props) => {
 
     const getCardView = (card) => {
         if(card){
-            return card.id	
+            let extraClass = 
+            card.controller !== props.ids[0] && 
+            !card.inversed ? " inverted" : "";
+            return (
+            <div className={"back_card"+extraClass}>
+                {renderCard(card)}
+            </div>)	
         } else {
             return "";
         }

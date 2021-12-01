@@ -2,6 +2,7 @@ import React from "react";
 import Card from "./card";
 import Button from "./button";
 import Strings from "../../utils/strings";
+import { renderCard } from "../../utils/card";
 import { doWhenClickOutside } from "../../utils/menu";
 import "../styles/menu-list.css";
 
@@ -34,7 +35,7 @@ const MenuList = (props) => {
                 extraClass={getExtraCardClass(card)} 
                 click={(e) => props.click(e, index)} 
                 key={index}>
-                    {card.id}
+                    {renderCard(card)}
                 </Card>
             ))}
             </div>

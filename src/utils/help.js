@@ -33,6 +33,10 @@ export const orNothing = (val) => {
   }
 };
 
+export const isEmpty = (array) => {
+  return array.length <= 0;
+};
+
 export const renderBoard = (board, playerID) => {
   switch (playerID) {
     case 0:

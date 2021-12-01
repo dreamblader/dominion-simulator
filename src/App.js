@@ -8,7 +8,7 @@ import { useState } from "react";
 const SimulatorClient = Client({
   game: Simulator,
   board: Arena,
-  debug: false,
+  //debug: false,
   multiplayer: SocketIO({ server: "localhost:8000" }),
 });
 
@@ -24,7 +24,7 @@ const App = () => {
   const [playerID, setPlayerID] = useState(null);
 
   if (playerID) {
-    return <SimulatorClient playerID={playerID} />;
+    return <SimulatorClient playerID={playerID} deckID={1} />;
   } else {
     return (
       <div>

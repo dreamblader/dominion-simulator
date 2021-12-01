@@ -52,7 +52,9 @@ const maskCardArray = (cardArray, controllerID) => {
 };
 
 const maskCard = (controllerID) => {
-  return Card(0, controllerID);
+  let maskCard = Card(-1, controllerID);
+  maskCard.flipped = true;
+  return maskCard;
 };
 
 export default HideSecrets;

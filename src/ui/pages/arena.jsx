@@ -12,7 +12,7 @@ import getHandActionsOnMenu, { spawnFaceDown,spawnFaceUp } from "../../actions/h
 import getDZForSearch, {reborn} from "../../actions/destroy";
 import getOOGForSearch from "../../actions/out";
 import { getLifeMenu } from "../../actions/controls";
-import { renderBoard, sleep } from "../../utils/help";
+import { renderBoard, isEmpty } from "../../utils/help";
 import ReactImage from "../images/react-img.png";
 import "../styles/arena.css"
 
@@ -37,6 +37,10 @@ const Arena = (props) => {
 
     const isDisabled = (disable) => {
         return disable ? "disabled" : "";
+    }
+
+    const showNoCover = (dontShow) => {
+        return dontShow ? " no-cover" : "";
     }
 
     const deckMenu = (e) => {
@@ -111,21 +115,41 @@ const Arena = (props) => {
         moves={Object.assign(props.moves, clientSideMoves)}
         clear={clearMenuCallback}/>
         <div className="deck-col">
-            <Card extraClass="disabled">{props.G.deck[rivalID].length}</Card>
+            <Card extraClass={"disabled" + 
+            showNoCover(isEmpty(props.G.deck[rivalID]))}>
+                {props.G.deck[rivalID].length}
+            </Card>
             <Card
-            extraClass={isDisabled(props.G.destroyZone[rivalID].length<=0)} 
+            extraClass={
+                isDisabled(isEmpty(props.G.destroyZone[rivalID]))
+                +
+                showNoCover(isEmpty(props.G.destroyZone[rivalID]))
+            } 
             click={() => dzMenu(rivalID, false)}>
                 {props.G.destroyZone[rivalID].length}
             </Card>
             <Jar
-            extraClass={isDisabled(props.G.out.length<=0)}
+            extraClass={
+                isDisabled(isEmpty(props.G.out))
+            }
             click={() => oogMenu()}>OUT</Jar>
             <Card 
-            extraClass={isSelected(Origin.DZ)+isDisabled(props.G.destroyZone[myID].length<=0)} 
+            extraClass={
+                isSelected(Origin.DZ)
+                +
+                isDisabled(isEmpty(props.G.destroyZone[myID]))
+                +
+                showNoCover(isEmpty(props.G.destroyZone[myID]))
+            } 
             click={() => dzMenu(myID, true)}>
                 {props.G.destroyZone[myID].length}
             </Card>
-            <Card 
+            <Card
+            extraClass={
+                isDisabled(isEmpty(props.G.deck[myID]))
+                +
+                showNoCover(isEmpty(props.G.deck[myID]))
+            } 
             click={(e) => deckMenu(e)}>
                 {props.G.deck[myID].length}
             </Card>
