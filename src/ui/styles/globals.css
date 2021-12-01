@@ -41,7 +41,7 @@ textarea {
 
 .hoverable {
   display: flex;
-  border: 3px solid black;
+  border: 3px solid rgb(73, 70, 70);
   background-color: gray;
   justify-content: center;
   align-items: center;

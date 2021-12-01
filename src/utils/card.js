@@ -5,3 +5,11 @@ export const renderCard = (card, reveal = true) => {
     return "";
   }
 };
+
+export const getCurentATK = (card) => {
+  return card.atk + card.atk_mod;
+};
+
+export const getCurentHP = (card) => {
+  return card.hp + card.hp_mod;
+};

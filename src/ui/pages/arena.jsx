@@ -116,8 +116,8 @@ const Arena = (props) => {
         clear={clearMenuCallback}/>
         <div className="deck-col">
             <Card extraClass={"disabled" + 
-            showNoCover(isEmpty(props.G.deck[rivalID]))}>
-                {props.G.deck[rivalID].length}
+            showNoCover(()=>{isEmpty(props.G.deck[rivalID].cards)})}>
+                {props.G.deck[rivalID].cards.length}
             </Card>
             <Card
             extraClass={
@@ -146,12 +146,12 @@ const Arena = (props) => {
             </Card>
             <Card
             extraClass={
-                isDisabled(isEmpty(props.G.deck[myID]))
+                isDisabled(isEmpty(props.G.deck[myID].cards))
                 +
-                showNoCover(isEmpty(props.G.deck[myID]))
+                showNoCover(isEmpty(props.G.deck[myID].cards))
             } 
             click={(e) => deckMenu(e)}>
-                {props.G.deck[myID].length}
+                {props.G.deck[myID].cards.length}
             </Card>
         </div>
         <div className="hand-col">

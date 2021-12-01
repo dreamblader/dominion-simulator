@@ -1,16 +1,11 @@
-import { randomInt } from "../utils/help";
-import Cards from "../models/card";
+import Deck from "../models/deck";
 import BoardTile from "../models/board-tile";
 
-export const setupDeck = (size, ctx) => {
+export const setupDeck = (ctx) => {
   const deck = [];
   for (let i = 0; i < ctx.numPlayers; i++) {
-    deck.push([]);
-    for (let j = 0; j < size; j++) {
-      deck[i].push(Cards(randomInt(100, ctx), i));
-    }
+    deck.push(Deck());
   }
-
   return deck;
 };
 

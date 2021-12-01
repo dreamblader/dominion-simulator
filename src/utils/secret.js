@@ -1,10 +1,11 @@
 import Card from "../models/card";
+import Deck from "../models/deck";
 
 const HideSecrets = (G, ctx, playerID) => {
   const result = { ...G };
   const rivalID = parseInt(playerID) === 0 ? 1 : 0;
 
-  result.deck = hideRivalArray(result.deck, parseInt(playerID), rivalID);
+  result.deck = hideRivalDeck(result.deck, parseInt(playerID), rivalID);
   result.hand = hideRivalArray(result.hand, parseInt(playerID), rivalID);
   result.board = hideBoardRivalFlippedCard(result.board, parseInt(playerID));
 
@@ -32,6 +33,13 @@ const maskTile = (cards, tile) => {
   let maskTile = { ...tile };
   maskTile.cards = cards;
   return maskTile;
+};
+
+const hideRivalDeck = (deck, myID, rivalID) => {
+  let result = [];
+  result[myID] = deck[myID];
+  result[rivalID] = Deck(maskCardArray(deck[rivalID].cards, rivalID));
+  return result;
 };
 
 const hideRivalArray = (array, myID, rivalID) => {

@@ -19,7 +19,7 @@ export const drawForTurn = (G, ctx) => {
 };
 
 export const searchToHand = (G, ctx, index) => {
-  let content = G.deck[ctx.playerID][index];
+  let content = G.deck[ctx.playerID].cards[index];
   let topText =
     'Your opponent have selected "' + content.title + '" from Deck to Hand';
   G.reveal = pushToReveal(
@@ -27,25 +27,25 @@ export const searchToHand = (G, ctx, index) => {
     MenuRevealData(topText, content),
     parseInt(ctx.playerID)
   );
-  moveToArray(G.deck[ctx.playerID], G.hand[ctx.playerID], index);
+  moveToArray(G.deck[ctx.playerID].cards, G.hand[ctx.playerID], index);
 };
 
 export const searchToDZ = (G, ctx, index) => {
-  moveToArray(G.deck[ctx.playerID], G.destroyZone[ctx.playerID], index);
+  moveToArray(G.deck[ctx.playerID].cards, G.destroyZone[ctx.playerID], index);
 };
 
 export const searchToOOG = (G, ctx, index) => {
-  moveToArray(G.deck[ctx.playerID], G.out, index);
+  moveToArray(G.deck[ctx.playerID].cards, G.out, index);
 };
 
 export const shuffleDeck = (G, ctx) => {
-  G.deck[ctx.playerID] = ctx.random.Shuffle(G.deck[ctx.playerID]);
+  G.deck[ctx.playerID].cards = ctx.random.Shuffle(G.deck[ctx.playerID].cards);
 };
 
 export const mill = (G, ctx, number) => {
   let count = number || 1;
   for (let i = 0; i < count; i++) {
-    let draw = G.deck[ctx.playerID].pop();
+    let draw = G.deck[ctx.playerID].cards.pop();
     G.destroyZone[ctx.playerID].push(draw);
   }
 };

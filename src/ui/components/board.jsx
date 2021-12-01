@@ -1,5 +1,5 @@
 import React from "react";
-import { renderCard } from "../../utils/card";
+import { getCurentHP, getCurentATK, renderCard } from "../../utils/card";
 import "../styles/board.css";
 
 const Board = (props) => {
@@ -81,6 +81,9 @@ const Board = (props) => {
             return (
             <div className={"back_card"+extraClass}>
                 {renderCard(card)}
+                <div className="txt-info">
+                    {getCurentATK(card)+"/"+getCurentHP(card)}
+                </div>
             </div>)	
         } else {
             return "";

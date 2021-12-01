@@ -25,7 +25,7 @@ import { clearReveal, callReact, setLife } from "./actions/controls";
 
 export const Simulator = {
   setup: (ctx) => ({
-    deck: setupDeck(Consts.deckSize, ctx),
+    deck: setupDeck(ctx),
     hand: setupProps(ctx.numPlayers, []),
     destroyZone: setupProps(ctx.numPlayers, []),
     out: [],
