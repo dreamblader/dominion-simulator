@@ -81,9 +81,11 @@ const Board = (props) => {
             return (
             <div className={"back_card"+extraClass}>
                 {renderCard(card)}
-                <div className="txt-info">
-                    {getCurentATK(card)+"/"+getCurentHP(card)}
-                </div>
+                {!card.flipped && 
+                    <div className="txt-info">
+                        {getCurentATK(card)+"/"+getCurentHP(card)}
+                    </div>
+                }
             </div>)	
         } else {
             return "";

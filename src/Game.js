@@ -11,6 +11,7 @@ import {
   finish,
 } from "./actions/hand";
 import {
+  getDeck,
   draw,
   drawForTurn,
   searchToHand,
@@ -36,6 +37,7 @@ export const Simulator = {
 
   moves: {
     //Deck
+    getDeck,
     draw,
     drawForTurn,
     searchToHand,

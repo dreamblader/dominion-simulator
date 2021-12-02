@@ -27,6 +27,14 @@ const Arena = (props) => {
     const [lifeMenu, setLifeMenu] = useState(null);
     const [selectToBoard, setSelectToBoard] = useState(null);
     
+
+    React.useEffect(() => {
+        if(props.deckID !== props.G.deck[myID].id){
+            props.moves.getDeck(props.deckID);
+        }
+    }
+    ,[props, myID]);
+
     const isSelected = (place) => {
         if(selectToBoard && selectToBoard.origin[place] !== undefined){
             return "selected";

@@ -7,6 +7,11 @@ import MenuRevealData from "../models/menu-reveal";
 import MenuListData from "../models/menu-list";
 import MenuData from "../models/menu";
 
+//TODO maybe remove this guy ?
+export const getDeck = (G, ctx, deckID) => {
+  //getMyDeckCards(deckID);
+};
+
 export const draw = (G, ctx) => {
   let draw = G.deck[ctx.playerID].pop();
   G.hand[ctx.playerID].push(draw);

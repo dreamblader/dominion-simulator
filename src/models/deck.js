@@ -1,7 +1,6 @@
-const Deck = (cards = []) => {
+const Deck = (id = 0, cards = []) => {
   let obj = {
-    id: 0,
-    started: false,
+    id: id,
     cards: cards,
   };
 
