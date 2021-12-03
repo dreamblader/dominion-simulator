@@ -9,6 +9,7 @@ import MenuData from "../models/menu";
 
 //TODO maybe remove this guy ?
 export const getDeck = (G, ctx, deckID) => {
+  //TODO add an request/got/axios/fetch api here to get data from GET and populate deck
   //getMyDeckCards(deckID);
 };
 
