@@ -25,8 +25,10 @@ import { recycle } from "./actions/out";
 import { clearReveal, callReact, setLife } from "./actions/controls";
 
 export const Simulator = {
-  setup: (ctx) => ({
-    deck: setupDeck(ctx),
+  name: "dominion_simulator",
+
+  setup: (ctx, setupData) => ({
+    deck: setupDeck(ctx, setupData),
     hand: setupProps(ctx.numPlayers, []),
     destroyZone: setupProps(ctx.numPlayers, []),
     out: [],
@@ -63,6 +65,9 @@ export const Simulator = {
     callReact,
     setLife,
   },
+
+  minPlayers: 2,
+  maxPlayers: 2,
 
   turn: {
     order: TurnOrder.DEFAULT,

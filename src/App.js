@@ -12,7 +12,7 @@ const SimulatorClient = Client({
   multiplayer: SocketIO({ server: "localhost:8000" }),
 });
 
-const lobby = (
+const lobby = () => (
   <Lobby
     gameServer={`https://${window.location.hostname}:8000`}
     lobbyServer={`https://${window.location.hostname}:8000`}
@@ -22,10 +22,13 @@ const lobby = (
 
 const App = () => {
   const [playerID, setPlayerID] = useState(null);
+  //const startGame = (playerID, deckID = 1) => {};
 
   if (playerID) {
-    return <SimulatorClient playerID={playerID} deckID={1} />;
+    return <SimulatorClient playerID={playerID} setupData={1} />;
   } else {
+    return lobby();
+    /*
     return (
       <div>
         <p>Play as</p>
@@ -33,6 +36,7 @@ const App = () => {
         <button onClick={() => setPlayerID("1")}>Player 1</button>
       </div>
     );
+    */
   }
 };
 

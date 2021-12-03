@@ -1,7 +1,8 @@
 import Deck from "../models/deck";
 import BoardTile from "../models/board-tile";
 
-export const setupDeck = (ctx) => {
+export const setupDeck = (ctx, setupData) => {
+  console.log(setupData);
   const deck = [];
   for (let i = 0; i < ctx.numPlayers; i++) {
     deck.push(Deck());

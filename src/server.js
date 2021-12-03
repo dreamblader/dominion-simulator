@@ -1,7 +1,7 @@
-const { getMyDeckCards } = require("./actions/database");
-
-const { Server, Origins } = require("boardgame.io/server");
-const { Simulator } = require("./Game");
+import { getMyDeckCards } from "./actions/database";
+import { Server, Origins } from "boardgame.io/server";
+import * as fs from "fs";
+import { Simulator } from "./Game";
 
 /*
 const lobbyConfig = {
@@ -22,11 +22,16 @@ const database = new sqlite3.Database("./data/game.db", (err) => {
 const server = Server({
   games: [Simulator],
   origins: [Origins.LOCALHOST],
+  apiOrigins: [Origins.LOCALHOST],
+  https: {
+    cert: "",
+    key: "",
+    //key: fs.readFileSync(""),
+  },
 });
 
-server.router.get("/deck/:id", (ctx, next) => {
-  console.log(getMyDeckCards(database, ctx.params.id));
-  //ctx.body = getMyDeckCards(database, ctx.params.id);
+server.router.get("/deck/:id/cards", async (ctx, next) => {
+  ctx.body = await getMyDeckCards(database, ctx.params.id);
 });
 
 server.run(8000);
