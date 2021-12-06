@@ -6,8 +6,9 @@ import Board from "../components/board";
 import Button from "../components/button";
 import MenuLayer from "../components/menu-layer";
 import Strings from "../../utils/strings";
+import { getDeckService } from "../../service/api";
 import { Origin } from "../../models/enums";
-import getDeckActionsOnMenu, {getDeckForSearch} from "../../actions/deck";
+import getDeckActionsOnMenu, {getDeckForSearch, constructDeck} from "../../actions/deck";
 import getHandActionsOnMenu, { spawnFaceDown,spawnFaceUp } from "../../actions/hand";
 import getDZForSearch, {reborn} from "../../actions/destroy";
 import getOOGForSearch from "../../actions/out";
@@ -29,8 +30,14 @@ const Arena = (props) => {
     
 
     React.useEffect(() => {
+
+        const deckStart = async() => {
+            let cards = await getDeckService(props.deckID)
+            props.moves.setDeck(constructDeck(props.deckID, cards, myID));
+        }
+
         if(props.deckID !== props.G.deck[myID].id){
-            props.moves.getDeck(props.deckID);
+            deckStart()
         }
     }
     ,[props, myID]);
@@ -52,8 +59,10 @@ const Arena = (props) => {
     }
 
     const deckMenu = (e) => {
-        setSelectToBoard(null);
-        setActionMenu(getDeckActionsOnMenu(e, props.moves.shuffleDeck));
+        if(props.G.deck[myID].cards.length > 0){
+            setSelectToBoard(null);
+            setActionMenu(getDeckActionsOnMenu(e));
+        }
     };
 
     const handMenu = (e, i) => {
@@ -107,7 +116,7 @@ const Arena = (props) => {
         spawnFaceUp: (...args) => {setSelectToBoard(spawnFaceUp(...args))},
         spawnFaceDown: (...args) => {setSelectToBoard(spawnFaceDown(...args))},
         reborn: (...args) => {setSelectToBoard(reborn(...args))},
-        getDeckForSearch: () => {setListMenu(getDeckForSearch(props.G.deck[myID]))},
+        getDeckForSearch: () => {setListMenu(getDeckForSearch(props.G.deck[myID].cards))},
         myLifeMenu: () => {setLifeMenu(getLifeMenu(props.G.life[myID]))},
         setMenu,
     };

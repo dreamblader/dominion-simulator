@@ -11,7 +11,7 @@ import {
   finish,
 } from "./actions/hand";
 import {
-  getDeck,
+  setDeck,
   draw,
   drawForTurn,
   searchToHand,
@@ -26,7 +26,6 @@ import { clearReveal, callReact, setLife } from "./actions/controls";
 
 export const Simulator = {
   name: "dominion_simulator",
-
   setup: (ctx, setupData) => ({
     deck: setupDeck(ctx, setupData),
     hand: setupProps(ctx.numPlayers, []),
@@ -39,7 +38,7 @@ export const Simulator = {
 
   moves: {
     //Deck
-    getDeck,
+    setDeck,
     draw,
     drawForTurn,
     searchToHand,

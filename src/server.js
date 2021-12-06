@@ -1,6 +1,6 @@
 import { getMyDeckCards } from "./actions/database";
 import { Server, Origins } from "boardgame.io/server";
-import * as fs from "fs";
+//import * as fs from "fs";
 import { Simulator } from "./Game";
 
 /*
@@ -23,11 +23,13 @@ const server = Server({
   games: [Simulator],
   origins: [Origins.LOCALHOST],
   apiOrigins: [Origins.LOCALHOST],
+  /*
   https: {
     cert: "",
     key: "",
     //key: fs.readFileSync(""),
   },
+  */
 });
 
 server.router.get("/deck/:id/cards", async (ctx, next) => {

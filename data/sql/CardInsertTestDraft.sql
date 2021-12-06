@@ -62,6 +62,6 @@ VALUES (
     "Field",
     "ROYAL,CASTLE",
     "OCCUPY EFFECT:<br>Apply +2/+2 to all cards of the same element of the ROYAL card that hold this position<br><br>LINK EFFECT:<br>Apply +2/+2 to all ROYALs or the OCCUPY effect<br>(both effects cannot stack)",
-    "nandeck_dominion_unity_01.jpg",
+    "nandeck_dominion_field_01.jpg",
     0
 );

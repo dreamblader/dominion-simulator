@@ -1,6 +1,9 @@
 export const renderCard = (card, reveal = true) => {
+  console.log(card);
   if (reveal && card.art) {
-    return <img src={window.location.origin + card.art} alt={card.name} />;
+    return (
+      <img src={`${window.location.origin}/img/${card.art}`} alt={card.name} />
+    );
   } else {
     return "";
   }

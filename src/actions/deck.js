@@ -1,5 +1,7 @@
 import Consts from "../utils/consts";
 import Strings from "../utils/strings";
+import { mapToCard } from "../models/card";
+import Deck from "../models/deck";
 import { moveToArray } from "../utils/help";
 import { pushToReveal } from "../utils/menu";
 import Action from "../models/action";
@@ -7,15 +9,15 @@ import MenuRevealData from "../models/menu-reveal";
 import MenuListData from "../models/menu-list";
 import MenuData from "../models/menu";
 
-//TODO maybe remove this guy ?
-export const getDeck = (G, ctx, deckID) => {
-  //TODO add an request/got/axios/fetch api here to get data from GET and populate deck
-  //getMyDeckCards(deckID);
+export const setDeck = (G, ctx, deck) => {
+  G.deck[ctx.playerID] = deck;
 };
 
 export const draw = (G, ctx) => {
-  let draw = G.deck[ctx.playerID].pop();
-  G.hand[ctx.playerID].push(draw);
+  if (G.deck[ctx.playerID].cards.length > 0) {
+    let draw = G.deck[ctx.playerID].cards.pop();
+    G.hand[ctx.playerID].push(draw);
+  }
 };
 
 export const drawForTurn = (G, ctx) => {
@@ -57,6 +59,15 @@ export const mill = (G, ctx, number) => {
 };
 
 //CLIENT
+export const constructDeck = (deckID, cards, id) => {
+  let mappedCards = [];
+  cards.forEach((card) => {
+    mappedCards.push(...mapToCard(card, id));
+  });
+  console.log(mappedCards);
+  return Deck(deckID, mappedCards);
+};
+
 export const getDeckForSearch = (deck) => {
   let actions = [
     Action("To Hand", searchToHand.name),
@@ -66,7 +77,7 @@ export const getDeckForSearch = (deck) => {
   return MenuListData(Strings.deckHeader, deck, actions);
 };
 
-const getDeckActionsOnMenu = (event, shuffle) => {
+const getDeckActionsOnMenu = (event) => {
   let actions = [
     Action("Draw", draw.name),
     Action("Draw For Turn", drawForTurn.name),
