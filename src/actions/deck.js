@@ -64,7 +64,6 @@ export const constructDeck = (deckID, cards, id) => {
   cards.forEach((card) => {
     mappedCards.push(...mapToCard(card, id));
   });
-  console.log(mappedCards);
   return Deck(deckID, mappedCards);
 };
 

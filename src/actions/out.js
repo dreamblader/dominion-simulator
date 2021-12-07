@@ -9,9 +9,9 @@ export const recycle = (G, ctx, index) => {
 };
 
 //CLIENT
-const getOOGForSearch = (G) => {
+const getOOGForSearch = (out) => {
   let actions = [Action("Recycle", recycle.name)];
-  return MenuListData(Strings.oogHeader, G.out, actions);
+  return MenuListData(Strings.oogHeader, out, actions);
 };
 
 export default getOOGForSearch;

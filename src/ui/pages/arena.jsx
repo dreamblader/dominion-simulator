@@ -1,19 +1,18 @@
-import React, { useState } from "react";
-import Card from "../components/card"
-import Jar from "../components/jar"  
+import React, { useState } from "react"; 
 import Hand from "../components/hand";
 import Board from "../components/board";
 import Button from "../components/button";
-import MenuLayer from "../components/menu-layer";
+import MenuLayer from "../components/fragments/menu-layer";
+import DeckColumn from "../components/fragments/deck-column";
 import Strings from "../../utils/strings";
 import { getDeckService } from "../../service/api";
-import { Origin } from "../../models/enums";
 import getDeckActionsOnMenu, {getDeckForSearch, constructDeck} from "../../actions/deck";
-import getHandActionsOnMenu, { spawnFaceDown,spawnFaceUp } from "../../actions/hand";
-import getDZForSearch, {reborn} from "../../actions/destroy";
 import getOOGForSearch from "../../actions/out";
+import getDZForSearch from "../../actions/destroy";
+import getHandActionsOnMenu, { spawnFaceDown,spawnFaceUp } from "../../actions/hand";
+import {reborn} from "../../actions/destroy";
 import { getLifeMenu } from "../../actions/controls";
-import { renderBoard, isEmpty } from "../../utils/help";
+import { renderBoard } from "../../utils/help";
 import ReactImage from "../images/react-img.png";
 import "../styles/arena.css"
 
@@ -27,7 +26,8 @@ const Arena = (props) => {
     const [listMenu, setListMenu] = useState(null);
     const [lifeMenu, setLifeMenu] = useState(null);
     const [selectToBoard, setSelectToBoard] = useState(null);
-    
+
+    const isSelected = (place) => selectToBoard && selectToBoard.origin[place] !== undefined
 
     React.useEffect(() => {
 
@@ -42,40 +42,22 @@ const Arena = (props) => {
     }
     ,[props, myID]);
 
-    const isSelected = (place) => {
-        if(selectToBoard && selectToBoard.origin[place] !== undefined){
-            return "selected";
-        }else{
-            return "";
-        }
-    } 
-
-    const isDisabled = (disable) => {
-        return disable ? "disabled" : "";
-    }
-
-    const showNoCover = (dontShow) => {
-        return dontShow ? " no-cover" : "";
-    }
-
     const deckMenu = (e) => {
-        if(props.G.deck[myID].cards.length > 0){
-            setSelectToBoard(null);
-            setActionMenu(getDeckActionsOnMenu(e));
-        }
-    };
-
-    const handMenu = (e, i) => {
         setSelectToBoard(null);
-        setActionMenu(getHandActionsOnMenu(e, i, props.G.hand, myID));
-    }
+        setActionMenu(getDeckActionsOnMenu(e));
+    };
 
     const dzMenu = (id, mine) => {
         setListMenu(getDZForSearch(props.G, id, mine));
     }
 
     const oogMenu = () => {
-        setListMenu(getOOGForSearch(props.G));
+        setListMenu(getOOGForSearch(props.G.out));
+    }
+
+    const handMenu = (e, i) => {
+        setSelectToBoard(null);
+        setActionMenu(getHandActionsOnMenu(e, i, props.G.hand, myID));
     }
 
     const setMenu = (menu) => {
@@ -131,46 +113,16 @@ const Arena = (props) => {
         ids={[myID, rivalID]}
         moves={Object.assign(props.moves, clientSideMoves)}
         clear={clearMenuCallback}/>
-        <div className="deck-col">
-            <Card extraClass={"disabled" + 
-            showNoCover(()=>{isEmpty(props.G.deck[rivalID].cards)})}>
-                {props.G.deck[rivalID].cards.length}
-            </Card>
-            <Card
-            extraClass={
-                isDisabled(isEmpty(props.G.destroyZone[rivalID]))
-                +
-                showNoCover(isEmpty(props.G.destroyZone[rivalID]))
-            } 
-            click={() => dzMenu(rivalID, false)}>
-                {props.G.destroyZone[rivalID].length}
-            </Card>
-            <Jar
-            extraClass={
-                isDisabled(isEmpty(props.G.out))
-            }
-            click={() => oogMenu()}>OUT</Jar>
-            <Card 
-            extraClass={
-                isSelected(Origin.DZ)
-                +
-                isDisabled(isEmpty(props.G.destroyZone[myID]))
-                +
-                showNoCover(isEmpty(props.G.destroyZone[myID]))
-            } 
-            click={() => dzMenu(myID, true)}>
-                {props.G.destroyZone[myID].length}
-            </Card>
-            <Card
-            extraClass={
-                isDisabled(isEmpty(props.G.deck[myID].cards))
-                +
-                showNoCover(isEmpty(props.G.deck[myID].cards))
-            } 
-            click={(e) => deckMenu(e)}>
-                {props.G.deck[myID].cards.length}
-            </Card>
-        </div>
+
+        <DeckColumn
+        ids={[myID, rivalID]}
+        decks={props.G.deck}
+        dzs={props.G.destroyZone}
+        out={props.G.out}
+        selection={isSelected}
+        menu={[deckMenu, dzMenu, oogMenu]}
+        />
+
         <div className="hand-col">
             <Hand 
             reveal={false}
