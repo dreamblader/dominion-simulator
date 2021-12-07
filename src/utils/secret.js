@@ -38,7 +38,7 @@ const maskTile = (cards, tile) => {
 const hideRivalDeck = (deck, myID, rivalID) => {
   let result = [];
   result[myID] = deck[myID];
-  result[rivalID] = Deck(maskCardArray(deck[rivalID].cards, rivalID));
+  result[rivalID] = Deck(0, maskCardArray(deck[rivalID].cards, rivalID));
   return result;
 };
 

@@ -19,6 +19,7 @@ const Arena = (props) => {
     const rivalID = myID === 0 ? 1 : 0;
 
     const [actionMenu, setActionMenu] = useState(null);
+    const [highlightCard, setHighlightCard] = useState(null);
     const [listMenu, setListMenu] = useState(null);
     const [lifeMenu, setLifeMenu] = useState(null);
     const [selectToBoard, setSelectToBoard] = useState(null);
@@ -95,7 +96,7 @@ const Arena = (props) => {
 
     return (
     <div className="arena">
-        
+
         <MenuLayer
         actionMenu={actionMenu}
         listMenu={listMenu}
@@ -103,6 +104,7 @@ const Arena = (props) => {
         lifeMenu={lifeMenu}
         ids={[myID, rivalID]}
         moves={Object.assign(props.moves, clientSideMoves)}
+        highlight={setHighlightCard}
         clear={clearMenuCallback}/>
 
         <DeckColumn
@@ -111,6 +113,7 @@ const Arena = (props) => {
         dzs={props.G.destroyZone}
         out={props.G.out}
         selection={isSelected}
+        highlight={setHighlightCard}
         menu={[deckMenu, dzMenu, oogMenu]}
         />
 
@@ -120,7 +123,7 @@ const Arena = (props) => {
         hand={props.G.hand}
         board={props.G.board}
         moves={props.moves}
-        actions={[handMenu, selectToBoard, clearSelectionCallback]} 
+        actions={[handMenu, selectToBoard, clearSelectionCallback, setHighlightCard]} 
         />
         
         <ControlColumn
@@ -131,7 +134,9 @@ const Arena = (props) => {
         reveal={props.G.reveal}
         />
         
-        <StatusColumn/>
+        <StatusColumn
+        card={highlightCard}
+        />
         
     </div> 
 )};

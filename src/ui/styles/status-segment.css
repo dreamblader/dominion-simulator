@@ -1,0 +1,7 @@
+.segment {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding: 1rem;
+  border-bottom: 3px solid rgb(73, 70, 70);
+}

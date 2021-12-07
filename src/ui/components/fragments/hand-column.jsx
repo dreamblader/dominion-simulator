@@ -7,8 +7,10 @@ const HandColumn = (props) => {
 
     const [myID, rivalID] = props.ids;
     const [myHand, rivalHand] = [props.hand[myID], props.hand[rivalID]];
-    const [handMenu, selectToBoard, clearSelectionCallback] = props.actions;
-    //life
+    const [handMenu,
+         selectToBoard,
+          clearSelectionCallback,
+           setHighlightCard] = props.actions;
 
     return(
         <div className="hand-col">

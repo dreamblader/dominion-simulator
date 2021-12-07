@@ -7,6 +7,12 @@ export const Elements = {
   VOID: "void",
 };
 
+export const Types = {
+  UNITY: "Unity",
+  ARTIFACT: "Artifact",
+  FIELD: "Field",
+};
+
 export const Origin = {
   HAND: "hand",
   DECK: "deck",

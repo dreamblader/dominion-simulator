@@ -1,10 +1,16 @@
 import React from "react";
+import Card from "./card";
+import { Types } from "../../models/enums";
+import { ClassNames, getExtraClasses } from "../../utils/style-class";
 import { getCurentHP, getCurentATK, renderCard } from "../../utils/card";
 import "../styles/board.css";
+
 
 const Board = (props) => {
 
     const dominionIds = props.ids[0] === 1 ? [4, 3]: [3, 4];
+
+    const isInversed = (card) => card.controller !== props.ids[0] && !card.inversed
 
     const renderTile = (tile, i, j) => {
         let id = i+"-"+j
@@ -75,18 +81,18 @@ const Board = (props) => {
 
     const getCardView = (card) => {
         if(card){
-            let extraClass = 
-            card.controller !== props.ids[0] && 
-            !card.inversed ? " inverted" : "";
+           
+            let extraClass = getExtraClasses(isInversed(card), ClassNames.INVERTED) 
+
             return (
-            <div className={"back_card"+extraClass}>
-                {renderCard(card)}
-                {!card.flipped && 
+            <Card extraClass={extraClass+" "+ClassNames.DISABLED} >
+                {renderCard(card, !card.flipped)}
+                {!card.flipped && card.type === Types.UNITY &&
                     <div className="txt-info">
                         {getCurentATK(card)+"/"+getCurentHP(card)}
                     </div>
                 }
-            </div>)	
+            </Card>)	
         } else {
             return "";
         }
