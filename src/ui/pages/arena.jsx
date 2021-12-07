@@ -1,5 +1,4 @@
 import React, { useState } from "react"; 
-import Button from "../components/button";
 import MenuLayer from "../components/fragments/menu-layer";
 import DeckColumn from "../components/fragments/deck-column";
 import HandColumn from "../components/fragments/hand-column";
@@ -11,8 +10,9 @@ import getDZForSearch from "../../actions/destroy";
 import getHandActionsOnMenu, { spawnFaceDown,spawnFaceUp } from "../../actions/hand";
 import {reborn} from "../../actions/destroy";
 import { getLifeMenu } from "../../actions/controls";
-import ReactImage from "../images/react-img.png";
 import "../styles/arena.css"
+import ControlColumn from "../components/fragments/control-column";
+import StatusColumn from "../components/fragments/status-column";
 
 const Arena = (props) => {
     const myID = parseInt(props.playerID);
@@ -84,12 +84,6 @@ const Arena = (props) => {
         setSelectToBoard(null);
     }
 
-    const endMyTurn = () => {
-        if(parseInt(props.ctx.currentPlayer) === myID){
-            props.events.endTurn()
-        }
-    }
-
     const clientSideMoves = {
         spawnFaceUp: (...args) => {setSelectToBoard(spawnFaceUp(...args))},
         spawnFaceDown: (...args) => {setSelectToBoard(spawnFaceDown(...args))},
@@ -101,6 +95,7 @@ const Arena = (props) => {
 
     return (
     <div className="arena">
+        
         <MenuLayer
         actionMenu={actionMenu}
         listMenu={listMenu}
@@ -128,20 +123,16 @@ const Arena = (props) => {
         actions={[handMenu, selectToBoard, clearSelectionCallback]} 
         />
         
-        <div className="control-col">
-            <Button click={() => props.moves.callReact(ReactImage)}
-            hidden={props.G.reveal[rivalID].length > 0 || 
-            parseInt(props.ctx.currentPlayer) === myID}>
-                    REACT!
-            </Button>
-            <Button click={() => endMyTurn()}
-            hidden={parseInt(props.ctx.currentPlayer) !== myID}>
-                END TURN
-            </Button>
-        </div>
-        <div className="status-col">
-            CARD STATUS HERE
-        </div>
+        <ControlColumn
+        ids={[myID, rivalID]}
+        currentPlayer={parseInt(props.ctx.currentPlayer)}
+        moves={props.moves}
+        events={props.events}
+        reveal={props.G.reveal}
+        />
+        
+        <StatusColumn/>
+        
     </div> 
 )};
 
