@@ -1,9 +1,8 @@
 import React, { useState } from "react"; 
-import Hand from "../components/hand";
-import Board from "../components/board";
 import Button from "../components/button";
 import MenuLayer from "../components/fragments/menu-layer";
 import DeckColumn from "../components/fragments/deck-column";
+import HandColumn from "../components/fragments/hand-column";
 import Strings from "../../utils/strings";
 import { getDeckService } from "../../service/api";
 import getDeckActionsOnMenu, {getDeckForSearch, constructDeck} from "../../actions/deck";
@@ -12,11 +11,8 @@ import getDZForSearch from "../../actions/destroy";
 import getHandActionsOnMenu, { spawnFaceDown,spawnFaceUp } from "../../actions/hand";
 import {reborn} from "../../actions/destroy";
 import { getLifeMenu } from "../../actions/controls";
-import { renderBoard } from "../../utils/help";
 import ReactImage from "../images/react-img.png";
 import "../styles/arena.css"
-
-
 
 const Arena = (props) => {
     const myID = parseInt(props.playerID);
@@ -123,23 +119,15 @@ const Arena = (props) => {
         menu={[deckMenu, dzMenu, oogMenu]}
         />
 
-        <div className="hand-col">
-            <Hand 
-            reveal={false}
-            list={props.G.hand[rivalID]}/>
-            <Board 
-            board={renderBoard(props.G.board, myID)} 
-            ids={[myID, rivalID]}
-            life={props.G.life} 
-            selected={selectToBoard}
-            moves={props.moves}
-            clear={clearSelectionCallback}/>
-            <Hand 
-            reveal={true}
-            list={props.G.hand[myID]} 
-            menuClick={handMenu}
-            selected={selectToBoard}/>
-        </div>
+        <HandColumn
+        ids={[myID, rivalID]}
+        life={props.G.life}
+        hand={props.G.hand}
+        board={props.G.board}
+        moves={props.moves}
+        actions={[handMenu, selectToBoard, clearSelectionCallback]} 
+        />
+        
         <div className="control-col">
             <Button click={() => props.moves.callReact(ReactImage)}
             hidden={props.G.reveal[rivalID].length > 0}>
