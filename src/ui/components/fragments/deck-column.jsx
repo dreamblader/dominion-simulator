@@ -24,28 +24,30 @@ const DeckColumn = (props) => {
     <div className="deck-col">
             <Card extraClass={"disabled " + 
             getExtraClasses(isEmpty(rivalDeck.cards), ClassNames.NO_COVER)}>
-                {rivalDeck.cards.length}
+                <div className="counter">{rivalDeck.cards.length}</div>
             </Card>
             <Card
+            card={rivalDZ.at(-1)}
             extraClass={
                 getExtraClasses([isEmpty(rivalDZ), isEmpty(rivalDZ)], 
                 [ClassNames.DISABLED ,ClassNames.NO_COVER])
             } 
             click={() => dzMenu(rivalID, false)}>
-                {rivalDZ.length}
+                <div className="counter">{rivalDZ.length}</div>
             </Card>
             <Jar
             extraClass={
                 getExtraClasses(isEmpty(props.out), ClassNames.DISABLED)
             }
             click={() => oogMenu()}>OUT</Jar>
-            <Card 
+            <Card
+            card={myDZ.at(-1)} 
             extraClass={
                 getExtraClasses([isSelected(Origin.DZ), isEmpty(myDZ), isEmpty(myDZ)],
                  [ClassNames.SELECTED, ClassNames.DISABLED, ClassNames.NO_COVER])
             } 
             click={() => dzMenu(myID, true)}>
-                {myDZ.length}
+                 <div className="counter">{myDZ.length}</div>
             </Card>
             <Card
             extraClass={
@@ -53,7 +55,7 @@ const DeckColumn = (props) => {
                  [ClassNames.DISABLED, ClassNames.NO_COVER])
             } 
             click={(e) => checkDeck(e)}>
-                {myDeck.cards.length}
+                <div className="counter">{myDeck.cards.length}</div>
             </Card>
         </div>
 )}

@@ -8,14 +8,24 @@
 }
 
 .card-holder {
+  position: relative;
   background: url("../images/card_back_hd.png") no-repeat center center;
   background-size: cover;
   height: 10rem;
   width: 7rem;
 }
 
+.card-holder > .counter {
+  position: absolute;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+  left: 0;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
 .board .card-holder {
-  position: relative;
   height: 100%;
   width: 100%;
 }
