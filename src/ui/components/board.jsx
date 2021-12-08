@@ -85,8 +85,9 @@ const Board = (props) => {
             let extraClass = getExtraClasses(isInversed(card), ClassNames.INVERTED) 
 
             return (
-            <Card extraClass={extraClass+" "+ClassNames.DISABLED} >
-                {renderCard(card, !card.flipped)}
+            <Card card={card}
+                highlight={props.highlight}
+                extraClass={extraClass+" "+ClassNames.DISABLED} >
                 {!card.flipped && card.type === Types.UNITY &&
                     <div className="txt-info">
                         {getCurentATK(card)+"/"+getCurentHP(card)}

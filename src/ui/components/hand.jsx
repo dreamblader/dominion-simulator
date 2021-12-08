@@ -1,7 +1,6 @@
 import React from "react";
 import Card from "./card";
 import { Origin } from "../../models/enums";
-import {renderCard} from "../../utils/card"
 import "../styles/hand.css";
 
 const Hand = (props) => {
@@ -25,10 +24,10 @@ const Hand = (props) => {
     <div className="hand">
         {props.list.map((card, index) => (
         <Card key={index}
+        card={card}
+        highlight={props.highlight}
         extraClass={isSelected(index)} 
-        click={(e) => handMenu(e, index)}>
-            {renderCard(card, props.reveal)}
-        </Card>
+        click={(e) => handMenu(e, index)}/>
     ))}</div>
 )}
 

@@ -7,6 +7,7 @@
 
 .deck-col {
   flex-grow: 1;
+  width: 10%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,6 +24,7 @@
 
 .control-col {
   display: flex;
+  width: 10%;
   margin-top: 2rem;
   margin-right: 1rem;
   flex-direction: column;
@@ -31,9 +33,11 @@
 
 .status-col {
   display: flex;
+  width: 20%;
+  height: 100vh;
+  overflow-y: auto;
   flex-direction: column;
   align-items: center;
-  margin-top: 1rem;
   color: black;
   background-color: beige;
   border: 3px solid rgb(73, 70, 70);

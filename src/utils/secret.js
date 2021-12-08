@@ -60,7 +60,7 @@ const maskCardArray = (cardArray, controllerID) => {
 };
 
 const maskCard = (controllerID) => {
-  let maskCard = Card(-1, controllerID);
+  let maskCard = Card("", controllerID);
   maskCard.flipped = true;
   return maskCard;
 };

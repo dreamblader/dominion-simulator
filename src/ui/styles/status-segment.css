@@ -1,7 +1,17 @@
 .segment {
   display: flex;
+  flex-direction: column;
   width: 100%;
+  text-align: center;
   justify-content: center;
-  padding: 1rem;
   border-bottom: 3px solid rgb(73, 70, 70);
+}
+
+.segment > div {
+  padding: 0.5rem;
+}
+
+.segment > img {
+  width: 100%;
+  object-fit: cover;
 }

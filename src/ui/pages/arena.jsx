@@ -13,13 +13,14 @@ import { getLifeMenu } from "../../actions/controls";
 import "../styles/arena.css"
 import ControlColumn from "../components/fragments/control-column";
 import StatusColumn from "../components/fragments/status-column";
+import Card from "../components/card";
 
 const Arena = (props) => {
     const myID = parseInt(props.playerID);
     const rivalID = myID === 0 ? 1 : 0;
 
     const [actionMenu, setActionMenu] = useState(null);
-    const [highlightCard, setHighlightCard] = useState(null);
+    const [highlightCard, setHighlightCard] = useState(Card("", -1));
     const [listMenu, setListMenu] = useState(null);
     const [lifeMenu, setLifeMenu] = useState(null);
     const [selectToBoard, setSelectToBoard] = useState(null);

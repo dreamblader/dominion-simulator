@@ -9,7 +9,6 @@ export const getExtraClasses = (condition, className) => {
   if (Array.isArray(condition) && Array.isArray(className)) {
     let extraClassName = "";
     condition.forEach((cond, index) => {
-      console.log(cond);
       if (cond) {
         extraClassName += className[index];
       }

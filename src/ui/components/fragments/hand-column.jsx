@@ -23,11 +23,13 @@ const HandColumn = (props) => {
             life={props.life} 
             selected={selectToBoard}
             moves={props.moves}
+            highlight={setHighlightCard}
             clear={clearSelectionCallback}/>
             <Hand 
             reveal={true}
             list={myHand} 
             menuClick={handMenu}
+            highlight={setHighlightCard}
             selected={selectToBoard}/>
         </div>
     )

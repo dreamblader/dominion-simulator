@@ -1,8 +1,8 @@
 const Card = (id, playerID) => {
   let obj = {
     id: id,
-    title: "none",
-    type: "none",
+    title: "",
+    type: "",
     art: "",
     atk: 0,
     hp: 0,
@@ -10,9 +10,9 @@ const Card = (id, playerID) => {
     atk_mod: 0,
     hp_mod: 0,
     range_mod: 0,
-    element: "none",
+    element: "",
     unique: false,
-    description: "none",
+    description: "",
     direction: [],
     tags: [],
     status: [],
