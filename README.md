@@ -56,15 +56,18 @@ Possible actions that you can do in the simulator and where you can do it:
   - Status DOWN
   - Add Effect
   - TICK Cooldown
+  - Check all Piled Cards
+  - Put card in back
+  - Attach Card
 - Card in Destroyed Zone
-  - [ ] Reborn
+  - [x] Reborn
     - Put card back to Board
   - [x] Back to Hand
     - Put card back to Hand
   - [x] FINISH
     - Put card OUT OF THE GAME
 - Card OUT OF THE GAME
-  - [ ] Recycle
+  - [x] Recycle
     - Put card back at the Destroyed Zone
 - Board Controls
   - [ ] START Turn
@@ -79,7 +82,7 @@ Possible actions that you can do in the simulator and where you can do it:
     - Start your SPAWN Phase
   - [x] END Turn
     - Finish your turn
-  - [ ] REACTION
+  - [x] REACTION
     - Declare to your opponent that you have a REACTION
   - [ ] OK
     - Declare to your opponent that you accept the state and have NO REACTION

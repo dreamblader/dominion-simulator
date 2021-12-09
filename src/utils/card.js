@@ -15,3 +15,7 @@ export const getCurentATK = (card) => {
 export const getCurentHP = (card) => {
   return card.hp + card.hp_mod;
 };
+
+export const getCurrentRange = (card) => {
+  return card.range + card.range_mod;
+};

@@ -8,9 +8,10 @@ const HandColumn = (props) => {
     const [myID, rivalID] = props.ids;
     const [myHand, rivalHand] = [props.hand[myID], props.hand[rivalID]];
     const [handMenu,
-         selectToBoard,
-          clearSelectionCallback,
-           setHighlightCard] = props.actions;
+        boardMenu,
+        selectToBoard,
+        clearSelectionCallback,
+        setHighlightCard] = props.actions;
 
     return(
         <div className="hand-col">
@@ -19,6 +20,7 @@ const HandColumn = (props) => {
             list={rivalHand}/>
             <Board 
             board={renderBoard(props.board, myID)} 
+            menuClick={boardMenu}
             ids={[myID, rivalID]}
             life={props.life} 
             selected={selectToBoard}

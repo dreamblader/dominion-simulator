@@ -1,10 +1,10 @@
 --ADD 5 UNITIES
-INSERT INTO "Cards" (
+INSERT OR REPLACE INTO "Cards" (
     "ID", 
     "NAME", 
     "TYPE", 
     "TAGS", 
-    "ELEMENT", 
+    "ELEMENT/ACTIVATION", 
     "ATK", 
     "HP", 
     "RANGE", 
@@ -28,11 +28,12 @@ VALUES (
     1
 );
 --ADD 4 ARTIFACTS
-INSERT INTO "Cards" (
+INSERT OR REPLACE INTO "Cards" (
     "ID", 
     "NAME", 
     "TYPE", 
     "TAGS", 
+    "ELEMENT/ACTIVATION",
     "DESCRIPTION", 
     "ART", 
     "UNIQUE"
@@ -42,12 +43,13 @@ VALUES (
     "Arrow Rain", 
     "Artifact",
     "SIEGE WEAPON",
-    "INSTANT:<br><b>ACTION:</b><br>Select a board tile<br>Toss a D6<br>Apply the number of the die as DMG to the unity in the selected tile<br>Apply this number -2 to all linked unities",
+    "INSTANT",
+    "<br><b>ACTION:</b><br>Select a board tile<br>Toss a D6<br>Apply the number of the die as DMG to the unity in the selected tile<br>Apply this number -2 to all linked unities",
     "nandeck_dominion_artifact_01.jpg",
     0
 );
 --ADD 1 FIELD
-INSERT INTO "Cards" (
+INSERT OR REPLACE INTO "Cards" (
     "ID", 
     "NAME", 
     "TYPE", 
@@ -61,7 +63,7 @@ VALUES (
     "Royal Palace", 
     "Field",
     "ROYAL,CASTLE",
-    "OCCUPY EFFECT:<br>Apply +2/+2 to all cards of the same element of the ROYAL card that hold this position<br><br>LINK EFFECT:<br>Apply +2/+2 to all ROYALs or the OCCUPY effect<br>(both effects cannot stack)",
+    "<b>OCCUPY EFFECT:</b><br>Apply +2/+2 to all cards of the same element of the ROYAL card that hold this position<br><br><b>LINK EFFECT:</b><br>Apply +2/+2 to all ROYALs or the OCCUPY effect<br>(both effects cannot stack)",
     "nandeck_dominion_field_01.jpg",
     0
 );

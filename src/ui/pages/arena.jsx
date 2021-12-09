@@ -14,6 +14,7 @@ import "../styles/arena.css"
 import ControlColumn from "../components/fragments/control-column";
 import StatusColumn from "../components/fragments/status-column";
 import Card from "../components/card";
+import getBoardActionMenu from "../../actions/board";
 
 const Arena = (props) => {
     const myID = parseInt(props.playerID);
@@ -56,6 +57,12 @@ const Arena = (props) => {
     const handMenu = (e, i) => {
         setSelectToBoard(null);
         setActionMenu(getHandActionsOnMenu(e, i, props.G.hand, myID));
+    }
+
+    const boardMenu = (e, tile, id) => {
+        let x = getBoardActionMenu(e, tile, id);
+        console.log(x);
+        setActionMenu(getBoardActionMenu(e, tile, id));
     }
 
     const setMenu = (menu) => {
@@ -124,7 +131,7 @@ const Arena = (props) => {
         hand={props.G.hand}
         board={props.G.board}
         moves={props.moves}
-        actions={[handMenu, selectToBoard, clearSelectionCallback, setHighlightCard]} 
+        actions={[handMenu, boardMenu, selectToBoard, clearSelectionCallback, setHighlightCard]} 
         />
         
         <ControlColumn

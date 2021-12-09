@@ -4,13 +4,15 @@ import { Types } from "../../models/enums";
 import { ClassNames, getExtraClasses } from "../../utils/style-class";
 import { getCurentHP, getCurentATK, renderCard } from "../../utils/card";
 import "../styles/board.css";
+import Place from "../../models/place";
 
 
 const Board = (props) => {
 
-    const dominionIds = props.ids[0] === 1 ? [4, 3]: [3, 4];
+    const [myID, rivalID] = props.ids
+    const dominionIds = myID === 1 ? [4, 3]: [3, 4];
 
-    const isInversed = (card) => card.controller !== props.ids[0] && !card.inversed
+    const isInversed = (card) => card.controller !== myID && !card.inversed
 
     const renderTile = (tile, i, j) => {
         let id = i+"-"+j
@@ -25,9 +27,9 @@ const Board = (props) => {
     const getClassName = (tile) =>{
         if(tile){
             switch(tile.spawn){
-                case props.ids[0]+1:
+                case myID+1:
                     return "hoverable user";
-                case props.ids[1]+1:
+                case rivalID+1:
                     return "hoverable rival";
                 case dominionIds[0]:
                     return "dominion user";
@@ -50,7 +52,7 @@ const Board = (props) => {
             } else {
                 return (<div className={"content"+extraClass}
                  onClick={() => clickSpawnTile(tile.originalX, tile.originalY)}>
-                    {getCardView(tile.cards[0])}
+                    {getCardView(tile.cards[0], tile)}
                 </div>)
             }
         } else {
@@ -63,11 +65,11 @@ const Board = (props) => {
         if(spawn === dominionIds[0]){
             return(<div className="content" 
             onClick={()=> props.moves.myLifeMenu()}>
-            {props.life[props.ids[0]]}
+            {props.life[myID]}
             </div>);
         } else if(spawn === dominionIds[1]){
             return(<div className="content">
-            {props.life[props.ids[1]]}
+            {props.life[rivalID]}
             </div>);
         }
     }
@@ -79,7 +81,7 @@ const Board = (props) => {
         }
     }
 
-    const getCardView = (card) => {
+    const getCardView = (card, tile) => {
         if(card){
            
             let extraClass = getExtraClasses(isInversed(card), ClassNames.INVERTED) 
@@ -87,7 +89,8 @@ const Board = (props) => {
             return (
             <Card card={card}
                 highlight={props.highlight}
-                extraClass={extraClass+" "+ClassNames.DISABLED} >
+                extraClass={extraClass+" "+ClassNames.DISABLED}
+                click={(e) => props.menuClick(e, tile, myID)} >
                 {!card.flipped && card.type === Types.UNITY &&
                     <div className="txt-info">
                         {getCurentATK(card)+"/"+getCurentHP(card)}

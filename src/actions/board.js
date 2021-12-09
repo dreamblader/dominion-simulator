@@ -1,3 +1,5 @@
+import Action from "../models/action";
+import MenuData from "../models/menu";
 import Place from "../models/place";
 import { toBoard } from "../utils/help";
 
@@ -24,3 +26,41 @@ const checkSelection = (G, selected, player) => {
     return false;
   }
 };
+
+const BoardActions = (card, id) => {
+  return card.controller === id
+    ? [
+        Action("Bounce", ""),
+        Action("Destroy", ""),
+        Action("Finish", ""),
+        Action("Move", ""),
+        Action("Attack", ""),
+        Action("Flip", ""),
+        Action("Activate", ""),
+        Action("Set Stats", ""),
+        Action("Tick", ""),
+      ]
+    : [];
+};
+
+const getMultipleCardBoardActions = (card, id) => {
+  let actions = [Action("Check all Cards", "")];
+  if (card.controller === id) {
+    let extra = [Action("Put card in back", ""), Action("Attach Card", "")];
+    actions.push(...extra);
+  }
+  return actions;
+};
+
+const getBoardActionMenu = (event, tile, id) => {
+  let actions = [];
+  if (tile.cards.lenght > 1) {
+    actions.push(...getMultipleCardBoardActions(tile.cards[0], id));
+    actions.push(...BoardActions(tile.cards[0], id));
+  } else if (tile.cards.lenght > 0) {
+    actions.push(...BoardActions(tile.cards[0], id));
+  }
+  return MenuData(event.pageX, event.pageY, actions);
+};
+
+export default getBoardActionMenu;
