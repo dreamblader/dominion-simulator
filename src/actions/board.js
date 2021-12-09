@@ -53,6 +53,7 @@ const getMultipleCardBoardActions = (card, id) => {
 };
 
 const getBoardActionMenu = (event, tile, id) => {
+  //TODO returning empty array of actions
   let actions = [];
   if (tile.cards.lenght > 1) {
     actions.push(...getMultipleCardBoardActions(tile.cards[0], id));
