@@ -17,14 +17,16 @@ The main Cards Table where all the main information of all card types is set
   - Artifact
   - Field
 - Card Tags
-- Card Elements (Unity Only)
-  - EARTH
-  - WATER
-  - AIR
-  - FIRE
-  - THUNDER
-  - ICE
-  - VOID
+- Card Subtype
+  - ELEMENT for Unity
+    - EARTH
+    - WATER
+    - AIR
+    - FIRE
+    - THUNDER
+    - ICE
+    - VOID
+  - ACTIVATION for Artifact
 - Card ATK Value
   - Default 0
 - Card HP Value
@@ -49,7 +51,7 @@ Here will have all the important sqls to run in your sqlite to create your table
 Use the Setup.sql first to create everything and then the latest Card_Update and Deck_Update from the folder
 
 # CSV
-Import all Nandeck CSVs (Unity, Artifact and Field) here so you can run the Python converter (card-convert.py) that wil transform all the specifics CSV to a main generic SQL file named: Card_Update_YYYY_MM_DAY
+Import all Nandeck CSVs (Unity, Artifact and Field) here so you can run the converter (card-convert.js) via command "npm run converter" that wil transform all the specifics CSV to a main generic SQL file named: Card_Update_YYYY_MM_DAY
 
 
 
