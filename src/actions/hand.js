@@ -8,15 +8,15 @@ import Temp from "../models/temp-select";
 //SERVER
 
 export const backToTopDeck = (G, ctx, index) => {
-  moveToArray(G.hand[ctx.playerID], G.deck[ctx.playerID], index);
+  moveToArray(G.hand[ctx.playerID], G.deck[ctx.playerID].cards, index);
 };
 
 export const backToBottomDeck = (G, ctx, index) => {
-  moveToArray(G.hand[ctx.playerID], G.deck[ctx.playerID], index, true);
+  moveToArray(G.hand[ctx.playerID], G.deck[ctx.playerID].cards, index, true);
 };
 
 export const backToDeck = (G, ctx, index) => {
-  moveToArray(G.hand[ctx.playerID], G.deck[ctx.playerID], index);
+  moveToArray(G.hand[ctx.playerID], G.deck[ctx.playerID].cards, index);
   shuffleDeck(G, ctx);
 };
 

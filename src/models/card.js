@@ -34,7 +34,7 @@ export const mapToCard = (rawData, id) => {
     atk: rawData.ATK,
     hp: rawData.HP,
     range: rawData.RANGE,
-    element: rawData.ELEMENT,
+    element: rawData.SUBTYPE,
     unique: Boolean(rawData.UNIQUE),
     description: rawData.DESCRIPTION,
     direction: getDirection(rawData.DIRECTION_RANGE),

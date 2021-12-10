@@ -23,6 +23,7 @@
 }
 
 .stat {
+  flex: 1;
   padding: 0.5rem;
   border-right: 3px solid rgb(73, 70, 70);
 }

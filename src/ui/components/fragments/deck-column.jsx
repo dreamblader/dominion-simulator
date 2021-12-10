@@ -29,8 +29,8 @@ const DeckColumn = (props) => {
             <Card
             card={rivalDZ.at(-1)}
             extraClass={
-                getExtraClasses([isEmpty(rivalDZ), isEmpty(rivalDZ)], 
-                [ClassNames.DISABLED ,ClassNames.NO_COVER])
+                getExtraClasses([isEmpty(rivalDZ), isEmpty(rivalDZ), !isEmpty(rivalDZ)], 
+                [ClassNames.DISABLED ,ClassNames.NO_COVER , ClassNames.INVERTED])
             } 
             click={() => dzMenu(rivalID, false)}>
                 <div className="counter">{rivalDZ.length}</div>
