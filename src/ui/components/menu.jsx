@@ -4,7 +4,8 @@ import "../styles/menu.css";
 
 const Menu = (props) => {
     const clickRef = React.useRef(null);
-    const style = props.menuDown ? {
+    const isMouseUpTheCenter = window.innerHeight / 2 > props.posY
+    const style = isMouseUpTheCenter ? {
         left: props.posX,
         top: props.posY
     } : {

@@ -31,20 +31,20 @@ export const finish = (G, ctx, index) => {
 //CLIENT
 
 export const spawnFaceUp = (hand, myID, index) => {
-  hand[myID][index].flipped = false;
-  return selectToField(hand, myID, index);
+  //hand[myID][index].flipped = false;
+  return selectToField(hand, myID, index, false);
 };
 
 export const spawnFaceDown = (hand, myID, index) => {
-  hand[myID][index].flipped = true;
-  return selectToField(hand, myID, index);
+  //hand[myID][index].flipped = true;
+  return selectToField(hand, myID, index, true);
 };
 
-export const selectToField = (hand, myID, index) => {
+export const selectToField = (hand, myID, index, flipped) => {
   let origin = {};
   origin[Origin.HAND] = index;
   let card = hand[myID][index];
-  return Temp(origin, card);
+  return Temp(origin, card, flipped);
 };
 
 const getHandActionsOnMenu = (event, pos, hand, myID) => {

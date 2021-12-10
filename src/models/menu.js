@@ -1,9 +1,8 @@
-const MenuData = (posX, posY, actions, spawnDown = false) => {
+const MenuData = (posX, posY, actions) => {
   let obj = {
     posX: posX,
     posY: posY,
     actions: actions,
-    spawnDown: spawnDown,
   };
 
   return obj;

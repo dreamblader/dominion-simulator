@@ -1,7 +1,8 @@
-const Temp = (origin, card) => {
+const Temp = (origin, card, flipped) => {
   let obj = {
     origin: origin,
     card: card,
+    flipped: flipped,
   };
 
   return obj;

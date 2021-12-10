@@ -9,6 +9,7 @@ export const placeInHere = (G, ctx, selected, x, y) => {
     let originName = Object.keys(selected.origin)[0];
     let originIndex = selected.origin[originName];
     //overrides original card with attrs of selected (flipped)
+    selected.card.flipped = selected.flipped;
     G[originName][ctx.playerID][originIndex] = selected.card;
     let origin = G[originName][ctx.playerID];
     toBoard(G, origin, originIndex, place);
@@ -30,15 +31,15 @@ const checkSelection = (G, selected, player) => {
 const BoardActions = (card, id) => {
   return card.controller === id
     ? [
-        Action("Bounce", ""),
-        Action("Destroy", ""),
-        Action("Finish", ""),
         Action("Move", ""),
         Action("Attack", ""),
         Action("Flip", ""),
         Action("Activate", ""),
         Action("Set Stats", ""),
         Action("Tick", ""),
+        Action("Bounce", ""),
+        Action("Destroy", ""),
+        Action("Finish", ""),
       ]
     : [];
 };
@@ -53,12 +54,11 @@ const getMultipleCardBoardActions = (card, id) => {
 };
 
 const getBoardActionMenu = (event, tile, id) => {
-  //TODO returning empty array of actions
   let actions = [];
-  if (tile.cards.lenght > 1) {
+  if (tile.cards.length > 1) {
     actions.push(...getMultipleCardBoardActions(tile.cards[0], id));
     actions.push(...BoardActions(tile.cards[0], id));
-  } else if (tile.cards.lenght > 0) {
+  } else if (tile.cards.length > 0) {
     actions.push(...BoardActions(tile.cards[0], id));
   }
   return MenuData(event.pageX, event.pageY, actions);

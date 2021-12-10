@@ -28,8 +28,7 @@ const MenuLayer = (props) => {
         <div className="menu-layer"> 
         {props.actionMenu && 
         props.actionMenu.actions.length > 0 &&
-            <Menu items={props.actionMenu.actions} 
-            menuDown={props.actionMenu.spawnDown} 
+            <Menu items={props.actionMenu.actions}  
             moves={props.moves} 
             posX={props.actionMenu.posX}
             posY={props.actionMenu.posY}
