@@ -27,16 +27,35 @@ const checkSelection = (G, selected, player) => {
   }
 };
 
+export const moveInBoard = (G, ctx, tile, index = 0) => {};
+
+export const attackCard = (G, ctx, tile, targetTile, index = 0) => {};
+
+export const flipCard = (G, ctx, tile, index = 0) => {
+  let card = G.board[tile.originalY][tile.originalX].cards[index];
+  G.board[tile.originalY][tile.originalX].cards[index].flipped = !card.flipped;
+};
+
+export const activateCard = (G, ctx, tile, index = 0) => {};
+
+export const openStatsMenu = (card) => {};
+
+export const tickCard = (card) => {};
+
+export const bounceCard = (G, ctx, tile, index = 0) => {};
+
+//CLIENT
+
 const BoardActions = (card, id) => {
   return card.controller === id
     ? [
-        Action("Move", ""),
-        Action("Attack", ""),
-        Action("Flip", ""),
-        Action("Activate", ""),
-        Action("Set Stats", ""),
-        Action("Tick", ""),
-        Action("Bounce", ""),
+        Action("Move", moveInBoard.name),
+        Action("Attack", attackCard.name),
+        Action("Flip", flipCard.name),
+        Action("Activate", activateCard.name),
+        Action("Set Stats", openStatsMenu.name),
+        Action("Tick", tickCard.name),
+        Action("Bounce", bounceCard.name),
         Action("Destroy", ""),
         Action("Finish", ""),
       ]

@@ -10,7 +10,9 @@ const MenuReveal = (props) => {
     const getContent = () => {
         let content = props.menu.content;
         if(content.hasOwnProperty("id")){
-            return (<Card>{renderCard(content)}</Card>)
+            return (<Card highlight={props.highlight}>
+                {renderCard(content)}
+                </Card>)
         } else if(content.hasOwnProperty("ref")){
             return (<img src={content.ref} alt={content.title}/>)
         }

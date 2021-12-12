@@ -9,6 +9,7 @@ import "../../styles/menu-layer.css";
 const MenuLayer = (props) => {
 
     const clickMenuList = (event, index) => {
+        console.log(props.highlight);
         let actions = props.listMenu.actions.map(action => {
             let args = [index];
             if(Array.isArray(action.args)) {
@@ -37,6 +38,7 @@ const MenuLayer = (props) => {
         props.listMenu.cards.length > 0 &&
             <MenuList menu={props.listMenu}
             ids={props.ids}
+            highlight={props.highlight}
             moves={props.moves}
             click={clickMenuList}
             clear={props.clear}/>}
@@ -46,7 +48,8 @@ const MenuLayer = (props) => {
             clear={props.clear}
             apply={(lp) => props.moves.setLife(lp)}/>}
         {props.revealMenu.length > 0 && 
-            <MenuReveal 
+            <MenuReveal
+            highlight={props.highlight} 
             menu={props.revealMenu[0]}
             clear={props.clear}/>}
         </div>

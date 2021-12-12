@@ -17,7 +17,7 @@ const MenuList = (props) => {
         return ""
     }
 
-    React.useEffect(() => doWhenClickOutside(clickRef, props.clear)
+    React.useEffect(() => {doWhenClickOutside(clickRef, props.clear)}
     ,[clickRef, props]);
 
     return(
@@ -33,10 +33,10 @@ const MenuList = (props) => {
                 {props.menu.cards.map((card, index) => (
                 <Card
                 extraClass={getExtraCardClass(card)} 
-                click={(e) => props.click(e, index)} 
-                key={index}>
-                    {renderCard(card)}
-                </Card>
+                click={(e) => props.click(e, index)}
+                card={card}
+                highlight={props.highlight} 
+                key={index}/>
             ))}
             </div>
         </div>

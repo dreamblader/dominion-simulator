@@ -19,9 +19,9 @@
       - [x] END TURN
       - [ ] CHANGE STAGE
       - [x] REACT BUTTON
-    - [ ] Card Info
-  - [ ] Card Storage CSV
-  - [ ] Storage Reader
+    - [x] Card Info
+  - [x] Card Storage SQLite
+  - [x] Storage Reader
   - [ ] Link 2 hard coded Decks to P1 x P2
   - [ ] DEPLOY
 
