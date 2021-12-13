@@ -1,7 +1,6 @@
 import React from "react";
 import Button from "../components/button"
 import Card from "./card";
-import { renderCard } from "../../utils/card";
 import "../styles/menu-reveal.css";
 
 
@@ -10,9 +9,7 @@ const MenuReveal = (props) => {
     const getContent = () => {
         let content = props.menu.content;
         if(content.hasOwnProperty("id")){
-            return (<Card highlight={props.highlight}>
-                {renderCard(content)}
-                </Card>)
+            return (<Card highlight={props.highlight} card={content}/>)
         } else if(content.hasOwnProperty("ref")){
             return (<img src={content.ref} alt={content.title}/>)
         }
