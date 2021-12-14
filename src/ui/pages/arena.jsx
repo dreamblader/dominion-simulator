@@ -60,8 +60,6 @@ const Arena = (props) => {
     }
 
     const boardMenu = (e, tile, id) => {
-        let x = getBoardActionMenu(e, tile, id);
-        console.log(x);
         setActionMenu(getBoardActionMenu(e, tile, id));
     }
 

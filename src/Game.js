@@ -2,7 +2,7 @@ import { ActivePlayers, TurnOrder } from "boardgame.io/core";
 import { setupDeck, setupProps, setupBoard } from "./actions/setup";
 import Consts from "./utils/consts";
 import HideSecrets from "./utils/secret";
-import { placeInHere } from "./actions/board";
+import { placeInHere, flipCard } from "./actions/board";
 import {
   backToTopDeck,
   backToBottomDeck,
@@ -59,6 +59,7 @@ export const Simulator = {
     recycle,
     //Board
     placeInHere,
+    flipCard,
     //MISC
     clearReveal,
     callReact,
