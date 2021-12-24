@@ -42,7 +42,23 @@ export const openStatsMenu = (card) => {};
 
 export const tickCard = (card) => {};
 
-export const bounceCard = (G, ctx, tile, index = 0) => {};
+export const bounceCard = (G, ctx, place, index = 0) => {
+  let card = getTileCard(G.board, place, index);
+  G.hand[ctx.playerID].push(card);
+  G.board[place.y][place.x].cards.splice(index, 1);
+};
+
+export const destroyCard = (G, ctx, place, index = 0) => {
+  let card = getTileCard(G.board, place, index);
+  G.destroyZone[ctx.playerID].push(card);
+  G.board[place.y][place.x].cards.splice(index, 1);
+};
+
+export const finishCard = (G, ctx, place, index = 0) => {
+  let card = getTileCard(G.board, place, index);
+  G.out.push(card);
+  G.board[place.y][place.x].cards.splice(index, 1);
+};
 
 const getTileCard = (board, place, index) => {
   return board[place.y][place.x].cards[index];
