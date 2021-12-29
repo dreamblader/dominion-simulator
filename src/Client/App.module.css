@@ -1,0 +1,57 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.nav {
+  background-color: var(--colorPrimary1);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.12);
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 12px calc(50vw - var(--maxWidth) / 2);
+  grid-gap: 8px;
+}
+
+.link {
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--colorWhite1);
+  border-radius: 5px;
+  padding: 6px 16px;
+  letter-spacing: 1px;
+  font-weight: 700;
+  transition: var(--transition);
+}
+.link:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+.active {
+  font-family: var(--fontPoppins);
+  background-color: var(--colorPrimary2);
+}
+.debug {
+  display: flex;
+  align-items: center;
+  grid-gap: 8px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: var(--colorBlue2);
+  transition: var(--transition);
+}
+
+.debug:hover {
+  background-color: var(--colorBlue2);
+}
+
+.debugStatus,
+.debugText {
+  color: var(--colorWhite2);
+  font-size: 14px;
+}
+.debugStatus {
+  font-weight: 700;
+}
