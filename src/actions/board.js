@@ -42,7 +42,42 @@ export const openStatsMenu = (card) => {};
 
 export const tickCard = (card) => {};
 
-export const bounceCard = (G, ctx, tile, index = 0) => {};
+export const bounceCard = (G, ctx, place, index = 0) => {
+  let card = getTileCard(G.board, place, index);
+  let cardList = getTileCardsArray(G.board, place);
+  G.hand[ctx.playerID].push(card);
+  cardList.splice(index, 1);
+};
+
+export const destroyCard = (G, ctx, place, index = 0) => {
+  let card = getTileCard(G.board, place, index);
+  let cardList = getTileCardsArray(G.board, place);
+  G.destroyZone[ctx.playerID].push(card);
+  cardList.splice(index, 1);
+};
+
+export const finishCard = (G, ctx, place, index = 0) => {
+  let card = getTileCard(G.board, place, index);
+  let cardList = getTileCardsArray(G.board, place);
+  G.out.push(card);
+  cardList.splice(index, 1);
+};
+
+export const attachArtifact = (G, ctx, place, index = 0) => {};
+
+export const tileCardToBack = (G, ctx, place, index = 0) => {
+  let cardList = getTileCardsArray(G.board, place);
+  cardList.push(cardList.splice(index, 1)[0]);
+};
+
+export const tileCardToFront = (G, ctx, place, index = 0) => {
+  let cardList = getTileCardsArray(G.board, place);
+  cardList.unshift(cardList.splice(index, 1)[0]);
+};
+
+const getTileCardsArray = (board, place) => {
+  return board[place.y][place.x].cards;
+};
 
 const getTileCard = (board, place, index) => {
   return board[place.y][place.x].cards[index];
@@ -56,20 +91,24 @@ const BoardActions = (card, id, place) => {
         Action("Move", moveInBoard.name),
         Action("Attack", attackCard.name),
         Action("Flip", flipCard.name, [place]),
-        Action("Activate", activateCard.name),
+        //Action("Activate", activateCard.name),
         Action("Set Stats", openStatsMenu.name),
-        Action("Tick", tickCard.name),
-        Action("Bounce", bounceCard.name),
-        Action("Destroy", ""),
-        Action("Finish", ""),
+        //Action("Tick", tickCard.name),
+        Action("Bounce", bounceCard.name, [place]),
+        Action("Destroy", destroyCard.name, [place]),
+        Action("Finish", finishCard.name, [place]),
       ]
     : [];
 };
 
-const getMultipleCardBoardActions = (card, id) => {
-  let actions = [Action("Check all Cards", "")];
+const getMultipleCardBoardActions = (tile, id) => {
+  let card = tile.cards[0];
+  let actions = [Action("Check all Cards", getTileCardsList, [tile])];
   if (card.controller === id) {
-    let extra = [Action("Put card in back", ""), Action("Attach Card", "")];
+    let extra = [
+      Action("Put card in back", tileCardToBack.name),
+      //Action("Attach Card", attachArtifact.name),
+    ];
     actions.push(...extra);
   }
   return actions;
@@ -79,12 +118,25 @@ const getBoardActionMenu = (event, tile, id) => {
   let actions = [];
   let place = Place(tile.originalX, tile.originalY);
   if (tile.cards.length > 1) {
-    actions.push(...getMultipleCardBoardActions(tile.cards[0], id));
+    actions.push(...getMultipleCardBoardActions(tile, id));
     actions.push(...BoardActions(tile.cards[0], id, place));
   } else if (tile.cards.length > 0) {
     actions.push(...BoardActions(tile.cards[0], id, place));
   }
   return MenuData(event.pageX, event.pageY, actions);
+};
+
+const getTileCardsList = (tile) => {
+  let place = Place(tile.originalX, tile.originalY);
+  let actions = [
+    Action("To Top", tileCardToFront.name),
+    Action("To Back", tileCardToBack.name),
+    //Action("Attach Card", attachArtifact.name),
+    Action("Bounce", bounceCard.name, [place]),
+    Action("Destroy", destroyCard.name, [place]),
+    Action("Finish", finishCard.name, [place]),
+  ];
+  return MenuListData(Strings.boardHeader, tile.cards, actions);
 };
 
 export default getBoardActionMenu;
