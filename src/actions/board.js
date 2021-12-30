@@ -1,6 +1,7 @@
 import Action from "../models/action";
 import MenuData from "../models/menu";
 import Place from "../models/place";
+import { Origin } from "../models/enums";
 import { toBoard } from "../utils/help";
 
 export const placeInHere = (G, ctx, selected, x, y) => {
@@ -10,7 +11,10 @@ export const placeInHere = (G, ctx, selected, x, y) => {
     let originIndex = selected.origin[originName];
     selected.card.flipped = selected.flipped;
     G[originName][ctx.playerID][originIndex] = selected.card;
-    let origin = G[originName][ctx.playerID];
+    let origin =
+      originName != Origin.BOARD
+        ? G[originName][ctx.playerID]
+        : G[originName][selected.y][selected.x];
     toBoard(G, origin, originIndex, place);
   }
 };
@@ -27,13 +31,16 @@ const checkSelection = (G, selected, player) => {
   }
 };
 
-export const moveInBoard = (G, ctx, tile, index = 0) => {};
-
 export const attackCard = (G, ctx, tile, targetTile, index = 0) => {};
 
 export const flipCard = (G, ctx, place, index = 0) => {
   let card = getTileCard(G.board, place, index);
   card.flipped = !card.flipped;
+};
+
+export const invertCard = (G, ctx, place, index = 0) => {
+  let card = getTileCard(G.board, place, index);
+  card.inversed = !card.inversed;
 };
 
 export const activateCard = (G, ctx, tile, index = 0) => {};
@@ -85,12 +92,20 @@ const getTileCard = (board, place, index) => {
 
 //CLIENT
 
+export const moveInBoard = (G, ctx, place, index = 0) => {
+  let origin = {};
+  origin[Origin.BOARD] = index;
+  let card = getTileCard(G.board, place, index);
+  return Temp(origin, card, card.flipped, place.x, place.y);
+};
+
 const BoardActions = (card, id, place) => {
   return card.controller === id
     ? [
-        Action("Move", moveInBoard.name),
+        Action("Move", moveInBoard.name, [place]),
         Action("Attack", attackCard.name),
         Action("Flip", flipCard.name, [place]),
+        Action("Invert", invertCard.name, [place]),
         //Action("Activate", activateCard.name),
         Action("Set Stats", openStatsMenu.name),
         //Action("Tick", tickCard.name),
