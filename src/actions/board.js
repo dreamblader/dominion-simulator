@@ -5,7 +5,7 @@ import Temp from "../models/temp-select";
 import MenuListData from "../models/menu-list";
 import Strings from "../utils/strings";
 import { Origin } from "../models/enums";
-import { toBoard } from "../utils/help";
+import { toBoard, resetStats } from "../utils/help";
 
 export const placeInHere = (G, ctx, selected, x, y) => {
   if (checkSelection(G, selected, ctx.playerID)) {
@@ -53,21 +53,21 @@ export const openStatsMenu = (card) => {};
 export const tickCard = (card) => {};
 
 export const bounceCard = (G, ctx, place, index = 0) => {
-  let card = getTileCard(G.board, place, index);
+  let card = resetStats(getTileCard(G.board, place, index));
   let cardList = getTileCardsArray(G.board, place);
   G.hand[ctx.playerID].push(card);
   cardList.splice(index, 1);
 };
 
 export const destroyCard = (G, ctx, place, index = 0) => {
-  let card = getTileCard(G.board, place, index);
+  let card = resetStats(getTileCard(G.board, place, index));
   let cardList = getTileCardsArray(G.board, place);
   G.destroyZone[ctx.playerID].push(card);
   cardList.splice(index, 1);
 };
 
 export const finishCard = (G, ctx, place, index = 0) => {
-  let card = getTileCard(G.board, place, index);
+  let card = resetStats(getTileCard(G.board, place, index));
   let cardList = getTileCardsArray(G.board, place);
   G.out.push(card);
   cardList.splice(index, 1);
@@ -97,12 +97,14 @@ const getTileCard = (board, place, index) => {
 
 export const moveInBoard = (G, ctx, place, index = 0) => {
   let origin = {};
+  console.log(place);
   origin[Origin.BOARD] = index;
   let card = getTileCard(G.board, place, index);
   return Temp(origin, card, card.flipped, place.x, place.y);
 };
 
 const BoardActions = (card, id, place) => {
+  console.log(place);
   return card.controller === id || !card.inversed
     ? [
         Action("Move", moveInBoard.name, [place]),
@@ -121,10 +123,11 @@ const BoardActions = (card, id, place) => {
 
 const getMultipleCardBoardActions = (tile, id) => {
   let card = tile.cards[0];
-  let actions = [Action("Check all Cards", getTileCardsList, [tile])];
+  let place = Place(tile.originalX, tile.originalY);
+  let actions = [Action("Check all Cards", getTileCardsList.name, [tile])];
   if (card.controller === id) {
     let extra = [
-      Action("Put card in back", tileCardToBack.name),
+      Action("Put card in back", tileCardToBack.name, [place]),
       //Action("Attach Card", attachArtifact.name),
     ];
     actions.push(...extra);
@@ -144,7 +147,7 @@ const getBoardActionMenu = (event, tile, id) => {
   return MenuData(event.pageX, event.pageY, actions);
 };
 
-const getTileCardsList = (tile) => {
+export const getTileCardsList = (tile) => {
   let place = Place(tile.originalX, tile.originalY);
   let actions = [
     Action("To Top", tileCardToFront.name),

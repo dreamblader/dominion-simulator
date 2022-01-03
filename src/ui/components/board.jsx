@@ -11,7 +11,7 @@ const Board = (props) => {
     const [myID, rivalID] = props.ids
     const dominionIds = myID === 1 ? [4, 3]: [3, 4];
 
-    const isInversed = (card) => card.controller !== myID ^ !card.inversed
+    const isInversed = (card) => (card.controller !== myID) !== card.inversed
 
     const renderTile = (tile, i, j) => {
         let id = i+"-"+j
@@ -82,7 +82,7 @@ const Board = (props) => {
 
     const getCardView = (card, tile) => {
         if(card){
-           
+            console.log(isInversed(card))
             let extraClass = getExtraClasses(isInversed(card), ClassNames.INVERTED) 
 
             return (

@@ -2,7 +2,6 @@ import React from "react";
 import Card from "./card";
 import Button from "./button";
 import Strings from "../../utils/strings";
-import { renderCard } from "../../utils/card";
 import { doWhenClickOutside } from "../../utils/menu";
 import "../styles/menu-list.css";
 

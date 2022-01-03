@@ -62,3 +62,15 @@ const flip = (board) => {
   }
   return flippedBoard;
 };
+
+export const resetStats = (card) => {
+  let resetCard = card;
+  //console.log(resetCard);
+  resetCard.atk_mod = 0;
+  resetCard.hp_mod = 0;
+  resetCard.range_mod = 0;
+  resetCard.status.splice(0, resetCard.status.length);
+  resetCard.inversed = false;
+  resetCard.flipped = false;
+  return resetCard;
+};

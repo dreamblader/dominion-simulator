@@ -20,7 +20,7 @@ import "../styles/arena.css";
 import ControlColumn from "../components/fragments/control-column";
 import StatusColumn from "../components/fragments/status-column";
 import Card from "../components/card";
-import getBoardActionMenu, { moveInBoard } from "../../actions/board";
+import getBoardActionMenu, { moveInBoard, getTileCardsList } from "../../actions/board";
 
 const Arena = (props) => {
   const myID = parseInt(props.playerID);
@@ -113,6 +113,9 @@ const Arena = (props) => {
       setLifeMenu(getLifeMenu(props.G.life[myID]));
     },
     setMenu,
+    getTileCardsList: (...args) => {
+      setListMenu(getTileCardsList(...args))
+    },
     moveInBoard: (...args) => {
       setSelectToBoard(moveInBoard(...args));
     },
