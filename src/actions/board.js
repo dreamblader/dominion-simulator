@@ -103,7 +103,7 @@ export const moveInBoard = (G, ctx, place, index = 0) => {
 };
 
 const BoardActions = (card, id, place) => {
-  return card.controller === id
+  return card.controller === id || !card.inversed
     ? [
         Action("Move", moveInBoard.name, [place]),
         Action("Attack", attackCard.name),
