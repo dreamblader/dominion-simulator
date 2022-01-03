@@ -1,6 +1,9 @@
 import Action from "../models/action";
 import MenuData from "../models/menu";
 import Place from "../models/place";
+import Temp from "../models/temp-select";
+import MenuListData from "../models/menu-list";
+import Strings from "../utils/strings";
 import { Origin } from "../models/enums";
 import { toBoard } from "../utils/help";
 
@@ -12,7 +15,7 @@ export const placeInHere = (G, ctx, selected, x, y) => {
     selected.card.flipped = selected.flipped;
     G[originName][ctx.playerID][originIndex] = selected.card;
     let origin =
-      originName != Origin.BOARD
+      originName !== Origin.BOARD
         ? G[originName][ctx.playerID]
         : G[originName][selected.y][selected.x];
     toBoard(G, origin, originIndex, place);
