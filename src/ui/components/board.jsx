@@ -51,7 +51,7 @@ const Board = (props) => {
             } else {
                 return (<div className={"content"+extraClass}
                  onClick={() => clickSpawnTile(tile.originalX, tile.originalY)}>
-                    {getCardView(tile.cards[0], tile)}
+                    {tile.cards && getCardView(tile.cards[0], tile)}
                 </div>)
             }
         } else {
@@ -82,7 +82,6 @@ const Board = (props) => {
 
     const getCardView = (card, tile) => {
         if(card){
-            console.log(isInversed(card))
             let extraClass = getExtraClasses(isInversed(card), ClassNames.INVERTED) 
 
             return (

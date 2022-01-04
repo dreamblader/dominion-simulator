@@ -13,6 +13,7 @@ export const moveToArray = (origin, destination, index, reverse = false) => {
   }
 };
 
+//TODO Board move is actally coping card object to board x0 y0
 export const toBoard = (G, origin, index, place) => {
   let tile = G.board[place.y][place.x];
 

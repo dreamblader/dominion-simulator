@@ -17,7 +17,7 @@ export const placeInHere = (G, ctx, selected, x, y) => {
     let origin =
       originName !== Origin.BOARD
         ? G[originName][ctx.playerID]
-        : G[originName][selected.y][selected.x];
+        : G[originName][selected.y][selected.x].cards;
     toBoard(G, origin, originIndex, place);
   }
 };
@@ -25,7 +25,11 @@ export const placeInHere = (G, ctx, selected, x, y) => {
 const checkSelection = (G, selected, player) => {
   let origin = Object.keys(selected.origin)[0];
   let originContent = selected.origin[origin];
-  let realCard = G[origin][player][originContent];
+
+  let realCard =
+    origin !== Origin.BOARD
+      ? G[origin][player][originContent]
+      : G[origin][selected.y][selected.x].cards[originContent];
 
   if (selected && selected.card.id === realCard.id) {
     return true;
@@ -95,16 +99,14 @@ const getTileCard = (board, place, index) => {
 
 //CLIENT
 
-export const moveInBoard = (G, ctx, place, index = 0) => {
+export const moveInBoard = (board, place, index = 0) => {
   let origin = {};
-  console.log(place);
   origin[Origin.BOARD] = index;
-  let card = getTileCard(G.board, place, index);
+  let card = getTileCard(board, place, index);
   return Temp(origin, card, card.flipped, place.x, place.y);
 };
 
 const BoardActions = (card, id, place) => {
-  console.log(place);
   return card.controller === id || !card.inversed
     ? [
         Action("Move", moveInBoard.name, [place]),

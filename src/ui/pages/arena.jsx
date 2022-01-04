@@ -117,7 +117,7 @@ const Arena = (props) => {
       setListMenu(getTileCardsList(...args))
     },
     moveInBoard: (...args) => {
-      setSelectToBoard(moveInBoard(...args));
+      setSelectToBoard(moveInBoard(props.G.board, ...args));
     },
   };
 
