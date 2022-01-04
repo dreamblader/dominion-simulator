@@ -45,20 +45,20 @@ Possible actions that you can do in the simulator and where you can do it:
   - [x] FINISH
     - Put card OUT OF THE GAME
 - Card in Board
-  - Bounce
-  - Destroy
-  - FINISH
-  - Move
-  - Attack
-  - Flip
-  - Activate
-  - Status UP
-  - Status DOWN
-  - Add Effect
-  - TICK Cooldown
-  - Check all Piled Cards
-  - Put card in back
-  - Attach Card
+  - [x] Bounce
+  - [x] Destroy
+  - [x] FINISH
+  - [ ] Move
+  - [ ] Attack
+  - [x] Flip
+  - [ ] Activate
+  - [ ] Change Status Window
+  - [ ] TICK Cooldown
+  - [x] Check all Stacked Cards
+  - [x] Put card in back
+  - [x] Put card on top
+  - [ ] Create TOKEN Card
+  - [ ] Attach Card
 - Card in Destroyed Zone
   - [x] Reborn
     - Put card back to Board
