@@ -39,5 +39,5 @@
 - [ ] Add Animations and Particles
 
 ### Bug
-- [ ] Move Function is Creating a Ghost Tile at Board Y0 X0
+- [x] Move Function is Creating a Ghost Tile at Board Y0 X0
 - [ ] Undefined in getTileCards when trying to move card to top or back with 2 or more card stacked
