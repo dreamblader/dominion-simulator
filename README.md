@@ -48,7 +48,7 @@ Possible actions that you can do in the simulator and where you can do it:
   - [x] Bounce
   - [x] Destroy
   - [x] FINISH
-  - [ ] Move
+  - [x] Move
   - [ ] Attack
   - [x] Flip
   - [ ] Activate
