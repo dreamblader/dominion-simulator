@@ -12,8 +12,10 @@ export const placeInHere = (G, ctx, selected, x, y) => {
     let place = Place(x, y);
     let originName = Object.keys(selected.origin)[0];
     let originIndex = selected.origin[originName];
-    selected.card.flipped = selected.flipped;
-    G[originName][ctx.playerID][originIndex] = selected.card;
+    if (selected.flipped && originName !== Origin.BOARD) {
+      selected.card.flipped = selected.flipped;
+      G[originName][ctx.playerID][originIndex] = selected.card;
+    }
     let origin =
       originName !== Origin.BOARD
         ? G[originName][ctx.playerID]

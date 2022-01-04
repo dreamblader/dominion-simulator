@@ -51,7 +51,7 @@ const Board = (props) => {
             } else {
                 return (<div className={"content"+extraClass}
                  onClick={() => clickSpawnTile(tile.originalX, tile.originalY)}>
-                    {tile.cards && getCardView(tile.cards[0], tile)}
+                    {getCardView(tile.cards[0], tile)}
                 </div>)
             }
         } else {
