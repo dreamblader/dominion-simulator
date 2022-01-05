@@ -1,9 +1,9 @@
-import { moveToArray } from "../../utils/help";
-import Temp from "../../models/temp-select";
-import { Origin } from "../../models/enums";
-import Action from "../../models/action";
-import Strings from "../../utils/strings";
-import MenuListData from "../../models/menu-list";
+import { moveToArray } from "../utils/help";
+import Temp from "../models/temp-select";
+import { Origin } from "../models/enums";
+import Action from "../models/action";
+import Strings from "../utils/strings";
+import MenuListData from "../models/menu-list";
 
 export const backToHand = (G, ctx, index) => {
   moveToArray(G.destroyZone[ctx.playerID], G.hand[ctx.playerID], index);

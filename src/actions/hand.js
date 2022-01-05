@@ -1,9 +1,9 @@
-import { moveToArray } from "../../utils/help";
+import { moveToArray } from "../utils/help";
 import { shuffleDeck } from "./deck";
-import Action from "../../models/action";
-import MenuData from "../../models/menu";
-import { Origin } from "../../models/enums";
-import Temp from "../../models/temp-select";
+import Action from "../models/action";
+import MenuData from "../models/menu";
+import { Origin } from "../models/enums";
+import Temp from "../models/temp-select";
 
 //SERVER
 

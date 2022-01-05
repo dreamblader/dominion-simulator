@@ -1,5 +1,5 @@
-import Deck from "../../models/deck";
-import BoardTile from "../../models/board-tile";
+import Deck from "../models/deck";
+import BoardTile from "../models/board-tile";
 
 export const setupDeck = (ctx, setupData) => {
   console.log("Setup Data: " + setupData);

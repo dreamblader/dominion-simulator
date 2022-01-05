@@ -1,7 +1,7 @@
-import { moveToArray } from "../../utils/help";
-import Action from "../../models/action";
-import MenuListData from "../../models/menu-list";
-import Strings from "../../utils/strings";
+import { moveToArray } from "../utils/help";
+import Action from "../models/action";
+import MenuListData from "../models/menu-list";
+import Strings from "../utils/strings";
 
 export const recycle = (G, ctx, index) => {
   let placeID = G.out[index].controller;

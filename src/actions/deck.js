@@ -1,13 +1,13 @@
-import Consts from "../../utils/consts";
-import Strings from "../../utils/strings";
-import { mapToCard } from "../../models/card";
-import Deck from "../../models/deck";
-import { moveToArray } from "../../utils/help";
-import { pushToReveal } from "../../utils/menu";
-import Action from "../../models/action";
-import MenuRevealData from "../../models/menu-reveal";
-import MenuListData from "../../models/menu-list";
-import MenuData from "../../models/menu";
+import Consts from "../utils/consts";
+import Strings from "../utils/strings";
+import { mapToCard } from "../models/card";
+import Deck from "../models/deck";
+import { moveToArray } from "../utils/help";
+import { pushToReveal } from "../utils/menu";
+import Action from "../models/action";
+import MenuRevealData from "../models/menu-reveal";
+import MenuListData from "../models/menu-list";
+import MenuData from "../models/menu";
 
 export const setDeck = (G, ctx, deck) => {
   G.deck[ctx.playerID] = deck;

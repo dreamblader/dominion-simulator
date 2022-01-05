@@ -7,20 +7,20 @@ import { getDeckService } from "../../../service/api";
 import getDeckActionsOnMenu, {
   getDeckForSearch,
   constructDeck,
-} from "../../../Server/actions/deck";
-import getOOGForSearch from "../../../Server/actions/out";
-import getDZForSearch from "../../../Server/actions/destroy";
+} from "../../../actions/deck";
+import getOOGForSearch from "../../../actions/out";
+import getDZForSearch from "../../../actions/destroy";
 import getHandActionsOnMenu, {
   spawnFaceDown,
   spawnFaceUp,
-} from "../../../Server/actions/hand";
-import { reborn } from "../../../Server/actions/destroy";
-import { getLifeMenu } from "../../../Server/actions/controls";
+} from "../../../actions/hand";
+import { reborn } from "../../../actions/destroy";
+import { getLifeMenu } from "../../../actions/controls";
 import "../styles/arena.css";
 import ControlColumn from "../components/fragments/control-column";
 import StatusColumn from "../components/fragments/status-column";
 import Card from "../components/card";
-import getBoardActionMenu, { moveInBoard, getTileCardsList } from "../../../Server/actions/board";
+import getBoardActionMenu, { moveInBoard, getTileCardsList } from "../../../actions/board";
 
 const Arena = (props) => {
   const myID = parseInt(props.playerID);

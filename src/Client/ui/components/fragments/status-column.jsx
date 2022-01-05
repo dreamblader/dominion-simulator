@@ -1,7 +1,8 @@
 import React from "react";
 import HtmlParser from "react-html-parser";
 import { Types } from "../../../../models/enums";
-import { getCurentATK, getCurentHP, getCurrentRange, renderCard } from "../../../../utils/card";
+import { renderCard } from "../../../../utils/render";
+import { getCurentATK, getCurentHP, getCurrentRange } from "../../../../utils/card";
 import StatusSegment from "../status-segment"
 
 const StatusColumn = (props) => {

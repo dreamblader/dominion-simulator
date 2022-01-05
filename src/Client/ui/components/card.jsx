@@ -1,6 +1,6 @@
 import React from "react";
-import { renderCard } from "../../../utils/card";
 import { orNothing } from "../../../utils/help";
+import { renderCard } from "../../../utils/render";
 import "../styles/card.css";
 
 const Card = (props) => {

@@ -1,7 +1,7 @@
-import { pushToReveal } from "../../utils/menu";
-import ImageData from "../../models/image-data";
-import MenuLifeData from "../../models/menu-life";
-import MenuRevealData from "../../models/menu-reveal";
+import { pushToReveal } from "../utils/menu";
+import ImageData from "../models/image-data";
+import MenuLifeData from "../models/menu-life";
+import MenuRevealData from "../models/menu-reveal";
 
 export const clearReveal = (G, ctx) => {
   G.reveal[ctx.playerID].shift();

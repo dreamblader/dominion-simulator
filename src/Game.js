@@ -1,5 +1,5 @@
 import { ActivePlayers, TurnOrder } from "boardgame.io/core";
-import { setupDeck, setupProps, setupBoard } from "./Server/actions/setup";
+import { setupDeck, setupProps, setupBoard } from "./actions/setup";
 import Consts from "./utils/consts";
 import HideSecrets from "./utils/secret";
 import {
@@ -14,14 +14,14 @@ import {
   attachArtifact,
   tileCardToBack,
   tileCardToFront,
-} from "./Server/actions/board";
+} from "./actions/board";
 import {
   backToTopDeck,
   backToBottomDeck,
   backToDeck,
   destroy,
   finish,
-} from "./Server/actions/hand";
+} from "./actions/hand";
 import {
   setDeck,
   draw,
@@ -31,10 +31,10 @@ import {
   searchToOOG,
   shuffleDeck,
   mill,
-} from "./Server/actions/deck";
-import { backToHand, destroyToOOG } from "./Server/actions/destroy";
-import { recycle } from "./Server/actions/out";
-import { clearReveal, callReact, setLife } from "./Server/actions/controls";
+} from "./actions/deck";
+import { backToHand, destroyToOOG } from "./actions/destroy";
+import { recycle } from "./actions/out";
+import { clearReveal, callReact, setLife } from "./actions/controls";
 
 export const Simulator = {
   name: "dominion_simulator",
