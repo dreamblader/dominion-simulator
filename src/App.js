@@ -1,8 +1,8 @@
 import { Client, Lobby } from "boardgame.io/react";
 import { SocketIO } from "boardgame.io/multiplayer";
 import { Simulator } from "./Game";
-import Arena from "./ui/pages/arena";
-import "./ui/styles/globals.css";
+import Arena from "./Client/ui/pages/arena";
+import "./Client/ui/styles/globals.css";
 import { useState } from "react";
 
 const SimulatorClient = Client({
