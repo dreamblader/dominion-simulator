@@ -1,7 +1,8 @@
-import { getMyDeckCards } from "./actions/database";
+import { getMyDeckCards } from "../actions/database";
 import { Server, Origins } from "boardgame.io/server";
+
 //import * as fs from "fs";
-import { Simulator } from "./Game";
+import Simulator from "../Game";
 
 /*
 const lobbyConfig = {
@@ -33,6 +34,8 @@ const server = Server({
 });
 
 server.router.get("/deck/:id/cards", async (ctx, next) => {
+  console.log("getDeck");
+  console.log(ctx.params.id);
   ctx.body = await getMyDeckCards(database, ctx.params.id);
 });
 

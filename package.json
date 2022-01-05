@@ -8,10 +8,13 @@
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.24.0",
     "boardgame.io": "^0.47.3",
+    "clsx": "^1.1.1",
     "esm": "^3.2.25",
+    "moment": "^2.29.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-html-parser": "^2.0.2",
+    "react-router-dom": "^6.2.1",
     "react-scripts": "4.0.3",
     "sqlite3": "^5.0.2",
     "web-vitals": "^1.1.2"
@@ -19,8 +22,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "server": "node -r esm src/server.js",
-    "converter": "node data/card-convert.js" ,
+    "server": "node -r esm src/Server/server.js",
+    "start-server": "nodemon -r esm src/Server/server.js",
+    "converter": "node data/card-convert.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

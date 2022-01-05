@@ -1,0 +1,61 @@
+.table {
+  border-collapse: separate;
+  border-spacing: 4px;
+  /* *border-collapse: expression("separate", cellSpacing= "10px"); */
+}
+/* .row {
+} */
+
+.header,
+.cell {
+  background-color: var(--colorBlack2);
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+
+.header {
+  text-align: start;
+}
+
+.cellBtn {
+  text-align: center;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  color: var(--colorWhite1);
+}
+.cellBtnGreen {
+  background-color: var(--colorGreen1);
+}
+
+.cellBtnGreen:hover {
+  color: var(--colorWhite2);
+  border-color: var(--colorWhite2);
+  background-color: var(--colorGreen2);
+}
+
+.cellBtnBlue {
+  background-color: var(--colorBlue1);
+}
+.cellBtnBlue:hover {
+  color: var(--colorWhite2);
+  border-color: var(--colorWhite2);
+  background-color: var(--colorBlue2);
+}
+
+.cellBtnRed {
+  background-color: var(--colorRed1);
+}
+
+.cellBtnRed:hover {
+  color: var(--colorWhite2);
+  border-color: var(--colorWhite2);
+  background-color: var(--colorRed2);
+}
+
+.noPlayers {
+  color: rgba(255, 255, 255, 0.05);
+  text-align: center;
+}

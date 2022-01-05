@@ -1,0 +1,88 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  margin: 12px 24px;
+  padding: 24px 24px 36px;
+  color: var(--colorWhite2);
+  background-color: var(--colorBlack1);
+  border-radius: 5px;
+}
+
+.title {
+  font-size: 32px;
+  margin-bottom: 24px;
+  text-transform: capitalize;
+}
+
+.box {
+  flex: 1;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+}
+
+.boxTitle {
+  font-size: 24px;
+  font-family: var(--fontSans);
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.boxText {
+  font-size: 20px;
+  line-height: 1.7;
+}
+
+.boxText > code {
+  color: var(--colorRed2);
+}
+
+.list {
+  font-size: 20px;
+  line-height: 1.7;
+  list-style: circle;
+  margin-left: 28px;
+  margin-top: 12px;
+}
+.listItem {
+  color: var(--colorWhite1);
+  font-weight: 700;
+}
+.listItem > span {
+  font-weight: 100;
+  margin-left: 6px;
+}
+
+.boxButton {
+  margin-top: 48px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  grid-gap: 24px;
+}
+
+.button {
+  flex: 1;
+  line-height: 1;
+  height: 120px;
+  cursor: pointer;
+  border: none;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 2px;
+  background-color: var(--colorGray2);
+  color: var(--colorBlack1);
+  transition: var(--transition);
+}
+.buttonOne:hover {
+  background-color: var(--colorNaval1);
+}
+.buttonTwo:hover {
+  background-color: var(--colorYellow2);
+}
+.buttonTree:hover {
+  background-color: var(--colorPurple2);
+}

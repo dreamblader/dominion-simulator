@@ -1,13 +1,47 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Poppins:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap");
+/* 
+Fonts
+  font-family: 'Libre Baskerville', serif;
+  font-family: 'Poppins', sans-serif;
+*/
 :root {
-  font-size: 100%;
   --mainText: #f8f9fa;
+
+  --colorBlue1: #00a8ff;
+  --colorBlue2: #0097e6;
+  --colorPurple1: #9c88ff;
+  --colorPurple2: #8c7ae6;
+  --colorYellow1: #fbc531;
+  --colorYellow2: #e1b12c;
+  --colorGreen1: #4cd137;
+  --colorGreen2: #44bd32;
+  --colorNaval1: #487eb0;
+  --colorNaval2: #40739e;
+  --colorRed1: #e84118;
+  --colorRed2: #c23616;
+  --colorWhite1: #f5f6fa;
+  --colorWhite2: #dcdde1;
+  --colorGray1: #7f8fa6;
+  --colorGray2: #718093;
+  --colorPrimary1: #273c75;
+  --colorPrimary2: #192a56;
+  --colorBlack1: #353b48;
+  --colorBlack2: #1e272e;
+
+  --fontSans: "Poppins", sans-serif;
+  --fontSerif: "Libre Baskerville", serif;
+
+  --transition: all 0.2s ease-in-out;
+  --maxWidth: 1200px;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-* {
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -26,17 +60,38 @@ html {
 */
 
 body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
   background-image: url("../images/back.jpg");
   background-color: #000;
   background-repeat: repeat;
   color: var(--mainText);
 }
-
+body > * {
+  transition: all 0.2s ease-in-out;
+}
 body,
 input,
+p,
 button,
 textarea {
-  font: 500 1.6rem Poppins;
+  font: 400 1.4rem var(--fontSans);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--fontSerif);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
 
 .hoverable {

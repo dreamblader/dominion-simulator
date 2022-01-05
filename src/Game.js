@@ -36,7 +36,7 @@ import { backToHand, destroyToOOG } from "./actions/destroy";
 import { recycle } from "./actions/out";
 import { clearReveal, callReact, setLife } from "./actions/controls";
 
-export const Simulator = {
+const Simulator = {
   name: "dominion_simulator",
   setup: (ctx, setupData) => ({
     deck: setupDeck(ctx, setupData),
@@ -97,3 +97,5 @@ export const Simulator = {
 
   playerView: HideSecrets,
 };
+
+export default Simulator;
