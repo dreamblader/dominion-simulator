@@ -154,8 +154,8 @@ const getBoardActionMenu = (event, tile, id) => {
 export const getTileCardsList = (tile) => {
   let place = Place(tile.originalX, tile.originalY);
   let actions = [
-    Action("To Top", tileCardToFront.name),
-    Action("To Back", tileCardToBack.name),
+    Action("To Top", tileCardToFront.name, [place]),
+    Action("To Back", tileCardToBack.name, [place]),
     //Action("Attach Card", attachArtifact.name),
     Action("Bounce", bounceCard.name, [place]),
     Action("Destroy", destroyCard.name, [place]),
