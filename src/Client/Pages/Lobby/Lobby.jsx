@@ -57,6 +57,7 @@ class LobbyPage extends Component {
   async checkState() {
     const { lobbyState } = cookie.loadAll();
     if (lobbyState) {
+      console.log(lobbyState);
       const initialState = JSON.parse(lobbyState);
       this.setState(prev => {
         return ({
@@ -238,11 +239,11 @@ class LobbyPage extends Component {
                 <Button text="Refresh" onClick={this.checkState} />
               </div>
             </div>
-            <MatchesTable
+            {/* <MatchesTable
               matches={matches}
               playerName={lobbyState.player.playerName}
               enterMatch={this.joinMatchHandler}
-            />
+            /> */}
           </div>
         )}
       </div >
