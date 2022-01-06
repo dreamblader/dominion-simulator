@@ -7,7 +7,7 @@ import { Client } from "boardgame.io/react";
 import { SocketIO } from "boardgame.io/multiplayer";
 
 // Utils
-import api from 'Service/api';
+import api from 'service/api';
 import K from "utils/constants";
 import Simulator from "Game.js";
 
