@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { } from "react-router-dom";
 import _ from "lodash";
-import cookie from "react-cookies";
 import { LobbyClient } from 'boardgame.io/client';
 
 // Constants & Helpers
@@ -16,7 +15,6 @@ import Button from "Client/Components/Button/Button";
 
 // Classes
 import classes from "./Lobby.module.css";
-
 
 // Util
 const lobbyClient = new LobbyClient({ server: 'http://localhost:8000' });
@@ -40,13 +38,11 @@ class LobbyPage extends Component {
   }
 
   componentDidMount() {
-    console.log("[componentDidMount]");
     this.checkState();
     this.getMatches();
   }
 
   componentDidUpdate() {
-    console.log("[componentDidUpdate]");
     this.getMatches();
   }
 
@@ -55,42 +51,47 @@ class LobbyPage extends Component {
   // }
 
   async checkState() {
-    const { lobbyState } = cookie.loadAll();
-    if (lobbyState) {
-      console.log(lobbyState);
-      const initialState = JSON.parse(lobbyState);
-      this.setState(prev => {
-        return ({
-          ...prev,
-          lobbyState: initialState,
+    const lobbyStateStorage = localStorage.getItem("lobbyState");
+    if (lobbyStateStorage) {
+      try {
+        const initialState = JSON.parse(lobbyStateStorage);
+        this.setState(prev => {
+          return ({
+            ...prev,
+            lobbyState: initialState,
+          });
         });
-      });
-      // This verify if the cookies have a match that doenst exist
-      if (initialState.phase === 'wait' || initialState.phase === 'play') {
-        try {
-          await lobbyClient.getMatch(K.GAME_NAME, initialState.player.match.matchID);
-        } catch (e) {
-          console.log("ERROR");
-          this.setState(prev => {
-            const newLobbyState = {
-              ...prev.lobbyState,
-              phase: "list",
-              player: {
-                ...prev.lobbyState.player,
-                playerID: "",
-                match: {
-                  matchID: "",
-                  credential: "",
+        // This verify if the localStorage have a match that doenst exist
+        if (initialState.phase === 'wait' || initialState.phase === 'play') {
+          try {
+            await lobbyClient.getMatch(K.GAME_NAME, initialState.player.match.matchID);
+          } catch (e) {
+            console.log("ERROR");
+            this.setState(prev => {
+              const newLobbyState = {
+                ...prev.lobbyState,
+                phase: "list",
+                player: {
+                  ...prev.lobbyState.player,
+                  playerID: "",
+                  match: {
+                    matchID: "",
+                    credential: "",
+                  }
                 }
               }
-            }
-            cookie.save('lobbyState', newLobbyState, { secure: true });
-            return {
-              ...prev,
-              lobbyState: newLobbyState
-            }
-          });
+              localStorage.setItem("lobbyState", JSON.stringify(newLobbyState));
+              return {
+                ...prev,
+                lobbyState: newLobbyState
+              }
+            });
+          }
         }
+      } catch (e) {
+        console.log("Error");
+        console.log(e);
+        localStorage.removeItem("lobbyState");
       }
     }
   }
@@ -107,7 +108,7 @@ class LobbyPage extends Component {
         },
         phase: "list"
       }
-      cookie.save('lobbyState', newLobbyState, { secure: true });
+      localStorage.setItem("lobbyState", JSON.stringify(newLobbyState));
       return {
         ...prev,
         lobbyState: newLobbyState
@@ -120,7 +121,7 @@ class LobbyPage extends Component {
       ...prev,
       lobbyState: initialLobbyState
     }));
-    cookie.remove('lobbyState', { secure: true });
+    localStorage.removeItem("lobbyState");
   }
 
   // Functions match control
@@ -163,8 +164,7 @@ class LobbyPage extends Component {
           }
         }
       }
-
-      cookie.save('lobbyState', newLobbyState, { secure: true });
+      localStorage.setItem("lobbyState", JSON.stringify(newLobbyState));
       return {
         ...prev,
         lobbyState: newLobbyState
@@ -191,7 +191,7 @@ class LobbyPage extends Component {
           }
         }
       }
-      cookie.save('lobbyState', newLobbyState, { secure: true });
+      localStorage.setItem("lobbyState", JSON.stringify(newLobbyState));
       return {
         ...prev,
         lobbyState: newLobbyState
@@ -239,11 +239,11 @@ class LobbyPage extends Component {
                 <Button text="Refresh" onClick={this.checkState} />
               </div>
             </div>
-            {/* <MatchesTable
+            <MatchesTable
               matches={matches}
               playerName={lobbyState.player.playerName}
               enterMatch={this.joinMatchHandler}
-            /> */}
+            />
           </div>
         )}
       </div >
@@ -289,11 +289,8 @@ const formFields = [
     options: [
       {
         name: "Deck one",
-        value: "0"
-      }, {
-        name: "Deck two",
         value: "1"
-      }
+      },
     ],
     disabled: false,
     hidden: false,

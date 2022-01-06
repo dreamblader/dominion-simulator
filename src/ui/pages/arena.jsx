@@ -23,6 +23,7 @@ import Card from "../components/card";
 import getBoardActionMenu, { moveInBoard, getTileCardsList } from "../../actions/board";
 
 const Arena = (props) => {
+  console.log(props.deckID);
   const myID = parseInt(props.playerID);
   const rivalID = myID === 0 ? 1 : 0;
 

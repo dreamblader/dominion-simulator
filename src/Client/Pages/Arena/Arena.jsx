@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import _ from "lodash";
-import cookie from "react-cookies"
 // Boardgame.io
 import { Client } from "boardgame.io/react";
 import { SocketIO } from "boardgame.io/multiplayer";
@@ -40,21 +39,22 @@ const ArenaPage = () => {
 
   useEffect(() => {
     // Load cookies from browser to set the initial state of player info
-    const cookieState = cookie.load('lobbyState');
-    if (!_.isEmpty(cookieState)) {
+    const lobbyStateStorage = localStorage.getItem("lobbyState");
+    const lobbyState = JSON.parse(lobbyStateStorage);
+    if (!_.isEmpty(lobbyState)) {
       setControl(prev => ({ ...prev, loading: true }));
-      console.log("decKID: ", cookieState.player.deckID);
-      api.get(`/games/${K.GAME_NAME}/${cookieState.player.match.matchID}`)
+      console.log("decKID: ", lobbyState.player.deckID);
+      api.get(`/games/${K.GAME_NAME}/${lobbyState.player.match.matchID}`)
         .then(({ data }) => {
           if (!data.matchID) {
             setControl({ valid: false, loading: false });
           } else {
             setMatchConfig({
-              playerName: cookieState.player.playerName,
-              playerID: cookieState.player.playerID,
-              matchID: cookieState.player.match.matchID,
-              credential: cookieState.player.match.credential,
-              deckID: cookieState.player.deckID,
+              playerName: lobbyState.player.playerName,
+              playerID: lobbyState.player.playerID,
+              matchID: lobbyState.player.match.matchID,
+              credential: lobbyState.player.match.credential,
+              deckID: lobbyState.player.deckID,
             });
             setControl(prev => ({ valid: true, loading: false }));
           }
@@ -83,7 +83,7 @@ const ArenaPage = () => {
   return (
     <>
       <SimulatorClient
-        deckID={matchConfig.deckID}
+        deckID={1}
         playerID={matchConfig.playerID}
         credentials={matchConfig.credential}
         matchID={matchConfig.matchID}
@@ -95,13 +95,12 @@ const ArenaPage = () => {
           <p>MatchID: {matchConfig.matchID}</p>
           <p>PlayerName: {matchConfig.playerName}</p>
           <p>playerID: {matchConfig.playerID}</p>
+          <p>deckID: {matchConfig.deckID}</p>
           <p>credentials: {matchConfig.credential}</p>
         </div>
       )}
     </>
   );
-
-
 
 }
 
