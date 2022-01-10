@@ -1,18 +1,19 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import Button from "./button";
 import { doWhenClickOutside } from "../../../utils/menu";
 import "../styles/menu-life.css";
 
-const MenuLife = (props) => {
+const MenuLife = ({life, apply, clear}) => {
     const clickRef = React.useRef(null);
-    const [lifePoints, setLifePoints] = React.useState(props.life);
+    const [lifePoints, setLifePoints] = React.useState(life);
 
-    React.useEffect(() => doWhenClickOutside(clickRef, props.clear)
-    ,[clickRef, props]);
+    React.useEffect(() => doWhenClickOutside(clickRef, clear)
+    ,[clickRef, clear]);
 
-    const apply = () => {
-        props.apply(lifePoints)
-        props.clear()
+    const applyLifePoints = () => {
+        apply(lifePoints)
+        clear()
     }
 
     return(
@@ -31,8 +32,14 @@ const MenuLife = (props) => {
                 extraClass=" quit"
                 click={()=> setLifePoints(parseInt(lifePoints)-1)}>-</Button>
             </div>
-                <Button click={()=> apply()}>Apply</Button>
+                <Button click={()=> applyLifePoints()}>Apply</Button>
         </div>
 )}
+
+MenuLife.propTypes = {
+    life: PropTypes.number, 
+    apply: PropTypes.func, 
+    clear: PropTypes.func
+}
 
 export default MenuLife;

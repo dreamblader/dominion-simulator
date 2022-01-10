@@ -1,15 +1,16 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import Button from "./button"
 import Card from "./card";
 import "../styles/menu-reveal.css";
 
 
-const MenuReveal = (props) => {
+const MenuReveal = ({menu, highlight, clear}) => {
 
     const getContent = () => {
-        let content = props.menu.content;
+        let content = menu.content;
         if(content.hasOwnProperty("id")){
-            return (<Card highlight={props.highlight} card={content}/>)
+            return (<Card highlight={highlight} card={content}/>)
         } else if(content.hasOwnProperty("ref")){
             return (<img src={content.ref} alt={content.title}/>)
         }
@@ -19,17 +20,23 @@ const MenuReveal = (props) => {
         <div className="menu-reveal-layer">
             <div className="menu-reveal">
                 <div className="reveal-text">
-                    {props.menu.topText}
+                    {menu.topText}
                 </div>
                 <div className="reveal-content">
                     {getContent()}
                 </div>
                 <div className="reveal-text">
-                    {props.menu.bottomText}
+                    {menu.bottomText}
                 </div>
-                <Button click={props.clear}>OK</Button>
+                <Button click={clear}>OK</Button>
             </div>
         </div>
 )}
+
+MenuReveal.propTypes = {
+    menu: PropTypes.object,
+    highlight: PropTypes.func,
+    clear: PropTypes.func
+}
 
 export default MenuReveal;

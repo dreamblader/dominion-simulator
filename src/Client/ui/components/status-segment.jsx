@@ -1,10 +1,15 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "../styles/status-segment.css";
 
-const StatusSegment = (props) => (
+const StatusSegment = ({children}) => (
     <div className="segment">
-        {props.children}
+        {children}
     </div>
 )
+
+StatusSegment.propTypes = {
+    children: PropTypes.node
+}
 
 export default StatusSegment;

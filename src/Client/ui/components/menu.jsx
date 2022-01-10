@@ -1,33 +1,42 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import { doWhenClickOutside } from "../../../utils/menu";
 import "../styles/menu.css";
 
-const Menu = (props) => {
+const Menu = ({items, moves, clear, posX, posY}) => {
     const clickRef = React.useRef(null);
-    const isMouseUpTheCenter = window.innerHeight / 2 > props.posY
+    const isMouseUpTheCenter = window.innerHeight / 2 > posY
     const style = isMouseUpTheCenter ? {
-        left: props.posX,
-        top: props.posY
+        left: posX,
+        top: posY
     } : {
-        left: props.posX,
-        bottom: window.innerHeight-props.posY 
+        left: posX,
+        bottom: window.innerHeight-posY 
     }
 
-    React.useEffect(() => doWhenClickOutside(clickRef, props.clear),[clickRef, props]);
+    React.useEffect(() => doWhenClickOutside(clickRef, clear),[clickRef, clear]);
     
     let menuClick = (item) => {
-        props.moves[item.event].apply(this, item.args);
-        props.clear();
+        moves[item.event].apply(this, item.args);
+        clear();
     };
 
     return(
         <div className="menu" 
         style={style} 
         ref={clickRef}>
-            {props.items.map((item, index) => (
+            {items.map((item, index) => (
             <div className="menu-item" onClick={() => menuClick(item)} key={index}>{item.name}</div>
         ))}
         </div>
 )}
+
+Menu.propTypes = {
+    items: PropTypes.arrayOf(PropTypes.object),
+    moves: PropTypes.object,
+    clear: PropTypes.func,
+    posX: PropTypes.number,
+    posY: PropTypes.number
+}
 
 export default Menu;

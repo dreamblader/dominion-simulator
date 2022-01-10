@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import Card from "./card";
 import Button from "./button";
 import Strings from "../../../utils/strings";
@@ -6,39 +7,47 @@ import { doWhenClickOutside } from "../../../utils/menu";
 import "../styles/menu-list.css";
 
 
-const MenuList = (props) => {
+const MenuList = ({menu, ids, click, highlight, clear}) => {
     const clickRef = React.useRef(null);
 
     const getExtraCardClass = (card) => {
-        if(props.menu.header === Strings.oogHeader){
-            return card.controller === props.ids[0] ? " user-border" : " rival-border";
+        if(menu.header === Strings.oogHeader){
+            return card.controller === ids[0] ? " user-border" : " rival-border";
         }
         return ""
     }
 
-    React.useEffect(() => {doWhenClickOutside(clickRef, props.clear)}
-    ,[clickRef, props]);
+    React.useEffect(() => {doWhenClickOutside(clickRef, clear)}
+    ,[clickRef, clear]);
 
     return(
         <div className="menu-list-container"  
         ref={clickRef}>
             <div className="header">
-                {props.menu.header}
+                {menu.header}
                 <Button extraClass=" quit"
-                click={props.clear}
+                click={clear}
                 >X</Button>
             </div>
             <div className="menu-list">
-                {props.menu.cards.map((card, index) => (
+                {menu.cards.map((card, index) => (
                 <Card
                 extraClass={getExtraCardClass(card)} 
-                click={(e) => props.click(e, index)}
+                click={(e) => click(e, index)}
                 card={card}
-                highlight={props.highlight} 
+                highlight={highlight} 
                 key={index}/>
             ))}
             </div>
         </div>
 )}
+
+MenuList.propTypes = {
+    menu: PropTypes.object,
+    ids: PropTypes.arrayOf(PropTypes.number),
+    click: PropTypes.func,
+    highlight: PropTypes.func,
+    clear: PropTypes.func
+}
 
 export default MenuList;

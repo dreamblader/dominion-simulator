@@ -1,17 +1,18 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import Card from "../card"
 import Jar from "../jar"
 import { Origin } from "../../../../models/enums";
 import { ClassNames, getExtraClasses } from "../../../../utils/style-class";
 import { isEmpty } from "../../../../utils/help";
 
-const DeckColumn = (props) => {
+const DeckColumn = ({ids, decks, dzs, out, menu, selection}) => {
 
-    const [myID, rivalID] = props.ids;
-    const [myDeck, rivalDeck] = [props.decks[myID], props.decks[rivalID]];
-    const [myDZ, rivalDZ] = [props.dzs[myID], props.dzs[rivalID]];
-    const isSelected = props.selection; 
-    const [deckMenu, dzMenu, oogMenu] = props.menu;
+    const [myID, rivalID] = ids;
+    const [myDeck, rivalDeck] = [decks[myID], decks[rivalID]];
+    const [myDZ, rivalDZ] = [dzs[myID], dzs[rivalID]];
+    const isSelected = selection; 
+    const [deckMenu, dzMenu, oogMenu] = menu;
 
 
     const checkDeck = (e) => {
@@ -37,7 +38,7 @@ const DeckColumn = (props) => {
             </Card>
             <Jar
             extraClass={
-                getExtraClasses(isEmpty(props.out), ClassNames.DISABLED)
+                getExtraClasses(isEmpty(out), ClassNames.DISABLED)
             }
             click={() => oogMenu()}>OUT</Jar>
             <Card
@@ -59,5 +60,14 @@ const DeckColumn = (props) => {
             </Card>
         </div>
 )}
+
+DeckColumn.propTypes = {
+    ids: PropTypes.arrayOf(PropTypes.number), 
+    decks: PropTypes.arrayOf(PropTypes.object), 
+    dzs: PropTypes.arrayOf(PropTypes.array), 
+    out: PropTypes.array, 
+    menu: PropTypes.arrayOf(PropTypes.func), 
+    selection: PropTypes.func
+}
 
 export default DeckColumn;

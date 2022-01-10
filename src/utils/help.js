@@ -13,7 +13,6 @@ export const moveToArray = (origin, destination, index, reverse = false) => {
   }
 };
 
-//TODO Board move is actally coping card object to board x0 y0
 export const toBoard = (G, origin, index, place) => {
   let tile = G.board[place.y][place.x];
 
@@ -66,7 +65,6 @@ const flip = (board) => {
 
 export const resetStats = (card) => {
   let resetCard = card;
-  //console.log(resetCard);
   resetCard.atk_mod = 0;
   resetCard.hp_mod = 0;
   resetCard.range_mod = 0;

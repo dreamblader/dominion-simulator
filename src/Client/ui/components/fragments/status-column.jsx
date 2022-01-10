@@ -1,11 +1,12 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import HtmlParser from "react-html-parser";
 import { Types } from "../../../../models/enums";
-import { renderCard } from "../../../../utils/render";
 import { getCurentATK, getCurentHP, getCurrentRange } from "../../../../utils/card";
+import CardArt from "../card-art";
 import StatusSegment from "../status-segment"
 
-const StatusColumn = (props) => {
+const StatusColumn = ({card}) => {
 
     const renderTags = (tags) => {
         let result="";
@@ -29,25 +30,25 @@ const StatusColumn = (props) => {
     }
 
     const renderStatus = () => {
-        const element = props.card.type === Types.UNITY ? "ELEMENT:" : "ACTIVATION:"
-        const currentATK = getCurentATK(props.card);
-        const currentHP = getCurentHP(props.card);
-        const currentRange = getCurrentRange(props.card);
-        return(props.card.type !== Types.FIELD && 
+        const element = card.type === Types.UNITY ? "ELEMENT:" : "ACTIVATION:"
+        const currentATK = getCurentATK(card);
+        const currentHP = getCurentHP(card);
+        const currentRange = getCurrentRange(card);
+        return(card.type !== Types.FIELD && 
             <div className="status-segment"> 
                 <div className="stat">
                     <div>{element}</div>
-                    <div>{props.card.element}</div>
+                    <div>{card.element}</div>
                 </div>
                 <div className="stat">
                     <div>ATK:</div>
-                    <div className={getStatClass(props.card.atk ,currentATK)}>
+                    <div className={getStatClass(card.atk ,currentATK)}>
                         {currentATK}
                     </div>
                 </div>
                 <div className="stat">
                     <div>HP:</div>
-                    <div className={getStatClass(props.card.hp ,currentHP)}>
+                    <div className={getStatClass(card.hp ,currentHP)}>
                         {currentHP}
                     </div>
                 </div>
@@ -62,26 +63,30 @@ const StatusColumn = (props) => {
 
     return(
         <div className="status-col">
-            {props.card.id &&
+            {card.id &&
             <div>
                 <StatusSegment>
-                    <div><h3>{props.card.title}</h3></div>
+                    <div><h3>{card.title}</h3></div>
                 </StatusSegment>
                 <StatusSegment>
-                    {renderCard(props.card)}
+                    <CardArt card={card} />
                 </StatusSegment>
                 <StatusSegment>
                     {renderStatus()}  
                 </StatusSegment>
                 <StatusSegment>
-                    {HtmlParser(props.card.description)}
+                    {HtmlParser(card.description)}
                     <div>
-                        {renderTags(props.card.tags)}
+                        {renderTags(card.tags)}
                     </div>
                 </StatusSegment>
             </div>}
         </div>
     )
+}
+
+StatusColumn.propTypes = {
+    card: PropTypes.object
 }
 
 export default StatusColumn;

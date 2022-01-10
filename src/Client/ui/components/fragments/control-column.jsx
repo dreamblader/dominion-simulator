@@ -1,30 +1,39 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import Button from "../button";
 import ReactImage from "../../images/react-img.png";
 
-const ControlColumn = (props) => {
+const ControlColumn = ({ids, currentPlayer, reveal, moves, events}) => {
 
-    const [myID, rivalID] = props.ids;
+    const [myID, rivalID] = ids;
 
     const endMyTurn = () => {
-        if(props.currentPlayer === myID){
-            props.events.endTurn()
+        if(currentPlayer === myID){
+            events.endTurn()
         }
     }
 
     return(
         <div className="control-col">
-                <Button click={() => props.moves.callReact(ReactImage)}
-                hidden={props.reveal[rivalID].length > 0 || 
-                props.currentPlayer === myID}>
+                <Button click={() => moves.callReact(ReactImage)}
+                hidden={reveal[rivalID].length > 0 || 
+                currentPlayer === myID}>
                         REACT!
                 </Button>
                 <Button click={() => endMyTurn()}
-                hidden={props.currentPlayer !== myID}>
+                hidden={currentPlayer !== myID}>
                     END TURN
                 </Button>
             </div>
     )
+}
+
+ControlColumn.propTypes = {
+    ids: PropTypes.arrayOf(PropTypes.number), 
+    currentPlayer: PropTypes.number, 
+    reveal: PropTypes.arrayOf(PropTypes.array), 
+    moves: PropTypes.object, 
+    events: PropTypes.object
 }
 
 export default ControlColumn;

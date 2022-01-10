@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import MenuData from "../../../../models/menu";
 import Menu from "../menu";
 import MenuList from "../menu-list"
@@ -6,11 +7,10 @@ import MenuLife from "../menu-life";
 import MenuReveal from "../menu-reveal";
 import "../../styles/menu-layer.css";
 
-const MenuLayer = (props) => {
+const MenuLayer = ({listMenu, actionMenu, revealMenu, lifeMenu, ids, moves, highlight, clear}) => {
 
     const clickMenuList = (event, index) => {
-        console.log(props.highlight);
-        let actions = props.listMenu.actions.map(action => {
+        let actions = listMenu.actions.map(action => {
             let args = [index];
             if(Array.isArray(action.args)) {
                 action.args.push(...args);
@@ -22,37 +22,48 @@ const MenuLayer = (props) => {
         });
         let menu = MenuData(event.pageX, event.pageY, actions);
         
-        props.moves.setMenu(menu);
+        moves.setMenu(menu);
     }
     
     return(
         <div className="menu-layer"> 
-        {props.actionMenu && 
-        props.actionMenu.actions.length > 0 &&
-            <Menu items={props.actionMenu.actions}  
-            moves={props.moves} 
-            posX={props.actionMenu.posX}
-            posY={props.actionMenu.posY}
-            clear={props.clear}/>}
-        {props.listMenu &&  
-        props.listMenu.cards.length > 0 &&
-            <MenuList menu={props.listMenu}
-            ids={props.ids}
-            highlight={props.highlight}
-            moves={props.moves}
+        {actionMenu && 
+        actionMenu.actions.length > 0 &&
+            <Menu items={actionMenu.actions}  
+            moves={moves} 
+            posX={actionMenu.posX}
+            posY={actionMenu.posY}
+            clear={clear}/>}
+        {listMenu &&  
+        listMenu.cards.length > 0 &&
+            <MenuList menu={listMenu}
+            ids={ids}
+            highlight={highlight}
+            moves={moves}
             click={clickMenuList}
-            clear={props.clear}/>}
-        {props.lifeMenu &&
+            clear={clear}/>}
+        {lifeMenu &&
             <MenuLife
-            life={props.lifeMenu.life}
-            clear={props.clear}
-            apply={(lp) => props.moves.setLife(lp)}/>}
-        {props.revealMenu.length > 0 && 
+            life={lifeMenu.life}
+            clear={clear}
+            apply={(lp) => moves.setLife(lp)}/>}
+        {revealMenu.length > 0 && 
             <MenuReveal
-            highlight={props.highlight} 
-            menu={props.revealMenu[0]}
-            clear={props.clear}/>}
+            highlight={highlight} 
+            menu={revealMenu[0]}
+            clear={clear}/>}
         </div>
 )};
+
+MenuLayer.propTypes = {
+    listMenu: PropTypes.object, 
+    actionMenu: PropTypes.object, 
+    revealMenu: PropTypes.arrayOf(PropTypes.object), 
+    lifeMenu: PropTypes.object, 
+    ids: PropTypes.arrayOf(PropTypes.number), 
+    moves: PropTypes.object, 
+    highlight: PropTypes.func, 
+    clear: PropTypes.func
+}
 
 export default MenuLayer;

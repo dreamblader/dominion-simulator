@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import Card from "./card";
 import { Types } from "../../../models/enums";
 import { ClassNames, getExtraClasses } from "../../../utils/style-class";
@@ -6,9 +7,9 @@ import { getCurentHP, getCurentATK } from "../../../utils/card";
 import "../styles/board.css";
 
 
-const Board = (props) => {
+const Board = ({board, ids, moves, selected, life, menuClick, highlight, clear}) => {
 
-    const [myID, rivalID] = props.ids
+    const [myID, rivalID] = ids
     const dominionIds = myID === 1 ? [4, 3]: [3, 4];
 
     const isInversed = (card) => (card.controller !== myID) !== card.inversed
@@ -45,7 +46,7 @@ const Board = (props) => {
 
     const getContent = (tile) =>{
         if(tile){
-            let extraClass = props.selected ? " selected" : "";
+            let extraClass = selected ? " selected" : "";
             if(tile.spawn === 3  || tile.spawn === 4){
                 return getLifeTile(tile.spawn);
             } else {
@@ -63,20 +64,20 @@ const Board = (props) => {
     const getLifeTile = (spawn) => {
         if(spawn === dominionIds[0]){
             return(<div className="content" 
-            onClick={()=> props.moves.myLifeMenu()}>
-            {props.life[myID]}
+            onClick={()=> moves.myLifeMenu()}>
+            {life[myID]}
             </div>);
         } else if(spawn === dominionIds[1]){
             return(<div className="content">
-            {props.life[rivalID]}
+            {life[rivalID]}
             </div>);
         }
     }
 
     const clickSpawnTile = (x, y) => {
-        if(props.selected){
-            props.moves.placeInHere(props.selected, x,y);
-            props.clear();
+        if(selected){
+            moves.placeInHere(selected, x,y);
+            clear();
         }
     }
 
@@ -86,9 +87,9 @@ const Board = (props) => {
 
             return (
             <Card card={card}
-                highlight={props.highlight}
+                highlight={highlight}
                 extraClass={extraClass+" "+ClassNames.DISABLED}
-                click={(e) => props.menuClick(e, tile, myID)} >
+                click={(e) => menuClick(e, tile, myID)} >
                 {!card.flipped && card.type === Types.UNITY &&
                     <div className="txt-info">
                         {getCurentATK(card)+"/"+getCurentHP(card)}
@@ -102,10 +103,21 @@ const Board = (props) => {
 
        return(
         <div className="board">
-            {props.board.map((row, i) => (
+            {board.map((row, i) => (
                 row.map((tile, j) => renderTile(tile, i, j))
         ))}
         </div>
 )}
+
+Board.propTypes = {
+    board: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.object)), 
+    ids: PropTypes.arrayOf(PropTypes.number),
+    moves: PropTypes.object, 
+    selected: PropTypes.object, 
+    life: PropTypes.arrayOf(PropTypes.number), 
+    menuClick: PropTypes.func, 
+    highlight: PropTypes.func, 
+    clear: PropTypes.func
+}
 
 export default Board;

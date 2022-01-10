@@ -1,17 +1,18 @@
 import React from "react"
+import PropTypes from 'prop-types';
 import Hand from "../hand";
 import Board from "../board";
 import { renderBoard } from "../../../../utils/help";
 
-const HandColumn = (props) => {
+const HandColumn = ({ids, hand, board, life, moves, actions}) => {
 
-    const [myID, rivalID] = props.ids;
-    const [myHand, rivalHand] = [props.hand[myID], props.hand[rivalID]];
+    const [myID, rivalID] = ids;
+    const [myHand, rivalHand] = [hand[myID], hand[rivalID]];
     const [handMenu,
         boardMenu,
         selectToBoard,
         clearSelectionCallback,
-        setHighlightCard] = props.actions;
+        setHighlightCard] = actions;
 
     return(
         <div className="hand-col">
@@ -19,12 +20,12 @@ const HandColumn = (props) => {
             reveal={false}
             list={rivalHand}/>
             <Board 
-            board={renderBoard(props.board, myID)} 
+            board={renderBoard(board, myID)} 
             menuClick={boardMenu}
             ids={[myID, rivalID]}
-            life={props.life} 
+            life={life} 
             selected={selectToBoard}
-            moves={props.moves}
+            moves={moves}
             highlight={setHighlightCard}
             clear={clearSelectionCallback}/>
             <Hand 
@@ -36,5 +37,14 @@ const HandColumn = (props) => {
         </div>
     )
 };
+
+Hand.propTypes = {
+    ids: PropTypes.arrayOf(PropTypes.number), 
+    hand: PropTypes.arrayOf(PropTypes.object), 
+    board: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)), 
+    life: PropTypes.arrayOf(PropTypes.number), 
+    moves: PropTypes.object, 
+    actions: PropTypes.object
+}
 
 export default HandColumn;

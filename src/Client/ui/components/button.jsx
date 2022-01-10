@@ -1,19 +1,27 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import { orNothing } from "../../../utils/help";
 import "../styles/button.css";
 
-const Button = (props) => {
+const Button = ({click, extraClass, hidden, children}) => {
     const isHidden = () => {
-        return props.hidden ? " hidden": "";
+        return hidden ? " hidden": "";
     }
 
     return(
     <button className={"hoverable button"
-    +orNothing(props.extraClass)
+    +orNothing(extraClass)
     +isHidden()} 
-    onClick={props.click}>
-        {props.children}
+    onClick={click}>
+        {children}
     </button>
 )}
+
+Button.propTypes = {
+    click: PropTypes.func, 
+    extraClass: PropTypes.string, 
+    hidden: PropTypes.bool, 
+    children: PropTypes.node
+}
 
 export default Button;

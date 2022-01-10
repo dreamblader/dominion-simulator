@@ -41,3 +41,4 @@
 ### Bug
 - [x] Move Function is Creating a Ghost Tile at Board Y0 X0
 - [x] Undefined in getTileCards when trying to move card to top or back with 2 or more card stacked
+- [ ] Draw For Turn when 1+ cards are on board freezes the game
