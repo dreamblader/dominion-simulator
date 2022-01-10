@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import Button from "./button"
-import Card from "./card";
-import "../styles/menu-reveal.css";
+import Button from "../general/button"
+import Card from "../card/card";
+import "../../styles/menu-reveal.css";
 
 
 const MenuReveal = ({menu, highlight, clear}) => {

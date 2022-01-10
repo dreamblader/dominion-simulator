@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import Card from "../card"
-import Jar from "../jar"
+import Card from "../card/card"
+import Jar from "../gameplay/jar"
 import { Origin } from "../../../../models/enums";
 import { ClassNames, getExtraClasses } from "../../../../utils/style-class";
 import { isEmpty } from "../../../../utils/help";

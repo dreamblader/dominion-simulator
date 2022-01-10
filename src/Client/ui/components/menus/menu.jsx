@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import { doWhenClickOutside } from "../../../utils/menu";
-import "../styles/menu.css";
+import { doWhenClickOutside } from "../../../../utils/menu";
+import "../../styles/menu.css";
 
 const Menu = ({items, moves, clear, posX, posY}) => {
     const clickRef = React.useRef(null);

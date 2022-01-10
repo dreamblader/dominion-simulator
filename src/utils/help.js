@@ -33,6 +33,10 @@ export const orNothing = (val) => {
   }
 };
 
+export const numberOrZero = (number) => {
+  return isNaN(number) ? 0 : number;
+};
+
 export const isEmpty = (array) => {
   return array.length <= 0;
 };

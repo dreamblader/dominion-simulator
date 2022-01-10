@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "../styles/status-segment.css";
+import "../../styles/status-segment.css";
 
 const StatusSegment = ({children}) => (
     <div className="segment">

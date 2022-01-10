@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import { orNothing } from "../../../utils/help";
-import "../styles/button.css";
+import { orNothing } from "../../../../utils/help";
+import "../../styles/button.css";
 
 const Button = ({click, extraClass, hidden, children}) => {
     const isHidden = () => {

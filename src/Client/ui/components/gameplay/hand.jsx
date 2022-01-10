@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import Card from "./card";
-import { Origin } from "../../../models/enums";
-import "../styles/hand.css";
+import Card from "../card/card";
+import { Origin } from "../../../../models/enums";
+import "../../styles/hand.css";
 
 const Hand = ({list, selected, menuClick, highlight}) => {
     const handMenu = (e, i) => {

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import Button from "../button";
+import Button from "../general/button";
 import ReactImage from "../../images/react-img.png";
 
 const ControlColumn = ({ids, currentPlayer, reveal, moves, events}) => {

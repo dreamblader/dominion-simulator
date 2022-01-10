@@ -8,7 +8,7 @@ import { useState } from "react";
 const SimulatorClient = Client({
   game: Simulator,
   board: Arena,
-  //debug: false,
+  debug: false,
   multiplayer: SocketIO({ server: "localhost:8000" }),
 });
 

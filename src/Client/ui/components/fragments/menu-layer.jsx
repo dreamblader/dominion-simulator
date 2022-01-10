@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import MenuData from "../../../../models/menu";
-import Menu from "../menu";
-import MenuList from "../menu-list"
-import MenuLife from "../menu-life";
-import MenuReveal from "../menu-reveal";
+import Menu from "../menus/menu";
+import MenuList from "../menus/menu-list"
+import MenuLife from "../menus/menu-life";
+import MenuReveal from "../menus/menu-reveal";
 import "../../styles/menu-layer.css";
 
 const MenuLayer = ({listMenu, actionMenu, revealMenu, lifeMenu, ids, moves, highlight, clear}) => {

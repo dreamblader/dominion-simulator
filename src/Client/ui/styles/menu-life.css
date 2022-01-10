@@ -16,27 +16,3 @@
 .menu-life-container > *:not(:last-child) {
   margin-bottom: 2rem;
 }
-
-.life-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.life-container > input {
-  width: 5rem;
-  text-align: center;
-}
-
-.life-container > button {
-  font-weight: bold;
-  margin-left: 2rem;
-  margin-right: 2rem;
-}
-
-.life-container > input::-webkit-outer-spin-button,
-.life-container > input::-webkit-inner-spin-button,
-.life-container > input[type="number"] {
-  -webkit-appearance: none;
-  margin: 0;
-}

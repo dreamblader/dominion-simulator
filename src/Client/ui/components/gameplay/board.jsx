@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import Card from "./card";
-import { Types } from "../../../models/enums";
-import { ClassNames, getExtraClasses } from "../../../utils/style-class";
-import { getCurentHP, getCurentATK } from "../../../utils/card";
-import "../styles/board.css";
+import Card from "../card/card";
+import { Types } from "../../../../models/enums";
+import { ClassNames, getExtraClasses } from "../../../../utils/style-class";
+import { getCurentHP, getCurentATK } from "../../../../utils/card";
+import "../../styles/board.css";
 
 
 const Board = ({board, ids, moves, selected, life, menuClick, highlight, clear}) => {

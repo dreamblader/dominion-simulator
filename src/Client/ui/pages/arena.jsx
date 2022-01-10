@@ -19,7 +19,7 @@ import { getLifeMenu } from "../../../actions/controls";
 import "../styles/arena.css";
 import ControlColumn from "../components/fragments/control-column";
 import StatusColumn from "../components/fragments/status-column";
-import Card from "../components/card";
+import Card from "../components/card/card";
 import getBoardActionMenu, { moveInBoard, getTileCardsList } from "../../../actions/board";
 
 const Arena = (props) => {

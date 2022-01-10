@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import { orNothing } from "../../../utils/help";
-import "../styles/jar.css";
+import { orNothing } from "../../../../utils/help";
+import "../../styles/jar.css";
 
 const Jar = ({click, extraClass, children}) => (
     <div 

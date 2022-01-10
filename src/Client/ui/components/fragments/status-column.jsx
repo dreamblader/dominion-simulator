@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import HtmlParser from "react-html-parser";
 import { Types } from "../../../../models/enums";
 import { getCurentATK, getCurentHP, getCurrentRange } from "../../../../utils/card";
-import CardArt from "../card-art";
-import StatusSegment from "../status-segment"
+import CardArt from "../card/card-art";
+import StatusSegment from "../general/status-segment"
 
 const StatusColumn = ({card}) => {
 

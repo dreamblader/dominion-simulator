@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import CardArt from "./card-art";
-import { orNothing } from "../../../utils/help";
-import "../styles/card.css";
+import { orNothing } from "../../../../utils/help";
+import "../../styles/card.css";
 
 const Card = ({card, highlight, extraClass, click, children}) => {
 

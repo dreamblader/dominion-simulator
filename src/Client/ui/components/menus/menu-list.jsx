@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import Card from "./card";
-import Button from "./button";
-import Strings from "../../../utils/strings";
-import { doWhenClickOutside } from "../../../utils/menu";
-import "../styles/menu-list.css";
+import Card from "../card/card";
+import Button from "../general/button";
+import Strings from "../../../../utils/strings";
+import { doWhenClickOutside } from "../../../../utils/menu";
+import "../../styles/menu-list.css";
 
 
 const MenuList = ({menu, ids, click, highlight, clear}) => {
