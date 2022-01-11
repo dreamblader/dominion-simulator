@@ -1,9 +1,9 @@
-import ServerActions from "../../Server/actions/destroy";
-import Temp from "../../models/temp-select";
-import { Origin } from "../../models/enums";
-import Action from "../../models/action";
-import Strings from "../../utils/strings";
-import MenuListData from "../../models/menu-list";
+import ServerActions from "Server/actions/destroy";
+import Temp from "models/temp-select";
+import { Origin } from "models/enums";
+import Action from "models/action";
+import MenuListData from "models/menu-list";
+import Strings from "utils/strings";
 
 const reborn = (dz, myID, index) => {
   return selectToField(dz, myID, index);

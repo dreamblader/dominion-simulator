@@ -22,7 +22,7 @@ const MenuLayer = ({listMenu, actionMenu, revealMenu, lifeMenu, ids, moves, high
         });
         let menu = MenuData(event.pageX, event.pageY, actions);
         
-        moves.setMenu(menu);
+        moves.actionsMenu(menu);
     }
     
     return(

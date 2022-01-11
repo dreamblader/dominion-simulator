@@ -36,7 +36,7 @@
   - [x] Add Server Database Storage
 
 ### QOL
-- [ ] Arena refactor
+- [x] Arena refactor
 - [x] Separate Actions between Client and Server
 - [ ] Add Animations and Particles
 

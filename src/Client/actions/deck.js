@@ -1,10 +1,10 @@
-import Strings from "../../utils/strings";
-import ServerActions from "../../Server/actions/deck";
-import { mapToCard } from "../../models/card";
-import Deck from "../../models/deck";
-import Action from "../../models/action";
-import MenuListData from "../../models/menu-list";
-import MenuData from "../../models/menu";
+import ServerActions from "Server/actions/deck";
+import Deck from "models/deck";
+import Action from "models/action";
+import MenuListData from "models/menu-list";
+import MenuData from "models/menu";
+import Strings from "utils/strings";
+import { mapToCard } from "models/card";
 
 export const constructDeck = (deckID, cards, id) => {
   let mappedCards = [];

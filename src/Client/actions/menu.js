@@ -1,24 +1,33 @@
-import MenuLifeData from "../../models/menu-life";
-import DeckActions from "Server/actions/deck";
-import Strings from "../../utils/strings";
+import MenuLifeData from "models/menu-life";
+import DeckActions from "Client/actions/deck";
+import HandActions from "Client/actions/hand";
+import BoardActions from "Client/actions/board";
+import DestroyActions from "Client/actions/destroy";
+import OutActions from "Client/actions/out";
+import Strings from "utils/strings";
 
 const { getDeckActionsOnMenu } = DeckActions;
+const { getDZForSearch } = DestroyActions;
+const { getOOGForSearch } = OutActions;
+const { getHandActionsOnMenu } = HandActions;
+const { getBoardActionMenu } = BoardActions;
 
 const MenuActions = ({
   G,
   myID,
   moves,
   actionMenu,
-  lifeMenu,
-  listMenu,
-  setSelectToBoard,
   setActionMenu,
+  lifeMenu,
+  setLifeMenu,
+  listMenu,
   setListMenu,
+  setSelectToBoard,
 }) => {
   const getLifeMenu = (life) => {
     return MenuLifeData(life);
   };
-  /**
+
   const deckMenu = (e) => {
     setSelectToBoard(null);
     setActionMenu(getDeckActionsOnMenu(e));
@@ -41,10 +50,6 @@ const MenuActions = ({
     setActionMenu(getBoardActionMenu(e, tile, id));
   };
 
-  const setMenu = (menu) => {
-    setActionMenu(menu);
-  };
-
   const clearListMenu = () => {
     let wasDeckMenu = listMenu.header === Strings.deckHeader;
     setListMenu(null);
@@ -64,7 +69,17 @@ const MenuActions = ({
       moves.clearReveal();
     }
   };
-  **/
+
+  return {
+    getLifeMenu,
+    deckMenu,
+    dzMenu,
+    oogMenu,
+    handMenu,
+    boardMenu,
+    clearListMenu,
+    clearMenuCallback,
+  };
 };
 
 export default MenuActions;
