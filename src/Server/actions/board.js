@@ -1,7 +1,7 @@
 import Place from "../../models/place";
 import { Origin } from "../../models/enums";
-import { getTileCard, getTileCardsArray } from "../../utils/board";
-import { toBoard, resetStats } from "../../utils/help";
+import { getTileCard, getTileCardsArray, toBoard } from "../../utils/board";
+import { resetStats } from "../../utils/card";
 
 const checkSelection = (G, selected, player) => {
   let origin = Object.keys(selected.origin)[0];

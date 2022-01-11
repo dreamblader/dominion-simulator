@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from 'prop-types';
 import Hand from "../gameplay/hand";
 import Board from "../gameplay/board";
-import { renderBoard } from "../../../../utils/help";
+import { renderBoard } from "../../../../utils/board";
 
 const HandColumn = ({ids, hand, board, life, moves, actions}) => {
 
