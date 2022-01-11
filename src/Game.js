@@ -18,20 +18,10 @@ import {
 import {
   backToTopDeck,
   backToBottomDeck,
-  backToDeck,
   destroy,
   finish,
 } from "./actions/hand";
-import {
-  setDeck,
-  draw,
-  drawForTurn,
-  searchToHand,
-  searchToDZ,
-  searchToOOG,
-  shuffleDeck,
-  mill,
-} from "./actions/deck";
+import DeckActions from "./Server/actions/deck";
 import { backToHand, destroyToOOG } from "./actions/destroy";
 import { recycle } from "./actions/out";
 import { clearReveal, callReact, setLife } from "./actions/controls";
@@ -50,18 +40,10 @@ export const Simulator = {
 
   moves: {
     //Deck
-    setDeck,
-    draw,
-    drawForTurn,
-    searchToHand,
-    searchToDZ,
-    searchToOOG,
-    shuffleDeck,
-    mill,
+    ...DeckActions,
     //Hand
     backToTopDeck,
     backToBottomDeck,
-    backToDeck,
     destroy,
     finish,
     //DZ

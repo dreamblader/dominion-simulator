@@ -33,9 +33,11 @@
   - [ ] Login
   - [ ] Rules Link
 - [ ] Add Deck Building Feature
-  - [ ] Add Server Database Storage
+  - [x] Add Server Database Storage
 
 ### QOL
+- [ ] Arena refactor
+- [ ] Separate Actions between Client and Server
 - [ ] Add Animations and Particles
 
 ### Bug

@@ -4,10 +4,7 @@ import DeckColumn from "../components/fragments/deck-column";
 import HandColumn from "../components/fragments/hand-column";
 import Strings from "../../../utils/strings";
 import { getDeckService } from "../../../service/api";
-import getDeckActionsOnMenu, {
-  getDeckForSearch,
-  constructDeck,
-} from "../../../actions/deck";
+import DeckActions from "../../actions/deck";
 import getOOGForSearch from "../../../actions/out";
 import getDZForSearch from "../../../actions/destroy";
 import getHandActionsOnMenu, {
@@ -22,10 +19,11 @@ import StatusColumn from "../components/fragments/status-column";
 import Card from "../components/card/card";
 import getBoardActionMenu, { moveInBoard, getTileCardsList } from "../../../actions/board";
 
-const Arena = (props) => {
-  const myID = parseInt(props.playerID);
+const Arena = ({G, ctx, playerID, deckID, moves, events}) => {
+  const myID = parseInt(playerID);
   const rivalID = myID === 0 ? 1 : 0;
 
+  const {constructDeck, getDeckActionsOnMenu, getDeckForSearch} = DeckActions
   const [actionMenu, setActionMenu] = useState(null);
   const [highlightCard, setHighlightCard] = useState(Card("", -1));
   const [listMenu, setListMenu] = useState(null);
@@ -37,14 +35,14 @@ const Arena = (props) => {
 
   React.useEffect(() => {
     const deckStart = async () => {
-      let cards = await getDeckService(props.deckID);
-      props.moves.setDeck(constructDeck(props.deckID, cards, myID));
+      let cards = await getDeckService(deckID);
+      moves.setDeck(constructDeck(deckID, cards, myID));
     };
 
-    if (props.deckID !== props.G.deck[myID].id) {
+    if (deckID !== G.deck[myID].id) {
       deckStart();
     }
-  }, [props, myID]);
+  }, [moves, deckID, G, myID]);
 
   const deckMenu = (e) => {
     setSelectToBoard(null);
@@ -52,16 +50,16 @@ const Arena = (props) => {
   };
 
   const dzMenu = (id, mine) => {
-    setListMenu(getDZForSearch(props.G, id, mine));
+    setListMenu(getDZForSearch(G, id, mine));
   };
 
   const oogMenu = () => {
-    setListMenu(getOOGForSearch(props.G.out));
+    setListMenu(getOOGForSearch(G.out));
   };
 
   const handMenu = (e, i) => {
     setSelectToBoard(null);
-    setActionMenu(getHandActionsOnMenu(e, i, props.G.hand, myID));
+    setActionMenu(getHandActionsOnMenu(e, i, G.hand, myID));
   };
 
   const boardMenu = (e, tile, id) => {
@@ -76,7 +74,7 @@ const Arena = (props) => {
     let wasDeckMenu = listMenu.header === Strings.deckHeader;
     setListMenu(null);
     if (wasDeckMenu) {
-      setTimeout(props.moves.shuffleDeck, 100);
+      setTimeout(moves.shuffleDeck, 100);
     }
   };
 
@@ -87,8 +85,8 @@ const Arena = (props) => {
       clearListMenu();
     } else if (lifeMenu) {
       setLifeMenu(null);
-    } else if (props.G.reveal[myID]) {
-      props.moves.clearReveal();
+    } else if (G.reveal[myID]) {
+      moves.clearReveal();
     }
   };
 
@@ -107,17 +105,17 @@ const Arena = (props) => {
       setSelectToBoard(reborn(...args));
     },
     getDeckForSearch: () => {
-      setListMenu(getDeckForSearch(props.G.deck[myID].cards));
+      setListMenu(getDeckForSearch(G.deck[myID].cards));
     },
     myLifeMenu: () => {
-      setLifeMenu(getLifeMenu(props.G.life[myID]));
+      setLifeMenu(getLifeMenu(G.life[myID]));
     },
     setMenu,
     getTileCardsList: (...args) => {
       setListMenu(getTileCardsList(...args))
     },
     moveInBoard: (...args) => {
-      setSelectToBoard(moveInBoard(props.G.board, ...args));
+      setSelectToBoard(moveInBoard(G.board, ...args));
     },
   };
 
@@ -126,19 +124,19 @@ const Arena = (props) => {
       <MenuLayer
         actionMenu={actionMenu}
         listMenu={listMenu}
-        revealMenu={props.G.reveal[myID]}
+        revealMenu={G.reveal[myID]}
         lifeMenu={lifeMenu}
         ids={[myID, rivalID]}
-        moves={Object.assign(props.moves, clientSideMoves)}
+        moves={Object.assign(moves, clientSideMoves)}
         highlight={setHighlightCard}
         clear={clearMenuCallback}
       />
 
       <DeckColumn
         ids={[myID, rivalID]}
-        decks={props.G.deck}
-        dzs={props.G.destroyZone}
-        out={props.G.out}
+        decks={G.deck}
+        dzs={G.destroyZone}
+        out={G.out}
         selection={isSelected}
         highlight={setHighlightCard}
         menu={[deckMenu, dzMenu, oogMenu]}
@@ -146,10 +144,10 @@ const Arena = (props) => {
 
       <HandColumn
         ids={[myID, rivalID]}
-        life={props.G.life}
-        hand={props.G.hand}
-        board={props.G.board}
-        moves={props.moves}
+        life={G.life}
+        hand={G.hand}
+        board={G.board}
+        moves={moves}
         actions={[
           handMenu,
           boardMenu,
@@ -161,10 +159,10 @@ const Arena = (props) => {
 
       <ControlColumn
         ids={[myID, rivalID]}
-        currentPlayer={parseInt(props.ctx.currentPlayer)}
-        moves={props.moves}
-        events={props.events}
-        reveal={props.G.reveal}
+        currentPlayer={parseInt(ctx.currentPlayer)}
+        moves={moves}
+        events={events}
+        reveal={G.reveal}
       />
 
       <StatusColumn card={highlightCard} />
