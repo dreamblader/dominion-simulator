@@ -8,6 +8,7 @@ import { Routes, Route, NavLink } from "react-router-dom";
 import LobbyPage from "./Pages/Lobby/Lobby";
 import HomePage from "Client/Pages/Home/Home";
 import Arena from "Client/Pages/Arena/Arena";
+import OldClient from "App";
 
 // Styles
 import classes from "./App.module.css";
@@ -55,6 +56,12 @@ const routes = (filter) => {
     label: "Arena",
     component: <Arena />,
     to: "/arena",
+    route: true,
+    link: true,
+  }, {
+    label: "MasterClient",
+    component: <OldClient />,
+    to: "/client",
     route: true,
     link: true,
   }, {

@@ -110,10 +110,10 @@ const CustomInput = props => {
       return <p>The <code>select field [{name}]</code> doesnt have the <code>options</code> with the possible values for the <code>select</code> input</p>
     }
     return (
-      <select className={classes.input} name={name} disabled={disabled} onChange={onChange} value={value}>
-        <option value="">Select a deck</option>
+      <select required className={classes.input} name={name} disabled={disabled} onChange={onChange} value={value}>
+        <option value={1}>Select a deck</option>
         {options.map(option => (
-          <option key={option.value} value={option.value.toString()}>{option.name}</option>
+          <option key={option.value} value={option.value}>{option.name}</option>
         ))}
       </select>
     );
