@@ -1,30 +1,13 @@
 import { ActivePlayers, TurnOrder } from "boardgame.io/core";
-import { setupDeck, setupProps, setupBoard } from "./actions/setup";
+import { setupDeck, setupProps, setupBoard } from "./Server/actions/setup";
 import Consts from "./utils/consts";
 import HideSecrets from "./utils/secret";
-import {
-  placeInHere,
-  attackCard,
-  invertCard,
-  flipCard,
-  activateCard,
-  bounceCard,
-  destroyCard,
-  finishCard,
-  attachArtifact,
-  tileCardToBack,
-  tileCardToFront,
-} from "./actions/board";
-import {
-  backToTopDeck,
-  backToBottomDeck,
-  destroy,
-  finish,
-} from "./actions/hand";
+import BoardActions from "./Server/actions/board";
+import HandActions from "./Server/actions/hand";
 import DeckActions from "./Server/actions/deck";
-import { backToHand, destroyToOOG } from "./actions/destroy";
-import { recycle } from "./actions/out";
-import { clearReveal, callReact, setLife } from "./actions/controls";
+import DestroyActions from "./Server/actions/destroy";
+import OutActions from "./Server/actions/out";
+import MiscActions from "./Server/actions/controls";
 
 export const Simulator = {
   name: "dominion_simulator",
@@ -39,34 +22,12 @@ export const Simulator = {
   }),
 
   moves: {
-    //Deck
     ...DeckActions,
-    //Hand
-    backToTopDeck,
-    backToBottomDeck,
-    destroy,
-    finish,
-    //DZ
-    backToHand,
-    destroyToOOG,
-    //OUT
-    recycle,
-    //Board
-    placeInHere,
-    attackCard,
-    invertCard,
-    flipCard,
-    activateCard,
-    bounceCard,
-    destroyCard,
-    finishCard,
-    attachArtifact,
-    tileCardToBack,
-    tileCardToFront,
-    //MISC
-    clearReveal,
-    callReact,
-    setLife,
+    ...HandActions,
+    ...DestroyActions,
+    ...OutActions,
+    ...BoardActions,
+    ...MiscActions,
   },
 
   minPlayers: 2,

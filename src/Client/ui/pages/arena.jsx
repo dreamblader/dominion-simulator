@@ -1,28 +1,28 @@
 import React, { useState } from "react";
-import MenuLayer from "../components/fragments/menu-layer";
-import DeckColumn from "../components/fragments/deck-column";
-import HandColumn from "../components/fragments/hand-column";
-import Strings from "../../../utils/strings";
-import { getDeckService } from "../../../service/api";
-import DeckActions from "../../actions/deck";
-import getOOGForSearch from "../../../actions/out";
-import getDZForSearch from "../../../actions/destroy";
-import getHandActionsOnMenu, {
-  spawnFaceDown,
-  spawnFaceUp,
-} from "../../../actions/hand";
-import { reborn } from "../../../actions/destroy";
-import { getLifeMenu } from "../../../actions/controls";
-import "../styles/arena.css";
-import ControlColumn from "../components/fragments/control-column";
-import StatusColumn from "../components/fragments/status-column";
-import Card from "../components/card/card";
-import getBoardActionMenu, { moveInBoard, getTileCardsList } from "../../../actions/board";
+import { getDeckService } from "service/api";
+import MenuLayer from "Client/ui/components/fragments/menu-layer";
+import DeckColumn from "Client/ui/components/fragments/deck-column";
+import HandColumn from "Client/ui/components/fragments/hand-column";
+import ControlColumn from "Client/ui/components/fragments/control-column";
+import StatusColumn from "Client/ui/components/fragments/status-column";
+import DeckActions from "Client/actions/deck";
+import DestroyActions from "Client/actions/destroy";
+import OutActions from "Client/actions/out"
+import HandActions from "Client/actions/hand";
+import MenuActions from "Client/actions/menu";
+import BoardActions from "Client/actions/board";
+import Card from "Client/ui/components/card/card";
+import Strings from "utils/strings";
+import "Client/ui/styles/arena.css";
 
 const Arena = ({G, ctx, playerID, deckID, moves, events}) => {
   const myID = parseInt(playerID);
   const rivalID = myID === 0 ? 1 : 0;
 
+  const {getBoardActionMenu, getTileCardsList, moveInBoard} = BoardActions
+  const {getDZForSearch, reborn} = DestroyActions
+  const {spawnFaceUp, spawnFaceDown, getHandActionsOnMenu} = HandActions
+  const {getOOGForSearch} = OutActions
   const {constructDeck, getDeckActionsOnMenu, getDeckForSearch} = DeckActions
   const [actionMenu, setActionMenu] = useState(null);
   const [highlightCard, setHighlightCard] = useState(Card("", -1));
@@ -42,8 +42,9 @@ const Arena = ({G, ctx, playerID, deckID, moves, events}) => {
     if (deckID !== G.deck[myID].id) {
       deckStart();
     }
-  }, [moves, deckID, G, myID]);
+  }, [constructDeck, moves, deckID, G, myID]);
 
+  //TODO REMOVE THIS AFTER
   const deckMenu = (e) => {
     setSelectToBoard(null);
     setActionMenu(getDeckActionsOnMenu(e));
@@ -89,7 +90,7 @@ const Arena = ({G, ctx, playerID, deckID, moves, events}) => {
       moves.clearReveal();
     }
   };
-
+ //TODO @END
   const clearSelectionCallback = () => {
     setSelectToBoard(null);
   };
@@ -108,7 +109,7 @@ const Arena = ({G, ctx, playerID, deckID, moves, events}) => {
       setListMenu(getDeckForSearch(G.deck[myID].cards));
     },
     myLifeMenu: () => {
-      setLifeMenu(getLifeMenu(G.life[myID]));
+      setLifeMenu(MenuActions.getLifeMenu(G.life[myID]));
     },
     setMenu,
     getTileCardsList: (...args) => {

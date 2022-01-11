@@ -1,4 +1,4 @@
-import { getMyDeckCards } from "../actions/database";
+import { getMyDeckCards } from "./actions/database";
 import { Server, Origins } from "boardgame.io/server";
 //import * as fs from "fs";
 import { Simulator } from "../Game";

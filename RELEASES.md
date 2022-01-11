@@ -37,7 +37,7 @@
 
 ### QOL
 - [ ] Arena refactor
-- [ ] Separate Actions between Client and Server
+- [x] Separate Actions between Client and Server
 - [ ] Add Animations and Particles
 
 ### Bug

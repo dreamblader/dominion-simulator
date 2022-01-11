@@ -1,4 +1,4 @@
-import { getDeckCardsQuery } from "../utils/queries";
+import { getDeckCardsQuery } from "../../utils/queries";
 
 export const getMyDeckCards = (database, deckId) => {
   return runQuery(database, getDeckCardsQuery(deckId));
