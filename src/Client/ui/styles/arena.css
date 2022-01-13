@@ -34,7 +34,7 @@
 .status-col {
   display: flex;
   width: 20%;
-  min-height: 100vh;
+  height: 100vh;
   overflow-y: auto;
   flex-direction: column;
   align-items: center;

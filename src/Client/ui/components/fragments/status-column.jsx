@@ -53,7 +53,7 @@ const StatusColumn = ({card}) => {
                 </div>
                 {currentRange !== 0 &&
                 <div className="stat">
-                    <div>RANGE:</div>
+                    <div>R:</div>
                     <div>{currentRange}</div>
                 </div>}
             </div>

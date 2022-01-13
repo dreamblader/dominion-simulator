@@ -15,7 +15,7 @@ const MenuStats = ({data, highlight, apply, clear}) => {
     const [atk, setCardAtk] = React.useState(getCurentATK(card));
     const [hp, setCardHP] = React.useState(getCurentHP(card));
     const [range, setCardRange] = React.useState(getCurrentRange(card));
-    const [isRangeEnable, setIsRangeEnable] = React.useState(false);
+    const [isRangeEnable, setIsRangeEnable] = React.useState(getCurrentRange(card) !== 0);
 
     const rangeCheck = (e) => {
         setIsRangeEnable(e.target.checked)
@@ -43,7 +43,7 @@ const MenuStats = ({data, highlight, apply, clear}) => {
                         <h3>Life:</h3>
                         <NumberInput value={hp} setValue={setCardHP}/>
                         <div className="input-container">
-                            <input type="checkbox" onChange={e => rangeCheck(e)}/><p>Set Card Range</p>
+                            <input type="checkbox" checked={isRangeEnable} onChange={e => rangeCheck(e)}/><p>Set Card Range</p>
                         </div> 
                         { isRangeEnable &&
                             <React.Fragment>
