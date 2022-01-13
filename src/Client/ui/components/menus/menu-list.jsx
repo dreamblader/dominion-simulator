@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import Card from "../card/card";
-import Button from "../general/button";
+import MenuHeader from "./menu-header";
 import Strings from "../../../../utils/strings";
 import { doWhenClickOutside } from "../../../../utils/menu";
 import "../../styles/menu-list.css";
@@ -23,12 +23,10 @@ const MenuList = ({menu, ids, click, highlight, clear}) => {
     return(
         <div className="menu-list-container"  
         ref={clickRef}>
-            <div className="header">
-                {menu.header}
-                <Button extraClass=" quit"
-                click={clear}
-                >X</Button>
-            </div>
+            <MenuHeader 
+            header={menu.header} 
+            clear={clear} 
+            />
             <div className="menu-list">
                 {menu.cards.map((card, index) => (
                 <Card

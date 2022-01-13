@@ -7,12 +7,18 @@ import MenuListData from "models/menu-list";
 import Strings from "utils/strings";
 import { Origin } from "models/enums";
 import { getTileCard } from "utils/board";
+import MenuStatusData from "models/menu-stats";
 
 const moveInBoard = (board, place, index = 0) => {
   let origin = {};
   origin[Origin.BOARD] = index;
   let card = getTileCard(board, place, index);
   return Temp(origin, card, card.flipped, place.x, place.y);
+};
+
+const openStatsMenu = (board, place, index = 0) => {
+  let card = getTileCard(board, place, index);
+  return MenuStatusData(place, card, index);
 };
 
 const BoardActionsMenu = (card, id, place) => {
@@ -23,7 +29,7 @@ const BoardActionsMenu = (card, id, place) => {
         Action("Flip", ServerActions.flipCard.name, [place]),
         Action("Invert", ServerActions.invertCard.name, [place]),
         //Action("Activate", ServerActions.activateCard.name),
-        Action("Set Stats", ServerActions.openStatsMenu.name),
+        Action("Set Stats", openStatsMenu.name, [place]),
         //Action("Tick", ServerActions.tickCard.name),
         Action("Bounce", ServerActions.bounceCard.name, [place]),
         Action("Destroy", ServerActions.destroyCard.name, [place]),
@@ -73,6 +79,7 @@ const getTileCardsList = (tile) => {
 
 const BoardActions = {
   moveInBoard,
+  openStatsMenu,
   getBoardActionMenu,
   getTileCardsList,
 };

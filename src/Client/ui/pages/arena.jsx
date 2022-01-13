@@ -6,8 +6,7 @@ import HandColumn from "Client/ui/components/fragments/hand-column";
 import ControlColumn from "Client/ui/components/fragments/control-column";
 import StatusColumn from "Client/ui/components/fragments/status-column";
 import DeckActions from "Client/actions/deck";
-import MenuActions from "Client/actions/menu";
-import Moves from "Client/moves";
+import ArenaActions from "Client/handlers/arena";
 import Card from "Client/ui/components/card/card";
 import "Client/ui/styles/arena.css";
 
@@ -18,16 +17,19 @@ const Arena = ({G, ctx, playerID, deckID, moves, events}) => {
   const [actionMenu, setActionMenu] = useState(null);
   const [highlightCard, setHighlightCard] = useState(Card("", -1));
   const [listMenu, setListMenu] = useState(null);
+  const [statsMenu, setStatsMenu] = useState(null);
   const [lifeMenu, setLifeMenu] = useState(null);
   const [selectToBoard, setSelectToBoard] = useState(null);
 
-  const setters = {setActionMenu, setHighlightCard, setListMenu, setLifeMenu, setSelectToBoard}
-  const getters = {actionMenu, highlightCard, listMenu, lifeMenu, selectToBoard}
+  const setters = {setActionMenu, setHighlightCard, setListMenu, setStatsMenu, setLifeMenu, setSelectToBoard}
+  const getters = {actionMenu, highlightCard, listMenu, statsMenu, lifeMenu, selectToBoard}
 
   const params = {G, myID, moves, ...setters, ...getters,}
 
+  const actions = ArenaActions(params)
+  const clientSideMoves = actions.moves;
   const {deckMenu, dzMenu, oogMenu, handMenu,
-    boardMenu, clearMenuCallback} = MenuActions(params);
+    boardMenu, clearMenuCallback} = actions.global;
 
   const isSelected = (place) =>
     selectToBoard && selectToBoard.origin[place] !== undefined;
@@ -47,8 +49,6 @@ const Arena = ({G, ctx, playerID, deckID, moves, events}) => {
     setSelectToBoard(null);
   };
 
-  const clientSideMoves = Moves(params);
-
   return (
     <div className="arena">
       <MenuLayer
@@ -56,6 +56,7 @@ const Arena = ({G, ctx, playerID, deckID, moves, events}) => {
         listMenu={listMenu}
         revealMenu={G.reveal[myID]}
         lifeMenu={lifeMenu}
+        statsMenu={statsMenu}
         ids={[myID, rivalID]}
         moves={Object.assign(moves, clientSideMoves)}
         highlight={setHighlightCard}

@@ -6,8 +6,9 @@ import MenuList from "../menus/menu-list"
 import MenuLife from "../menus/menu-life";
 import MenuReveal from "../menus/menu-reveal";
 import "../../styles/menu-layer.css";
+import MenuStats from "../menus/menu-stats";
 
-const MenuLayer = ({listMenu, actionMenu, revealMenu, lifeMenu, ids, moves, highlight, clear}) => {
+const MenuLayer = ({listMenu, actionMenu, revealMenu, statsMenu, lifeMenu, ids, moves, highlight, clear}) => {
 
     const clickMenuList = (event, index) => {
         let actions = listMenu.actions.map(action => {
@@ -42,6 +43,12 @@ const MenuLayer = ({listMenu, actionMenu, revealMenu, lifeMenu, ids, moves, high
             moves={moves}
             click={clickMenuList}
             clear={clear}/>}
+        {statsMenu &&
+            <MenuStats
+            card={statsMenu.card}
+            apply={moves} 
+            clear={clear}/>
+        }
         {lifeMenu &&
             <MenuLife
             life={lifeMenu.life}

@@ -50,8 +50,6 @@ const invertCard = (G, ctx, place, index = 0) => {
 
 const activateCard = (G, ctx, tile, index = 0) => {};
 
-const openStatsMenu = (card) => {};
-
 const tickCard = (card) => {};
 
 const bounceCard = (G, ctx, place, index = 0) => {
@@ -93,7 +91,6 @@ const BoardActions = {
   flipCard,
   invertCard,
   activateCard,
-  openStatsMenu,
   tickCard,
   bounceCard,
   destroyCard,

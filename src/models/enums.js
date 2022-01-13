@@ -11,6 +11,7 @@ export const Types = {
   UNITY: "Unity",
   ARTIFACT: "Artifact",
   FIELD: "Field",
+  TOKEN: "Token",
 };
 
 export const Origin = {
