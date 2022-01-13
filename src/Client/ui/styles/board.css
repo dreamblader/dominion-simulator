@@ -1,6 +1,8 @@
 .board {
   display: grid;
   width: fit-content;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
   padding: 0.5rem 9rem 0.5rem 9.25rem;
   background-color: black;
   grid-template-columns: repeat(7, 1fr);
@@ -44,8 +46,11 @@
 }
 
 .tile-holder {
-  height: 5rem;
-  width: 3.5rem;
+  /* height: 5rem;
+  width: 3.5rem; */
+
+  height: 6rem;
+  width: 4rem;
 }
 
 .user {

@@ -1,7 +1,7 @@
 import Place from "../../models/place";
 import { Origin } from "../../models/enums";
 import { getTileCard, getTileCardsArray, toBoard } from "../../utils/board";
-import { resetStats } from "../../utils/card";
+import { resetStats, setStats } from "../../utils/card";
 
 const checkSelection = (G, selected, player) => {
   let origin = Object.keys(selected.origin)[0];
@@ -34,6 +34,12 @@ const placeInHere = (G, ctx, selected, x, y) => {
         : G[originName][selected.y][selected.x].cards;
     toBoard(G, origin, originIndex, place);
   }
+};
+
+const applyStats = (G, ctx, place, stats, index = 0) => {
+  let card = getTileCard(G.board, place, index);
+  let cardList = getTileCardsArray(G.board, place);
+  cardList[index] = setStats(card, stats);
 };
 
 const attackCard = (G, ctx, tile, targetTile, index = 0) => {};
@@ -90,6 +96,7 @@ const BoardActions = {
   attackCard,
   flipCard,
   invertCard,
+  applyStats,
   activateCard,
   tickCard,
   bounceCard,

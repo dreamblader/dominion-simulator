@@ -45,8 +45,9 @@ const MenuLayer = ({listMenu, actionMenu, revealMenu, statsMenu, lifeMenu, ids, 
             clear={clear}/>}
         {statsMenu &&
             <MenuStats
-            card={statsMenu.card}
-            apply={moves} 
+            data={statsMenu}
+            highlight={highlight}
+            apply={moves.applyStats} 
             clear={clear}/>
         }
         {lifeMenu &&

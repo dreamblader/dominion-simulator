@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import Button from "../general/button";
+import "../../styles/menu-header.css"
 
 const MenuHeader = ({header, clear}) => (
     <div className="header">

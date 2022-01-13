@@ -20,10 +20,9 @@ const StatusColumn = ({card}) => {
     }
 
     const getStatClass = (originalStat, currentStat) => {
-        const diff = originalStat - currentStat;
-        if(diff < 0){
+        if(currentStat < originalStat){
             return "negative";
-        } else if(diff > 0){
+        } else if(currentStat > originalStat){
             return "positive";
         }
         return "";

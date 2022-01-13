@@ -69,6 +69,7 @@ const getTileCardsList = (tile) => {
   let actions = [
     Action("To Top", ServerActions.tileCardToFront.name, [place]),
     Action("To Back", ServerActions.tileCardToBack.name, [place]),
+    Action("Set Stats", openStatsMenu.name, [place]),
     //Action("Attach Card", attachArtifact.name),
     Action("Bounce", ServerActions.bounceCard.name, [place]),
     Action("Destroy", ServerActions.destroyCard.name, [place]),

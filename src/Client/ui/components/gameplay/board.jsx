@@ -81,6 +81,12 @@ const Board = ({board, ids, moves, selected, life, menuClick, highlight, clear})
         }
     }
 
+    const clickCardTile = (e, tile) => {
+        if(!selected){
+            menuClick(e, tile, myID)
+        }
+    }
+
     const getCardView = (card, tile) => {
         if(card){
             let extraClass = getExtraClasses(isInversed(card), ClassNames.INVERTED) 
@@ -89,7 +95,7 @@ const Board = ({board, ids, moves, selected, life, menuClick, highlight, clear})
             <Card card={card}
                 highlight={highlight}
                 extraClass={extraClass+" "+ClassNames.DISABLED}
-                click={(e) => menuClick(e, tile, myID)} >
+                click={(e) => clickCardTile(e, tile)} >
                 {!card.flipped && card.type === Types.UNITY &&
                     <div className="txt-info">
                         {getCurentATK(card)+"/"+getCurentHP(card)}

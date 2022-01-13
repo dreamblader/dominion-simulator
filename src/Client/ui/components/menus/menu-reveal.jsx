@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Button from "../general/button"
 import Card from "../card/card";
 import "../../styles/menu-reveal.css";
+import NoInputLayer from "../general/no-input-layer";
 
 
 const MenuReveal = ({menu, highlight, clear}) => {
@@ -17,7 +18,7 @@ const MenuReveal = ({menu, highlight, clear}) => {
     };
 
     return(
-        <div className="menu-reveal-layer">
+        <NoInputLayer>
             <div className="menu-reveal">
                 <div className="reveal-text">
                     {menu.topText}
@@ -30,7 +31,7 @@ const MenuReveal = ({menu, highlight, clear}) => {
                 </div>
                 <Button click={clear}>OK</Button>
             </div>
-        </div>
+        </NoInputLayer>
 )}
 
 MenuReveal.propTypes = {

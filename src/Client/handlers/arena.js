@@ -22,6 +22,7 @@ const ArenaActions = ({
   setLifeMenu,
   listMenu,
   setListMenu,
+  statsMenu,
   setStatsMenu,
   setSelectToBoard,
 }) => {
@@ -68,6 +69,8 @@ const ArenaActions = ({
       clearListMenu();
     } else if (lifeMenu) {
       setLifeMenu(null);
+    } else if (statsMenu) {
+      setStatsMenu(null);
     } else if (G.reveal[myID]) {
       moves.clearReveal();
     }

@@ -2,6 +2,11 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  height: 11rem;
+  min-height: 5rem;
   width: 100%;
+}
+
+.hand .card-holder {
+  height: 7.5rem;
+  width: 5.25rem;
 }
