@@ -52,12 +52,11 @@ Possible actions that you can do in the simulator and where you can do it:
   - [ ] Attack
   - [x] Flip
   - [ ] Activate
-  - [ ] Change Status Window
+  - [x] Change Status Window
   - [ ] TICK Cooldown
   - [x] Check all Stacked Cards
   - [x] Put card in back
   - [x] Put card on top
-  - [ ] Create TOKEN Card
   - [ ] Attach Card
 - Card in Destroyed Zone
   - [x] Reborn
@@ -80,6 +79,8 @@ Possible actions that you can do in the simulator and where you can do it:
     - Start your BATTLE Phase
   - [ ] SPAWN Phase
     - Start your SPAWN Phase
+  - [ ] Create TOKEN Card
+    - Create a Pseudo-Card to put in Board
   - [x] END Turn
     - Finish your turn
   - [x] REACTION

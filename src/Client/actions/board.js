@@ -5,7 +5,7 @@ import Place from "models/place";
 import Temp from "models/temp-select";
 import MenuListData from "models/menu-list";
 import Strings from "utils/strings";
-import { Origin } from "models/enums";
+import { Origin, Types } from "models/enums";
 import { getTileCard } from "utils/board";
 import MenuStatusData from "models/menu-stats";
 
@@ -29,7 +29,6 @@ const BoardActionsMenu = (card, id, place) => {
         Action("Flip", ServerActions.flipCard.name, [place]),
         Action("Invert", ServerActions.invertCard.name, [place]),
         //Action("Activate", ServerActions.activateCard.name),
-        Action("Set Stats", openStatsMenu.name, [place]),
         //Action("Tick", ServerActions.tickCard.name),
         Action("Bounce", ServerActions.bounceCard.name, [place]),
         Action("Destroy", ServerActions.destroyCard.name, [place]),
@@ -52,13 +51,30 @@ const getMultipleCardBoardActions = (tile, id) => {
   return actions;
 };
 
+const getCardTypeBasedActions = (card, id, place) => {
+  console.log(card);
+  if (card.controller === id || !card.inversed) {
+    console.log(card);
+    switch (card.type) {
+      case Types.UNITY:
+        return [Action("Set Stats", openStatsMenu.name, [place])];
+      default:
+        return [];
+    }
+  } else {
+    return [];
+  }
+};
+
 const getBoardActionMenu = (event, tile, id) => {
   let actions = [];
   let place = Place(tile.originalX, tile.originalY);
   if (tile.cards.length > 1) {
     actions.push(...getMultipleCardBoardActions(tile, id));
+    actions.push(...getCardTypeBasedActions(tile.cards[0], id, place));
     actions.push(...BoardActionsMenu(tile.cards[0], id, place));
   } else if (tile.cards.length > 0) {
+    actions.push(...getCardTypeBasedActions(tile.cards[0], id, place));
     actions.push(...BoardActionsMenu(tile.cards[0], id, place));
   }
   return MenuData(event.pageX, event.pageY, actions);
