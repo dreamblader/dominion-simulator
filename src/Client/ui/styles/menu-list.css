@@ -1,10 +1,11 @@
 .menu-list-container {
   position: absolute;
+  width: 75%;
   top: 25%;
   display: flex;
   flex-direction: column;
   border: 2px solid grey;
-  margin-left: 2rem;
+  margin-left: 2.5%;
 }
 
 .menu-list {
@@ -13,7 +14,6 @@
   justify-items: center;
   background-color: rgb(250, 250, 250, 0.75);
   padding: 1rem;
-  width: 95vw;
 }
 
 .menu-list > * {

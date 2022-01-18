@@ -22,8 +22,7 @@ const drawForTurn = (G, ctx) => {
 
 const searchToHand = (G, ctx, index) => {
   let content = G.deck[ctx.playerID].cards[index];
-  let topText =
-    'Your opponent have selected "' + content.title + '" from Deck to Hand';
+  let topText = `Your opponent have selected ${content.title} from Deck to Hand`;
   G.reveal = pushToReveal(
     G.reveal,
     MenuRevealData(topText, content),

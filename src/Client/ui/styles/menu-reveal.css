@@ -1,5 +1,6 @@
 .menu-reveal {
   display: flex;
+  color: black;
   flex-direction: column;
   grid-template-columns: repeat(10, 1fr);
   justify-content: center;

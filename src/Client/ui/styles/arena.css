@@ -41,6 +41,7 @@
   color: black;
   background-color: beige;
   border: 3px solid rgb(73, 70, 70);
+  z-index: 5;
 }
 
 .status-col .positive {

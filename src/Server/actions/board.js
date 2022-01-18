@@ -2,6 +2,8 @@ import Place from "../../models/place";
 import { Origin } from "../../models/enums";
 import { getTileCard, getTileCardsArray, toBoard } from "../../utils/board";
 import { resetStats, setStats } from "../../utils/card";
+import { pushToReveal } from "../../utils/menu";
+import MenuRevealData from "../../models/menu-reveal";
 
 const checkSelection = (G, selected, player) => {
   let origin = Object.keys(selected.origin)[0];
@@ -54,7 +56,15 @@ const invertCard = (G, ctx, place, index = 0) => {
   card.inversed = !card.inversed;
 };
 
-const activateCard = (G, ctx, tile, index = 0) => {};
+const activateCard = (G, ctx, place, index = 0) => {
+  let content = getTileCard(G.board, place, index);
+  let topText = `Your opponent have declared ${content.title} effect`;
+  G.reveal = pushToReveal(
+    G.reveal,
+    MenuRevealData(topText, content),
+    parseInt(ctx.playerID)
+  );
+};
 
 const tickCard = (card) => {};
 
