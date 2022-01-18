@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import Card from "../card/card";
 import { Types } from "../../../../models/enums";
 import { ClassNames, getExtraClasses } from "../../../../utils/style-class";
+import { isFieldOnTile } from "utils/board";
 import { getCurentHP, getCurentATK, getCurrentRange } from "../../../../utils/card";
 import "../../styles/board.css";
-import { isFieldOnTile } from "utils/board";
+
 
 
 const Board = ({board, ids, moves, selected, life, menuClick, highlight, clear}) => {
