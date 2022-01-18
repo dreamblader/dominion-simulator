@@ -9,7 +9,7 @@
   grid-template-rows: auto 1fr;
 }
 
-.tile-holder > .content {
+.tile-holder .content {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,14 +25,36 @@
   background-size: cover;
 }
 
-.txt-info {
+.overlay {
   position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.tile-holder .bottom {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
+.tile-holder .top-right {
+  position: absolute;
+  right: 0.25rem;
+  top: 0;
+}
+
+.tile-holder .top-left {
+  position: absolute;
+  left: 0.25rem;
+  top: 0;
+}
+
+.txt-info {
   font-size: 1rem;
   font-weight: bold;
+  text-align: center;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
     1px 1px 0 #000;
-  left: 25%;
-  bottom: 0;
 }
 
 .inverted > img {

@@ -1,7 +1,12 @@
 import { INVALID_MOVE } from "boardgame.io/core";
+import { Types } from "../models/enums";
 
 export const getTileCardsArray = (board, place) => {
   return board[place.y][place.x].cards;
+};
+
+export const isFieldOnTile = (cards) => {
+  return cards.filter((card) => card.type === Types.FIELD)[0];
 };
 
 export const getTileCard = (board, place, index) => {

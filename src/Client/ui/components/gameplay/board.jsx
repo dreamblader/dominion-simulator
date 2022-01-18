@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import Card from "../card/card";
 import { Types } from "../../../../models/enums";
 import { ClassNames, getExtraClasses } from "../../../../utils/style-class";
-import { getCurentHP, getCurentATK } from "../../../../utils/card";
+import { getCurentHP, getCurentATK, getCurrentRange } from "../../../../utils/card";
 import "../../styles/board.css";
+import { isFieldOnTile } from "utils/board";
 
 
 const Board = ({board, ids, moves, selected, life, menuClick, highlight, clear}) => {
@@ -96,15 +97,71 @@ const Board = ({board, ids, moves, selected, life, menuClick, highlight, clear})
                 highlight={highlight}
                 extraClass={extraClass+" "+ClassNames.DISABLED}
                 click={(e) => clickCardTile(e, tile)} >
-                {!card.flipped && card.type === Types.UNITY &&
-                    <div className="txt-info">
-                        {getCurentATK(card)+"/"+getCurentHP(card)}
-                    </div>
-                }
+                <div className="overlay">
+                    {renderOverlay(card, tile)}
+                </div> 
             </Card>)	
         } else {
             return "";
         }
+    }
+
+    const renderOverlay = (card, tile) => {
+        return( 
+            <React.Fragment>
+            {renderInfo(tile)}
+            {renderStats(card)}
+            </React.Fragment>
+        )
+    }
+
+    const renderInfo = (tile) => {
+        let cards = tile.cards
+        let field = isFieldOnTile(cards);
+        if(cards.length > 1){
+            return(
+                <React.Fragment>
+                    <div className="top-right txt-info" 
+                    onClick={(e) => clickPlus(e, tile)}>
+                        +
+                    </div>
+                    {field && 
+                        <div className="top-left txt-info"
+                        onMouseEnter={() => highlight(field)}
+                        onMouseLeave={() => highlight(cards[0])}>
+                            F
+                        </div>
+                    }
+                </React.Fragment>
+            )
+        }
+    }
+
+    const clickPlus = (e, tile) => {
+        moves.getTileCardsList(tile)
+        e.stopPropagation();
+    }
+
+    const renderStats = (card) => {
+        if(!card.flipped && card.type === Types.UNITY){
+            return (
+                <div className="bottom">
+                    <div className="txt-info">
+                        {getCurentATK(card)+"/"+getCurentHP(card)}
+                    </div>
+                    <div className="txt-info">
+                        {renderRange(card)}
+                    </div>
+                </div>
+            )
+        }
+    }
+
+    const renderRange = (card) => {
+        if(getCurrentRange(card) !== 0){
+            return getCurrentRange(card) > 0 ? "+" : "" +getCurrentRange(card)
+        }
+        return "";
     }
 
        return(
