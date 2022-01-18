@@ -51,7 +51,7 @@ Possible actions that you can do in the simulator and where you can do it:
   - [x] Move
   - [ ] Attack
   - [x] Flip
-  - [ ] Activate
+  - [x] Activate
   - [x] Change Status Window
   - [ ] TICK Cooldown
   - [x] Check all Stacked Cards

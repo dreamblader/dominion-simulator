@@ -15,7 +15,10 @@ const draw = (G, ctx) => {
 };
 
 const drawForTurn = (G, ctx) => {
-  while (G.hand[ctx.playerID].length < Consts.handSize) {
+  while (
+    G.hand[ctx.playerID].length < Consts.handSize &&
+    G.deck[ctx.playerID].cards.length > 0
+  ) {
     draw(G, ctx);
   }
 };
