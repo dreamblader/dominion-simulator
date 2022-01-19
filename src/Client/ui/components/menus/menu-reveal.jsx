@@ -2,8 +2,9 @@ import React from "react";
 import PropTypes from 'prop-types';
 import Button from "../general/button"
 import Card from "../card/card";
-import "../../styles/menu-reveal.css";
+import VersusIcon from "Client/ui/images/swords.png";
 import NoInputLayer from "../general/no-input-layer";
+import "../../styles/menu-reveal.css";
 
 
 const MenuReveal = ({menu, highlight, clear}) => {
@@ -14,6 +15,14 @@ const MenuReveal = ({menu, highlight, clear}) => {
             return (<Card highlight={highlight} card={content}/>)
         } else if(content.hasOwnProperty("ref")){
             return (<img src={content.ref} alt={content.title}/>)
+        } else if(content.hasOwnProperty("attacker")){
+            return(
+                <React.Fragment>
+                    <Card highlight={highlight} card={content.attacker}/>
+                    <img src={VersusIcon} alt={"Versus Icon"}/>
+                    <Card highlight={highlight} card={content.attacked}/>
+                </React.Fragment>
+            )
         }
     };
 

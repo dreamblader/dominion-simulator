@@ -49,7 +49,7 @@ Possible actions that you can do in the simulator and where you can do it:
   - [x] Destroy
   - [x] FINISH
   - [x] Move
-  - [ ] Attack
+  - [x] Attack
   - [x] Flip
   - [x] Activate
   - [x] Change Status Window

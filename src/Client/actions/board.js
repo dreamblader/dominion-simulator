@@ -5,15 +5,23 @@ import Place from "models/place";
 import Temp from "models/temp-select";
 import MenuListData from "models/menu-list";
 import Strings from "utils/strings";
-import { Origin, Types } from "models/enums";
+import { Origin, SelectTypes, Types } from "models/enums";
 import { getTileCard } from "utils/board";
 import MenuStatusData from "models/menu-stats";
 
-const moveInBoard = (board, place, index = 0) => {
+const select = (board, place, index, type) => {
   let origin = {};
   origin[Origin.BOARD] = index;
   let card = getTileCard(board, place, index);
-  return Temp(origin, card, card.flipped, place.x, place.y);
+  return Temp(origin, card, card.flipped, place.x, place.y, type);
+};
+
+const moveInBoard = (board, place, index = 0) => {
+  return select(board, place, index, SelectTypes.TO_BOARD);
+};
+
+const selectToAttack = (board, place, index = 0) => {
+  return select(board, place, index, SelectTypes.TO_ATTACK);
 };
 
 const openStatsMenu = (board, place, index = 0) => {
@@ -24,7 +32,7 @@ const openStatsMenu = (board, place, index = 0) => {
 const BoardActionsMenu = (card, id, place) => {
   return [
     Action("Move", moveInBoard.name, [place]),
-    //Action("Attack", ServerActions.attackCard.name),
+    Action("Attack", selectToAttack.name, [place]),
     Action("Flip", ServerActions.flipCard.name, [place]),
     Action("Invert", ServerActions.invertCard.name, [place]),
     Action("Activate", ServerActions.activateCard.name, [place]),
@@ -87,6 +95,7 @@ const getTileCardsList = (tile) => {
     Action("To Top", ServerActions.tileCardToFront.name, [place]),
     Action("To Back", ServerActions.tileCardToBack.name, [place]),
     Action("Set Stats", openStatsMenu.name, [place]),
+    Action("Attack", selectToAttack.name, [place]),
     Action("Activate", ServerActions.activateCard.name, [place]),
     //Action("Attach Card", attachArtifact.name),
     Action("Bounce", ServerActions.bounceCard.name, [place]),
@@ -99,6 +108,7 @@ const getTileCardsList = (tile) => {
 const BoardActions = {
   moveInBoard,
   openStatsMenu,
+  selectToAttack,
   getBoardActionMenu,
   getTileCardsList,
 };

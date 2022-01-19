@@ -14,6 +14,11 @@ export const Types = {
   TOKEN: "Token",
 };
 
+export const SelectTypes = {
+  TO_BOARD: "ToBoard",
+  TO_ATTACK: "ToAttack",
+};
+
 export const Origin = {
   HAND: "hand",
   DECK: "deck",

@@ -1,11 +1,12 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import Card from "../card/card";
-import { Types } from "../../../../models/enums";
+import { SelectTypes, Types } from "../../../../models/enums";
 import { ClassNames, getExtraClasses } from "../../../../utils/style-class";
-import { isFieldOnTile } from "utils/board";
+import { getTileCard, isFieldOnTile } from "utils/board";
 import { getCurentHP, getCurentATK, getCurrentRange } from "../../../../utils/card";
 import "../../styles/board.css";
+import Place from "models/place";
 
 
 
@@ -78,7 +79,19 @@ const Board = ({board, ids, moves, selected, life, menuClick, highlight, clear})
 
     const clickSpawnTile = (x, y) => {
         if(selected){
-            moves.placeInHere(selected, x,y);
+            switch(selected.type){
+                case SelectTypes.TO_BOARD:
+                    moves.placeInHere(selected, x,y);
+                    break;
+                case SelectTypes.TO_ATTACK:
+                    let card = getTileCard(board, Place(x, y), 0);
+                    if(card){
+                        moves.attackCard(selected, card)
+                    }
+                    break;
+                default:
+                    break;
+            }
             clear();
         }
     }

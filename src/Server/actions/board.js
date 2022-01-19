@@ -4,6 +4,7 @@ import { getTileCard, getTileCardsArray, toBoard } from "../../utils/board";
 import { resetStats, setStats } from "../../utils/card";
 import { pushToReveal } from "../../utils/menu";
 import MenuRevealData from "../../models/menu-reveal";
+import VersusContent from "../../models/versus-content";
 
 const checkSelection = (G, selected, player) => {
   let origin = Object.keys(selected.origin)[0];
@@ -44,7 +45,12 @@ const applyStats = (G, ctx, place, stats, index = 0) => {
   cardList[index] = setStats(card, stats);
 };
 
-const attackCard = (G, ctx, tile, targetTile, index = 0) => {};
+const attackCard = (G, ctx, selected, card) => {
+  let attacker = selected.card;
+  let content = VersusContent(attacker, card);
+  let topText = `${attacker.title} attacks ${card.title}`;
+  G.reveal = pushToReveal(G.reveal, MenuRevealData(topText, content), -1);
+};
 
 const flipCard = (G, ctx, place, index = 0) => {
   let card = getTileCard(G.board, place, index);

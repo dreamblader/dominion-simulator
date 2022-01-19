@@ -11,6 +11,16 @@
   width: 50vw;
 }
 
+.reveal-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reveal-content > img {
+  margin: 0.5rem;
+}
+
 .menu-reveal > * {
   margin-bottom: 1rem;
 }

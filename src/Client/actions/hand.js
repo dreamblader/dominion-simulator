@@ -36,7 +36,6 @@ const getHandActionsOnMenu = (event, pos, hand, myID) => {
 const HandActions = {
   spawnFaceUp,
   spawnFaceDown,
-  selectToField,
   getHandActionsOnMenu,
 };
 

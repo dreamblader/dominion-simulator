@@ -106,6 +106,10 @@ const ArenaActions = ({
     setSelectToBoard(BoardActions.moveInBoard(G.board, ...args));
   };
 
+  const selectToAttack = (...args) => {
+    setSelectToBoard(BoardActions.selectToAttack(G.board, ...args));
+  };
+
   const actionsMenu = (menu) => {
     setActionMenu(menu);
   };
@@ -135,6 +139,7 @@ const ArenaActions = ({
       actionsMenu,
       getTileCardsList,
       moveInBoard,
+      selectToAttack,
       openStatsMenu,
     },
   };
