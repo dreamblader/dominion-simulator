@@ -4,7 +4,7 @@ INSERT OR REPLACE INTO "Cards" (
     "NAME", 
     "TYPE", 
     "TAGS", 
-    "ELEMENT/ACTIVATION", 
+    "SUBTYPE", 
     "ATK", 
     "HP", 
     "RANGE", 
@@ -33,7 +33,7 @@ INSERT OR REPLACE INTO "Cards" (
     "NAME", 
     "TYPE", 
     "TAGS", 
-    "ELEMENT/ACTIVATION",
+    "SUBTYPE",
     "DESCRIPTION", 
     "ART", 
     "UNIQUE"
