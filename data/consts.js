@@ -19,6 +19,8 @@ const Strings = {
   FILE: "data/csv/Nandeck_db - ",
   IMG_FILE: "nandeck_dominion_",
   SAVE_FILE: "data/sql/Card_Update_",
+  FIELD_OC_EFFECT: "OCCUPY EFFECT",
+  FIELD_LK_EFFECT: "LINK EFFECT",
 };
 
 module.exports = {

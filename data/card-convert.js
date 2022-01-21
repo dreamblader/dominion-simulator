@@ -13,17 +13,25 @@ const readCSV = (type) => {
       table.push(convertData(data, type));
     })
     .on("end", () => {
+      console.log("Finished " + type + " Reading...");
       saveData(table, type);
     });
 };
 
 const convertData = (data, type) => {
   data.TAG = data.TAG.replace(" &#124 ", ",");
+  data.STAR = data.STAR ? "1" : "0";
   switch (type) {
     case K.Types.UNITY:
       data.DIRECTIONS = getDirectionsCode(data);
-      data.RANGE = data.RANGE === "" ? 0 : data.RANGE;
-      data.STAR = data.STAR === "S" ? "1" : "0";
+      data.RANGE = data.RANGE ? 0 : data.RANGE;
+      break;
+    case K.Types.FIELD:
+      data.EFFECT = `<b>${K.Strings.FIELD_OC_EFFECT}:</b><br>${
+        data[K.Strings.FIELD_OC_EFFECT]
+      }<br><br><b>${K.Strings.FIELD_LK_EFFECT}:</b><br>${
+        data[K.Strings.FIELD_LK_EFFECT]
+      }`;
       break;
     default:
       break;
@@ -45,18 +53,27 @@ const saveData = (table, type) => {
     now.getDate() +
     ".sql";
 
-  var stream = fs.createWriteStream(saveFile);
-  stream.on("open", (fd) => {
-    table.forEach((row, index) => {
-      row.ART = artPath + paddingNumber(index + 1, paddingSize) + ".jpg";
-      switch (type) {
-        case K.Types.UNITY:
-          stream.write(queries.UnityQuery(row));
-          break;
-        default:
-          break;
-      }
-    });
+  var file = fs.openSync(saveFile, "a+");
+
+  table.forEach((row, index) => {
+    let i = index + 1;
+    console.log("Saving " + type + " " + i + "/" + table.length);
+    row.ART = artPath + paddingNumber(i, paddingSize) + ".jpg";
+    let query = "";
+    switch (type) {
+      case K.Types.UNITY:
+        query = queries.UnityQuery(row);
+        break;
+      case K.Types.ARTIFACT:
+        query = queries.ArtifactQuery(row);
+        break;
+      case K.Types.FIELD:
+        query = queries.FieldQuery(row);
+        break;
+      default:
+        break;
+    }
+    fs.appendFileSync(file, query);
   });
 };
 
@@ -77,7 +94,9 @@ const getDirectionsCode = (data) => {
 };
 
 const run = () => {
+  console.log("Starting converter...");
   for (let type in K.Types) {
+    console.log("Starting " + type + " Reader");
     readCSV(type.toLowerCase());
   }
 };
