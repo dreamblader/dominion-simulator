@@ -53,7 +53,7 @@ const saveData = (table, type) => {
     now.getDate() +
     ".sql";
 
-  var file = fs.openSync(saveFile, "a+");
+  var file = fs.openSync(saveFile, "a");
 
   table.forEach((row, index) => {
     let i = index + 1;
