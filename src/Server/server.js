@@ -1,7 +1,11 @@
 import { getMyDeckCards } from "./actions/database";
 import { Server, Origins } from "boardgame.io/server";
-//import * as fs from "fs";
+import path from "path";
+import serve from "koa-static";
 import { Simulator } from "../Game";
+
+const PORT = process.env.PORT || 8000;
+const frontEndAppBuildPath = path.resolve(__dirname, "../../build");
 
 /*
 const lobbyConfig = {
@@ -36,5 +40,16 @@ server.router.get("/deck/:id/cards", async (ctx, next) => {
   ctx.body = await getMyDeckCards(database, ctx.params.id);
 });
 
-server.run(8000);
+server.app.use(serve(frontEndAppBuildPath));
+
+server.run(PORT, () => {
+  server.app.use(
+    async (ctx, next) =>
+      await serve(frontEndAppBuildPath)(
+        Object.assign(ctx, { path: "index.html" }),
+        next
+      )
+  );
+});
+
 //server.run({ port: 8000, lobbyConfig });

@@ -11,6 +11,7 @@
     "csv-parse": "^5.0.4",
     "csv-parser": "^3.0.0",
     "esm": "^3.2.25",
+    "koa-static": "^5.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-html-parser": "^2.0.2",
@@ -19,10 +20,11 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "npm run react-build && npm run server",
+    "react-start": "react-scripts start",
+    "react-build": "react-scripts build",
     "server": "node -r esm src/Server/server.js",
-    "start-server": "nodemon -r esm src/Server/server.js",
+    "dev-server": "nodemon -r esm src/Server/server.js",
     "converter": "node data/card-convert.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
