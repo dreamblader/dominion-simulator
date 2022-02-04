@@ -16,6 +16,7 @@ const Menu = ({items, moves, clear, posX, posY}) => {
 
     React.useEffect(() => doWhenClickOutside(clickRef, clear),[clickRef, clear]);
     
+    //TODO Uncaught TypeError: Cannot read properties of undefined (reading 'apply') <-- In Hybrid RUN
     let menuClick = (item) => {
         moves[item.event].apply(this, item.args);
         clear();
