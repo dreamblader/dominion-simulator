@@ -3,6 +3,16 @@ const queries = require("./queries");
 const csv = require("csv-parser");
 const fs = require("fs");
 
+const now = new Date();
+const saveFile =
+  K.Strings.SAVE_FILE +
+  now.getFullYear() +
+  "_" +
+  (now.getMonth() + 1) +
+  "_" +
+  now.getDate() +
+  ".sql";
+
 const readCSV = (type) => {
   const table = [];
   const file = K.Strings.FILE + type + ".csv";
@@ -24,7 +34,7 @@ const convertData = (data, type) => {
   switch (type) {
     case K.Types.UNITY:
       data.DIRECTIONS = getDirectionsCode(data);
-      data.RANGE = data.RANGE ? 0 : data.RANGE;
+      data.RANGE = data.RANGE === "" ? 0 : data.RANGE;
       break;
     case K.Types.FIELD:
       data.EFFECT = `<b>${K.Strings.FIELD_OC_EFFECT}:</b><br>${
@@ -41,19 +51,10 @@ const convertData = (data, type) => {
 };
 
 const saveData = (table, type) => {
-  const now = new Date();
   const artPath = K.Strings.IMG_FILE + type + "_";
   const paddingSize = table.length.toString().length;
-  const saveFile =
-    K.Strings.SAVE_FILE +
-    now.getFullYear() +
-    "_" +
-    (now.getMonth() + 1) +
-    "_" +
-    now.getDate() +
-    ".sql";
 
-  var file = fs.openSync(saveFile, "a");
+  let file = fs.openSync(saveFile, "a");
 
   table.forEach((row, index) => {
     let i = index + 1;
@@ -75,6 +76,24 @@ const saveData = (table, type) => {
     }
     fs.appendFileSync(file, query);
   });
+
+  finishFile(file, type);
+};
+
+let savedCount = 0;
+
+const finishFile = (file, type) => {
+  let finishCount = Object.keys(K.Types).length;
+
+  savedCount++;
+
+  console.log("Finished " + type + " Saving...");
+  console.log("File Complete " + savedCount + "/" + finishCount);
+
+  if (savedCount >= finishCount) {
+    fs.appendFileSync(file, K.Strings.TRANSACTION_END);
+    console.log("END...");
+  }
 };
 
 const paddingNumber = (num, size) => {
@@ -95,6 +114,10 @@ const getDirectionsCode = (data) => {
 
 const run = () => {
   console.log("Starting converter...");
+
+  let file = fs.openSync(saveFile, "w+");
+  fs.writeFileSync(file, K.Strings.TRANSACTION_INIT);
+
   for (let type in K.Types) {
     console.log("Starting " + type + " Reader");
     readCSV(type.toLowerCase());
@@ -102,3 +125,7 @@ const run = () => {
 };
 
 run();
+
+//TODOs
+// Escape Quotes inside description/names
+// Convert ? Status value to a number (maybe 0?)

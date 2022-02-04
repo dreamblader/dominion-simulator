@@ -1,2 +1,2 @@
 NAME,OCCUPY EFFECT,LINK EFFECT,TAG,LAYOUT,ART,NUM,STAR
-Royal Palace,"Apply +2/+2 to all cards of the same element of the ROYAL card that hold this position",Apply +2/+2 to all ROYALs or the OCCUPY effect<br>(both effects cannot stack),ROYAL &#124 CASTLE,layout\v1\field.png,royal_palace.png,F0001
+Royal Palace,Apply +2/+2 to all cards of the same element of the ROYAL card that hold this position,Apply +2/+2 to all ROYALs or the OCCUPY effect<br>(both effects cannot stack),ROYAL &#124 CASTLE,layout\v1\field.png,royal_palace.png,F0001,

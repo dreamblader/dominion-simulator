@@ -93,6 +93,21 @@ Possible actions that you can do in the simulator and where you can do it:
 Prototype Layout for simulator:
 ![Prototype Layout](board.layout.png "Prototype Layout")
 
+
+## NPM Commands
+  - npm start: 
+    - Run react-build and then run the server (for Heroku deploy purposes)
+  - npm run react-start:
+    - Start the React Client application (similar to npm start on pure React applications)
+  - npm run react-build:
+    - Build the React Application (need to run first if you want to test the hybrid app by running the Server and accessing it index)
+  - npm run server:
+    - Run the Server application in src/Server/server.js
+  - npm run dev-server:
+    - Run the Server application with Nodemon for developing and auto updating it
+  - npm run converter: 
+    - Run the converter script for the CSV Data (more info in the README inside Data folder)
+
 ## Links
 
 - [Release Plans](RELEASES.md)

@@ -48,7 +48,7 @@ WIP
 # SQLs
 Here will have all the important sqls to run in your sqlite to create your tables.
 
-Use the Setup.sql first to create everything and then the latest Card_Update and Deck_Update from the folder
+Use the Setup.sql first to create all the tables and then populate them with DeckInsert, Deck_Update and the latest Card_Update from the folder.
 
 # CSV
 Import all Nandeck CSVs (Unity, Artifact and Field) here so you can run the converter (card-convert.js) via command "npm run converter" that wil transform all the specifics CSV to a main generic SQL file named: Card_Update_YYYY_MM_DAY
