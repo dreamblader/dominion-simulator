@@ -1,5 +1,4 @@
 import Action from "models/action";
-import ServerActions from "Server/actions/board";
 import MenuData from "models/menu";
 import Place from "models/place";
 import Temp from "models/temp-select";
@@ -31,15 +30,15 @@ const openStatsMenu = (board, place, index = 0) => {
 
 const BoardActionsMenu = (card, id, place) => {
   return [
-    Action("Move", moveInBoard.name, [place]),
-    Action("Attack", selectToAttack.name, [place]),
-    Action("Flip", ServerActions.flipCard.name, [place]),
-    Action("Invert", ServerActions.invertCard.name, [place]),
-    Action("Activate", ServerActions.activateCard.name, [place]),
+    Action("Move", "moveInBoard", [place]),
+    Action("Attack", "selectToAttack", [place]),
+    Action("Flip", "flipCard", [place]),
+    Action("Invert", "invertCard", [place]),
+    Action("Activate", "activateCard", [place]),
     //Action("Tick", ServerActions.tickCard.name),
-    Action("Bounce", ServerActions.bounceCard.name, [place]),
-    Action("Destroy", ServerActions.destroyCard.name, [place]),
-    Action("Finish", ServerActions.finishCard.name, [place]),
+    Action("Bounce", "bounceCard", [place]),
+    Action("Destroy", "destroyCard", [place]),
+    Action("Finish", "finishCard", [place]),
   ];
 };
 
@@ -47,8 +46,8 @@ const getMultipleCardBoardActions = (tile, id) => {
   //let card = tile.cards[0];
   let place = Place(tile.originalX, tile.originalY);
   let actions = [
-    Action("Check all Cards", getTileCardsList.name, [tile]),
-    Action("Put card in back", ServerActions.tileCardToBack.name, [place]),
+    Action("Check all Cards", "getTileCardsList", [tile]),
+    Action("Put card in back", "tileCardToBack", [place]),
   ];
   /*
   if (card.controller === id) {
@@ -65,7 +64,7 @@ const getMultipleCardBoardActions = (tile, id) => {
 const getCardTypeBasedActions = (card, id, place) => {
   switch (card.type) {
     case Types.UNITY:
-      return [Action("Set Stats", openStatsMenu.name, [place])];
+      return [Action("Set Stats", "openStatsMenu", [place])];
     default:
       return [];
   }
@@ -92,15 +91,15 @@ const getBoardActionMenu = (event, tile, id) => {
 const getTileCardsList = (tile) => {
   let place = Place(tile.originalX, tile.originalY);
   let actions = [
-    Action("To Top", ServerActions.tileCardToFront.name, [place]),
-    Action("To Back", ServerActions.tileCardToBack.name, [place]),
-    Action("Set Stats", openStatsMenu.name, [place]),
-    Action("Attack", selectToAttack.name, [place]),
-    Action("Activate", ServerActions.activateCard.name, [place]),
+    Action("To Top", "tileCardToFront", [place]),
+    Action("To Back", "tileCardToBack", [place]),
+    Action("Set Stats", "openStatsMenu", [place]),
+    Action("Attack", "selectToAttack", [place]),
+    Action("Activate", "activateCard", [place]),
     //Action("Attach Card", attachArtifact.name),
-    Action("Bounce", ServerActions.bounceCard.name, [place]),
-    Action("Destroy", ServerActions.destroyCard.name, [place]),
-    Action("Finish", ServerActions.finishCard.name, [place]),
+    Action("Bounce", "bounceCard", [place]),
+    Action("Destroy", "destroyCard", [place]),
+    Action("Finish", "finishCard", [place]),
   ];
   return MenuListData(Strings.boardHeader, tile.cards, actions);
 };

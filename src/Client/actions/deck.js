@@ -1,4 +1,3 @@
-import ServerActions from "Server/actions/deck";
 import Deck from "models/deck";
 import Action from "models/action";
 import MenuListData from "models/menu-list";
@@ -16,20 +15,20 @@ export const constructDeck = (deckID, cards, id) => {
 
 const getDeckForSearch = (deck) => {
   let actions = [
-    Action("To Hand", ServerActions.searchToHand.name),
-    Action("To DZ", ServerActions.searchToDZ.name),
-    Action("To OOG", ServerActions.searchToOOG.name),
+    Action("To Hand", "searchToHand"),
+    Action("To DZ", "searchToDZ"),
+    Action("To OOG", "searchToOOG"),
   ];
   return MenuListData(Strings.deckHeader, deck, actions);
 };
 
 const getDeckActionsOnMenu = (event) => {
   let actions = [
-    Action("Draw", ServerActions.draw.name),
-    Action("Draw For Turn", ServerActions.drawForTurn.name),
-    Action("Search", getDeckForSearch.name),
-    Action("Shuffle Deck", ServerActions.shuffleDeck.name),
-    Action("Mill", ServerActions.mill.name),
+    Action("Draw", "draw"),
+    Action("Draw For Turn", "drawForTurn"),
+    Action("Search", "getDeckForSearch"),
+    Action("Shuffle Deck", "shuffleDeck"),
+    Action("Mill", "mill"),
   ];
   return MenuData(event.pageX, event.pageY, actions);
 };

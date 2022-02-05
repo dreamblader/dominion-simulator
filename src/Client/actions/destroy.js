@@ -1,4 +1,3 @@
-import ServerActions from "Server/actions/destroy";
 import Temp from "models/temp-select";
 import { Origin } from "models/enums";
 import Action from "models/action";
@@ -20,9 +19,9 @@ const getDZForSearch = (G, id, mine) => {
   let header = mine ? Strings.myDZHeader : Strings.rivalDZHeader;
   let actions = mine
     ? [
-        Action("Reborn", reborn.name, [G.destroyZone, id]),
-        Action("To Hand", ServerActions.backToHand.name),
-        Action("To OOG", ServerActions.destroyToOOG.name),
+        Action("Reborn", "reborn", [G.destroyZone, id]),
+        Action("To Hand", "backToHand"),
+        Action("To OOG", "destroyToOOG"),
       ]
     : [];
   return MenuListData(header, G.destroyZone[id], actions);
