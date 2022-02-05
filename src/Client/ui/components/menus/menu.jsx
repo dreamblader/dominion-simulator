@@ -16,10 +16,7 @@ const Menu = ({items, moves, clear, posX, posY}) => {
 
     React.useEffect(() => doWhenClickOutside(clickRef, clear),[clickRef, clear]);
     
-    //TODO item.event is a funtion.name that is getting minified (need to solve this)
     let menuClick = (item) => {
-        //console.dir(moves);
-        //console.dir(item);
         moves[item.event].apply(this, item.args);
         clear();
     };
