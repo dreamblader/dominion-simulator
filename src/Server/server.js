@@ -4,7 +4,7 @@ import path from "path";
 import serve from "koa-static";
 import { Simulator } from "../Game";
 
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 8000;
 const frontEndAppBuildPath = path.resolve(__dirname, "../../build");
 
 /*
