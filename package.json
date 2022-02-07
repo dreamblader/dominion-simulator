@@ -20,7 +20,7 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "npm run react-build && npm run server",
+    "start": "npm run server",
     "react-start": "react-scripts start",
     "react-build": "react-scripts build",
     "server": "node -r esm src/Server/server.js",
