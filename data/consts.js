@@ -18,7 +18,7 @@ const Directions = {
 const Strings = {
   FILE: "data/csv/Nandeck_db - ",
   IMG_FILE: "nandeck_dominion_",
-  SAVE_FILE: "data/sql/Card_Update_",
+  SAVE_FILE: "data/sql/Card_Update.sql",
   TRANSACTION_INIT: "BEGIN TRANSACTION;\n",
   TRANSACTION_END: "\nCOMMIT;",
   FIELD_OC_EFFECT: "OCCUPY EFFECT",

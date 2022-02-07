@@ -1,6 +1,7 @@
 const { exec } = require("child_process");
 
 const build = "npm run react-build";
+const runDB = "";
 const runServer = "npm run server";
 
 const consoleCallback = (error, stdout, stderr) => {
@@ -22,7 +23,11 @@ const run = () => {
   exec(build, (error, stdout, stderr) =>
     consoleCallback(error, stdout, stderr)
   );
-  console.log("Finishing React Build.");
+
+  console.log("Executing Server Start.");
+  exec(runDB, (error, stdout, stderr) =>
+    consoleCallback(error, stdout, stderr)
+  );
 
   console.log("Executing Server Start.");
   exec(runServer, (error, stdout, stderr) =>

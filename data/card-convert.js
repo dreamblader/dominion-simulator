@@ -3,15 +3,7 @@ const queries = require("./queries");
 const csv = require("csv-parser");
 const fs = require("fs");
 
-const now = new Date();
-const saveFile =
-  K.Strings.SAVE_FILE +
-  now.getFullYear() +
-  "_" +
-  (now.getMonth() + 1) +
-  "_" +
-  now.getDate() +
-  ".sql";
+const saveFile = K.Strings.SAVE_FILE;
 
 const readCSV = (type) => {
   const table = [];
@@ -33,8 +25,10 @@ const convertData = (data, type) => {
   data.STAR = data.STAR ? "1" : "0";
   switch (type) {
     case K.Types.UNITY:
+      data.ATK = checkNumber(data.ATK);
+      data.HP = checkNumber(data.HP);
+      data.RANGE = checkNumber(data.RANGE);
       data.DIRECTIONS = getDirectionsCode(data);
-      data.RANGE = data.RANGE === "" ? 0 : data.RANGE;
       break;
     case K.Types.FIELD:
       data.EFFECT = `<b>${K.Strings.FIELD_OC_EFFECT}:</b><br>${
@@ -46,6 +40,9 @@ const convertData = (data, type) => {
     default:
       break;
   }
+
+  data.NAME = escapeSpecialChars(data.NAME);
+  data.EFFECT = escapeSpecialChars(data.EFFECT);
 
   return data;
 };
@@ -96,6 +93,14 @@ const finishFile = (file, type) => {
   }
 };
 
+const escapeSpecialChars = (text) => {
+  return text.replace(/"/g, '""');
+};
+
+const checkNumber = (num) => {
+  return num === "" || isNaN(num) ? 0 : num;
+};
+
 const paddingNumber = (num, size) => {
   let result = num.toString();
   while (result.length < size) {
@@ -125,7 +130,3 @@ const run = () => {
 };
 
 run();
-
-//TODOs
-// Escape Quotes inside description/names
-// Convert ? Status value to a number (maybe 0?)
