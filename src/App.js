@@ -5,11 +5,14 @@ import Arena from "./Client/ui/pages/arena";
 import "./Client/ui/styles/globals.css";
 import { useState } from "react";
 
+const { protocol, hostname, port } = window.location;
+const server = `${protocol}//${hostname}:${port}`;
+
 const SimulatorClient = Client({
   game: Simulator,
   board: Arena,
   debug: false,
-  multiplayer: SocketIO({ server: "localhost:8000" }),
+  multiplayer: SocketIO({ server: server }),
 });
 
 const lobby = (
