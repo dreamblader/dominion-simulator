@@ -25,6 +25,7 @@
     "react-build": "react-scripts build",
     "server": "node -r esm src/Server/server.js",
     "dev-server": "nodemon -r esm src/Server/server.js",
+    "start-db": "node data/start-db.js",
     "converter": "node data/card-convert.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
