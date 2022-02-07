@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.751cace9.chunk.css",
+    "main.js": "/static/js/main.cd805374.chunk.js",
+    "main.js.map": "/static/js/main.cd805374.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.b493fb93.js",
+    "runtime-main.js.map": "/static/js/runtime-main.b493fb93.js.map",
+    "static/js/2.a96beda5.chunk.js": "/static/js/2.a96beda5.chunk.js",
+    "static/js/2.a96beda5.chunk.js.map": "/static/js/2.a96beda5.chunk.js.map",
+    "static/js/3.7de12969.chunk.js": "/static/js/3.7de12969.chunk.js",
+    "static/js/3.7de12969.chunk.js.map": "/static/js/3.7de12969.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.751cace9.chunk.css.map": "/static/css/main.751cace9.chunk.css.map",
+    "static/js/2.a96beda5.chunk.js.LICENSE.txt": "/static/js/2.a96beda5.chunk.js.LICENSE.txt",
+    "static/media/globals.css": "/static/media/back.53721fda.jpg",
+    "static/media/board.css": "/static/media/card_back_hd.4b76f0b8.png",
+    "static/media/react-img.a3ca1abf.png": "/static/media/react-img.a3ca1abf.png",
+    "static/media/swords.4f99b115.png": "/static/media/swords.4f99b115.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b493fb93.js",
+    "static/js/2.a96beda5.chunk.js",
+    "static/css/main.751cace9.chunk.css",
+    "static/js/main.cd805374.chunk.js"
+  ]
+}
