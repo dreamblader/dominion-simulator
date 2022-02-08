@@ -25,8 +25,16 @@ const Strings = {
   FIELD_LK_EFFECT: "LINK EFFECT",
 };
 
+const SqlFiles = [
+  "Setup.sql",
+  "DeckInsert.sql",
+  "Card_Update.sql",
+  "Deck_Update.sql",
+];
+
 module.exports = {
   Types,
   Directions,
   Strings,
+  SqlFiles,
 };
