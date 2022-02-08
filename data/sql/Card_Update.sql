@@ -558,7 +558,7 @@ INSERT OR REPLACE INTO "Cards" (
     "UNIQUE"
   )
   VALUES (
-      "A006", 
+      "A0006", 
       "Burning Oil", 
       "Artifact",
       "SIEGE WEAPON",

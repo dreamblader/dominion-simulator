@@ -19,8 +19,8 @@
     - [x] Card Info
   - [x] Card Storage SQLite
   - [x] Storage Reader
-  - [ ] Link 1 SQL Deck
-  - [ ] DEPLOY
+  - [x] Link 1 SQL Deck
+  - [x] DEPLOY
 
 ## 0.5v Closed Beta
   - [ ] + Board Base Mechanics working

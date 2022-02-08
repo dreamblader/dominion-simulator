@@ -23,12 +23,7 @@ const consoleCallback = (error, stdout, stderr, onSucces = () => {}) => {
 const run = () => {
   console.log("Executing React Build.");
   exec(build, (error, stdout, stderr) =>
-    consoleCallback(error, stdout, stderr, () => {
-      console.log("Executing Server Start.");
-      exec(runServer, (error, stdout, stderr) =>
-        consoleCallback(error, stdout, stderr)
-      );
-    })
+    consoleCallback(error, stdout, stderr, () => {})
   );
 
   console.log("Executing CSV Converter.");
@@ -39,6 +34,11 @@ const run = () => {
         consoleCallback(error, stdout, stderr)
       );
     })
+  );
+
+  console.log("Executing Server Start.");
+  exec(runServer, (error, stdout, stderr) =>
+    consoleCallback(error, stdout, stderr)
   );
 };
 

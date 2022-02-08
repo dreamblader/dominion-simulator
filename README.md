@@ -96,7 +96,7 @@ Prototype Layout for simulator:
 
 ## NPM Commands
   - npm start: 
-    - Run react-build and then run the server (for Heroku deploy purposes)
+    - Run build.js script that runs all the starter commands (for Heroku deploy purposes)
   - npm run react-start:
     - Start the React Client application (similar to npm start on pure React applications)
   - npm run react-build:
@@ -105,6 +105,8 @@ Prototype Layout for simulator:
     - Run the Server application in src/Server/server.js
   - npm run dev-server:
     - Run the Server application with Nodemon for developing and auto updating it
+  - npm run start-db
+    - Run the data/star-db script. This script run all sqls files to populate the game.db
   - npm run converter: 
     - Run the converter script for the CSV Data (more info in the README inside Data folder)
 

@@ -12,42 +12,35 @@ const database = new sqlite3.Database("./data/game.db", (err) => {
 
 const applyData = (fileName, data) => {
   database.serialize(() => {
-    database.run(data, (result, error) => {
-      console.log(`RUNNING QUERY FILE (${fileName})`);
-      if (error) {
-        console.log(`ERROR: `, error);
-      } else {
-        console.log("SUCCESS");
-      }
-      finishRun();
+    console.log(`RUNNING QUERY FILE (${fileName})`);
+    data.split(";").forEach((query, index) => {
+      runQuery(query + ";", index);
     });
   });
 };
 
-let savedCount = 0;
-
-const finishRun = () => {
-  let finishCount = K.SqlFiles.length;
-
-  savedCount++;
-
-  console.log("Files Read " + savedCount + "/" + finishCount);
-
-  if (savedCount >= finishCount) {
-    database.close((error) => {
-      if (error) {
-        console.log("Database Closing Error :", error.message);
-      }
-      console.log("END...");
-    });
-  }
+const runQuery = (query, index) => {
+  database.run(query, (result, error) => {
+    if (error) {
+      console.log(`ERROR @${index}(${query}): `, error);
+    }
+  });
 };
 
-//TODO Test
+const finishRun = () => {
+  database.close((error) => {
+    if (error) {
+      console.log("Database Closing Error :", error.message);
+    }
+    console.log("END...");
+  });
+};
+
 const run = () => {
   K.SqlFiles.forEach((file) => {
     applyData(file, fs.readFileSync(`data/sql/${file}`).toString());
   });
+  finishRun();
 };
 
 run();
