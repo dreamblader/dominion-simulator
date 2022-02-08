@@ -1,7 +1,10 @@
 import axios from "axios";
 
+const { protocol, hostname, port } = window.location;
+const server = `${protocol}//${hostname}:${port}`;
+
 const api = axios.create({
-  baseURL: "http://localhost:8000",
+  baseURL: server,
 });
 
 export const getDeckService = async (deckID) => {
