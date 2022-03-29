@@ -185,7 +185,7 @@ INSERT OR REPLACE INTO "Cards" (
         "U0006", 
         "Army of Thassalos", 
         "Unity",
-        "HUMAN,SOLDIER &#124 TEAM",
+        "HUMAN,SOLDIER,TEAM",
         "EARTH",
         0,
         10,
