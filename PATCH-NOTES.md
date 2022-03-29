@@ -4,10 +4,12 @@
 
 ## 0.2v Closed Alpha
 Added the following:
+- Bugs:
+  - Fixed a Bug that the Range value did not show on the Board space overlay
+  - Fixed a Bug that card-convert was only converting the first pipe code ("|") 
+  - Fixed the responsiveness of Info Status
 - System:
   - The screen is now responsive (needs more test)
-  - Fixed a Bug that the Range value did not show on the Board space overlay
-  - Fixed the responsiveness of Info Status
   - Info Status Range label changed from "R" to "RANGED"
   - Token Cards feature is now added to the game system
 - Token Cards:

@@ -21,7 +21,7 @@ const readCSV = (type) => {
 };
 
 const convertData = (data, type) => {
-  data.TAG = data.TAG.replace(" &#124 ", ",");
+  data.TAG = data.TAG.replace(/ &#124 /g, ",");
   data.STAR = data.STAR ? "1" : "0";
   switch (type) {
     case K.Types.UNITY:
