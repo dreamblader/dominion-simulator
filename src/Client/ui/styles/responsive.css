@@ -1,0 +1,17 @@
+@media (max-width: 1255px), (max-height: 940px) {
+  :root {
+    font-size: 80%;
+  }
+}
+
+@media (max-width: 1010px), (max-height: 750px) {
+  :root {
+    font-size: 60%;
+  }
+}
+
+@media (max-width: 755px), (max-height: 570px) {
+  :root {
+    font-size: 50%;
+  }
+}

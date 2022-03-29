@@ -31,6 +31,10 @@
   align-items: center;
 }
 
+.control-col > * {
+  margin-bottom: 1rem;
+}
+
 .status-col {
   display: flex;
   width: 20%;

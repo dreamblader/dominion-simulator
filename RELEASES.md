@@ -1,5 +1,6 @@
 # Releases Plan
 
+**TODO:** Move this to a Trello Board and just keep track there
 ## 0.1v Closed Alpha
   - [x] All Deck Base Mechanics working
   - [x] All DZ Base Mechanics working
@@ -23,12 +24,12 @@
   - [x] DEPLOY
 
 ## 0.5v Closed Beta
-  - [ ] + Board Base Mechanics working
+  + [ ]  Board Base Mechanics working
     - [ ] Add Ticks Mechanics
     - [ ] Add Attaching Mechanics
-  - [ ] + Control Panel
+  + [ ] Control Panel
       - [ ] CHANGE STAGE
-      - [ ] TOKEN CREATOR
+      - [x] TOKEN CREATOR
       - [ ] DIE ROLLERS | COIN TOSSERS
   - [ ] Link 1 extra Deck for P2
   - [ ] DEPLOY

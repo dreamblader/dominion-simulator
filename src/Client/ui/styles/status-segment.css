@@ -1,5 +1,6 @@
 .segment {
   display: flex;
+  font-size: 1.2rem;
   flex-direction: column;
   width: 100%;
   text-align: center;
@@ -29,4 +30,8 @@
   flex: 1;
   padding: 0.5rem;
   border-right: 3px solid rgb(73, 70, 70);
+}
+
+.stat:last-child {
+  border-right: 0px;
 }

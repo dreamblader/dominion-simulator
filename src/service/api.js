@@ -1,7 +1,7 @@
 import axios from "axios";
+import { getServer } from "utils/help";
 
-const { protocol, hostname, port } = window.location;
-const server = `${protocol}//${hostname}:${port}`;
+const server = getServer();
 
 const api = axios.create({
   baseURL: server,

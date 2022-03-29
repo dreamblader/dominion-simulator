@@ -43,26 +43,18 @@ const BoardActionsMenu = (card, id, place) => {
 };
 
 const getMultipleCardBoardActions = (tile, id) => {
-  //let card = tile.cards[0];
   let place = Place(tile.originalX, tile.originalY);
   let actions = [
     Action("Check all Cards", "getTileCardsList", [tile]),
     Action("Put card in back", "tileCardToBack", [place]),
   ];
-  /*
-  if (card.controller === id) {
-    let extra = [
-      ,
-      //Action("Attach Card", attachArtifact.name),
-    ];
-    actions.push(...extra);
-  }
-  */
+
   return actions;
 };
 
 const getCardTypeBasedActions = (card, id, place) => {
   switch (card.type) {
+    case Types.TOKEN:
     case Types.UNITY:
       return [Action("Set Stats", "openStatsMenu", [place])];
     default:

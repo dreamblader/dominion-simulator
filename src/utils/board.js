@@ -13,12 +13,23 @@ export const getTileCard = (board, place, index) => {
   return board[place.y][place.x].cards[index];
 };
 
-export const toBoard = (G, origin, index, place) => {
+export const originToBoard = (G, origin, index, place) => {
   let tile = G.board[place.y][place.x];
 
   if (tile) {
     let item = origin.splice(index, 1)[0];
     tile.cards.unshift(item);
+    G.selectToBoard = null;
+  } else {
+    return INVALID_MOVE;
+  }
+};
+
+export const noneToBoard = (G, card, place) => {
+  let tile = G.board[place.y][place.x];
+
+  if (tile) {
+    tile.cards.unshift(card);
     G.selectToBoard = null;
   } else {
     return INVALID_MOVE;

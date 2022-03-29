@@ -3,10 +3,11 @@ import { SocketIO } from "boardgame.io/multiplayer";
 import { Simulator } from "./Game";
 import Arena from "./Client/ui/pages/arena";
 import "./Client/ui/styles/globals.css";
+import "./Client/ui/styles/responsive.css";
 import { useState } from "react";
+import { getServer } from "utils/help";
 
-const { protocol, hostname, port } = window.location;
-const server = `${protocol}//${hostname}:${port}`;
+const server = getServer();
 
 const SimulatorClient = Client({
   game: Simulator,

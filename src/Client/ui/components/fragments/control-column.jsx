@@ -24,7 +24,10 @@ const ControlColumn = ({ids, currentPlayer, reveal, moves, events}) => {
                 hidden={currentPlayer !== myID}>
                     END TURN
                 </Button>
-            </div>
+                <Button click={() => moves.createToken(myID)}>
+                    CREATE TOKEN
+                </Button>
+            </div> 
     )
 }
 

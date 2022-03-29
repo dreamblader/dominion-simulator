@@ -25,4 +25,5 @@ export const Origin = {
   DZ: "destroyZone",
   OUT: "out",
   BOARD: "board",
+  NONE: "none",
 };
