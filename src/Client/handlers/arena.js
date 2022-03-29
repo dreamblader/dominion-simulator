@@ -5,6 +5,7 @@ import BoardActions from "Client/actions/board";
 import DestroyActions from "Client/actions/destroy";
 import OutActions from "Client/actions/out";
 import Strings from "utils/strings";
+import ControlActions from "Client/actions/control";
 
 const { getDeckActionsOnMenu } = DeckActions;
 const { getDZForSearch } = DestroyActions;
@@ -118,6 +119,10 @@ const ArenaActions = ({
     setStatsMenu(BoardActions.openStatsMenu(G.board, ...args));
   };
 
+  const createToken = (...args) => {
+    setSelectToBoard(ControlActions.createToken(...args));
+  };
+
   return {
     global: {
       getLifeMenu,
@@ -141,6 +146,7 @@ const ArenaActions = ({
       moveInBoard,
       selectToAttack,
       openStatsMenu,
+      createToken,
     },
   };
 };

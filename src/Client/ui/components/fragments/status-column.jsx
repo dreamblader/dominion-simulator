@@ -34,11 +34,12 @@ const StatusColumn = ({card}) => {
         const currentHP = getCurentHP(card);
         const currentRange = getCurrentRange(card);
         return(card.type !== Types.FIELD && 
-            <div className="status-segment"> 
+            <div className="status-segment">
+                {card.type !== Types.TOKEN &&
                 <div className="stat">
                     <div>{element}</div>
                     <div>{card.element}</div>
-                </div>
+                </div>} 
                 <div className="stat">
                     <div>ATK:</div>
                     <div className={getStatClass(card.atk ,currentATK)}>
@@ -53,7 +54,7 @@ const StatusColumn = ({card}) => {
                 </div>
                 {currentRange !== 0 &&
                 <div className="stat">
-                    <div>R:</div>
+                    <div>RANGE:</div>
                     <div>{currentRange}</div>
                 </div>}
             </div>
@@ -63,9 +64,9 @@ const StatusColumn = ({card}) => {
     return(
         <div className="status-col">
             {card.id &&
-            <div>
+            <React.Fragment>
                 <StatusSegment>
-                    <div><h3>{card.title}</h3></div>
+                    <div><h2>{card.title}</h2></div>
                 </StatusSegment>
                 <StatusSegment>
                     <CardArt card={card} />
@@ -79,7 +80,7 @@ const StatusColumn = ({card}) => {
                         {renderTags(card.tags)}
                     </div>
                 </StatusSegment>
-            </div>}
+            </React.Fragment>}
         </div>
     )
 }

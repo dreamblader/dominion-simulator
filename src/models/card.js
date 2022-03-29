@@ -1,3 +1,5 @@
+import { Types } from "./enums";
+
 const Card = (id, playerID) => {
   let obj = {
     id: id,
@@ -22,6 +24,19 @@ const Card = (id, playerID) => {
   };
 
   return obj;
+};
+
+export const createTokenCard = (playerID) => {
+  let card = Card(-1, playerID);
+  Object.assign(card, {
+    title: "Generic Unit",
+    type: Types.TOKEN,
+    art: "nandeck_dominion_unity_01.jpg",
+    atk: 1,
+    hp: 1,
+    description: "This is a <b>TOKEN</b> Card",
+  });
+  return card;
 };
 
 export const mapToCard = (rawData, id) => {

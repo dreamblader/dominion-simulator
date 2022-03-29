@@ -1,6 +1,11 @@
 import Place from "../../models/place";
-import { Origin } from "../../models/enums";
-import { getTileCard, getTileCardsArray, toBoard } from "../../utils/board";
+import { Origin, Types } from "../../models/enums";
+import {
+  getTileCard,
+  getTileCardsArray,
+  noneToBoard,
+  originToBoard,
+} from "../../utils/board";
 import { resetStats, setStats } from "../../utils/card";
 import { pushToReveal } from "../../utils/menu";
 import MenuRevealData from "../../models/menu-reveal";
@@ -23,19 +28,24 @@ const checkSelection = (G, selected, player) => {
 };
 
 const placeInHere = (G, ctx, selected, x, y) => {
-  if (checkSelection(G, selected, ctx.playerID)) {
-    let place = Place(x, y);
-    let originName = Object.keys(selected.origin)[0];
-    let originIndex = selected.origin[originName];
-    if (selected.flipped && originName !== Origin.BOARD) {
-      selected.card.flipped = selected.flipped;
-      G[originName][ctx.playerID][originIndex] = selected.card;
+  let place = Place(x, y);
+  let originName = Object.keys(selected.origin)[0];
+
+  if (originName === Origin.NONE) {
+    noneToBoard(G, selected.card, place);
+  } else {
+    if (checkSelection(G, selected, ctx.playerID)) {
+      let originIndex = selected.origin[originName];
+      if (selected.flipped && originName !== Origin.BOARD) {
+        selected.card.flipped = selected.flipped;
+        G[originName][ctx.playerID][originIndex] = selected.card;
+      }
+      let origin =
+        originName !== Origin.BOARD
+          ? G[originName][ctx.playerID]
+          : G[originName][selected.y][selected.x].cards;
+      originToBoard(G, origin, originIndex, place);
     }
-    let origin =
-      originName !== Origin.BOARD
-        ? G[originName][ctx.playerID]
-        : G[originName][selected.y][selected.x].cards;
-    toBoard(G, origin, originIndex, place);
   }
 };
 
@@ -75,23 +85,23 @@ const activateCard = (G, ctx, place, index = 0) => {
 const tickCard = (card) => {};
 
 const bounceCard = (G, ctx, place, index = 0) => {
-  let card = resetStats(getTileCard(G.board, place, index));
-  let cardList = getTileCardsArray(G.board, place);
-  G.hand[ctx.playerID].push(card);
-  cardList.splice(index, 1);
+  removeBoardCardTo(G.board, G.hand[ctx.playerID], place, index);
 };
 
 const destroyCard = (G, ctx, place, index = 0) => {
-  let card = resetStats(getTileCard(G.board, place, index));
-  let cardList = getTileCardsArray(G.board, place);
-  G.destroyZone[ctx.playerID].push(card);
-  cardList.splice(index, 1);
+  removeBoardCardTo(G.board, G.destroyZone[ctx.playerID], place, index);
 };
 
 const finishCard = (G, ctx, place, index = 0) => {
-  let card = resetStats(getTileCard(G.board, place, index));
-  let cardList = getTileCardsArray(G.board, place);
-  G.out.push(card);
+  removeBoardCardTo(G.board, G.out, place, index);
+};
+
+const removeBoardCardTo = (board, to, from, index) => {
+  let card = resetStats(getTileCard(board, from, index));
+  let cardList = getTileCardsArray(board, from);
+  if (card.type !== Types.TOKEN) {
+    to.push(card);
+  }
   cardList.splice(index, 1);
 };
 

@@ -157,7 +157,8 @@ const Board = ({board, ids, moves, selected, life, menuClick, highlight, clear})
     }
 
     const renderStats = (card) => {
-        if(!card.flipped && card.type === Types.UNITY){
+        let isCardTypeWithStatus = card.type === Types.UNITY || card.type === Types.TOKEN
+        if(!card.flipped && isCardTypeWithStatus){
             return (
                 <div className="bottom">
                     <div className="txt-info">
@@ -173,7 +174,8 @@ const Board = ({board, ids, moves, selected, life, menuClick, highlight, clear})
 
     const renderRange = (card) => {
         if(getCurrentRange(card) !== 0){
-            return getCurrentRange(card) > 0 ? "+" : "" +getCurrentRange(card)
+            let signal = getCurrentRange(card) > 0 ? "+" : "";
+            return  signal+getCurrentRange(card);
         }
         return "";
     }
