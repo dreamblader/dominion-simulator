@@ -1,10 +1,22 @@
-@media (max-width: 1255px), (max-height: 940px) {
+@media (max-width: 1385px), (max-height: 940px) {
+  :root {
+    font-size: 90%;
+  }
+}
+
+@media (max-width: 1255px), (max-height: 800px) {
   :root {
     font-size: 80%;
   }
 }
 
-@media (max-width: 1010px), (max-height: 750px) {
+@media (max-width: 1125px), (max-height: 700px){
+  :root {
+    font-size: 70%;
+  }
+}
+
+@media (max-width: 1010px), (max-height: 625px){
   :root {
     font-size: 60%;
   }

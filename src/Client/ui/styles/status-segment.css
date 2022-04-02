@@ -1,6 +1,6 @@
 .segment {
   display: flex;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   flex-direction: column;
   width: 100%;
   text-align: center;
@@ -22,12 +22,13 @@
 
 .status-segment {
   display: flex;
+  font-size: 80%;
   height: 100%;
   padding: 0 !important;
 }
 
 .stat {
-  flex: 1;
+  flex: 1 1;
   padding: 0.5rem;
   border-right: 3px solid rgb(73, 70, 70);
 }

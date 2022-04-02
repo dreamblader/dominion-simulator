@@ -8,6 +8,10 @@ import StatusSegment from "../general/status-segment"
 
 const StatusColumn = ({card}) => {
 
+    const currentATK = getCurentATK(card);
+    const currentHP = getCurentHP(card);
+    const currentRange = getCurrentRange(card);
+
     const renderTags = (tags) => {
         let result="";
         if(Array.isArray(tags)){
@@ -30,9 +34,6 @@ const StatusColumn = ({card}) => {
 
     const renderStatus = () => {
         const element = card.type === Types.UNITY ? "ELEMENT:" : "ACTIVATION:"
-        const currentATK = getCurentATK(card);
-        const currentHP = getCurentHP(card);
-        const currentRange = getCurrentRange(card);
         return(card.type !== Types.FIELD && 
             <div className="status-segment">
                 {card.type !== Types.TOKEN &&
@@ -54,7 +55,7 @@ const StatusColumn = ({card}) => {
                 </div>
                 {currentRange !== 0 &&
                 <div className="stat">
-                    <div>RANGE:</div>
+                    <div>RG:</div>
                     <div>{currentRange}</div>
                 </div>}
             </div>
@@ -62,7 +63,7 @@ const StatusColumn = ({card}) => {
     }
 
     return(
-        <div className="status-col">
+        <div className={"status-col"}>
             {card.id &&
             <React.Fragment>
                 <StatusSegment>
@@ -75,7 +76,9 @@ const StatusColumn = ({card}) => {
                     {renderStatus()}  
                 </StatusSegment>
                 <StatusSegment>
-                    {HtmlParser(card.description)}
+                    <div>
+                        {HtmlParser(card.description)}
+                    </div>
                     <div>
                         {renderTags(card.tags)}
                     </div>
