@@ -24,7 +24,7 @@ const Arena = ({G, ctx, playerID, deckID, moves, events}) => {
   const setters = {setActionMenu, setHighlightCard, setListMenu, setStatsMenu, setLifeMenu, setSelectToBoard}
   const getters = {actionMenu, highlightCard, listMenu, statsMenu, lifeMenu, selectToBoard}
 
-  const params = {G, myID, moves, ...setters, ...getters,}
+  const params = {G, moves,  myID, ...setters, ...getters,}
 
   const actions = ArenaActions(params)
   const clientSideMoves = actions.moves;

@@ -1,5 +1,5 @@
 import Action from "models/action";
-import MenuData from "models/menu";
+import MenuData from "models/menu/menu";
 import { Origin } from "models/enums";
 import Temp from "models/temp-select";
 

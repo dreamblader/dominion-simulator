@@ -1,4 +1,4 @@
-import MenuLifeData from "models/menu-life";
+import MenuLifeData from "models/menu/menu-life";
 import DeckActions from "Client/actions/deck";
 import HandActions from "Client/actions/hand";
 import BoardActions from "Client/actions/board";

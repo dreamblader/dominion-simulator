@@ -28,7 +28,6 @@ export const isEmpty = (array) => {
 };
 
 export const getServer = () => {
-  console.log(process.env, process.env.REACT_APP_DEV);
   const { protocol, hostname } = window.location;
   const port = process.env.REACT_APP_DEV ? 8000 : window.location.port;
   return `${protocol}//${hostname}:${port}`;

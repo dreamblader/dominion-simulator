@@ -1,5 +1,5 @@
 import Temp from "models/temp-select";
-import { createTokenCard } from "models/card";
+import { createTokenCard } from "models/game-pieces/card";
 import { Origin } from "models/enums";
 
 const createToken = (playerId) => {

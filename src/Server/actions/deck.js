@@ -1,7 +1,8 @@
 import Consts from "../../utils/consts";
 import { moveToArray } from "../../utils/help";
 import { pushToReveal } from "../../utils/menu";
-import MenuRevealData from "../../models/menu-reveal";
+import MenuRevealData from "../../models/menu/menu-reveal";
+import { INVALID_MOVE } from "boardgame.io/core";
 
 const setDeck = (G, ctx, deck) => {
   G.deck[ctx.playerID] = deck;
@@ -23,23 +24,48 @@ const drawForTurn = (G, ctx) => {
   }
 };
 
-const searchToHand = (G, ctx, index) => {
-  let content = G.deck[ctx.playerID].cards[index];
-  let topText = `Your opponent have selected ${content.title} from Deck to Hand`;
-  G.reveal = pushToReveal(
-    G.reveal,
-    MenuRevealData(topText, content),
-    parseInt(ctx.playerID)
-  );
-  moveToArray(G.deck[ctx.playerID].cards, G.hand[ctx.playerID], index);
+const searchToHand = (G, ctx, card) => {
+  let myDeck = G.deck[ctx.playerID];
+  let myHand = G.hand[ctx.playerID];
+  let index = searchCard(myDeck, card);
+  console.log(index);
+  if (index !== -1) {
+    let content = G.deck[ctx.playerID].cards[index];
+    let topText = `Your opponent have selected ${content.title} from Deck to Hand`;
+    G.reveal = pushToReveal(
+      G.reveal,
+      MenuRevealData(topText, content),
+      parseInt(ctx.playerID)
+    );
+    moveToArray(myDeck.cards, myHand, index);
+  } else {
+    return INVALID_MOVE;
+  }
 };
 
-const searchToDZ = (G, ctx, index) => {
-  moveToArray(G.deck[ctx.playerID].cards, G.destroyZone[ctx.playerID], index);
+const searchToDZ = (G, ctx, card) => {
+  let myDeck = G.deck[ctx.playerID];
+  let myDZ = G.destroyZone[ctx.playerID];
+  let index = searchCard(myDeck, card);
+  if (index !== -1) {
+    moveToArray(myDeck.cards, myDZ, index);
+  } else {
+    return INVALID_MOVE;
+  }
 };
 
-const searchToOOG = (G, ctx, index) => {
-  moveToArray(G.deck[ctx.playerID].cards, G.out, index);
+const searchToOOG = (G, ctx, card) => {
+  let myDeck = G.deck[ctx.playerID];
+  let index = searchCard(myDeck, card);
+  if (index !== -1) {
+    moveToArray(myDeck.cards, G.out, index);
+  } else {
+    return INVALID_MOVE;
+  }
+};
+
+const searchCard = (deck, target) => {
+  return deck.cards.findIndex((card) => card.id === target.id);
 };
 
 const shuffleDeck = (G, ctx) => {

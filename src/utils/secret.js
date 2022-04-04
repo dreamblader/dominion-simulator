@@ -1,5 +1,5 @@
-import Card from "../models/card";
-import Deck from "../models/deck";
+import Card from "../models/game-pieces/card";
+import Deck from "../models/game-pieces/deck";
 
 const HideSecrets = (G, ctx, playerID) => {
   const result = { ...G };

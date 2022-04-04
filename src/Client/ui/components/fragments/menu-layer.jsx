@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import MenuData from "../../../../models/menu";
+import MenuData from "../../../../models/menu/menu";
 import Menu from "../menus/menu";
 import MenuList from "../menus/menu-list"
 import MenuLife from "../menus/menu-life";
@@ -10,9 +10,9 @@ import MenuStats from "../menus/menu-stats";
 
 const MenuLayer = ({listMenu, actionMenu, revealMenu, statsMenu, lifeMenu, ids, moves, highlight, clear}) => {
 
-    const clickMenuList = (event, index) => {
+    const clickMenuList = (event, index, card) => {
         let actions = listMenu.actions.map(action => {
-            let args = [index];
+            let args = listMenu.isShuffled ? [card] : [index];
             if(Array.isArray(action.args)) {
                 action.args.push(...args);
             } else {

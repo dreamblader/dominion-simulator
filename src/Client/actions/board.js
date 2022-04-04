@@ -1,12 +1,12 @@
 import Action from "models/action";
-import MenuData from "models/menu";
+import MenuData from "models/menu/menu";
 import Place from "models/place";
 import Temp from "models/temp-select";
-import MenuListData from "models/menu-list";
+import MenuListData from "models/menu/menu-list";
 import Strings from "utils/strings";
 import { Origin, SelectTypes, Types } from "models/enums";
 import { getTileCard } from "utils/board";
-import MenuStatusData from "models/menu-stats";
+import MenuStatusData from "models/menu/menu-stats";
 
 const select = (board, place, index, type) => {
   let origin = {};

@@ -1,9 +1,9 @@
-import Deck from "models/deck";
+import Deck from "models/game-pieces/deck";
 import Action from "models/action";
-import MenuListData from "models/menu-list";
-import MenuData from "models/menu";
+import MenuListData from "models/menu/menu-list";
+import MenuData from "models/menu/menu";
 import Strings from "utils/strings";
-import { mapToCard } from "models/card";
+import { mapToCard } from "models/game-pieces/card";
 
 export const constructDeck = (deckID, cards, id) => {
   let mappedCards = [];
@@ -19,7 +19,7 @@ const getDeckForSearch = (deck) => {
     Action("To DZ", "searchToDZ"),
     Action("To OOG", "searchToOOG"),
   ];
-  return MenuListData(Strings.deckHeader, deck, actions);
+  return MenuListData(Strings.deckHeader, deck, actions, true);
 };
 
 const getDeckActionsOnMenu = (event) => {

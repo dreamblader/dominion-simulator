@@ -8,7 +8,7 @@ import {
 } from "../../utils/board";
 import { resetStats, setStats } from "../../utils/card";
 import { pushToReveal } from "../../utils/menu";
-import MenuRevealData from "../../models/menu-reveal";
+import MenuRevealData from "../../models/menu/menu-reveal";
 import VersusContent from "../../models/versus-content";
 
 const checkSelection = (G, selected, player) => {

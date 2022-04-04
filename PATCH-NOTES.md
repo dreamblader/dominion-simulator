@@ -4,7 +4,11 @@
 
 ## 0.2.1v Closed Alpha
 
-Added:
+Fixed:
+
+- Fixed a Bug that the async call of shuffle after "Search" is operated in Deck affect the selected card, making it erratic
+
+  Added:
 
 - Game:
   - More Responsive options
@@ -19,12 +23,14 @@ Changed:
 
 ## 0.2v Closed Alpha
 
+Fixed:
+
+- Fixed a Bug that the Range value did not show on the Board space overlay
+- Fixed a Bug that card-convert was only converting the first pipe code ("|")
+- Fixed the responsiveness of Info Status
+
 Added:
 
-- Bugs:
-  - Fixed a Bug that the Range value did not show on the Board space overlay
-  - Fixed a Bug that card-convert was only converting the first pipe code ("|")
-  - Fixed the responsiveness of Info Status
 - System:
   - The screen is now responsive (needs more test)
   - Token Cards feature is now added to the game system
