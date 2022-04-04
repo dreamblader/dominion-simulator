@@ -1,17 +1,12 @@
-export const Tick = (name, event, description) => {
-  let obj = {
-    name: name,
-    duration: 0,
-    event: event,
-    description: description
-  };
-
-  return obj;
-};
+import Burn from "./burn";
 
 export const setDuration = (tick, duration) => {
   tick.duration = duration;
-}
+};
+
+export const Conditions = {
+  BURN: Burn,
+};
 
 const Ticks = {
   CONDITION: Conditions,

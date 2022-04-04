@@ -1,0 +1,15 @@
+.menu-tick-container {
+  position: relative;
+  left: 10%;
+  top: -5%;
+  background-color: rgb(250, 250, 250, 0.75);
+  border: 2px solid grey;
+  z-index: 1;
+}
+
+/*
+.menu-tick {
+  background-color: rgb(250, 250, 250, 0.75);
+  border: 2px solid grey;
+}
+*/

@@ -1,0 +1,12 @@
+.tick {
+  border-radius: 50%;
+  height: 2.5rem;
+  width: 2.5rem;
+  padding: 0.5rem 0.5rem;
+  background-color: transparent;
+}
+
+.tick > img {
+  height: 2rem;
+  width: 2rem;
+}

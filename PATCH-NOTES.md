@@ -6,7 +6,7 @@
 
 Fixed:
 
-- Fixed a Bug that the async call of shuffle after "Search" is operated in Deck affect the selected card, making it erratic
+- Fixed a Bug that the async call of shuffle after "Search" is operated in Deck effect the selected card, making it erratic
 
   Added:
 

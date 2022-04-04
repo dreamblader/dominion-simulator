@@ -28,7 +28,6 @@ const searchToHand = (G, ctx, card) => {
   let myDeck = G.deck[ctx.playerID];
   let myHand = G.hand[ctx.playerID];
   let index = searchCard(myDeck, card);
-  console.log(index);
   if (index !== -1) {
     let content = G.deck[ctx.playerID].cards[index];
     let topText = `Your opponent have selected ${content.title} from Deck to Hand`;

@@ -125,7 +125,6 @@ const ArenaActions = ({
       oogMenu,
       handMenu,
       boardMenu,
-      clearListMenu,
       clearMenuCallback,
     },
 
