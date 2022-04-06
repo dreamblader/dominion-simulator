@@ -79,7 +79,7 @@ Possible actions that you can do in the simulator and where you can do it:
     - Start your BATTLE Phase
   - [ ] SPAWN Phase
     - Start your SPAWN Phase
-  - [ ] Create TOKEN Card
+  - [x] Create TOKEN Card
     - Create a Pseudo-Card to put in Board
   - [x] END Turn
     - Finish your turn
@@ -93,22 +93,22 @@ Possible actions that you can do in the simulator and where you can do it:
 Prototype Layout for simulator:
 ![Prototype Layout](board.layout.png "Prototype Layout")
 
-
 ## NPM Commands
-  - npm start: 
-    - Run build.js script that runs all the starter commands (for Heroku deploy purposes)
-  - npm run react-start:
-    - Start the React Client application (similar to npm start on pure React applications)
-  - npm run react-build:
-    - Build the React Application (need to run first if you want to test the hybrid app by running the Server and accessing it index)
-  - npm run server:
-    - Run the Server application in src/Server/server.js
-  - npm run dev-server:
-    - Run the Server application with Nodemon for developing and auto updating it
-  - npm run start-db
-    - Run the data/star-db script. This script run all sqls files to populate the game.db
-  - npm run converter: 
-    - Run the converter script for the CSV Data (more info in the README inside Data folder)
+
+- npm start:
+  - Run build.js script that runs all the starter commands (for Heroku deploy purposes)
+- npm run react-start:
+  - Start the React Client application (similar to npm start on pure React applications)
+- npm run react-build:
+  - Build the React Application (need to run first if you want to test the hybrid app by running the Server and accessing it index)
+- npm run server:
+  - Run the Server application in src/Server/server.js
+- npm run dev-server:
+  - Run the Server application with Nodemon for developing and auto updating it
+- npm run start-db
+  - Run the data/star-db script. This script run all sqls files to populate the game.db
+- npm run converter:
+  - Run the converter script for the CSV Data (more info in the README inside Data folder)
 
 ## Links
 

@@ -2,11 +2,12 @@
 
 ## Closed Beta
 
-## 0.2.1v Closed Alpha
+## 0.3v Closed Alpha
 
 Fixed:
 
 - Fixed a Bug that the async call of shuffle after "Search" is operated in Deck effect the selected card, making it erratic
+- Fixed a Bug that the "Change Status" Menu was not responsive (still needs more test)
 
   Added:
 

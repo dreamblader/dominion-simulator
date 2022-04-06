@@ -14,6 +14,7 @@ import "../../styles/menu-stats.css";
 import NoInputLayer from "../general/no-input-layer";
 import MenuTicks from "./menu-ticks";
 import MenuTickData from "models/menu/menu-tick";
+import Checkbox from "../general/checkbox";
 
 const MenuStats = ({ data, highlight, apply, clear }) => {
   const { place, card, index } = data;
@@ -65,14 +66,12 @@ const MenuStats = ({ data, highlight, apply, clear }) => {
             <NumberInput value={atk} setValue={setCardAtk} />
             <h3>Life:</h3>
             <NumberInput value={hp} setValue={setCardHP} />
-            <div className="input-container">
-              <input
-                type="checkbox"
-                checked={isRangeEnable}
-                onChange={(e) => rangeCheck(e)}
-              />
-              <p>Set Card Range</p>
-            </div>
+            <Checkbox
+              value={isRangeEnable}
+              action={rangeCheck}
+              label="Set Card Range"
+            />
+
             {isRangeEnable && (
               <React.Fragment>
                 <h3>Range:</h3>
