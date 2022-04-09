@@ -30,13 +30,13 @@ const openStatsMenu = (board, place, index = 0) => {
 
 const BoardActionsMenu = (place) => {
   return [
+    Action("Set Stats", "openStatsMenu", [place]),
+    //Action("Tick", ServerActions.tickCard.name),
     Action("Move", "moveInBoard", [place]),
     Action("Attack", "selectToAttack", [place]),
     Action("Flip", "flipCard", [place]),
     Action("Invert", "invertCard", [place]),
     Action("Activate", "activateCard", [place]),
-    Action("Set Stats", "openStatsMenu", [place]),
-    //Action("Tick", ServerActions.tickCard.name),
     Action("Bounce", "bounceCard", [place]),
     Action("Destroy", "destroyCard", [place]),
     Action("Finish", "finishCard", [place]),

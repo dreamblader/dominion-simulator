@@ -12,6 +12,11 @@
   background-color: red !important;
 }
 
+.remove {
+  border-color: rgb(121, 10, 10) !important;
+  background-color: red !important;
+}
+
 .success {
   border-radius: 50%;
   font-weight: bolder;

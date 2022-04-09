@@ -3,10 +3,21 @@
   height: 2.5rem;
   width: 2.5rem;
   padding: 0.5rem 0.5rem;
-  background-color: transparent;
+}
+
+.afflictions {
+  background-color: rgb(172, 131, 172) !important;
+}
+
+.blessings {
+  background-color: rgb(255, 235, 169) !important;
+}
+
+.neutral {
+  background-color: rgb(233, 249, 250) !important;
 }
 
 .tick > img {
-  height: 2rem;
-  width: 2rem;
+  height: 1.5rem;
+  width: 1.5rem;
 }
