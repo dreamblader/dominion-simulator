@@ -1,0 +1,44 @@
+.phase-container {
+  display: flex;
+}
+
+.phase-bar {
+  position: relative;
+  height: 100%;
+  width: 1rem;
+  margin-right: 0.2rem;
+  border: 2px solid gray;
+  background-image: linear-gradient(
+    180deg,
+    rgba(0, 0, 255, 1) 0%,
+    rgba(255, 0, 0, 1) 100%
+  );
+}
+
+.phases-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.phase-bar > .fill {
+  position: absolute;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  transition: 1.5s;
+}
+
+.phase {
+  font-weight: bold;
+  transition: 1s;
+}
+
+.phase:not(.disabled) {
+  cursor: pointer;
+}
+
+.phase.select,
+.phase:not(.disabled):hover {
+  color: yellow;
+}

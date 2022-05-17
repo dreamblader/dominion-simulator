@@ -2,6 +2,34 @@
 
 ## Closed Beta
 
+## 0.4v Closed Alpha
+
+Added:
+
+- Game:
+
+  - Tick Status can be applied in the "Set Status" Card Menu.
+  - All Tick Status applied to the Card show in the Card Info
+  - Cards with Tick Status on board show how many status the card have
+
+  **WIP**
+
+  - Added Phase Bar to Control which game phase the turn player is at
+  - Added "TICK" in Board Card Actions
+    - The "TICK" action will run all Tick Status function inside the Card and decrease it duration by 1
+  - Added RNG Control Buttons
+    - Added Dice (D6)
+    - Added Coin
+    - Added Dice (D8)
+
+- MISC:
+  - Added CREDITS.md to inform all SVG icons credits used in this project
+
+Changed:
+
+- Game
+  - Remade/fixed ATK Animation to be more precise and informative
+
 ## 0.3v Closed Alpha
 
 Fixed:
@@ -9,7 +37,7 @@ Fixed:
 - Fixed a Bug that the async call of shuffle after "Search" is operated in Deck effect the selected card, making it erratic
 - Fixed a Bug that the "Change Status" Menu was not responsive (still needs more test)
 
-  Added:
+Added:
 
 - Game:
   - More Responsive options
