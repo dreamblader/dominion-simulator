@@ -1,20 +1,47 @@
-import Ticks from "models/tick/tick";
+import Ticks, { combineTicks } from "models/tick/tick";
 import Tick from "../general/tick";
 import Button from "../general/button";
 import MenuHeader from "./menu-header";
 import NumberInput from "../general/number-input";
 import React from "react";
 import Checkbox from "../general/checkbox";
+import PropTypes from "prop-types";
+import { stripEvent } from "models/tick/tick";
+import { safeSplice } from "utils/help";
 import "../../styles/menu-ticks.css";
 
-const MenuTicks = ({ content, clear }) => {
-  const { tick, index } = content;
+const MenuTicks = ({ content, clear, set }) => {
+  const { tick, index, card } = content;
   const [selectedTick, setSelectedTick] = React.useState(
-    Ticks.AFFLICTIONS.BURN
+    tick ?? Object.values(Object.values(Ticks)[0])[0]
   );
   const [duration, setDuration] = React.useState(0);
-  const applyStats = () => {};
-  const removeStats = () => {};
+
+  const applyStats = () => {
+    let newTick = stripEvent(selectedTick);
+    let newIndex = -1;
+    newTick.duration = duration;
+    if (index >= card.status.length) {
+      let sameTickIndex = card.status.findIndex(
+        (tick) => tick.name === newTick.name
+      );
+      if (sameTickIndex > -1) {
+        newTick = combineTicks(card.status[sameTickIndex], newTick);
+        card.status = safeSplice(card.status, sameTickIndex);
+        newIndex = card.status.length;
+      }
+    }
+    newIndex = newIndex > -1 ? newIndex : index;
+    card.status[newIndex] = newTick;
+    set(card);
+    clear();
+  };
+
+  const removeStats = () => {
+    card.status = safeSplice(card.status, index);
+    set(card);
+    clear();
+  };
 
   const tickClick = (tick) => {
     setSelectedTick(tick);
@@ -29,20 +56,17 @@ const MenuTicks = ({ content, clear }) => {
       <MenuHeader header="Ticks Menu" clear={clear} />
       <div className="menu-tick">
         <div className="tick-display">
-          {Object.keys(Ticks).map((type) => {
-            return Object.keys(Ticks[type]).map((item) => {
-              let selected =
-                Ticks[type][item].name === selectedTick.name ? "selected" : "";
-              console.log(selected);
-              console.log(type);
-              return (
-                <Tick
-                  extraClass={`${type.toLowerCase()} ${selected}`}
-                  content={Ticks[type][item]}
-                  click={tickClick}
-                />
-              );
-            });
+          {Object.keys(Ticks).map((key) => {
+            let tick = Ticks[key];
+            let selected = tick.name === selectedTick.name ? "selected" : "";
+            return (
+              <Tick
+                key={tick.name}
+                extraClass={selected}
+                content={tick}
+                click={tickClick}
+              />
+            );
           })}
         </div>
         <h3>{selectedTick.name}</h3>
@@ -68,6 +92,10 @@ const MenuTicks = ({ content, clear }) => {
   );
 };
 
-MenuTicks.propTypes = {};
+MenuTicks.propTypes = {
+  content: PropTypes.object,
+  clear: PropTypes.func,
+  action: PropTypes.func,
+};
 
 export default MenuTicks;

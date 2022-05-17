@@ -1,22 +1,13 @@
-export const getCurentATK = (card) => {
+export const getCurrentATK = (card) => {
   return card.atk + card.atk_mod;
 };
 
-export const getCurentHP = (card) => {
+export const getCurrentHP = (card) => {
   return card.hp + card.hp_mod;
 };
 
 export const getCurrentRange = (card) => {
   return card.range + card.range_mod;
-};
-
-export const setStats = (card, stats) => {
-  let newCard = { ...card };
-  let { atk, hp, range } = stats;
-  newCard.atk_mod = atk - card.atk;
-  newCard.hp_mod = hp - card.hp;
-  newCard.range_mod = range - card.range;
-  return newCard;
 };
 
 export const resetStats = (card) => {

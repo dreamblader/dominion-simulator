@@ -1,10 +1,17 @@
 import Tick from "./tick-object";
 import icon from "../../Client/ui/images/ticks/fire.png";
+import { TickType } from "./tick-object";
 
 const event = (card) => {
   card.hp_mod--;
 };
 
-const Burn = Tick("Burn", event, icon, "Lose 1 HP Every TICK");
+const Burn = Tick(
+  "Burn",
+  TickType.AFFLICTIONS,
+  event,
+  icon,
+  "Lose 1 HP Every TICK"
+);
 
 export default Burn;

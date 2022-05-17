@@ -31,6 +31,24 @@
   width: 100%;
 }
 
+.overlay > .tick {
+  position: absolute;
+  top: 20%;
+  right: 0;
+  border: 1px solid black;
+  color: #000;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0.1rem 0.2rem;
+  width: fit-content;
+  height: auto;
+  background-color: rgb(233, 249, 250);
+}
+
+.section > .txt-info {
+  margin-right: 0.3rem;
+}
+
 .tile-holder .bottom {
   position: absolute;
   width: 100%;
@@ -68,9 +86,6 @@
 }
 
 .tile-holder {
-  /* height: 5rem;
-  width: 3.5rem; */
-
   height: 6rem;
   width: 4rem;
 }

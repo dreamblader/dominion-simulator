@@ -6,7 +6,7 @@ import {
   noneToBoard,
   originToBoard,
 } from "../../utils/board";
-import { resetStats, setStats } from "../../utils/card";
+import { resetStats } from "../../utils/card";
 import { pushToReveal } from "../../utils/menu";
 import MenuRevealData from "../../models/menu/menu-reveal";
 import VersusContent from "../../models/versus-content";
@@ -49,10 +49,10 @@ const placeInHere = (G, ctx, selected, x, y) => {
   }
 };
 
-const applyStats = (G, ctx, place, stats, index = 0) => {
-  let card = getTileCard(G.board, place, index);
+const applyStats = (G, ctx, place, modCard, index = 0) => {
+  //let card = getTileCard(G.board, place, index);
   let cardList = getTileCardsArray(G.board, place);
-  cardList[index] = setStats(card, stats);
+  cardList[index] = modCard;
 };
 
 const attackCard = (G, ctx, selected, card) => {

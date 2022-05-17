@@ -27,6 +27,10 @@
   align-items: center;
 }
 
+.menu-tick > h3 {
+  height: 1.2rem;
+}
+
 .menu-tick > h4 {
   width: 80%;
 }

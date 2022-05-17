@@ -4,7 +4,7 @@ import Place from "models/place";
 import Temp from "models/temp-select";
 import MenuListData from "models/menu/menu-list";
 import Strings from "utils/strings";
-import { Origin, SelectTypes, Types } from "models/enums";
+import { Origin, SelectTypes } from "models/enums";
 import { getTileCard } from "utils/board";
 import MenuStatusData from "models/menu/menu-stats";
 

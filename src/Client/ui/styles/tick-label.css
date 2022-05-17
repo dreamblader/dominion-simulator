@@ -1,0 +1,16 @@
+.tick-label {
+  display: flex;
+  cursor: pointer;
+  border: 2px solid transparent;
+  padding: 0.2rem;
+  transition: border 0.5s;
+}
+
+.tick-label > img {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.tick-label:hover {
+  border: 2px solid black;
+}

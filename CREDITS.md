@@ -35,15 +35,17 @@
 
 - Defend Atack
   - <a href="https://www.flaticon.com/free-icons/shield" title="shield icons">Shield icons created by Freepik - Flaticon</a>
+- Infinite
+  - <a href="https://www.flaticon.com/free-icons/infinity" title="infinity icons">Infinity icons created by edt.im - Flaticon</a>
 
 **ELEMENTS**
 
 - Fire Element (Edited)
   - <a href="https://www.flaticon.com/free-icons/fire" title="fire icons">Fire icons created by Freepik - Flaticon</a>
 - Water Element
-  - ...
-- Earth Element
-  - ...
+  - <a href="https://www.flaticon.com/free-icons/water" title="water icons">Water icons created by BomSymbols - Flaticon</a>
+- Earth Element (Edited)
+  - <a href="https://www.flaticon.com/free-icons/danger" title="danger icons">Danger icons created by Those Icons - Flaticon</a>
 - Air Element
   - ...
 - Thunder Element

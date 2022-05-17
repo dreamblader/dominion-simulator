@@ -1,10 +1,12 @@
 import Tick from "./tick-object";
 import icon from "../../Client/ui/images/ticks/stats-up.png";
+import { TickType } from "./tick-object";
 
 const event = (card) => {};
 
 const StatusUp = Tick(
   "Status Up",
+  TickType.BLESSINGS,
   event,
   icon,
   "This card status are temporary augmented by an effect."

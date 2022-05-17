@@ -37,3 +37,10 @@
 .menu-stats-container > .button {
   margin: 1rem;
 }
+
+.status-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: 0.2rem;
+  overflow-y: auto;
+}

@@ -4,7 +4,6 @@ import HandActions from "Client/actions/hand";
 import BoardActions from "Client/actions/board";
 import DestroyActions from "Client/actions/destroy";
 import OutActions from "Client/actions/out";
-import Strings from "utils/strings";
 import ControlActions from "Client/actions/control";
 
 const { getDeckActionsOnMenu } = DeckActions;

@@ -33,6 +33,11 @@
   border-right: 3px solid rgb(73, 70, 70);
 }
 
+.tick-status {
+  display: flex;
+  overflow-x: auto;
+}
+
 .stat:last-child {
   border-right: 0px;
 }
