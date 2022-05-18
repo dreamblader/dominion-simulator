@@ -7,7 +7,6 @@ const event = (card) => {};
 const StatusDown = Tick(
   "Status Down",
   TickType.AFFLICTIONS,
-  event,
   icon,
   "This card status are temporary decreased by an effect."
 );

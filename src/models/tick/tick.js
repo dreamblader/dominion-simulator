@@ -1,5 +1,5 @@
 import Burn from "./burn";
-import Cooldown from "./cooldown";
+import Cooldown, { event } from "./cooldown";
 import StatusUp from "./stats-up";
 import StatusDown from "./stats-down";
 import Stun from "./stun";
@@ -24,6 +24,16 @@ export const combineTicks = (oldTick, newTick) => {
 
 const Ticks = {
   COOLDOWN: Cooldown,
+  STATS_DOWN: StatusDown,
+  BURN: Burn,
+  STUN: Stun,
+  STATS_UP: StatusUp,
+  SHIELD: Shield,
+};
+
+//TODO make events dettached from ticks
+export const TickEvents = {
+  COOLDOWN: event,
   STATS_DOWN: StatusDown,
   BURN: Burn,
   STUN: Stun,

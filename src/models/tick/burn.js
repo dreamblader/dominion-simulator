@@ -6,12 +6,6 @@ const event = (card) => {
   card.hp_mod--;
 };
 
-const Burn = Tick(
-  "Burn",
-  TickType.AFFLICTIONS,
-  event,
-  icon,
-  "Lose 1 HP Every TICK"
-);
+const Burn = Tick("Burn", TickType.AFFLICTIONS, icon, "Lose 1 HP Every TICK");
 
 export default Burn;

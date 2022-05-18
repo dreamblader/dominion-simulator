@@ -7,7 +7,6 @@ const event = (card) => {};
 const Stun = Tick(
   "Stun",
   TickType.AFFLICTIONS,
-  event,
   icon,
   "This card cannot do any ACTIONS with this status."
 );

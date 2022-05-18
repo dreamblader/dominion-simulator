@@ -7,7 +7,6 @@ const event = (card) => {};
 const StatusUp = Tick(
   "Status Up",
   TickType.BLESSINGS,
-  event,
   icon,
   "This card status are temporary augmented by an effect."
 );

@@ -4,12 +4,11 @@ export const TickType = {
   BLESSINGS: "blessings",
 };
 
-const Tick = (name, type, event, icon, description) => {
+const Tick = (name, type, icon, description) => {
   let obj = {
     name: name,
     type: type,
     duration: 0,
-    event: event,
     icon: icon,
     description: description,
   };

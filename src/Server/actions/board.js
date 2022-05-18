@@ -87,7 +87,8 @@ const tickCard = (G, ctx, place, index = 0) => {
   let card = getTileCard(G.board, place, index);
   card.status.forEach((tick, index) => {
     if (tick.duration > 0) {
-      Ticks[tick.name.toUpperCase()].event(card);
+      //TODO TICK-EVENT
+      //Ticks[tick.name.toUpperCase()].event(card);
       tick.duration--;
       if (tick.duration === 0) {
         card.status = safeSplice(card.status, index);
