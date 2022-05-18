@@ -1,4 +1,4 @@
-import { ActivePlayers, TurnOrder } from "boardgame.io/core";
+import { ActivePlayers, Stage, TurnOrder } from "boardgame.io/core";
 import { setupDeck, setupProps, setupBoard } from "./Server/actions/setup";
 import Consts from "./utils/consts";
 import HideSecrets from "./utils/secret";
@@ -8,6 +8,10 @@ import DeckActions from "./Server/actions/deck";
 import DestroyActions from "./Server/actions/destroy";
 import OutActions from "./Server/actions/out";
 import MiscActions from "./Server/actions/controls";
+
+const phases = Consts.phases.reduce((obj, phase) => {
+  return { ...obj, [phase]: {} };
+}, {});
 
 export const Simulator = {
   name: "dominion_simulator",
@@ -35,7 +39,12 @@ export const Simulator = {
 
   turn: {
     order: TurnOrder.DEFAULT,
-    activePlayers: ActivePlayers.ALL,
+    onBegin: (G, ctx) => {
+      ctx.events.setActivePlayers({ all: "Draw" });
+    },
+    stage: {
+      ...phases,
+    },
   },
 
   playerView: HideSecrets,

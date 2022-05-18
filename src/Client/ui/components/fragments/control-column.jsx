@@ -4,13 +4,24 @@ import Button from "../general/button";
 import PhaseBar from "../gameplay/phase-bar";
 import ReactImage from "../../images/react-img.png";
 
-const ControlColumn = ({ ids, currentPlayer, reveal, moves, events }) => {
+const ControlColumn = ({
+  ids,
+  currentPlayer,
+  reveal,
+  moves,
+  events,
+  currentStage,
+}) => {
   const [myID, rivalID] = ids;
 
   const endMyTurn = () => {
     if (currentPlayer === myID) {
       events.endTurn();
     }
+  };
+
+  const changePhase = (phase) => {
+    events.setStage(phase);
   };
 
   return (
@@ -21,7 +32,11 @@ const ControlColumn = ({ ids, currentPlayer, reveal, moves, events }) => {
       >
         REACT!
       </Button>
-      <PhaseBar turn={currentPlayer === myID} />
+      <PhaseBar
+        turn={currentPlayer === myID}
+        action={changePhase}
+        stage={currentStage}
+      />
       <Button click={() => endMyTurn()} hidden={currentPlayer !== myID}>
         END TURN
       </Button>
@@ -36,6 +51,7 @@ ControlColumn.propTypes = {
   reveal: PropTypes.arrayOf(PropTypes.array),
   moves: PropTypes.object,
   events: PropTypes.object,
+  currentStage: PropTypes.string,
 };
 
 export default ControlColumn;

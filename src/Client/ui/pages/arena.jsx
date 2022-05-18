@@ -10,7 +10,7 @@ import ArenaActions from "Client/handlers/arena";
 import Card from "Client/ui/components/card/card";
 import "Client/ui/styles/arena.css";
 
-const Arena = ({G, ctx, playerID, deckID, moves, events}) => {
+const Arena = ({ G, ctx, playerID, deckID, moves, events }) => {
   const myID = parseInt(playerID);
   const rivalID = myID === 0 ? 1 : 0;
 
@@ -21,15 +21,29 @@ const Arena = ({G, ctx, playerID, deckID, moves, events}) => {
   const [lifeMenu, setLifeMenu] = useState(null);
   const [selectToBoard, setSelectToBoard] = useState(null);
 
-  const setters = {setActionMenu, setHighlightCard, setListMenu, setStatsMenu, setLifeMenu, setSelectToBoard}
-  const getters = {actionMenu, highlightCard, listMenu, statsMenu, lifeMenu, selectToBoard}
+  const setters = {
+    setActionMenu,
+    setHighlightCard,
+    setListMenu,
+    setStatsMenu,
+    setLifeMenu,
+    setSelectToBoard,
+  };
+  const getters = {
+    actionMenu,
+    highlightCard,
+    listMenu,
+    statsMenu,
+    lifeMenu,
+    selectToBoard,
+  };
 
-  const params = {G, moves,  myID, ...setters, ...getters,}
+  const params = { G, moves, myID, ...setters, ...getters };
 
-  const actions = ArenaActions(params)
+  const actions = ArenaActions(params);
   const clientSideMoves = actions.moves;
-  const {deckMenu, dzMenu, oogMenu, handMenu,
-    boardMenu, clearMenuCallback} = actions.global;
+  const { deckMenu, dzMenu, oogMenu, handMenu, boardMenu, clearMenuCallback } =
+    actions.global;
 
   const isSelected = (place) =>
     selectToBoard && selectToBoard.origin[place] !== undefined;
@@ -91,6 +105,7 @@ const Arena = ({G, ctx, playerID, deckID, moves, events}) => {
       <ControlColumn
         ids={[myID, rivalID]}
         currentPlayer={parseInt(ctx.currentPlayer)}
+        currentStage={ctx.activePlayers[parseInt(ctx.currentPlayer)]}
         moves={moves}
         events={events}
         reveal={G.reveal}

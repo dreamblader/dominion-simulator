@@ -3,23 +3,22 @@ import PropTypes from "prop-types";
 import Consts from "utils/consts";
 import "../../styles/phase-bar.css";
 
-const PhaseBar = ({ turn }) => {
-  let [current, setCurrent] = React.useState(0);
-
+const PhaseBar = ({ turn, action, stage }) => {
   let phases = Consts.phases;
+  let current = phases.indexOf(stage);
   let percentage = `${100 - ((current + 1) / phases.length) * 100}%`;
   let disabled = turn ? "" : "disabled";
+  let inverse = turn ? "" : "inversed";
 
   const setPhase = (index) => {
-    //TODO actually apply this to G so all players can see this change
     if (turn) {
-      setCurrent(index);
+      action(phases[index]);
     }
   };
 
   return (
     <div className="phase-container">
-      <div className="phase-bar">
+      <div className={`phase-bar ${inverse}`}>
         <div className="fill" style={{ height: percentage }} />
       </div>
       <div className="phases-text">
@@ -43,7 +42,9 @@ const PhaseBar = ({ turn }) => {
 };
 
 PhaseBar.propTypes = {
-  //TODO
+  turn: PropTypes.bool,
+  action: PropTypes.func,
+  stage: PropTypes.string,
 };
 
 export default PhaseBar;
