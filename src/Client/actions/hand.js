@@ -20,10 +20,10 @@ const selectToField = (hand, myID, index, flipped) => {
 
 const getHandActionsOnMenu = (event, pos, hand, myID) => {
   let actions = [
-    Action("Back to Top of the Deck", "backToTopDeck", [pos]),
-    Action("Back to Bottom of the Deck", "backToBottomDeck", [pos]),
     Action("SPAWN Face-up", "spawnFaceUp", [hand, myID, pos]),
     Action("SPAWN Face-down", "spawnFaceDown", [hand, myID, pos]),
+    Action("Back to Top of the Deck", "backToTopDeck", [pos]),
+    Action("Back to Bottom of the Deck", "backToBottomDeck", [pos]),
     Action("Destroy", "destroy", [pos]),
     Action("Put OUT OF GAME", "finish", [pos]),
   ];

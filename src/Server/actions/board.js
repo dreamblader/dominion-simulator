@@ -10,6 +10,8 @@ import { resetStats } from "../../utils/card";
 import { pushToReveal } from "../../utils/menu";
 import MenuRevealData from "../../models/menu/menu-reveal";
 import VersusContent from "../../models/versus-content";
+import { safeSplice } from "../../utils/help";
+import Ticks from "../../models/tick/tick";
 
 const checkSelection = (G, selected, player) => {
   let origin = Object.keys(selected.origin)[0];
@@ -50,7 +52,6 @@ const placeInHere = (G, ctx, selected, x, y) => {
 };
 
 const applyStats = (G, ctx, place, modCard, index = 0) => {
-  //let card = getTileCard(G.board, place, index);
   let cardList = getTileCardsArray(G.board, place);
   cardList[index] = modCard;
 };
@@ -82,7 +83,18 @@ const activateCard = (G, ctx, place, index = 0) => {
   );
 };
 
-const tickCard = (card) => {};
+const tickCard = (G, ctx, place, index = 0) => {
+  let card = getTileCard(G.board, place, index);
+  card.status.forEach((tick, index) => {
+    if (tick.duration > 0) {
+      Ticks[tick.name.toUpperCase()].event(card);
+      tick.duration--;
+      if (tick.duration === 0) {
+        card.status = safeSplice(card.status, index);
+      }
+    }
+  });
+};
 
 const bounceCard = (G, ctx, place, index = 0) => {
   removeBoardCardTo(G.board, G.hand[ctx.playerID], place, index);
