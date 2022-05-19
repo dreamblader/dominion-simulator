@@ -28,10 +28,17 @@
   margin-top: 2rem;
   margin-right: 1rem;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
 }
 
 .control-col > * {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.control-col > * > * {
   margin-bottom: 1rem;
 }
 

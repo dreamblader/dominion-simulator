@@ -26,21 +26,28 @@ const ControlColumn = ({
 
   return (
     <div className="control-col">
-      <Button
-        click={() => moves.callReact(ReactImage)}
-        hidden={reveal[rivalID].length > 0 || currentPlayer === myID}
-      >
-        REACT!
-      </Button>
-      <PhaseBar
-        turn={currentPlayer === myID}
-        action={changePhase}
-        stage={currentStage}
-      />
-      <Button click={() => endMyTurn()} hidden={currentPlayer !== myID}>
-        END TURN
-      </Button>
-      <Button click={() => moves.createToken(myID)}>CREATE TOKEN</Button>
+      <div>
+        <Button
+          click={() => moves.callReact(ReactImage)}
+          hidden={reveal[rivalID].length > 0 || currentPlayer === myID}
+        >
+          REACT!
+        </Button>
+        <PhaseBar
+          turn={currentPlayer === myID}
+          action={changePhase}
+          stage={currentStage}
+        />
+        <Button click={() => endMyTurn()} hidden={currentPlayer !== myID}>
+          END TURN
+        </Button>
+        <Button click={() => moves.createToken(myID)}>CREATE TOKEN</Button>
+      </div>
+      <div>
+        <Button click={() => moves.flipCoin(myID)}>Flip Coin</Button>
+        <Button click={() => moves.rollD6(myID)}>D6</Button>
+        <Button click={() => moves.rollD8(myID)}>D8</Button>
+      </div>
     </div>
   );
 };
