@@ -1,8 +1,6 @@
-import Tick from "./tick-object";
-import icon from "../../Client/ui/images/ticks/shield.png";
-import { TickType } from "./tick-object";
-
-const event = (card) => {};
+import Tick from "../tick-object";
+import icon from "Client/ui/images/ticks/shield.png";
+import { TickType } from "../tick-object";
 
 const Shield = Tick(
   "Shield",

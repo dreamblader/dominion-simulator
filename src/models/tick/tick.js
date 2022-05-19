@@ -1,9 +1,9 @@
-import Burn from "./burn";
-import Cooldown, { event } from "./cooldown";
-import StatusUp from "./stats-up";
-import StatusDown from "./stats-down";
-import Stun from "./stun";
-import Shield from "./shield";
+import Burn from "./objects/burn";
+import Cooldown from "./objects/cooldown";
+import StatusUp from "./objects/stats-up";
+import StatusDown from "./objects/stats-down";
+import Stun from "./objects/stun";
+import Shield from "./objects/shield";
 
 export const stripEvent = (tick) => {
   let { event, ...rest } = tick;
@@ -24,16 +24,6 @@ export const combineTicks = (oldTick, newTick) => {
 
 const Ticks = {
   COOLDOWN: Cooldown,
-  STATS_DOWN: StatusDown,
-  BURN: Burn,
-  STUN: Stun,
-  STATS_UP: StatusUp,
-  SHIELD: Shield,
-};
-
-//TODO make events dettached from ticks
-export const TickEvents = {
-  COOLDOWN: event,
   STATS_DOWN: StatusDown,
   BURN: Burn,
   STUN: Stun,
