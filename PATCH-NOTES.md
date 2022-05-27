@@ -20,7 +20,7 @@ Added:
     - Added Dice (D8)
 
 - MISC:
-  - Added CREDITS.md to inform all SVG icons credits used in this project
+  - Added CREDITS.md to inform almost SVG icons credits used in this project (need to add some card icons)
 
 Changed:
 
