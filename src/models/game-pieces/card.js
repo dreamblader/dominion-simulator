@@ -1,4 +1,4 @@
-import { Types } from "./enums";
+import { Types } from "../enums";
 
 const Card = (id, playerID) => {
   let obj = {

@@ -31,7 +31,7 @@ const MenuList = ({menu, ids, click, highlight, clear}) => {
                 {menu.cards.map((card, index) => (
                 <Card
                 extraClass={getExtraCardClass(card)} 
-                click={(e) => click(e, index)}
+                click={(e) => click(e, index, card)}
                 card={card}
                 highlight={highlight} 
                 key={index}/>

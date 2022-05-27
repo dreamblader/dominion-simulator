@@ -2,15 +2,63 @@
 
 ## Closed Beta
 
+## 0.4v Closed Alpha
+
+Added:
+
+- Game:
+
+  - Tick Status can be applied in the "Set Status" Card Menu.
+  - All Tick Status applied to the Card show in the Card Info
+  - Cards with Tick Status on board show how many status the card have
+  - Added Phase Bar to Control which game phase the turn player is at
+  - Added "TICK" in Board Card Actions
+    - The "TICK" action will run all Tick Status function inside the Card and decrease it duration by 1
+  - Added RNG Control Buttons
+    - Added Dice (D6)
+    - Added Coin
+    - Added Dice (D8)
+
+- MISC:
+  - Added CREDITS.md to inform almost SVG icons credits used in this project (need to add some card icons)
+
+Changed:
+
+- Game
+  - Remade/fixed ATK Animation to be more precise and informative
+
+## 0.3v Closed Alpha
+
+Fixed:
+
+- Fixed a Bug that the async call of shuffle after "Search" is operated in Deck effect the selected card, making it erratic
+- Fixed a Bug that the "Change Status" Menu was not responsive (still needs more test)
+
+Added:
+
+- Game:
+  - More Responsive options
+  - Range Label now can fit Status-Column
+- Dev:
+  - Nodemon is now a development dependency
+
+Changed:
+
+- Status
+  - Info Status Range label changed from "RANGED" to "RG" to not break responsiviness of status
+
 ## 0.2v Closed Alpha
-Added the following:
-- Bugs:
-  - Fixed a Bug that the Range value did not show on the Board space overlay
-  - Fixed a Bug that card-convert was only converting the first pipe code ("|") 
-  - Fixed the responsiveness of Info Status
+
+Fixed:
+
+- Fixed a Bug that the Range value did not show on the Board space overlay
+- Fixed a Bug that card-convert was only converting the first pipe code ("|")
+- Fixed the responsiveness of Info Status
+
+Added:
+
 - System:
   - The screen is now responsive (needs more test)
-  - Info Status Range label changed from "R" to "RANGED"
   - Token Cards feature is now added to the game system
 - Token Cards:
   - Token Cards can only spawn on board.
@@ -20,9 +68,17 @@ Added the following:
 - Control Buttons:
   - You can create a Generic Token Card 1/1 by clicking on the "CREATE TOKEN" button and selecting a Board Space
 
+Changed:
+
+- Status:
+  - Info Status Range label changed from "R" to "RANGED"
+
 ---
+
 ## 0.1v Closed Alpha
+
 Game is Working with the following actions:
+
 - Deck
   - Cards can be searched from Deck
   - Cards can be drawn from Deck
@@ -46,7 +102,7 @@ Game is Working with the following actions:
   - LP space where the Player can add/subtract it's OWN LP
     - Adversary LP cannot be tempered
   - Cards in Board can Move to another Space
-  - Cards in Board can select a card to Declare an Atack (not final) 
+  - Cards in Board can select a card to Declare an Atack (not final)
   - Cards in Board can Declare it Effect Activation (not final)
   - Cards in Board can flip/unflip, hiding/showing it content to the adversary
   - Cards in Board can invert, changing it controls to the another player

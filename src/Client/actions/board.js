@@ -1,12 +1,12 @@
 import Action from "models/action";
-import MenuData from "models/menu";
+import MenuData from "models/menu/menu";
 import Place from "models/place";
 import Temp from "models/temp-select";
-import MenuListData from "models/menu-list";
+import MenuListData from "models/menu/menu-list";
 import Strings from "utils/strings";
-import { Origin, SelectTypes, Types } from "models/enums";
+import { Origin, SelectTypes } from "models/enums";
 import { getTileCard } from "utils/board";
-import MenuStatusData from "models/menu-stats";
+import MenuStatusData from "models/menu/menu-stats";
 
 const select = (board, place, index, type) => {
   let origin = {};
@@ -28,14 +28,15 @@ const openStatsMenu = (board, place, index = 0) => {
   return MenuStatusData(place, card, index);
 };
 
-const BoardActionsMenu = (card, id, place) => {
+const BoardActionsMenu = (place) => {
   return [
+    Action("Set Stats", "openStatsMenu", [place]),
+    Action("Tick", "tickCard", [place]),
     Action("Move", "moveInBoard", [place]),
     Action("Attack", "selectToAttack", [place]),
     Action("Flip", "flipCard", [place]),
     Action("Invert", "invertCard", [place]),
     Action("Activate", "activateCard", [place]),
-    //Action("Tick", ServerActions.tickCard.name),
     Action("Bounce", "bounceCard", [place]),
     Action("Destroy", "destroyCard", [place]),
     Action("Finish", "finishCard", [place]),
@@ -52,16 +53,6 @@ const getMultipleCardBoardActions = (tile, id) => {
   return actions;
 };
 
-const getCardTypeBasedActions = (card, id, place) => {
-  switch (card.type) {
-    case Types.TOKEN:
-    case Types.UNITY:
-      return [Action("Set Stats", "openStatsMenu", [place])];
-    default:
-      return [];
-  }
-};
-
 const getBoardActionMenu = (event, tile, id) => {
   let actions = [];
   let place = Place(tile.originalX, tile.originalY);
@@ -73,8 +64,7 @@ const getBoardActionMenu = (event, tile, id) => {
     let card = tile.cards[0];
     let canControl = card.controller === id || card.inversed;
     if (canControl) {
-      actions.push(...getCardTypeBasedActions(card, id, place));
-      actions.push(...BoardActionsMenu(card, id, place));
+      actions.push(...BoardActionsMenu(place));
     }
   }
   return MenuData(event.pageX, event.pageY, actions);
@@ -82,6 +72,7 @@ const getBoardActionMenu = (event, tile, id) => {
 
 const getTileCardsList = (tile) => {
   let place = Place(tile.originalX, tile.originalY);
+  //TODO find a way to check if the actions is called only for the your cards in the list
   let actions = [
     Action("To Top", "tileCardToFront", [place]),
     Action("To Back", "tileCardToBack", [place]),

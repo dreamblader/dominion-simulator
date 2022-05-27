@@ -1,8 +1,8 @@
-# "Dominion Card Game" Simulator
+# "Dimensional Dominions" Card Game Simulator
 
 ## The Idea
 
-Make a board game simulator to my card game called "Dominion" (temporary title).
+Make a board game simulator to my card game called "Dimensional Dominions".
 The game rules are still a work in progress.
 The main idea for a V1 is to make a online board open to interactions similar to Dueling Book in Yu-Gi-Oh, where the players have total control of the interaction of the game and the social contract of the game rules will made them play fair, similar to a any non-digital boardgame.
 
@@ -53,7 +53,7 @@ Possible actions that you can do in the simulator and where you can do it:
   - [x] Flip
   - [x] Activate
   - [x] Change Status Window
-  - [ ] TICK Cooldown
+  - [x] TICK Cooldown
   - [x] Check all Stacked Cards
   - [x] Put card in back
   - [x] Put card on top
@@ -69,17 +69,17 @@ Possible actions that you can do in the simulator and where you can do it:
   - [x] Recycle
     - Put card back at the Destroyed Zone
 - Board Controls
-  - [ ] START Turn
+  - [x] START Turn
     - Start your turn
-  - [ ] TICK Phase
+  - [x] TICK Phase
     - Start your TICK Phase
-  - [ ] MOVE Phase
+  - [x] MOVE Phase
     - Start your MOVE Phase
-  - [ ] BATTLE Phase
+  - [x] BATTLE Phase
     - Start your BATTLE Phase
-  - [ ] SPAWN Phase
+  - [x] SPAWN Phase
     - Start your SPAWN Phase
-  - [ ] Create TOKEN Card
+  - [x] Create TOKEN Card
     - Create a Pseudo-Card to put in Board
   - [x] END Turn
     - Finish your turn
@@ -93,22 +93,22 @@ Possible actions that you can do in the simulator and where you can do it:
 Prototype Layout for simulator:
 ![Prototype Layout](board.layout.png "Prototype Layout")
 
-
 ## NPM Commands
-  - npm start: 
-    - Run build.js script that runs all the starter commands (for Heroku deploy purposes)
-  - npm run react-start:
-    - Start the React Client application (similar to npm start on pure React applications)
-  - npm run react-build:
-    - Build the React Application (need to run first if you want to test the hybrid app by running the Server and accessing it index)
-  - npm run server:
-    - Run the Server application in src/Server/server.js
-  - npm run dev-server:
-    - Run the Server application with Nodemon for developing and auto updating it
-  - npm run start-db
-    - Run the data/star-db script. This script run all sqls files to populate the game.db
-  - npm run converter: 
-    - Run the converter script for the CSV Data (more info in the README inside Data folder)
+
+- npm start:
+  - Run build.js script that runs all the starter commands (for Heroku deploy purposes)
+- npm run react-start:
+  - Start the React Client application (similar to npm start on pure React applications)
+- npm run react-build:
+  - Build the React Application (need to run first if you want to test the hybrid app by running the Server and accessing it index)
+- npm run server:
+  - Run the Server application in src/Server/server.js
+- npm run dev-server:
+  - Run the Server application with Nodemon for developing and auto updating it
+- npm run start-db
+  - Run the data/star-db script. This script run all sqls files to populate the game.db
+- npm run converter:
+  - Run the converter script for the CSV Data (more info in the README inside Data folder)
 
 ## Links
 

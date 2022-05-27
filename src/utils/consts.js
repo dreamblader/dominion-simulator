@@ -9,11 +9,14 @@ const board = [
   [-1, -1, -1, 0, -1, -1, -1],
 ];
 
+const Phases = ["Draw", "Tick", "Move", "Combat", "Spawn"];
+
 const Consts = {
   deckSize: 30,
   handSize: 4,
   board: board,
   maxLife: 20,
+  phases: Phases,
 };
 
 export default Consts;

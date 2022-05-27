@@ -1,5 +1,5 @@
 import Action from "models/action";
-import MenuListData from "models/menu-list";
+import MenuListData from "models/menu/menu-list";
 import Strings from "utils/strings";
 
 const getOOGForSearch = (out) => {

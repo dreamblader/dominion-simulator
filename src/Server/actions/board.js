@@ -6,10 +6,12 @@ import {
   noneToBoard,
   originToBoard,
 } from "../../utils/board";
-import { resetStats, setStats } from "../../utils/card";
+import Combat from "../../models/combat";
+import TickEvents from "../../models/tick/tick-events";
+import MenuRevealData from "../../models/menu/menu-reveal";
+import { resetStats } from "../../utils/card";
 import { pushToReveal } from "../../utils/menu";
-import MenuRevealData from "../../models/menu-reveal";
-import VersusContent from "../../models/versus-content";
+import { safeSplice } from "../../utils/help";
 
 const checkSelection = (G, selected, player) => {
   let origin = Object.keys(selected.origin)[0];
@@ -49,17 +51,14 @@ const placeInHere = (G, ctx, selected, x, y) => {
   }
 };
 
-const applyStats = (G, ctx, place, stats, index = 0) => {
-  let card = getTileCard(G.board, place, index);
+const applyStats = (G, ctx, place, modCard, index = 0) => {
   let cardList = getTileCardsArray(G.board, place);
-  cardList[index] = setStats(card, stats);
+  cardList[index] = modCard;
 };
 
-const attackCard = (G, ctx, selected, card) => {
-  let attacker = selected.card;
-  let content = VersusContent(attacker, card);
-  let topText = `${attacker.title} attacks ${card.title}`;
-  G.reveal = pushToReveal(G.reveal, MenuRevealData(topText, content), -1);
+const attackCard = (G, ctx, combatInfo) => {
+  G.combat = Combat();
+  G.combat = combatInfo;
 };
 
 const flipCard = (G, ctx, place, index = 0) => {
@@ -82,7 +81,18 @@ const activateCard = (G, ctx, place, index = 0) => {
   );
 };
 
-const tickCard = (card) => {};
+const tickCard = (G, ctx, place, index = 0) => {
+  let card = getTileCard(G.board, place, index);
+  card.status.forEach((tick, index) => {
+    if (tick.duration > 0) {
+      TickEvents[tick.name.toUpperCase()](card);
+      tick.duration--;
+      if (tick.duration === 0) {
+        card.status = safeSplice(card.status, index);
+      }
+    }
+  });
+};
 
 const bounceCard = (G, ctx, place, index = 0) => {
   removeBoardCardTo(G.board, G.hand[ctx.playerID], place, index);

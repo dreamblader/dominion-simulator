@@ -12,7 +12,8 @@
 
 .menu-stats {
   display: flex;
-  height: 70vh;
+  /*width: 45vw; need to be tested without it*/
+  height: 50vh;
 }
 
 .menu-stats > .column {
@@ -23,8 +24,9 @@
 }
 
 .column > img {
+  width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .column > .input-container {
@@ -34,4 +36,11 @@
 
 .menu-stats-container > .button {
   margin: 1rem;
+}
+
+.status-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: 0.2rem;
+  overflow-y: auto;
 }

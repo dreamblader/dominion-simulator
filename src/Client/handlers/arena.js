@@ -1,10 +1,9 @@
-import MenuLifeData from "models/menu-life";
+import MenuLifeData from "models/menu/menu-life";
 import DeckActions from "Client/actions/deck";
 import HandActions from "Client/actions/hand";
 import BoardActions from "Client/actions/board";
 import DestroyActions from "Client/actions/destroy";
 import OutActions from "Client/actions/out";
-import Strings from "utils/strings";
 import ControlActions from "Client/actions/control";
 
 const { getDeckActionsOnMenu } = DeckActions;
@@ -15,8 +14,8 @@ const { getBoardActionMenu } = BoardActions;
 
 const ArenaActions = ({
   G,
-  myID,
   moves,
+  myID,
   actionMenu,
   setActionMenu,
   lifeMenu,
@@ -55,19 +54,11 @@ const ArenaActions = ({
     setActionMenu(getBoardActionMenu(e, tile, id));
   };
 
-  const clearListMenu = () => {
-    let wasDeckMenu = listMenu.header === Strings.deckHeader;
-    setListMenu(null);
-    if (wasDeckMenu) {
-      setTimeout(moves.shuffleDeck, 100);
-    }
-  };
-
   const clearMenuCallback = () => {
     if (actionMenu) {
       setActionMenu(null);
     } else if (listMenu) {
-      clearListMenu();
+      setListMenu(null);
     } else if (lifeMenu) {
       setLifeMenu(null);
     } else if (statsMenu) {
@@ -92,6 +83,8 @@ const ArenaActions = ({
   };
 
   const getDeckForSearch = () => {
+    console.dir(G);
+    moves.shuffleDeck();
     setListMenu(DeckActions.getDeckForSearch(G.deck[myID].cards));
   };
 
@@ -131,7 +124,6 @@ const ArenaActions = ({
       oogMenu,
       handMenu,
       boardMenu,
-      clearListMenu,
       clearMenuCallback,
     },
 

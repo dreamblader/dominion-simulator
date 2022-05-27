@@ -3,6 +3,8 @@ export const ClassNames = {
   NO_COVER: "no-cover",
   SELECTED: "selected",
   INVERTED: "inverted",
+  ATK: "attacker",
+  DEF: "defender",
 };
 
 export const getExtraClasses = (condition, className) => {

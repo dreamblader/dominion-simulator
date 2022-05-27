@@ -11,3 +11,7 @@
   width: 80%;
   z-index: 3;
 }
+
+.no-input .no-input {
+  width: auto;
+}
