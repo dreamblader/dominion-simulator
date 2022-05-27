@@ -8,6 +8,7 @@ import DeckActions from "./Server/actions/deck";
 import DestroyActions from "./Server/actions/destroy";
 import OutActions from "./Server/actions/out";
 import MiscActions from "./Server/actions/controls";
+import Combat from "./models/combat";
 
 const phases = Consts.phases.reduce((obj, phase) => {
   return { ...obj, [phase]: {} };
@@ -21,6 +22,7 @@ export const Simulator = {
     destroyZone: setupProps(ctx.numPlayers, []),
     out: [],
     life: [Consts.maxLife, Consts.maxLife],
+    combat: Combat(),
     reveal: setupProps(ctx.numPlayers, []),
     board: setupBoard(Consts.board),
   }),

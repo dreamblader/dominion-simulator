@@ -21,18 +21,18 @@ const callReact = (G, ctx, image) => {
 };
 
 const flipCoin = (G, ctx, player) => {
-  let coin = ctx.random.Die(2) === 1 ? "Heads" : "Tails";
-  let topText = `Player ${player} flipped a coin and it landed on ${coin}`;
+  let face = ctx.random.Die(2) === 1 ? "Heads" : "Tails";
+  let topText = `Player ${player} flipped a coin and it landed on ${face}`;
   G.reveal = pushToReveal(G.reveal, MenuRevealData(topText, ""), -1);
 };
 
 const rollD6 = (G, ctx, player) => {
-  let topText = `Player ${player} rolled a ${ctx.random.D6()}`;
+  let topText = `Player ${player} rolled a ${ctx.random.D6()} of a D6`;
   G.reveal = pushToReveal(G.reveal, MenuRevealData(topText, ""), -1);
 };
 
 const rollD8 = (G, ctx, player) => {
-  let topText = `Player ${player} rolled a ${ctx.random.D8()}`;
+  let topText = `Player ${player} rolled a ${ctx.random.D8()} of a D8`;
   G.reveal = pushToReveal(G.reveal, MenuRevealData(topText, ""), -1);
 };
 

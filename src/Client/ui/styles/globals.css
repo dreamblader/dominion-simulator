@@ -14,17 +14,6 @@ html {
   user-select: none;
 }
 
-/*
-#root,
-.bgio-client {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: flex-start;
-}
-*/
-
 body {
   background-image: url("../images/back.jpg");
   background-color: #000;

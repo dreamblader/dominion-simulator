@@ -6,9 +6,9 @@ import {
   noneToBoard,
   originToBoard,
 } from "../../utils/board";
+import Combat from "../../models/combat";
 import TickEvents from "../../models/tick/tick-events";
 import MenuRevealData from "../../models/menu/menu-reveal";
-import VersusContent from "../../models/versus-content";
 import { resetStats } from "../../utils/card";
 import { pushToReveal } from "../../utils/menu";
 import { safeSplice } from "../../utils/help";
@@ -56,11 +56,9 @@ const applyStats = (G, ctx, place, modCard, index = 0) => {
   cardList[index] = modCard;
 };
 
-const attackCard = (G, ctx, selected, card) => {
-  let attacker = selected.card;
-  let content = VersusContent(attacker, card);
-  let topText = `${attacker.title} attacks ${card.title}`;
-  G.reveal = pushToReveal(G.reveal, MenuRevealData(topText, content), -1);
+const attackCard = (G, ctx, combatInfo) => {
+  G.combat = Combat();
+  G.combat = combatInfo;
 };
 
 const flipCard = (G, ctx, place, index = 0) => {

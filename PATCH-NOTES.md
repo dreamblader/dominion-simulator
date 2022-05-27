@@ -11,9 +11,6 @@ Added:
   - Tick Status can be applied in the "Set Status" Card Menu.
   - All Tick Status applied to the Card show in the Card Info
   - Cards with Tick Status on board show how many status the card have
-
-  **WIP**
-
   - Added Phase Bar to Control which game phase the turn player is at
   - Added "TICK" in Board Card Actions
     - The "TICK" action will run all Tick Status function inside the Card and decrease it duration by 1

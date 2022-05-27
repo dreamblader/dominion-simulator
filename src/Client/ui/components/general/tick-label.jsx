@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 import Tick from "./tick";
-import infinite from "../../images/infinite.png";
+import infinite from "../../images/display/infinite.png";
 import "../../styles/tick-label.css";
 
 const TickLabel = ({ content, click }) => {

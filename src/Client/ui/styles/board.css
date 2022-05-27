@@ -1,4 +1,34 @@
+@keyframes icon-glow {
+  0% {
+    filter: brightness(0);
+  }
+  50% {
+    filter: brightness(100%);
+  }
+  100% {
+    filter: brightness(0);
+  }
+}
+
+@keyframes appear {
+  0% {
+    transform: scale(1.5);
+    opacity: 100%;
+  }
+  40% {
+    transform: scale(var(--scale-size));
+  }
+  80% {
+    transform: scale(var(--scale-size));
+    opacity: 100%;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .board {
+  --scale-size: 0.75;
   display: grid;
   width: fit-content;
   margin-top: 0.2rem;
@@ -110,4 +140,26 @@
 
 .board > * .hoverable {
   border: none;
+}
+
+.board .card-holder.attacker:before,
+.board .card-holder.defender:before {
+  position: absolute;
+  animation: appear 4s, icon-glow 2s infinite;
+  transform: scale(var(--scale-size));
+  opacity: 0;
+}
+
+.board .card-holder.attacker:hover:before,
+.board .card-holder.attacker:hover ~ .card-holder.defender:before,
+.board .card-holder.defender:hover:before {
+  opacity: 100%;
+}
+
+.board .card-holder.attacker:not(.defender):before {
+  content: url("../images/board/atk.png");
+}
+
+.board .card-holder.defender:not(.attacker):before {
+  content: url("../images/board/def.png");
 }

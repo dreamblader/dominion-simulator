@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Button from "../general/button";
 import PhaseBar from "../gameplay/phase-bar";
-import ReactImage from "../../images/react-img.png";
+import ReactImage from "../../images/display/react-img.png";
 
 const ControlColumn = ({
   ids,

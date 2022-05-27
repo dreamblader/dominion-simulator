@@ -92,6 +92,7 @@ const Arena = ({ G, ctx, playerID, deckID, moves, events }) => {
         life={G.life}
         hand={G.hand}
         board={G.board}
+        combat={G.combat}
         moves={moves}
         actions={[
           handMenu,

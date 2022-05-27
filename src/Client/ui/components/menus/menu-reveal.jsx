@@ -1,52 +1,36 @@
 import React from "react";
-import PropTypes from 'prop-types';
-import Button from "../general/button"
+import PropTypes from "prop-types";
+import Button from "../general/button";
 import Card from "../card/card";
-import VersusIcon from "Client/ui/images/swords.png";
 import NoInputLayer from "../general/no-input-layer";
 import "../../styles/menu-reveal.css";
 
+const MenuReveal = ({ menu, highlight, clear }) => {
+  const getContent = () => {
+    let content = menu.content;
+    if (content.hasOwnProperty("id")) {
+      return <Card highlight={highlight} card={content} />;
+    } else if (content.hasOwnProperty("ref")) {
+      return <img src={content.ref} alt={content.title} />;
+    }
+  };
 
-const MenuReveal = ({menu, highlight, clear}) => {
-
-    const getContent = () => {
-        let content = menu.content;
-        if(content.hasOwnProperty("id")){
-            return (<Card highlight={highlight} card={content}/>)
-        } else if(content.hasOwnProperty("ref")){
-            return (<img src={content.ref} alt={content.title}/>)
-        } else if(content.hasOwnProperty("attacker")){
-            return(
-                <React.Fragment>
-                    <Card highlight={highlight} card={content.attacker}/>
-                    <img src={VersusIcon} alt={"Versus Icon"}/>
-                    <Card highlight={highlight} card={content.attacked}/>
-                </React.Fragment>
-            )
-        }
-    };
-
-    return(
-        <NoInputLayer>
-            <div className="menu-reveal">
-                <div className="reveal-text">
-                    {menu.topText}
-                </div>
-                <div className="reveal-content">
-                    {getContent()}
-                </div>
-                <div className="reveal-text">
-                    {menu.bottomText}
-                </div>
-                <Button click={clear}>OK</Button>
-            </div>
-        </NoInputLayer>
-)}
+  return (
+    <NoInputLayer>
+      <div className="menu-reveal">
+        <div className="reveal-text">{menu.topText}</div>
+        <div className="reveal-content">{getContent()}</div>
+        <div className="reveal-text">{menu.bottomText}</div>
+        <Button click={clear}>OK</Button>
+      </div>
+    </NoInputLayer>
+  );
+};
 
 MenuReveal.propTypes = {
-    menu: PropTypes.object,
-    highlight: PropTypes.func,
-    clear: PropTypes.func
-}
+  menu: PropTypes.object,
+  highlight: PropTypes.func,
+  clear: PropTypes.func,
+};
 
 export default MenuReveal;

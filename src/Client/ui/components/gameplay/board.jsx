@@ -11,12 +11,14 @@ import {
 } from "../../../../utils/card";
 import Place from "models/place";
 import "../../styles/board.css";
+import Combat from "models/combat";
 
 const Board = ({
   board,
   ids,
   moves,
   selected,
+  combat,
   life,
   menuClick,
   highlight,
@@ -25,7 +27,15 @@ const Board = ({
   const [myID, rivalID] = ids;
   const dominionIds = myID === 1 ? [4, 3] : [3, 4];
 
+  const [refreshKey, setRefreshKey] = React.useState(0);
+
   const isInversed = (card) => (card.controller !== myID) !== card.inversed;
+
+  const isAtk = (tile) =>
+    tile.originalX === combat.atk.x && tile.originalY === combat.atk.y;
+
+  const isDef = (tile) =>
+    tile.originalX === combat.def.x && tile.originalY === combat.def.y;
 
   const renderTile = (tile, i, j) => {
     let id = i + "-" + j;
@@ -95,10 +105,9 @@ const Board = ({
           moves.placeInHere(selected, x, y);
           break;
         case SelectTypes.TO_ATTACK:
-          let card = getTileCard(board, Place(x, y), 0);
-          if (card) {
-            moves.attackCard(selected, card);
-          }
+          let combat = Combat(Place(selected.x, selected.y), Place(x, y));
+          setRefreshKey(Math.floor(Math.random() * 1000));
+          moves.attackCard(combat);
           break;
         default:
           break;
@@ -114,12 +123,18 @@ const Board = ({
   };
 
   const getCardView = (card, tile) => {
+    let key = `${tile.originalX}${tile.originalY}${refreshKey}`;
+
     if (card) {
-      let extraClass = getExtraClasses(isInversed(card), ClassNames.INVERTED);
+      let extraClass = getExtraClasses(
+        [isInversed(card), isAtk(tile), isDef(tile)],
+        [ClassNames.INVERTED, ClassNames.ATK, ClassNames.DEF]
+      );
 
       return (
         <Card
           card={card}
+          key={key}
           highlight={highlight}
           extraClass={extraClass + " " + ClassNames.DISABLED}
           click={(e) => clickCardTile(e, tile)}
