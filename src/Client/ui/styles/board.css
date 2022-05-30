@@ -13,14 +13,14 @@
 @keyframes appear {
   0% {
     transform: scale(1.5);
-    opacity: 100%;
+    opacity: 1;
   }
   40% {
     transform: scale(var(--scale-size));
   }
   80% {
     transform: scale(var(--scale-size));
-    opacity: 100%;
+    opacity: 1;
   }
   100% {
     opacity: 0;
@@ -153,7 +153,7 @@
 .board .card-holder.attacker:hover:before,
 .board .card-holder.attacker:hover ~ .card-holder.defender:before,
 .board .card-holder.defender:hover:before {
-  opacity: 100%;
+  opacity: 1;
 }
 
 .board .card-holder.attacker:not(.defender):before {
