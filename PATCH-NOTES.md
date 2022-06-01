@@ -2,6 +2,16 @@
 
 ## Closed Beta
 
+## 0.4.1v Closed Alpha
+
+Changed:
+
+- Game:
+
+  - Combat Info reset every turn start
+  - Combat Info cannot be set on empty board slot
+  - Board Glowing Animation show the selected card in board with red border
+
 ## 0.4v Closed Alpha
 
 Added:

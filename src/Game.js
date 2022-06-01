@@ -11,7 +11,10 @@ import MiscActions from "./Server/actions/controls";
 import Combat from "./models/combat";
 
 const phases = Consts.phases.reduce((obj, phase) => {
-  return { ...obj, [phase]: {} };
+  return {
+    ...obj,
+    [phase]: {},
+  };
 }, {});
 
 export const Simulator = {
@@ -42,6 +45,7 @@ export const Simulator = {
   turn: {
     order: TurnOrder.DEFAULT,
     onBegin: (G, ctx) => {
+      G.combat = Combat();
       ctx.events.setActivePlayers({ all: "Draw" });
     },
     stage: {

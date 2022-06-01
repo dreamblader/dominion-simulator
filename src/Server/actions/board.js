@@ -57,8 +57,12 @@ const applyStats = (G, ctx, place, modCard, index = 0) => {
 };
 
 const attackCard = (G, ctx, combatInfo) => {
-  G.combat = Combat();
-  G.combat = combatInfo;
+  console.log();
+  if (getTileCardsArray(G.board, combatInfo.def).length > 0) {
+    G.combat = combatInfo;
+  } else {
+    G.combat = Combat();
+  }
 };
 
 const flipCard = (G, ctx, place, index = 0) => {
