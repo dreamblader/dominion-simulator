@@ -68,13 +68,21 @@ const Board = ({
 
   const getContent = (tile) => {
     if (tile) {
-      let extraClass = selected ? " selected" : "";
+      let isThisTileSelected =
+        selected &&
+        tile.originalX === selected.x &&
+        tile.originalY === selected.y;
+      let extraClass = getExtraClasses(
+        [selected, isThisTileSelected],
+        ["selected", "this"]
+      );
+      console.log(extraClass);
       if (tile.spawn === 3 || tile.spawn === 4) {
         return getLifeTile(tile.spawn);
       } else {
         return (
           <div
-            className={"content" + extraClass}
+            className={"content " + extraClass}
             onClick={() => clickSpawnTile(tile.originalX, tile.originalY)}
           >
             {getCardView(tile.cards[0], tile)}
