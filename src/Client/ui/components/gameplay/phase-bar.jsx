@@ -21,11 +21,11 @@ const PhaseBar = ({ turn, action, stage }) => {
       <div className={`phase-bar ${inverse}`}>
         <div className="fill" style={{ height: percentage }} />
       </div>
-      <div className="phases-text">
+      <ol className="phases-text">
         {phases.map((phase, index) => {
           let select = index === current ? "select" : "";
           return (
-            <div
+            <li
               className={`phase ${disabled} ${select}`}
               key={index}
               onClick={() => {
@@ -33,10 +33,10 @@ const PhaseBar = ({ turn, action, stage }) => {
               }}
             >
               {phase}
-            </div>
+            </li>
           );
         })}
-      </div>
+      </ol>
     </div>
   );
 };
