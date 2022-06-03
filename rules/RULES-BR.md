@@ -1,5 +1,19 @@
 # Dimensional Dominions Regras (PT-BR)
 
+## Indice
+
+1. [Setup](#setup)
+2. [Layout do Jogo](#layout-do-jogo)
+3. [Baralho](#baralho)
+4. [Cartas](#cartas)
+   - [Unidade](#unidade)
+   - [Artefato](#artefato)
+   - [Campo](#campo)
+5. [Zona de Descarte (DZ)](#zona-de-descarte-dz)
+6. [Cartas Fora do Jogo (OOG)](#cartas-fora-do-jogo-oog)
+7. [Tabuleiro](#tabuleiro)
+8. [Objetivo](#objetivo)
+
 ## Setup
 
 - O jogo consiste em dois jogadores (1x1) com a presença de um tabuleiro.
@@ -13,17 +27,17 @@
 ![Numbered Screen](assets/your_screen_numbered.png "Tela do Jogo")
 O jogo é dividido nas seguintes seções de acordo com a imagem acima:
 
-1. Seu Baralho.
-2. Sua Zona de Descarte (DZ).
-3. Cartas foras do Jogo (Out Of the Game - OOG).
-4. Zona de Descarte de seu adversário.
-5. Baralho do seu adversário.
+1. Seu [Baralho](#baralho).
+2. Sua [Zona de Descarte (DZ)](#zona-de-descarte-dz).
+3. [Cartas foras do Jogo (Out Of the Game - OOG)](#cartas-fora-do-jogo-oog).
+4. [Zona de Descarte](#zona-de-descarte-dz) de seu adversário.
+5. [Baralho](#baralho) do seu adversário.
 6. Cartas que estão na mão de seu adversário
-7. Tabuleiro
+7. [Tabuleiro](#tabuleiro)
 8. Cartas que estão na sua mão
-9. Barra de Turno.
+9. Barra de [Fases](#fases) do Turno.
 10. Botão de Finalizar Turno
-11. Botão de Gerar uma Carta do tipo TOKEN
+11. Botão de Gerar uma Carta do tipo [TOKEN](#token)
 12. Botões para ativar um evento aleatório como lançar uma moeda ou jogar um dado de 6 ou 8 lados.
 13. Informações mais detalhadas da ultima carta que seu mouse passou por cima.
 
@@ -35,7 +49,84 @@ O jogo é dividido nas seguintes seções de acordo com a imagem acima:
 
 - Todo Baralho deve ter exatamente 30 cartas.
 - Seu baralho pode conter apenas duas cartas com o mesmo nome (duplicata), com exceção de cartas ÚNICAS, marcadas com uma estrela.
-- Seu baralho pode conter qualquer quantidade de qualquer tipo de carta, porém é recomendado utilizar uma quantidade maior de cartas tipo _unidade_.
+- Um baralho pode conter cartas do tipo:
+  - [Unidade](#unidade)
+  - [Artefato](#artefato)
+  - [Campo](#campo)
+- Seu baralho pode conter qualquer quantidade de qualquer tipo de carta, porém é recomendado utilizar uma quantidade maior de cartas tipo unidade.
+
+---
+
+## Cartas
+
+Em Dimensional Dominions, todas as cartas são divididas em quatro tipos distintos:
+
+- [Unidade](#unidade)
+- [Artefato](#artefato)
+- [Campo](#campo)
+- [Token](#token)
+
+Mesmo tendo grandes diferenças em seus papéis e estilos durante o jogo, muitas delas possuem informações em comuns. Como:
+
+- Nome
+- Arte
+- Estrela de identificação de Carta UNICA
+- Simbolo de identidade
+- Espaço para descrição de seu efeito ou efeitos
+- Subtipos da carta (TAGs)
+
+#### **Cartas Unicas**
+
+#### **Subtipos (TAGs)**
+
+### **Unidade**
+
+Unidade são as principais cartas do jogo, são elas que se movem e travam combates pelo tabuleiro. Elas são as unicas cartas que podem dar dano diretamente no Dominio de seu inimigo.
+
+Elas são compostas dos seguintes itens:
+
+<img align="left" width="40%" style="margin-right:2rem" src="assets/unity_example.png">
+
+1. Nome da Unidade
+2. Range Direcional da Unidade (DIRECTION RANGE)
+3. Arte da Carta
+4. Pontos de Ataque da Unidade (ATK)
+5. Pontos de Vida da Unidade (HP)
+6. Range de Distancia da Unidade (RANGE)
+7. Estrela que indica que a Carta é UNICA
+8. Simbolo que identifica o Elemento da Unidade
+9. Efeitos da Carta
+10. Subtipos da Unidade (TAGs)
+
+    <br clear="left"/>
+
+#### **Informações de Combate**
+
+#### **Elementos**
+
+### **Artefato**
+
+Artefatos são as cartas que causam efeitos no jogo, podendo alterar o rumo da partida ou causar vantagens e ou desvantagens constantes no jogo.
+
+Elas são compostas dos seguintes itens:
+
+<img align="left" width="40%" style="margin-right:2rem" src="assets/artifact_example.png">
+
+1. Nome do Artefato
+2. Arte da Carta
+3. Tipo de Ativação do Artefato
+4. Estrela que indica que a Carta é UNICA
+5. Simbolo que identifica que a carta é um artefato
+6. Efeitos da Carta
+7. Subtipos do Artefato (TAGs)
+
+   <br clear="left"/>
+
+#### **Tipos de Ativação:**
+
+### **Campo**
+
+### **Token**
 
 ---
 
@@ -93,5 +184,3 @@ Se o jogador estiver sem recursos para continuar o jogo (sem cartas no tabuleiro
 Caso o jogo entre num empasse em que ambos os jogadores não conseguem sair do estado atual (cartas não conseguem se mover, atacar e ser invocadas no tabuleiro). O jogo é considerado um **EMPATE**.
 
 ---
-
-# Tipos de Cartas
