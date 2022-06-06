@@ -1,5 +1,17 @@
 # Dimensional Dominions Regras (PT-BR)
 
+## Introdução
+
+Este é o manual de regras do jogo Dimensional Dominions contendo informações para serem utilizadas na revisão do jogo _v0.4-Alpha_. Toda e qualquer dúvida que não for sanada ou correção referente a este manual pode ser dirigida diretamente neste
+[link](https://github.com/dreamblader/dominion-simulator/issues/new?labels=documentation&title=Duvidas/Correções+Regras+PT-BR&assignees=dreamblader)
+onde deve ser colocado na parte dos comentários a descrição em detalhes da duvida e/ou correção.
+
+**Este manual pode sofrer alterações durante os periodos de teste Alpha e Beta.**
+
+## Versionamento
+
+Revisão 1 - Manual Foi Criado (06/06/2022)
+
 ## Indice
 
 1. [Setup](#setup)
@@ -9,18 +21,25 @@
    - [Unidade](#unidade)
    - [Artefato](#artefato)
    - [Campo](#campo)
+   - [Token](#token)
 5. [Zona de Descarte (DZ)](#zona-de-descarte-dz)
 6. [Cartas Fora do Jogo (OOG)](#cartas-fora-do-jogo-oog)
 7. [Tabuleiro](#tabuleiro)
 8. [Objetivo](#objetivo)
+9. [Fases](#fases)
+   - [Reciclagem (RECYCLE)](#reciclagem-recycle)
+   - [Pesca (DRAW)](#pesca-draw)
+   - [TICK](#tick)
+   - [Movimentação (MOVE)](#movimentação-move)
+   - [Combate (BATTLE)](#combate-battle)
+   - [Invocação (SPAWN)](#invocação-spawn)
+10. [Resumo (TL;DR)](#resumo-tldr)
 
 ## Setup
 
 - O jogo consiste em dois jogadores (1x1) com a presença de um tabuleiro.
 - Cada jogador deve possuir um deck de 30 cartas que será utilizado durante a partida.
 - O jogo começa com cada jogador com 10 pontos de vida em seu Dominio
-
----
 
 ## Layout do Jogo
 
@@ -43,8 +62,6 @@ O jogo é dividido nas seguintes seções de acordo com a imagem acima:
 
 **Todas as seções serão explicadas com mais detalhes neste documento.**
 
----
-
 ## Baralho
 
 - Todo Baralho deve ter exatamente 30 cartas.
@@ -54,8 +71,6 @@ O jogo é dividido nas seguintes seções de acordo com a imagem acima:
   - [Artefato](#artefato)
   - [Campo](#campo)
 - Seu baralho pode conter qualquer quantidade de qualquer tipo de carta, porém é recomendado utilizar uma quantidade maior de cartas tipo unidade.
-
----
 
 ## Cartas
 
@@ -77,7 +92,19 @@ Mesmo tendo grandes diferenças em seus papéis e estilos durante o jogo, muitas
 
 #### **Cartas Unicas**
 
+- Cartas Unicas são identificadas com um simbolo de uma estrela próximo ao seu simbolo de identidade.
+- Cartas que não possuem o simbolo de estrela não são consideradas UNICAS.
+- Uma carta considerada UNICA só deve ser alocada uma cópia da mesma em um baralho.
+
 #### **Subtipos (TAGs)**
+
+- Toda carta de qualquer tipo possui no canto inferior esquerdo de sua aba de descrição seus Subtipos (TAGs).
+- Toda carta pode possuir um ou mais Subtipos.
+- Cartas com mais de um subtipos tem os mesmos separados por uma barra vertical **"|"**.
+  - Ex: "Ryu the Twilight Archer" possui 3 Subtipos: "ELF", "TWILIGHT" e "RANGER".
+- Subtipos servem para identificação de cartas ou em condições de efeitos.
+  - Ex: "Azros King of Thassalos" possui um efeito que só pode ser aplicado em cartas do Subtipo "HUMAN"
+- Todo Subtipo (e [Elemento](#elementos) no caso de Cartas Unidades) é referenciado nos efeitos de cartas com todas as suas letras em maiúsculo.
 
 ### **Unidade**
 
@@ -93,16 +120,46 @@ Elas são compostas dos seguintes itens:
 4. Pontos de Ataque da Unidade (ATK)
 5. Pontos de Vida da Unidade (HP)
 6. Range de Distancia da Unidade (RANGE)
-7. Estrela que indica que a Carta é UNICA
+7. Estrela que indica que a Carta é [UNICA](#cartas-unicas)
 8. Simbolo que identifica o Elemento da Unidade
 9. Efeitos da Carta
-10. Subtipos da Unidade (TAGs)
+10. Subtipos da Unidade ([TAGs](#subtipos-tags))
 
     <br clear="left"/>
 
+#### **Elementos**
+
+Cartas Unidade podem ser divididas nos seguintes elementos:
+
+- Terra (EARTH)
+- Agua (WATER)
+- Fogo (FIRE)
+- Ar (AIR)
+- Gelo (ICE)
+- Trovão (THUNDER)
+- Vazio (VOID)
+
+Essa identificação é feita através do simbolo de identificação na carta em conjunto com sua cor de fundo. Segue uma imagem com um exemplo de carta de cada elemento:
+
+TODO
+!["WIP"](assets/elements.png "Unidades e seus Elementos")
+
+Elementos são usados como identificados das cartas Unidades em conjunto com seus Subtipos ([TAGs](#subtipos-tags))
+
 #### **Informações de Combate**
 
-#### **Elementos**
+Cartas Unidade são as unicas cartas que possuem informações para iniciar um combate. Sendo elas:
+
+- Pontos de Ataque (ATK)
+- Pontos de Vida (HP)
+- Range de Distancia (RANGE)
+- Range Direcional (DIRECTION RANGE)
+
+Mais informações de como iniciar um [Combate](#combate) em sua seção .
+
+Caso um efeito de carta afete um de seus status (ou de outras cartas) o mesmo pode especificar o item especifico com sua sigla (ATK, HP ou RANGE), ou colocar todas as informações compactadas no seguinte formato: **"ATK/HP/RANGE"** ou **"ATK/HP"** (nesse caso o RANGE é considerado **ZERO**).
+
+Cartas Unidade que não possuem o status de RANGE visivel, seu RANGE é considerado **ZERO**
 
 ### **Artefato**
 
@@ -115,20 +172,32 @@ Elas são compostas dos seguintes itens:
 1. Nome do Artefato
 2. Arte da Carta
 3. Tipo de Ativação do Artefato
-4. Estrela que indica que a Carta é UNICA
+4. Estrela que indica que a Carta é [UNICA](#cartas-unicas)
 5. Simbolo que identifica que a carta é um artefato
 6. Efeitos da Carta
-7. Subtipos do Artefato (TAGs)
+7. Subtipos do Artefato ([TAGs](#subtipos-tags))
 
    <br clear="left"/>
 
 #### **Tipos de Ativação:**
 
+TODO
+
 ### **Campo**
+
+TODO
 
 ### **Token**
 
----
+<img align="left" width="40%" style="margin-right:2rem" src="assets/token_example.png">
+ Cartas do Tipo Token podem ser variantes dos três tipos citados:
+
+- Unidade
+- Artefato
+- Campo
+
+TODO
+<br clear="left"/>
 
 ## Zona de Descarte (DZ)
 
@@ -136,8 +205,6 @@ Elas são compostas dos seguintes itens:
 - Todas as cartas no DZ são de conhecimento publico dos jogadores.
   - Qualquer jogador pode verificar quais e quantas cartas se encontram em seu DZ ou no DZ de seu adversário.
 - Cartas que por algum efeito externo trocaram de controle para seu adversário ou vice-versa quando destruidas são alocadas no DZ de seu jogador original.
-
----
 
 ## Cartas fora do Jogo (OOG)
 
@@ -148,8 +215,6 @@ Elas são compostas dos seguintes itens:
   - Azul: Sua
 - Uma vez que a carta é alocada neste espaço ela esta completamente **FORA DO JOGO**. Nenhum efeito pode ou deve afeta-la, nenhum efeito pode ou deve move-la desse espaço.
   - Existe um botão para realocar a carta do OOG no DZ em caso de missclick.
-
----
 
 ## Tabuleiro
 
@@ -164,8 +229,6 @@ Todo jogador começa no Dominio de cor azul e seu adversário no vermelho.
 Fisicamente cada jogador ficaria em um lado oposto da mesa onde cada um ficaria de frente para um Far-End diferente, fazendo com que as cartas de seu adversário fiquem de cabeça para baixo em sua perspectiva. Isto é feito automaticamente na versão digital.
 
 Por este motivo é relativo chamar um Far-End ou Main-End de Norte ou Sul, pois o Far-End Norte na sua perspectiva seria o Far-End Sul na perspectiva do jogador adversário.
-
----
 
 ## Objetivo
 
@@ -183,4 +246,34 @@ Se o jogador estiver sem recursos para continuar o jogo (sem cartas no tabuleiro
 
 Caso o jogo entre num empasse em que ambos os jogadores não conseguem sair do estado atual (cartas não conseguem se mover, atacar e ser invocadas no tabuleiro). O jogo é considerado um **EMPATE**.
 
----
+## Fases
+
+TODO
+
+### **Reciclagem (RECYCLE)**
+
+TODO
+
+### **Pesca (Draw)**
+
+TODO
+
+### **TICK**
+
+TODO
+
+### **Movimentação (MOVE)**
+
+TODO
+
+### **Combate (BATTLE)**
+
+TODO
+
+### **Invocação (SPAWN)**
+
+TODO
+
+## **Resumo (TL;DR)**
+
+TODO
