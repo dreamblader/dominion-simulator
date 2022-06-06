@@ -8,7 +8,8 @@ The main idea for a V1 is to make a online board open to interactions similar to
 
 ## Rules
 
-WIP
+- [PT-BR](rules/RULES-BR.md)
+- [ENGLISH](rules/RULES-EN.md)
 
 ## Actions
 
