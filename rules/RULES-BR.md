@@ -22,18 +22,21 @@ Revisão 1 - Manual Foi Criado (06/06/2022)
    - [Artefato](#artefato)
    - [Campo](#campo)
    - [Token](#token)
-5. [Zona de Descarte (DZ)](#zona-de-descarte-dz)
-6. [Cartas Fora do Jogo (OOG)](#cartas-fora-do-jogo-oog)
-7. [Tabuleiro](#tabuleiro)
-8. [Objetivo](#objetivo)
-9. [Fases](#fases)
-   - [Reciclagem (RECYCLE)](#reciclagem-recycle)
-   - [Pesca (DRAW)](#pesca-draw)
-   - [TICK](#tick)
-   - [Movimentação (MOVE)](#movimentação-move)
-   - [Combate (BATTLE)](#combate-battle)
-   - [Invocação (SPAWN)](#invocação-spawn)
-10. [Resumo (TL;DR)](#resumo-tldr)
+5. [Tipos de Efeitos](#tipos-de-efeitos)
+6. [Zona de Descarte (DZ)](#zona-de-descarte-dz)
+7. [Cartas Fora do Jogo (OOG)](#cartas-fora-do-jogo-oog)
+8. [Tabuleiro](#tabuleiro)
+9. [Objetivo](#objetivo)
+10. [Fases](#fases)
+
+- [Reciclagem (RECYCLE)](#reciclagem-recycle)
+- [Pesca (DRAW)](#pesca-draw)
+- [TICK](#tick)
+- [Movimentação (MOVE)](#movimentação-move)
+- [Combate (BATTLE)](#combate-battle)
+- [Invocação (SPAWN)](#invocação-spawn)
+
+11. [Resumo (TL;DR)](#resumo-tldr)
 
 ## Setup
 
@@ -185,19 +188,56 @@ TODO
 
 ### **Campo**
 
+Cartas Campo são cartas que afetam os espaços fisicos do Tabuleiro com seus efeitos diferenciados.
+
+Elas são compostas dos seguintes itens:
+
+<img align="left" width="40%" style="margin-right:2rem" src="assets/field_example.png">
+
+1. Nome do Campo
+2. Arte da Carta
+3. Estrela que indica que a Carta é [UNICA](#cartas-unicas)
+4. Simbolo que identifica que a carta é um campo
+5. Efeito de Ocupação do Campo ([OCCUPY](#efeito-de-ocupação-occupy))
+6. Efeito de Carta Adjacente ao Campo ([LINK](#efeito-adjacente-link))
+7. Subtipos do Campo ([TAGs](#subtipos-tags))
+
+   <br clear="left"/>
+
+TODO
+
+#### **Efeito de Ocupação (OCCUPY)**
+
+TODO
+
+#### **Efeito Adjacente (LINK)**
+
 TODO
 
 ### **Token**
 
 <img align="left" width="40%" style="margin-right:2rem" src="assets/token_example.png">
- Cartas do Tipo Token podem ser variantes dos três tipos citados:
+Cartas do Tipo Token podem ser variantes dos três tipos citados:
 
 - Unidade
 - Artefato
 - Campo
 
-TODO
+Cartas Token são podem ser geradas a partir de outra Carta.
+
+Cartas que geram Tokens são chamadas de Cartas Geradoras ou Cartas Pai.
+
+Cartas do tipo Token só podem ser geradas no Tabuleiro e não podem ser colocadas no Baralho ou na Mão do jogador. Caso algum efeito faça o Token ser movido para outro local fora do Tabuleiro (Baralho, Mão e etc) o Token é removido do Jogo.
+
+Cartas Geradoras devem especificar o Tipo, Subtipo, Informações de Combate e qualquer outra informação da carta Token. Ex: "Army of Thassalos" especifica que vai criar uma carta do Subtipo SOLDIER com 1 de ATK e 1 de HP do Elemento Terra.
+
+Caso a carta Geradora não especifique uma informação de seu Token é assumido que o Token herda essa informação do Pai. Ex: Um SOLDIER Token criado por "Army of Thassalos" aponta para a mesma direção (DIRECTION RANGE) que sua carta geradora.
+
 <br clear="left"/>
+
+## Tipos de Efeitos
+
+TODO
 
 ## Zona de Descarte (DZ)
 
