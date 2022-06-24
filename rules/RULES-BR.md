@@ -46,7 +46,7 @@ Revisão 1 - Manual Foi Criado (06/06/2022)
 
 ## Layout do Jogo
 
-![Numbered Screen](assets/your_screen_numbered.png "Tela do Jogo")
+![Game Screen Numbered](assets/your_screen_numbered.png "Tela do Jogo")
 O jogo é dividido nas seguintes seções de acordo com a imagem acima:
 
 1. Seu [Baralho](#baralho).
@@ -115,7 +115,7 @@ Unidade são as principais cartas do jogo, são elas que se movem e travam comba
 
 Elas são compostas dos seguintes itens:
 
-<img align="left" width="40%" style="margin-right:2rem" src="assets/unity_example.png">
+<img align="left" width="40%" style="margin-right:2rem" src="assets/unity_example.png" alt ='Ryu The Twilight Archer Numbered' title = 'Exemplo de Carta Unidade'>
 
 1. Nome da Unidade
 2. Range Direcional da Unidade (DIRECTION RANGE)
@@ -170,7 +170,7 @@ Artefatos são as cartas que causam efeitos no jogo, podendo alterar o rumo da p
 
 Elas são compostas dos seguintes itens:
 
-<img align="left" width="40%" style="margin-right:2rem" src="assets/artifact_example.png">
+<img align="left" width="40%" style="margin-right:2rem" src="assets/artifact_example.png" alt ='Divine Sword of the Chosen Card Numbered' title = 'Exemplo de Carta Artefato'>
 
 1. Nome do Artefato
 2. Arte da Carta
@@ -192,7 +192,7 @@ Cartas Campo são cartas que afetam os espaços fisicos do Tabuleiro com seus ef
 
 Elas são compostas dos seguintes itens:
 
-<img align="left" width="40%" style="margin-right:2rem" src="assets/field_example.png" alt ='Royal Palace Card Numbered' title = 'This is an image'>
+<img align="left" width="40%" style="margin-right:2rem" src="assets/field_example.png" alt ='Royal Palace Card Numbered' title = 'Exemplo de Carta Campo'>
 
 1. Nome do Campo
 2. Arte da Carta
@@ -216,11 +216,13 @@ Elas são compostas dos seguintes itens:
 - Cartas que ocupam o Campo fisicamente também são sujeitas a efeito adjacente ([LINK](#efeito-adjacente-link))
 
 <p align="center">
-<img src="assets/field_occupy_example.png">
+<img src="assets/field_occupy_example.png" alt ='Unity on Top of Field Card' title = 'Exemplo de Carta Ocupando um Campo'>
 </p>
 
 - Cartas que ocupam um campo recebem um "F" no canto superior esquerdo de seu retrato
-  Ex:
+- Passar o mouse sobre o "F" revela o campo que a carta esta ocupando na aba de informações ([13](#layout-do-jogo))
+
+_Exemplo da Imagem: A carta "Azros The King of Thassalos" ocupa o Campo "Royal Palace", logo ela pega o efeito de Ocupação e faz com que o Campo aplique +2/+2 para qualquer carta adjacente que seja do elemento terra (EARTH). Como ela também recebe o efeito de Link a prórpia carta recebe +2/+2 por ser do subtipo ROYAL._
 
 #### **Efeito Adjacente (LINK)**
 
@@ -228,7 +230,8 @@ Um efeito adjacente somente ocorre a cartas que estão em um dos 8 espaços adja
 
 ### **Token**
 
-<img align="left" width="40%" style="margin-right:2rem" src="assets/token_example.png">
+<img align="left" width="40%" style="margin-right:2rem" src="assets/token_example.png" alt ='Generic Unit Token Card' title = 'Exemplo de Carta Token'>
+
 Cartas do Tipo Token podem ser variantes dos três tipos citados:
 
 - Unidade
