@@ -192,7 +192,7 @@ Cartas Campo são cartas que afetam os espaços fisicos do Tabuleiro com seus ef
 
 Elas são compostas dos seguintes itens:
 
-<img align="left" width="40%" style="margin-right:2rem" src="assets/field_example.png">
+<img align="left" width="40%" style="margin-right:2rem" src="assets/field_example.png" alt ='Royal Palace Card Numbered' title = 'This is an image'>
 
 1. Nome do Campo
 2. Arte da Carta
@@ -204,15 +204,27 @@ Elas são compostas dos seguintes itens:
 
    <br clear="left"/>
 
-TODO
+- Cartas Campo são as unicas cartas do jogo que podem ser ocupadas fisicamente por outra carta Unidade ou Artefato naturalmente.
+- Qualquer Carta que se adeque a ser Invocada (SPAWN) em um espaço ja ocupado por um Campo pode ser Invocada ocupando o mesmo, isso não é valido para outra Carta do Tipo Campo
+  - 2 Campos não podem ocupar o mesmo espaço.
+- Cartas Campo são consideradas NEUTRAS, ou seja, se uma carta adversário esteja próxima ao seu campo e o efeito do mesmo a beneficia por sua proximidade, ela recebe o beneficio.
+- Cartas Campo possuem dois efeitos distintos chamados de Efeito de Ocupação ([OCCUPY](#efeito-de-ocupação-occupy)) e Efeito Adjacente ([LINK](#efeito-adjacente-link)).
 
 #### **Efeito de Ocupação (OCCUPY)**
 
-TODO
+- Um efeito de ocupação ocorre somente a carta que esteja posicionada acima da Carta Campo.
+- Cartas que ocupam o Campo fisicamente também são sujeitas a efeito adjacente ([LINK](#efeito-adjacente-link))
+
+<p align="center">
+<img src="assets/field_occupy_example.png">
+</p>
+
+- Cartas que ocupam um campo recebem um "F" no canto superior esquerdo de seu retrato
+  Ex:
 
 #### **Efeito Adjacente (LINK)**
 
-TODO
+Um efeito adjacente somente ocorre a cartas que estão em um dos 8 espaços adjacentes a Carta Campo. Esse efeito tambem se aplica a Carta que Ocupa o Campo (OCCUPY).
 
 ### **Token**
 
