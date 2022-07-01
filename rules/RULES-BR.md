@@ -18,24 +18,38 @@ Revisão 1 - Manual Foi Criado (06/06/2022)
 2. [Layout do Jogo](#layout-do-jogo)
 3. [Baralho](#baralho)
 4. [Cartas](#cartas)
-   - [Unidade](#unidade)
-   - [Artefato](#artefato)
-   - [Campo](#campo)
-   - [Token](#token)
+   - [Informações em Comum](#informações-em-comum)
+     - [Cartas Unicas](#cartas-unicas)
+     - [Subtipos (TAGs)](#subtipos-tags)
+   - [Cartas Unidade](#unidade)
+     - [Elementos](#elementos)
+     - [Informações de Combate](#informações-de-combate)
+   - [Cartas Artefato](#artefato)
+     - [Tipos de Ativação](#tipos-de-ativação)
+       - [Ativação Instantânea (INSTANT)](#ativação-instantânea-instant)
+       - [Ativação Unica (ONCE)](#ativação-unica-once)
+       - [Ativação Uma Vez Por Turno (ONCE PER TURN)](#ativação-uma-vez-por-turno-once-per-turn)
+       - [Ativação Passiva (FOREVER)](#ativação-passiva-forever)
+       - [Ativação em Anexo (ATTACH)](#ativação-em-anexo-attach)
+       - [Ativação Armadilha (TRAP)](#ativação-armadilha-trap)
+   - [Cartas Campo](#campo)
+     - [Efeito de Ocupação (OCCUPY)](#efeito-de-ocupação-occupy)
+     - [Efeito Adjacente (LINK)](#efeito-adjacente-link)
+   - [Cartas Token](#token)
 5. [Tipos de Efeitos](#tipos-de-efeitos)
+   - [Efeito de Ação (ACTION)](#efeito-de-ação-action)
+   - [Efeito de Reação (REACTION)](#efeito-de-reação-reaction)
 6. [Zona de Descarte (DZ)](#zona-de-descarte-dz)
 7. [Cartas Fora do Jogo (OOG)](#cartas-fora-do-jogo-oog)
 8. [Tabuleiro](#tabuleiro)
 9. [Objetivo](#objetivo)
 10. [Fases](#fases)
-
-- [Reciclagem (RECYCLE)](#reciclagem-recycle)
-- [Pesca (DRAW)](#pesca-draw)
-- [TICK](#tick)
-- [Movimentação (MOVE)](#movimentação-move)
-- [Combate (BATTLE)](#combate-battle)
-- [Invocação (SPAWN)](#invocação-spawn)
-
+    - [Reciclagem (RECYCLE)](#reciclagem-recycle)
+    - [Pesca (DRAW)](#pesca-draw)
+    - [TICK](#tick)
+    - [Movimentação (MOVE)](#movimentação-move)
+    - [Combate (BATTLE)](#combate-battle)
+    - [Invocação (SPAWN)](#invocação-spawn)
 11. [Resumo (TL;DR)](#resumo-tldr)
 
 ## Setup
@@ -43,6 +57,7 @@ Revisão 1 - Manual Foi Criado (06/06/2022)
 - O jogo consiste em dois jogadores (1x1) com a presença de um tabuleiro.
 - Cada jogador deve possuir um deck de 30 cartas que será utilizado durante a partida.
 - O jogo começa com cada jogador com 10 pontos de vida em seu Dominio
+- Deve-se jogar uma moeda e cada jogador escolher uma face. O campeão então pode escolher entre ser o primeiro ou o segundo a jogar **(Ainda não implementado no jogo)**.
 
 ## Layout do Jogo
 
@@ -84,7 +99,9 @@ Em Dimensional Dominions, todas as cartas são divididas em quatro tipos distint
 - [Campo](#campo)
 - [Token](#token)
 
-Mesmo tendo grandes diferenças em seus papéis e estilos durante o jogo, muitas delas possuem informações em comuns. Como:
+### **Informações em Comum**
+
+Mesmo tendo grandes diferenças em seus papéis e estilos durante o jogo, muitas das Cartas possuem informações em comuns, como:
 
 - Nome
 - Arte
@@ -174,7 +191,7 @@ Elas são compostas dos seguintes itens:
 
 1. Nome do Artefato
 2. Arte da Carta
-3. Tipo de Ativação do Artefato
+3. [Tipo de Ativação](#tipos-de-ativação) do Artefato
 4. Estrela que indica que a Carta é [UNICA](#cartas-unicas)
 5. Simbolo que identifica que a carta é um artefato
 6. Efeitos da Carta
@@ -183,6 +200,58 @@ Elas são compostas dos seguintes itens:
    <br clear="left"/>
 
 #### **Tipos de Ativação:**
+
+Toda carta Artefato possui um tipo de ativação. Cada tipo é unico e possui suas próprias regras de utilização.
+
+Toda carta Artefato possui apenas um dos seguintes tipos de ativação:
+
+- [Ativação Instantânea (INSTANT)](#ativação-instantânea-instant)
+- [Ativação Unica (ONCE)](#ativação-unica-once)
+- [Ativação Uma Vez Por Turno (ONCE PER TURN)](#ativação-uma-vez-por-turno-once-per-turn)
+- [Ativação Passiva (FOREVER)](#ativação-passiva-forever)
+- [Ativação em Anexo (ATTACH)](#ativação-em-anexo-attach)
+- [Ativação Armadilha (TRAP)](#ativação-armadilha-trap)
+
+##### **Ativação Instantânea (INSTANT)**
+
+<img align="left" width="40%" style="margin-right:2rem" src="assets/instant_activation_example.png" alt ='Duel Invitation' title = 'Exemplo de Carta Artefato do Tipo INSTANT'>
+
+- Artefatos do tipo **INSTANT** são considerados cartas instantâneas e podem ser ativadas a QUALQUER MOMENTO DA PARTIDA desde que a condição do efeito da mesma esteja apto para ser ativado.
+  - _Exemplo da Imagem: A carta "Duel Invitation" por mais que seja do tipo **INSTANT** possui tipo de efeito de AÇÃO ([ACTION](#efeito-de-ação-action)), ou seja, nesse caso a carta somente pode ser ativada durante o turno do jogador dono da mesma._
+- Ao ativa um Artefato **INSTANT** o jogador deve colocar o mesmo VIRADO PARA CIMA em qualquer espaço do campo (sendo vago ou não) e declarar seu efeito.
+  - O efeito sera aplicado ou ["contra-atacado"](#efeito-de-reação-reaction) com outra ativação
+- Uma vez que o efeito da carta seja aplicado ou negado a carta é mandada instantaneamente para sua zona de descate ([DZ](#zona-de-descarte-dz))
+- O Jogador pode ativar qualquer quantidade de Artefatos do tipo **INSTANT** de sua mão já que sua ativação não é contabilizada como um [SPAWN](#invocação-spawn) de Artefato durante seu turno.
+  - Esse é o unico tipo de artefato que burla a contagem de [SPAWN](#invocação-spawn).
+  - Esse é o unico tipo de artefato que não pode se alocado com sua face virada para baixo no Tabuleiro.
+
+<br clear="left"/>
+
+##### **Ativação Unica (ONCE)**
+
+TODO
+
+##### **Ativação Uma Vez Por Turno (ONCE PER TURN)**
+
+<img align="left" width="40%" style="margin-right:2rem" src="assets/opt_activation_example.png" alt ='Mark of War' title = 'Exemplo de Carta Artefato do Tipo ONCE PER TURN'>
+
+TODO
+
+<br clear="left"/>
+
+##### **Ativação Passiva (FOREVER)**
+
+<img align="left" width="40%" style="margin-right:2rem" src="assets/forever_activation_example.png" alt ='Sealed Gate' title = 'Exemplo de Carta Artefato do Tipo FOREVER'>
+
+TODO
+
+<br clear="left"/>
+
+##### **Ativação em Anexo (ATTACH)**
+
+TODO
+
+##### **Ativação Armadilha (TRAP)**
 
 TODO
 
@@ -226,7 +295,14 @@ _Exemplo da Imagem: A carta "Azros The King of Thassalos" ocupa o Campo "Royal P
 
 #### **Efeito Adjacente (LINK)**
 
-Um efeito adjacente somente ocorre a cartas que estão em um dos 8 espaços adjacentes a Carta Campo. Esse efeito tambem se aplica a Carta que Ocupa o Campo (OCCUPY).
+- Um efeito adjacente somente ocorre as cartas que estão em um dos 8 espaços adjacentes a Carta Campo.
+- Esse efeito tambem se aplica a Carta que Ocupa o Campo (OCCUPY).
+
+<p align="center">
+<img src="assets/field_link_example.png" alt ='Unity Next to Field Card' title = 'Exemplo de Carta Adjacente a um Campo'>
+</p>
+
+_Exemplo da Imagem: A carta "Azros The King of Thassalos" esta adjacente ao canto superior esquerdo do Campo "Royal Palace", logo ela recebe o efeito de Link recebendo +2/+2 por ser do subtipo ROYAL. Caso outra carta do Subtipo ROYAL do Elemento terra (EARTH) ocupasse o Campo, "Azros" não ganharia +4/+4 pelo efeito de LINK, já que o mesmo especifica que o efeito em si não se acumula com o do OCCUPY._
 
 ### **Token**
 
@@ -251,6 +327,14 @@ Caso a carta Geradora não especifique uma informação de seu Token é assumido
 <br clear="left"/>
 
 ## Tipos de Efeitos
+
+TODO
+
+### **Efeito de Ação (ACTION)**
+
+TODO
+
+### **Efeito de Reação (REACTION)**
 
 TODO
 
