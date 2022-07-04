@@ -229,7 +229,11 @@ Toda carta Artefato possui apenas um dos seguintes tipos de ativação:
 
 ##### **Ativação Unica (ONCE)**
 
+<img align="left" width="40%" style="margin-right:2rem" src="assets/once_activation_example.png" alt ='Book of Forbidden Spells' title = 'Exemplo de Carta Artefato do Tipo ONCE'>
+
 TODO
+
+<br clear="left"/>
 
 ##### **Ativação Uma Vez Por Turno (ONCE PER TURN)**
 
@@ -249,11 +253,19 @@ TODO
 
 ##### **Ativação em Anexo (ATTACH)**
 
+<img align="left" width="40%" style="margin-right:2rem" src="assets/attach_activation_example.png" alt ='White Flag of Surrender' title = 'Exemplo de Carta Artefato do Tipo ATTACH'>
+
 TODO
+
+<br clear="left"/>
 
 ##### **Ativação Armadilha (TRAP)**
 
+<img align="left" width="40%" style="margin-right:2rem" src="assets/trap_activation_example.png" alt ='Sealed Rune' title = 'Exemplo de Carta Artefato do Tipo TRAP'>
+
 TODO
+
+<br clear="left"/>
 
 ### **Campo**
 
