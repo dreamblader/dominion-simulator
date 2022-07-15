@@ -161,8 +161,7 @@ Cartas Unidade podem ser divididas nos seguintes elementos:
 
 Essa identificação é feita através do simbolo de identificação na carta em conjunto com sua cor de fundo. Segue uma imagem com um exemplo de carta de cada elemento:
 
-TODO
-!["WIP"](assets/elements.png "Unidades e seus Elementos")
+![Unity Elements Examples](assets/elements_example.png "Unidades e seus Elementos")
 
 Elementos são usados como identificados das cartas Unidades em conjunto com seus Subtipos ([TAGs](#subtipos-tags))
 
@@ -220,7 +219,7 @@ Toda carta Artefato possui apenas um dos seguintes tipos de ativação:
   - _Exemplo da Imagem: A carta "Duel Invitation" por mais que seja do tipo **INSTANT** possui tipo de efeito de AÇÃO ([ACTION](#efeito-de-ação-action)), ou seja, nesse caso a carta somente pode ser ativada durante o turno do jogador dono da mesma._
 - Ao ativa um Artefato **INSTANT** o jogador deve colocar o mesmo VIRADO PARA CIMA em qualquer espaço do campo (sendo vago ou não) e declarar seu efeito.
   - O efeito sera aplicado ou ["contra-atacado"](#efeito-de-reação-reaction) com outra ativação
-- Uma vez que o efeito da carta seja aplicado ou negado a carta é mandada instantaneamente para sua zona de descate ([DZ](#zona-de-descarte-dz))
+- Uma vez que o efeito da carta seja aplicado ou negado a carta é mandada instantaneamente para sua zona de descarte ([DZ](#zona-de-descarte-dz))
 - O Jogador pode ativar qualquer quantidade de Artefatos do tipo **INSTANT** de sua mão já que sua ativação não é contabilizada como um [SPAWN](#invocação-spawn) de Artefato durante seu turno.
   - Esse é o unico tipo de artefato que burla a contagem de [SPAWN](#invocação-spawn).
   - Esse é o unico tipo de artefato que não pode se alocado com sua face virada para baixo no Tabuleiro.
@@ -231,7 +230,11 @@ Toda carta Artefato possui apenas um dos seguintes tipos de ativação:
 
 <img align="left" width="40%" style="margin-right:2rem" src="assets/once_activation_example.png" alt ='Book of Forbidden Spells' title = 'Exemplo de Carta Artefato do Tipo ONCE'>
 
-TODO
+- Artefatos do tipo **ONCE** devem ser colocados em um espaço vago (ou ocupado por um Campo [[FIELD](#campo)] ) durante o turno de [SPAWN](#invocação-spawn) virado para baixo (dormente) ou para acima (ativo).
+- Artefatos do tipo **ONCE** contam como 1 [SPAWN](#invocação-spawn) de artefato.
+- Uma vez dormente (virada para baixo) a carta pode ser ativada a qualquer momento da partida desde que a condição do efeito da mesma esteja apto para ser ativado.
+- Uma vez que o efeito da carta seja aplicado ou negado a carta é mandada instantaneamente para sua zona de descarte ([DZ](#zona-de-descarte-dz))
+- Pelo seu nome e ativação, um artefato tipo **ONCE** é uma espécie de artefato **INSTANT** que deve ser invocado corretamente e não é exceção na contagem de invocação.
 
 <br clear="left"/>
 
@@ -239,7 +242,14 @@ TODO
 
 <img align="left" width="40%" style="margin-right:2rem" src="assets/opt_activation_example.png" alt ='Mark of War' title = 'Exemplo de Carta Artefato do Tipo ONCE PER TURN'>
 
-TODO
+- Artefatos do tipo **ONCE PER TURN** devem ser colocados em um espaço vago (ou ocupado por um Campo [[FIELD](#campo)] ) durante o turno de [SPAWN](#invocação-spawn) virado para baixo (dormente) ou para acima (ativo).
+- Artefatos do tipo **ONCE PER TURN** contam como 1 [SPAWN](#invocação-spawn) de artefato.
+- Uma vez dormente (virada para baixo) a carta pode ser ativada a qualquer momento da partida desde que a condição do efeito da mesma esteja apto para ser ativado.
+- Uma vez ativado seu efeito a carta recebe um [TICK](#tick) de Cooldown (1 turno) que somente sera retirado no turno de [TICK](#tick) do jogador dono da carta.
+- Uma vez ativado o artefato permanece virado para cima no campo e pode ser reativado a qualquer momento desde que:
+  - Sua condição de efeito esteja apta para ativar
+  - A carta não possua nenhum [TICK](#tick) de COOLDOWN
+- Artefatos **ONCE PER TURN** só saem de campo se removidos por outro efeito ou destruidos através de um combate ([BATTLE](#combate-battle))
 
 <br clear="left"/>
 
@@ -247,7 +257,11 @@ TODO
 
 <img align="left" width="40%" style="margin-right:2rem" src="assets/forever_activation_example.png" alt ='Sealed Gate' title = 'Exemplo de Carta Artefato do Tipo FOREVER'>
 
-TODO
+- Artefatos do tipo **FOREVER** devem ser colocados em um espaço vago (ou ocupado por um Campo [[FIELD](#campo)] ) durante o turno de [SPAWN](#invocação-spawn) virado para baixo (dormente) ou para acima (ativo).
+- Artefatos do tipo **FOREVER** contam como 1 [SPAWN](#invocação-spawn) de artefato.
+- Uma vez dormente (virada para baixo) a carta pode ser ativada a qualquer momento da partida desde que a condição do efeito da mesma esteja apto para ser ativado.
+- Uma vez ativado o efeito de um artefato do tipo **FOREVER** a carta permanece virada para cima e o efeito passa se tornar passivo no campo, ou seja, enquanto a carta permanecer no campo seu efeito é uma ocorrencia obrigatória do jogo.
+- Artefatos **FOREVER** só saem de campo se removidos por outro efeito ou destruidos através de um combate ([BATTLE](#combate-battle))
 
 <br clear="left"/>
 
@@ -255,7 +269,15 @@ TODO
 
 <img align="left" width="40%" style="margin-right:2rem" src="assets/attach_activation_example.png" alt ='White Flag of Surrender' title = 'Exemplo de Carta Artefato do Tipo ATTACH'>
 
-TODO
+- Artefatos do tipo **ATTACH** devem ser colocados em anexo a uma outra carta durante o turno de [SPAWN](#invocação-spawn) já ativados (virado para cima).
+- Artefatos do tipo **ATTACH** contam como 1 [SPAWN](#invocação-spawn) de artefato.
+- Artefatos do tipo **ATTACH** pode ser invocado em anexo a qualquer carta desde que a mesma satisfaça sua condição de efeito.
+- Artefatos do tipo **ATTACH** não precisam respeitar a [regra de invocação base ou ponte](#invocação-spawn).
+- Uma vez anexado o artefato se move junto com a sua carta principal (caso a mesma possa ser movida).
+- Uma vez anexado o artefato é destruido junto de sua carta principal.
+- O artefato permanece ativo desde sua invocação.
+- Artefatos do tipo **ATTACH** só podem ser re-anexados a outra carta por efeitos externos ou do mesmo.
+- Artefatos do tipo **ATTACH** não podem ser alvo de um combate. Carta inimigas só podem declarar um ataque a carta principal
 
 <br clear="left"/>
 
