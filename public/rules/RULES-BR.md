@@ -64,7 +64,7 @@ Revisão 1 - Manual Foi Criado (06/06/2022)
 
 ## Layout do Jogo
 
-![Game Screen Numbered](assets/your_screen_numbered.png "Tela do Jogo")
+![Game Screen Numbered](../rules/assets/your_screen_numbered.png "Tela do Jogo")
 O jogo é dividido nas seguintes seções de acordo com a imagem acima:
 
 1. Seu [Baralho](#baralho).
@@ -135,7 +135,7 @@ Unidade são as principais cartas do jogo, são elas que se movem e travam comba
 
 Elas são compostas dos seguintes itens:
 
-<img align="left" width="40%" style="margin-right:2rem" src="assets/unity_example.png" alt ='Ryu The Twilight Archer Numbered' title = 'Exemplo de Carta Unidade'>
+<img align="left" width="40%" style="margin-right:2rem" src="../rules/assets/unity_example.png" alt ='Ryu The Twilight Archer Numbered' title = 'Exemplo de Carta Unidade'>
 
 1. Nome da Unidade
 2. Range Direcional da Unidade (DIRECTION RANGE)
@@ -164,7 +164,7 @@ Cartas Unidade podem ser divididas nos seguintes elementos:
 
 Essa identificação é feita através do simbolo de identificação na carta em conjunto com sua cor de fundo. Segue uma imagem com um exemplo de carta de cada elemento:
 
-![Unity Elements Examples](assets/elements_example.png "Unidades e seus Elementos")
+![Unity Elements Examples](../rules/assets/elements_example.png "Unidades e seus Elementos")
 
 Elementos são usados como identificados das cartas Unidades em conjunto com seus Subtipos ([TAGs](#subtipos-tags))
 
@@ -189,7 +189,7 @@ Artefatos são as cartas que causam efeitos no jogo, podendo alterar o rumo da p
 
 Elas são compostas dos seguintes itens:
 
-<img align="left" width="40%" style="margin-right:2rem" src="assets/artifact_example.png" alt ='Divine Sword of the Chosen Card Numbered' title = 'Exemplo de Carta Artefato'>
+<img align="left" width="40%" style="margin-right:2rem" src="../rules/assets/artifact_example.png" alt ='Divine Sword of the Chosen Card Numbered' title = 'Exemplo de Carta Artefato'>
 
 1. Nome do Artefato
 2. Arte da Carta
@@ -216,7 +216,7 @@ Toda carta Artefato possui apenas um dos seguintes tipos de ativação:
 
 ##### **Ativação Instantânea (INSTANT)**
 
-<img align="left" width="40%" style="margin-right:2rem" src="assets/instant_activation_example.png" alt ='Duel Invitation' title = 'Exemplo de Carta Artefato do Tipo INSTANT'>
+<img align="left" width="40%" style="margin-right:2rem" src="../rules/assets/instant_activation_example.png" alt ='Duel Invitation' title = 'Exemplo de Carta Artefato do Tipo INSTANT'>
 
 - Artefatos do tipo **INSTANT** são considerados cartas instantâneas e podem ser ativadas a QUALQUER MOMENTO DA PARTIDA desde que a condição do efeito da mesma esteja apto para ser ativado.
   - _Exemplo da Imagem: A carta "Duel Invitation" por mais que seja do tipo **INSTANT** possui tipo de efeito de AÇÃO ([ACTION](#efeito-de-ação-action)), ou seja, nesse caso a carta somente pode ser ativada durante o turno do jogador dono da mesma._
@@ -231,7 +231,7 @@ Toda carta Artefato possui apenas um dos seguintes tipos de ativação:
 
 ##### **Ativação Unica (ONCE)**
 
-<img align="left" width="40%" style="margin-right:2rem" src="assets/once_activation_example.png" alt ='Book of Forbidden Spells' title = 'Exemplo de Carta Artefato do Tipo ONCE'>
+<img align="left" width="40%" style="margin-right:2rem" src="../rules/assets/once_activation_example.png" alt ='Book of Forbidden Spells' title = 'Exemplo de Carta Artefato do Tipo ONCE'>
 
 - Artefatos do tipo **ONCE** devem ser colocados em um espaço vago (ou ocupado por um Campo [[FIELD](#campo)] ) durante o turno de [SPAWN](#invocação-spawn) virado para baixo (dormente) ou para acima (ativo).
 - Artefatos do tipo **ONCE** contam como 1 [SPAWN](#invocação-spawn) de artefato.
@@ -243,7 +243,7 @@ Toda carta Artefato possui apenas um dos seguintes tipos de ativação:
 
 ##### **Ativação Uma Vez Por Turno (ONCE PER TURN)**
 
-<img align="left" width="40%" style="margin-right:2rem" src="assets/opt_activation_example.png" alt ='Mark of War' title = 'Exemplo de Carta Artefato do Tipo ONCE PER TURN'>
+<img align="left" width="40%" style="margin-right:2rem" src="../rules/assets/opt_activation_example.png" alt ='Mark of War' title = 'Exemplo de Carta Artefato do Tipo ONCE PER TURN'>
 
 - Artefatos do tipo **ONCE PER TURN** devem ser colocados em um espaço vago (ou ocupado por um Campo [[FIELD](#campo)] ) durante o turno de [SPAWN](#invocação-spawn) virado para baixo (dormente) ou para acima (ativo).
 - Artefatos do tipo **ONCE PER TURN** contam como 1 [SPAWN](#invocação-spawn) de artefato.
@@ -258,7 +258,7 @@ Toda carta Artefato possui apenas um dos seguintes tipos de ativação:
 
 ##### **Ativação Passiva (FOREVER)**
 
-<img align="left" width="40%" style="margin-right:2rem" src="assets/forever_activation_example.png" alt ='Sealed Gate' title = 'Exemplo de Carta Artefato do Tipo FOREVER'>
+<img align="left" width="40%" style="margin-right:2rem" src="../rules/assets/forever_activation_example.png" alt ='Sealed Gate' title = 'Exemplo de Carta Artefato do Tipo FOREVER'>
 
 - Artefatos do tipo **FOREVER** devem ser colocados em um espaço vago (ou ocupado por um Campo [[FIELD](#campo)] ) durante o turno de [SPAWN](#invocação-spawn) virado para baixo (dormente) ou para acima (ativo).
 - Artefatos do tipo **FOREVER** contam como 1 [SPAWN](#invocação-spawn) de artefato.
@@ -270,7 +270,7 @@ Toda carta Artefato possui apenas um dos seguintes tipos de ativação:
 
 ##### **Ativação em Anexo (ATTACH)**
 
-<img align="left" width="40%" style="margin-right:2rem" src="assets/attach_activation_example.png" alt ='White Flag of Surrender' title = 'Exemplo de Carta Artefato do Tipo ATTACH'>
+<img align="left" width="40%" style="margin-right:2rem" src="../rules/assets/attach_activation_example.png" alt ='White Flag of Surrender' title = 'Exemplo de Carta Artefato do Tipo ATTACH'>
 
 - Artefatos do tipo **ATTACH** devem ser colocados em anexo a uma outra carta durante o turno de [SPAWN](#invocação-spawn) já ativados (virado para cima).
 - Artefatos do tipo **ATTACH** contam como 1 [SPAWN](#invocação-spawn) de artefato.
@@ -286,7 +286,7 @@ Toda carta Artefato possui apenas um dos seguintes tipos de ativação:
 
 ##### **Ativação Armadilha (TRAP)**
 
-<img align="left" width="40%" style="margin-right:2rem" src="assets/trap_activation_example.png" alt ='Sealed Rune' title = 'Exemplo de Carta Artefato do Tipo TRAP'>
+<img align="left" width="40%" style="margin-right:2rem" src="../rules/assets/trap_activation_example.png" alt ='Sealed Rune' title = 'Exemplo de Carta Artefato do Tipo TRAP'>
 
 - Artefatos do tipo **TRAP** devem ser colocados em um espaço vago (ou ocupado por um Campo [[FIELD](#campo)] ) durante o turno de [SPAWN](#invocação-spawn) **somente** virado para baixo (dormente).
 - Artefatos do tipo **TRAP** contam como 1 [SPAWN](#invocação-spawn) de artefato.
@@ -302,7 +302,7 @@ Cartas Campo são cartas que afetam os espaços fisicos do Tabuleiro com seus ef
 
 Elas são compostas dos seguintes itens:
 
-<img align="left" width="40%" style="margin-right:2rem" src="assets/field_example.png" alt ='Royal Palace Card Numbered' title = 'Exemplo de Carta Campo'>
+<img align="left" width="40%" style="margin-right:2rem" src="../rules/assets/field_example.png" alt ='Royal Palace Card Numbered' title = 'Exemplo de Carta Campo'>
 
 1. Nome do Campo
 2. Arte da Carta
@@ -326,7 +326,7 @@ Elas são compostas dos seguintes itens:
 - Cartas que ocupam o Campo fisicamente também são sujeitas a efeito adjacente ([LINK](#efeito-adjacente-link))
 
 <p align="center">
-<img src="assets/field_occupy_example.png" alt ='Unity on Top of Field Card' title = 'Exemplo de Carta Ocupando um Campo'>
+<img src="../rules/assets/field_occupy_example.png" alt ='Unity on Top of Field Card' title = 'Exemplo de Carta Ocupando um Campo'>
 </p>
 
 - Cartas que ocupam um campo recebem um "F" no canto superior esquerdo de seu retrato
@@ -340,14 +340,14 @@ _Exemplo da Imagem: A carta "Azros The King of Thassalos" ocupa o Campo "Royal P
 - Esse efeito tambem se aplica a Carta que Ocupa o Campo (OCCUPY).
 
 <p align="center">
-<img src="assets/field_link_example.png" alt ='Unity Next to Field Card' title = 'Exemplo de Carta Adjacente a um Campo'>
+<img src="../rules/assets/field_link_example.png" alt ='Unity Next to Field Card' title = 'Exemplo de Carta Adjacente a um Campo'>
 </p>
 
 _Exemplo da Imagem: A carta "Azros The King of Thassalos" esta adjacente ao canto superior esquerdo do Campo "Royal Palace", logo ela recebe o efeito de Link recebendo +2/+2 por ser do subtipo ROYAL. Caso outra carta do Subtipo ROYAL do Elemento terra (EARTH) ocupasse o Campo, "Azros" não ganharia +4/+4 pelo efeito de LINK, já que o mesmo especifica que o efeito em si não se acumula com o do OCCUPY._
 
 ### **Token**
 
-<img align="left" width="40%" style="margin-right:2rem" src="assets/token_example.png" alt ='Generic Unit Token Card' title = 'Exemplo de Carta Token'>
+<img align="left" width="40%" style="margin-right:2rem" src="../rules/assets/token_example.png" alt ='Generic Unit Token Card' title = 'Exemplo de Carta Token'>
 
 Cartas do Tipo Token podem ser variantes dos três tipos citados:
 
@@ -466,7 +466,7 @@ Uma vez que a cadeia de evento se acabou, o jogador dono do turno pode então fa
 
 O Tabuleiro é composto da seguinte maneira:
 
-![Board](assets/board.png "Tabuleiro do Jogo")
+![Board](../rules/assets/board.png "Tabuleiro do Jogo")
 
 Dominio é o ponto principal de cada jogador, ele não deve ser preenchido com nenhuma carta e ele diz o numero de pontos de vida restantes do jogador.
 
