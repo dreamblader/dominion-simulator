@@ -37,8 +37,11 @@ Revisão 1 - Manual Foi Criado (06/06/2022)
      - [Efeito Adjacente (LINK)](#efeito-adjacente-link)
    - [Cartas Token](#token)
 5. [Tipos de Efeitos](#tipos-de-efeitos)
+   - [Condição Explicita](#condição-explicita)
+   - [Condição Implicita](#condição-implicita)
    - [Efeito de Ação (ACTION)](#efeito-de-ação-action)
    - [Efeito de Reação (REACTION)](#efeito-de-reação-reaction)
+   - [Cadeia de Evento](#cadeia-de-evento)
 6. [Zona de Descarte (DZ)](#zona-de-descarte-dz)
 7. [Cartas Fora do Jogo (OOG)](#cartas-fora-do-jogo-oog)
 8. [Tabuleiro](#tabuleiro)
@@ -285,7 +288,11 @@ Toda carta Artefato possui apenas um dos seguintes tipos de ativação:
 
 <img align="left" width="40%" style="margin-right:2rem" src="assets/trap_activation_example.png" alt ='Sealed Rune' title = 'Exemplo de Carta Artefato do Tipo TRAP'>
 
-TODO
+- Artefatos do tipo **TRAP** devem ser colocados em um espaço vago (ou ocupado por um Campo [[FIELD](#campo)] ) durante o turno de [SPAWN](#invocação-spawn) **somente** virado para baixo (dormente).
+- Artefatos do tipo **TRAP** contam como 1 [SPAWN](#invocação-spawn) de artefato.
+- Artefatos do tipo **TRAP** só podem ser ativos (virados para cima) quando uma Unidade declarar um ataque contra o artefato dormente (virado para baixo).
+- Uma vez ativo o artefato ira afetar a criatura atacante com um efeito adverso.
+- Assim que o efeito for aplicado a carta deve ser removida para a Zona de Descarte ([DZ](#zona-de-descarte-dz))
 
 <br clear="left"/>
 
@@ -362,15 +369,81 @@ Caso a carta Geradora não especifique uma informação de seu Token é assumido
 
 ## Tipos de Efeitos
 
-TODO
+Toda carta possui uma seção somente para descrição do seu efeito.
+
+Toda descrição de efeito é formatada da seguinte maneira:
+
+> **[CONDIÇÃO IMPLICITA:](#condição-implicita)**
+>
+> **[CONDIÇÃO EXPLICITA:](#condição-explicita)**
+>
+> **TIPO DE EFEITO [ACTION](#efeito-de-ação-action) OU [REACTION](#efeito-de-reação-reaction):**
+>
+> Efeito que deve ser aplicado se condição acima for satisfeita
+
+Toda condição deve se encontrar em **negrito** e pode especificar uma condição explicita, implicita ou um conjunto de ambas.
+
+Logo abaixo deve se encontrar o tipo de efeito. **Caso o Tipo de efeito não for especificado, é considerado que a carta possua os 2 tipos [ACTION](#efeito-de-ação-action) e [REACTION](#efeito-de-reação-reaction) de efeito**
+
+### **Condição Explicita**
+
+- Condição que descreve explicitamente o que deve acontecer durante a partida para o efeito poder ser aplicado
+- Geralmente começa com **IF**
+- _Ex: A Carta "Divine Sword of the Chosen" possui a seguinte condição explicita: **IF the attached unity is destroyed:**. Ou seja, se a unidade com esta carta anexada for destruida, o efeito abaixo desta condição deve ser aplicado._
+- Efeitos de condições explicitas são considerados **OBRIGATÓRIOS** e devem ser resolvidos assim que a condição for satisfeita.
+
+### **Condição Implicita**
+
+- Condição que descreve uma fase do turno em que o efeito pode ser aplicado, ou o [tipo de efeito](#efeito-de-ação-action).
+- Ela pode ser descrita como as fases do jogo:
+  - [DRAW](#pesca-draw)
+  - [TICK](#tick)
+  - [MOVE](#movimentação-move)
+  - [BATTLE](#combate-battle)
+  - [SPAW](#invocação-spawn)
+- O efeito com uma fase do jogo descrita só pode ser ativado durante o periodo da mesma descrita pela carta.
+  - Isso se aplica na fase do dono da carta ou de seu adversário, a não ser que a carta especifique o [tipo de efeito](#efeito-de-ação-action).
+- Efeitos de condições implicitas são **OPCIONAIS** com exceção dos efeitos de turno [**TICK**](#tick) que devem ocorrer toda fase de [TICK](#tick) para todas as cartas **somente pertencentes ao dono do turno**.
 
 ### **Efeito de Ação (ACTION)**
 
-TODO
+O efeito de Ação (ACTION) é considerado um **tipo de efeito** que:
+
+- Pode ser somente aplicado durante o turno do dono da carta com o efeito
+- Esse tipo de efeito só pode ser aplicado para iniciar uma cadeia de eventos, ou seja, não pode ser usado como uma resposta a outro efeito.
+- Uma vez usado o efeito é iniciado uma cadeia de evento.
 
 ### **Efeito de Reação (REACTION)**
 
-TODO
+O efeito de Reação (REACTION) é considerado um **tipo de efeito** que:
+
+- Pode ser somente aplicado em resposta a uma AÇÃO como mover, batalhar, invocar ou até mesmo um efeito de tipo ACTION
+- Esse tipo de efeito só pode ser aplicado durante uma cadeia de eventos.
+- Uma Reação pode ser usada em resposta a uma Ação do próprio usuário desde que o adversário não tenha uma resposta disponivel.
+
+### **Cadeia de Evento**
+
+Toda ação de efeitos tipo [ACTION](#efeito-de-ação-action) ou ações durante o turno cria uma cadeia de evento. Uma vez criada a cadeia pode ser respondida por efeitos do tipo [REACTION](#efeito-de-reação-reaction). Essas reações podem ser respondidas com mais efeitos do tipo [REACTION](#efeito-de-reação-reaction) criando uma pilha de efeitos que só é resolvida assim que não há mais resposta dos dois lados do jogo.
+
+Uma vez criado uma ação o adversário tem a prioridade de responder com uma reação, caso não for possivel, o próprio usuário que iniciou a ação pode responder a si mesmo.
+
+Uma vez respondida uma ação ou reação a prioridade da próxima resposta troca para o jogador que não respondeu o ultimo evento.
+
+Uma vez que não há respostas de ambos os jogadores, todos os eventos são resolvidos da ultima resposta até chegar na ação iniciadora da cadeia.
+
+Uma vez que a cadeia de evento se acabou, o jogador dono do turno pode então fazer outra ação.
+
+É considerado uma ação os seguintes gestos:
+
+- Pescar uma ou varias Cartas
+  - Efeitos de pescar multiplas cartas de uma vez é considerado UMA unica ação (isso conta com a pesca de inicio de turno ([DRAW](#pesca-draw)))
+- Mover uma carta no Tabuleiro
+  - Cartas que se movem mais de um espaço ainda contam como uma ação de movimento
+  - Cartas que podem ser movidas 2 ou mais vezes SEPARADAMENTE no mesmo turno contam como uma nova ação toda a vez que o usuario escolha mover a carta novamente.
+- Batalhar contra uma carta no Tabuleiro
+  - Cartas que podem declarar Batalhas multiplas vezes, cada declaração é considerada como uma ação nova.
+- Ativar um efeito do tipo [**ACTION**](#efeito-de-ação-action) ou efeito sem um tipo (que é considerado um efeito hibrido)
+- Invocar uma Carta
 
 ## Zona de Descarte (DZ)
 
@@ -421,7 +494,20 @@ Caso o jogo entre num empasse em que ambos os jogadores não conseguem sair do e
 
 ## Fases
 
-TODO
+O jogo é dividido em 6 fases. Sendo 5 fases recorrentes durante toda a partida e uma que só ocorre concorrentemente no primeiro turno do jogo.
+
+Toda vez que o jogador termina seu turno seu adversário deve percorrer as mesmas fases até o final do seu turno.
+
+As fases **DEVEM SER PERCORRIDAS EM ORDEM**. Se um usuário decidir batalhar com uma de suas cartas ele não pode mais mover outras cartas que não foram movidas neste turno, pois ele pulou essa fase quando decidiu declarar um ataque.
+
+As fases em um turno são corridas na seguinte ordem:
+
+0. RECYCLE
+1. DRAW
+2. TICK
+3. MOVE
+4. BATTLE
+5. SPAWN
 
 ### **Reciclagem (RECYCLE)**
 
