@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Arena from "./arena";
+import Arena from "./arena/arena";
 import { Simulator } from "Game";
 import { Client } from "boardgame.io/react";
 import { SocketIO } from "boardgame.io/multiplayer";

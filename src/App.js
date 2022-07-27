@@ -1,12 +1,10 @@
 import { Client, Lobby } from "boardgame.io/react";
 import { Simulator } from "./Game";
-import Arena from "./Client/ui/pages/arena";
-import { useState } from "react";
-import MainMenu from "Client/ui/pages/menu";
-import Game from "Client/ui/pages/game";
-import Rules from "Client/ui/pages/rules";
+import Arena from "./Client/ui/pages/arena/arena";
 import "./Client/ui/styles/globals.css";
 import "./Client/ui/styles/responsive.css";
+import PageProvider from "Client/context/page";
+import PageManager from "Client/ui/pages/page-manager";
 
 const lobby = (
   <Lobby
@@ -17,21 +15,11 @@ const lobby = (
 );
 
 const App = () => {
-  const [menuSelect, setMenuSelect] = useState(0);
-
-  const reset = () => {
-    setMenuSelect(0);
-  };
-
-  switch (menuSelect) {
-    default:
-    case 0:
-      return <MainMenu setMenu={setMenuSelect} />;
-    case 1:
-      return <Game />;
-    case 2:
-      return <Rules reset={reset} />;
-  }
+  return (
+    <PageProvider>
+      <PageManager />
+    </PageProvider>
+  );
 };
 
 export default App;

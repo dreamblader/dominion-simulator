@@ -177,7 +177,7 @@ Cartas Unidade são as unicas cartas que possuem informações para iniciar um c
 - Range de Distancia (RANGE)
 - Range Direcional (DIRECTION RANGE)
 
-Mais informações de como iniciar um [Combate](#combate) em sua seção .
+Mais informações de como iniciar um [Combate](#combate-battle) em sua seção .
 
 Caso um efeito de carta afete um de seus status (ou de outras cartas) o mesmo pode especificar o item especifico com sua sigla (ATK, HP ou RANGE), ou colocar todas as informações compactadas no seguinte formato: **"ATK/HP/RANGE"** ou **"ATK/HP"** (nesse caso o RANGE é considerado **ZERO**).
 
@@ -201,7 +201,7 @@ Elas são compostas dos seguintes itens:
 
    <br clear="left"/>
 
-#### **Tipos de Ativação:**
+#### **Tipos de Ativação**
 
 Toda carta Artefato possui um tipo de ativação. Cada tipo é unico e possui suas próprias regras de utilização.
 

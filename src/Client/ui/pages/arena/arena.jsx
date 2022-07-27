@@ -8,7 +8,7 @@ import StatusColumn from "Client/ui/components/fragments/status-column";
 import DeckActions from "Client/actions/deck";
 import ArenaActions from "Client/handlers/arena";
 import Card from "Client/ui/components/card/card";
-import "Client/ui/styles/arena.css";
+import "./style.css";
 
 const Arena = ({ G, ctx, playerID, deckID, moves, events }) => {
   const myID = parseInt(playerID);
