@@ -57,7 +57,6 @@ const applyStats = (G, ctx, place, modCard, index = 0) => {
 };
 
 const attackCard = (G, ctx, combatInfo) => {
-  console.log();
   if (getTileCardsArray(G.board, combatInfo.def).length > 0) {
     G.combat = combatInfo;
   } else {

@@ -2,7 +2,7 @@
 
 ## Introdução
 
-Este é o manual de regras do jogo Dimensional Dominions contendo informações para serem utilizadas na revisão do jogo _v0.4-Alpha_. Toda e qualquer dúvida que não for sanada ou correção referente a este manual pode ser dirigida diretamente neste
+Este é o manual de regras do jogo Dimensional Dominions contendo informações para serem utilizadas na revisão do jogo _v0.5-Alpha_. Toda e qualquer dúvida que não for sanada ou correção referente a este manual pode ser dirigida diretamente neste
 [link](https://github.com/dreamblader/dominion-simulator/issues/new?labels=documentation&title=Duvidas/Correções+Regras+PT-BR&assignees=dreamblader)
 onde deve ser colocado na parte dos comentários a descrição em detalhes da duvida e/ou correção.
 
@@ -511,11 +511,20 @@ As fases em um turno são corridas na seguinte ordem:
 
 ### **Reciclagem (RECYCLE)**
 
-TODO
+- **Esta fase somente ocorre no primeiro turno do primeiro jogador**
+- Ela ocorre concorrentemente entre os dois jogadores
+- Ambos jogadores pescam até ter 4 cartas em mãos
+- Os dois jogadores então selecionam de 0 a 4 cartas de suas mãos para serem descartadas para o [DZ](#zona-de-descarte-dz).
+- Quando os dois jogadores confirmarem o fim desta fase o jogo inicia normalmente **PULANDO** a fase de [DRAW](#pesca-draw) do primeiro jogador.
+- Essa fase é uma especie de mulligan que beneficia o jogador que inicia no segundo turno da partida.
 
 ### **Pesca (Draw)**
 
-TODO
+- Esta fase ocorre inicio de cada turno, com exceção do primeiro turno do jogo (ver [RECYCLE](#reciclagem-recycle))
+- Nesta fase o jogador dono do turno deve pescar até ter 4 cartas em suas mãos.
+  - Se o jogador possui 4 cartas ou mais, ele não deve pescar nenhuma carta e pula esta fase
+  - Se o jogador não possuir cartas suficientes em seu baralho para chegar ao limite de 4 cartas em mãos, o mesmo deve pescar todas as cartas do baralho.
+  - Se não houver mais cartas para pescar, esta fase é pulada.
 
 ### **TICK**
 

@@ -21,7 +21,6 @@ const Rules = () => {
   }, []);
 
   const HeadingRenderer = ({ level, children }) => {
-    console.log(children);
     const name = getChildrenString(children);
     const id = name.toLowerCase().replaceAll(" ", "-").replaceAll(/[()]/g, "");
     return createElement(`h${level}`, { id: id }, children);

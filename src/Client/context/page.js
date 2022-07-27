@@ -1,4 +1,5 @@
 import React, { createContext } from "react";
+import redirect from "utils/redirect";
 
 export const PageContext = createContext();
 
@@ -9,17 +10,16 @@ export const pageActions = {
   GO_TO_RULES: "goToRules",
 };
 
-const defaultValue = { pageId: 0 };
+const home = new URL(window.location);
 
 const pageReducer = (state, action) => {
-  console.log("HERE -> " + action.type);
+  clearURL();
+
   switch (action.type) {
     case pageActions.RESET:
-      return defaultValue;
     case pageActions.GO_TO_MENU:
       return { pageId: 0 };
     case pageActions.GO_TO_GAME:
-      console.log("yo");
       return { pageId: 1 };
     case pageActions.GO_TO_RULES:
       return { pageId: 2 };
@@ -28,8 +28,22 @@ const pageReducer = (state, action) => {
   }
 };
 
+const getDefaultValue = (id) => {
+  return { pageId: id };
+};
+
+const clearURL = () => {
+  window.history.pushState({}, "", home.origin);
+};
+
 const PageProvider = ({ children }) => {
-  const [pageState, pageDispatch] = React.useReducer(pageReducer, defaultValue);
+  const redirectId = redirect(home.pathname);
+  const [pageState, pageDispatch] = React.useReducer(
+    pageReducer,
+    getDefaultValue(redirectId)
+  );
+
+  clearURL();
 
   return (
     <PageContext.Provider value={{ pageState, pageDispatch }}>

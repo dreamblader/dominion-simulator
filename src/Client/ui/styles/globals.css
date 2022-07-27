@@ -19,6 +19,7 @@ body {
   background-color: #000;
   background-repeat: repeat;
   color: var(--mainText);
+  animation: animatedBackground 10s linear infinite;
 }
 
 body,
