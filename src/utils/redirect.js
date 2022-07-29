@@ -10,7 +10,6 @@ const redirect = (path) => {
     if (link.pathReg.test(path)) {
       return link.pageId;
     }
-    //path.match(link.pathReg);
   }
 
   return 0;

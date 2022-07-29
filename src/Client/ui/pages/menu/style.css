@@ -18,9 +18,21 @@
 }
 
 .bottom-bar {
+  display: flex;
   position: fixed;
+  justify-content: space-between;
+  align-items: center;
   bottom: 0;
   background-color: blueviolet;
   width: 100%;
   padding: 0.5rem;
+}
+
+.bottom-bar .brand {
+  margin-top: -15vh;
+}
+
+.brand svg {
+  height: 10vh;
+  width: auto;
 }

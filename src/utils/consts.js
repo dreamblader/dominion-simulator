@@ -9,6 +9,8 @@ const board = [
   [-1, -1, -1, 0, -1, -1, -1],
 ];
 
+const VersionName = "Closed Alpha";
+
 const Phases = ["Draw", "Tick", "Move", "Combat", "Spawn"];
 
 const Consts = {
@@ -17,6 +19,7 @@ const Consts = {
   board: board,
   maxLife: 20,
   phases: Phases,
+  versionName: VersionName,
 };
 
 export default Consts;

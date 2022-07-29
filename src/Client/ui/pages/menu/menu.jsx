@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import Button from "../../components/general/button";
 import { PageContext, pageActions } from "Client/context/page";
+import Consts from "utils/consts";
+import { Logo, LogoAnimated } from "dreamblade-react-commons";
 import "./style.css";
 
 const MainMenu = () => {
   const { pageDispatch } = useContext(PageContext);
-
-  console.log(process);
 
   return (
     <div className="main-menu">
@@ -30,11 +30,18 @@ const MainMenu = () => {
           RULES
         </Button>
       </div>
-      <div className="bottom-bar">{`Version: ${process.version}`}</div>
+
+      <div className="bottom-bar">
+        <p>{`Version: ${process.env.REACT_APP_VERSION} - ${Consts.versionName}`}</p>{" "}
+        <div className="brand">
+          <p>Made By:</p>
+          <Logo />
+        </div>
+      </div>
     </div>
   );
 };
 
-//TODO add version
+//TODO Animated Logo is Crashing useEffect
 
 export default MainMenu;

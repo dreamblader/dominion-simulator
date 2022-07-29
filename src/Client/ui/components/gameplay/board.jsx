@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Card from "../card/card";
 import { SelectTypes, Types } from "../../../../models/enums";
 import { ClassNames, getExtraClasses } from "../../../../utils/style-class";
-import { getTileCard, isFieldOnTile } from "utils/board";
+import { isFieldOnTile } from "utils/board";
 import {
   getCurrentHP,
   getCurrentATK,
@@ -196,7 +196,6 @@ const Board = ({
   };
 
   const renderStats = (card) => {
-    let ticks = card.status.length;
     let isCardTypeWithStatus =
       card.type === Types.UNITY || card.type === Types.TOKEN;
     if (!card.flipped && isCardTypeWithStatus) {
