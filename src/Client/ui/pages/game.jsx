@@ -17,6 +17,8 @@ const SimulatorClient = Client({
 const Game = () => {
   const [playerID, setPlayerID] = useState(null);
 
+  console.log(process.env);
+
   if (playerID) {
     return <SimulatorClient playerID={playerID} deckID={1} />;
   } else {

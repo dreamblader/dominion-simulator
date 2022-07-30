@@ -20,6 +20,9 @@
 .vscode
 *.xcf
 
+#generated
+/data/sql/Card_Update.sql
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

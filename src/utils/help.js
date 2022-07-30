@@ -37,3 +37,16 @@ export const getServer = () => {
   const port = process.env.REACT_APP_DEV ? 8000 : window.location.port;
   return `${protocol}//${hostname}:${port}`;
 };
+
+//TODO breaking build.js
+export const generatePassCode = (size, prefix) => {
+  let result = prefix;
+  const symbols =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+  for (let i = 0; i < size; i++) {
+    let s = Math.floor(Math.random * symbols.length);
+    result += s;
+  }
+
+  return result;
+};

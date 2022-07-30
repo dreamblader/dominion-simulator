@@ -21,6 +21,11 @@ const consoleCallback = (error, stdout, stderr, onSucces = () => {}) => {
 };
 
 const run = () => {
+  const { generatePassCode } = require("./src/utils/help");
+  process.env["REACT_APP_ACCESS_PASS"] = generatePassCode(8, "#");
+
+  console.log(process.env.REACT_APP_ACCESS_PASS);
+
   console.log("Executing React Build.");
   exec(build, (error, stdout, stderr) =>
     consoleCallback(error, stdout, stderr, () => {})

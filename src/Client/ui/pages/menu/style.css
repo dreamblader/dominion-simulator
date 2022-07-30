@@ -22,6 +22,7 @@
   position: fixed;
   justify-content: space-between;
   align-items: center;
+  font-size: 1rem;
   bottom: 0;
   background-color: blueviolet;
   width: 100%;
@@ -29,10 +30,14 @@
 }
 
 .bottom-bar .brand {
-  margin-top: -15vh;
+  margin-top: -13vh;
 }
 
-.brand svg {
+.brand p {
+  margin-bottom: -2vh;
+}
+
+#svg5 {
   height: 10vh;
   width: auto;
 }

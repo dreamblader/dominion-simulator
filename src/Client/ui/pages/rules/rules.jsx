@@ -4,6 +4,7 @@ import rehypeRaw from "rehype-raw";
 import Button from "../../components/general/button";
 import { PageContext, pageActions } from "Client/context/page";
 import "./style.css";
+import { LogoAnimated } from "dreamblade-react-commons";
 
 const Rules = () => {
   const { pageDispatch } = useContext(PageContext);
@@ -41,6 +42,7 @@ const Rules = () => {
         <Button click={() => pageDispatch({ type: pageActions.RESET })}>
           Return
         </Button>
+        <LogoAnimated />
       </div>
       <div className="rules-container">
         <div className="rules">

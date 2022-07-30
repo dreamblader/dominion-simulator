@@ -35,13 +35,11 @@ const MainMenu = () => {
         <p>{`Version: ${process.env.REACT_APP_VERSION} - ${Consts.versionName}`}</p>{" "}
         <div className="brand">
           <p>Made By:</p>
-          <Logo />
+          <LogoAnimated />
         </div>
       </div>
     </div>
   );
 };
-
-//TODO Animated Logo is Crashing useEffect
 
 export default MainMenu;
