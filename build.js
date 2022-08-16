@@ -5,6 +5,18 @@ const convert = "npm run converter";
 const runDB = "npm run start-db";
 const runServer = "npm run server";
 
+const generatePassCode = (size, prefix) => {
+  let result = prefix;
+  const symbols =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+  for (let i = 0; i < size; i++) {
+    let rndIndex = Math.floor(Math.random() * symbols.length);
+    result += symbols.charAt(rndIndex);
+  }
+
+  return result;
+};
+
 const consoleCallback = (error, stdout, stderr, onSucces = () => {}) => {
   if (error) {
     console.error(`error: ${error.message}`);
@@ -21,7 +33,6 @@ const consoleCallback = (error, stdout, stderr, onSucces = () => {}) => {
 };
 
 const run = () => {
-  const { generatePassCode } = require("./src/utils/help");
   process.env["REACT_APP_ACCESS_PASS"] = generatePassCode(8, "#");
 
   console.log(process.env.REACT_APP_ACCESS_PASS);
