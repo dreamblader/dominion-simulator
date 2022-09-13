@@ -1,0 +1,19 @@
+.jokenpo-panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.jokenpo-panel > button {
+  border-radius: 50%;
+  width: 25%;
+  margin: 2rem;
+}
+
+.jokenpo-panel > button:hover {
+  filter: invert(1);
+}
+
+.jokenpo-panel > button > img {
+  width: 90%;
+}

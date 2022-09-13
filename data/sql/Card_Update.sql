@@ -479,6 +479,23 @@ INSERT OR REPLACE INTO "Cards" (
     "ID", 
     "NAME", 
     "TYPE", 
+    "TAGS",
+    "DESCRIPTION", 
+    "ART", 
+    "UNIQUE"
+  )
+  VALUES (
+      "F0001", 
+      "Royal Palace", 
+      "Field",
+      "ROYAL,CASTLE",
+      "<b>OCCUPY EFFECT:</b><br>Apply +2/+2 to all cards of the same element of the ROYAL card that hold this position<br><br><b>LINK EFFECT:</b><br>Apply +2/+2 to all ROYALs or the OCCUPY effect<br>(both effects cannot stack)",
+      "nandeck_dominion_field_1.jpg",
+      0
+  );INSERT OR REPLACE INTO "Cards" (
+    "ID", 
+    "NAME", 
+    "TYPE", 
     "TAGS", 
     "SUBTYPE",
     "DESCRIPTION", 
@@ -775,22 +792,5 @@ INSERT OR REPLACE INTO "Cards" (
       "nandeck_dominion_artifact_15.jpg",
       0
   );
-  INSERT OR REPLACE INTO "Cards" (
-    "ID", 
-    "NAME", 
-    "TYPE", 
-    "TAGS",
-    "DESCRIPTION", 
-    "ART", 
-    "UNIQUE"
-  )
-  VALUES (
-      "F0001", 
-      "Royal Palace", 
-      "Field",
-      "ROYAL,CASTLE",
-      "<b>OCCUPY EFFECT:</b><br>Apply +2/+2 to all cards of the same element of the ROYAL card that hold this position<br><br><b>LINK EFFECT:</b><br>Apply +2/+2 to all ROYALs or the OCCUPY effect<br>(both effects cannot stack)",
-      "nandeck_dominion_field_1.jpg",
-      0
-  );
+  
 COMMIT;

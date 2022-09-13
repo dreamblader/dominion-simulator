@@ -17,44 +17,44 @@ const generatePassCode = (size, prefix) => {
   return result;
 };
 
-const consoleCallback = (error, stdout, stderr, onSucces = () => {}) => {
+const consoleCallback = (name, error, stdout, stderr, onSucces = () => {}) => {
   if (error) {
-    console.error(`error: ${error.message}`);
+    console.error(`[${name}] - error: ${error.message}`);
     return;
   }
 
   if (stderr) {
-    console.error(`stderr: ${stderr}`);
+    console.error(`[${name}] - stderr: ${stderr}`);
     return;
   }
 
   onSucces();
-  console.log(`stdout:\n${stdout}`);
+  console.log(`[${name}] - stdout:\n${stdout}`);
 };
 
 const run = () => {
   process.env["REACT_APP_ACCESS_PASS"] = generatePassCode(8, "#");
 
-  console.log(process.env.REACT_APP_ACCESS_PASS);
+  console.log("Setting Alpha Lock: " + process.env.REACT_APP_ACCESS_PASS);
 
   console.log("Executing React Build.");
   exec(build, (error, stdout, stderr) =>
-    consoleCallback(error, stdout, stderr, () => {})
+    consoleCallback("REACT-BUILD", error, stdout, stderr, () => {})
   );
 
   console.log("Executing CSV Converter.");
   exec(convert, (error, stdout, stderr) =>
-    consoleCallback(error, stdout, stderr, () => {
+    consoleCallback("CSV-CONVERTER", error, stdout, stderr, () => {
       console.log("Executing Database Starter.");
       exec(runDB, (error, stdout, stderr) =>
-        consoleCallback(error, stdout, stderr)
+        consoleCallback("DB-START", error, stdout, stderr)
       );
     })
   );
 
   console.log("Executing Server Start.");
   exec(runServer, (error, stdout, stderr) =>
-    consoleCallback(error, stdout, stderr)
+    consoleCallback("SERVER-START", error, stdout, stderr)
   );
 };
 

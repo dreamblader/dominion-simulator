@@ -46,3 +46,16 @@ textarea {
 .hidden {
   display: none;
 }
+
+/*TODO: Remove this style when the game reach OPEN State*/
+.center,
+.locker {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 95vh;
+}
+
+.center > * {
+  margin-right: 1rem;
+}

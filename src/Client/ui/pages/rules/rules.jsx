@@ -3,8 +3,8 @@ import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import Button from "../../components/general/button";
 import { PageContext, pageActions } from "Client/context/page";
-import "./style.css";
 import { LogoAnimated } from "dreamblade-react-commons";
+import "./style.css";
 
 const Rules = () => {
   const { pageDispatch } = useContext(PageContext);
@@ -22,8 +22,11 @@ const Rules = () => {
   }, []);
 
   const HeadingRenderer = ({ level, children }) => {
-    const name = getChildrenString(children);
-    const id = name.toLowerCase().replaceAll(" ", "-").replaceAll(/[()]/g, "");
+    const removeThis = /[();]/g;
+    const id = getChildrenString(children)
+      .toLowerCase()
+      .replaceAll(" ", "-")
+      .replaceAll(removeThis, "");
     return createElement(`h${level}`, { id: id }, children);
   };
 

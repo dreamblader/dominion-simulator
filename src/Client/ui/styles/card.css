@@ -1,12 +1,3 @@
-@keyframes glow {
-  from {
-    border: 3px solid black;
-  }
-  to {
-    border: 3px solid yellow;
-  }
-}
-
 .card-holder {
   position: relative;
   background: url("../images/card_back_hd.png") no-repeat center center;

@@ -400,7 +400,7 @@ Logo abaixo deve se encontrar o tipo de efeito. **Caso o Tipo de efeito não for
   - [TICK](#tick)
   - [MOVE](#movimentação-move)
   - [BATTLE](#combate-battle)
-  - [SPAW](#invocação-spawn)
+  - [SPAWN](#invocação-spawn)
 - O efeito com uma fase do jogo descrita só pode ser ativado durante o periodo da mesma descrita pela carta.
   - Isso se aplica na fase do dono da carta ou de seu adversário, a não ser que a carta especifique o [tipo de efeito](#efeito-de-ação-action).
 - Efeitos de condições implicitas são **OPCIONAIS** com exceção dos efeitos de turno [**TICK**](#tick) que devem ocorrer toda fase de [TICK](#tick) para todas as cartas **somente pertencentes ao dono do turno**.
@@ -528,11 +528,23 @@ As fases em um turno são corridas na seguinte ordem:
 
 ### **TICK**
 
-TODO
+- TICK é uma fase que ocorre obrigatoriamente para o dono do turno após a fase de DRAW. Durante a mesma todo efeito que possui um tempo limite de turnos é aplicado e seu contador diminuido por 1.
+  - Por exemplo: O dono do turno possui uma carta com uma aflição de efeito de veneno (**POISON**) por 3 turnos, ou como descrito na cartas: 3 TICKS. Durante a fase de TICK a carta do mesmo recebe 1 de dano (efeito que ocorre pelo **POISON**) e os 3 TICKS do efeito caem para 2. Sendo assim, nos próximos 2 Turnos **DESTE JOGADOR** esse efeito sera aplicado e depois sera retirado da carta.
+- O nome desta fase vem do som de tick de um relógio
+
+Observações:
+
+- Todo efeito de carta que possui uma [Condição Implicita](#condição-implicita) do tipo **TICK** é aplicado durante esta fase obrigatoriamente.
+- São aplicados somente efeitos do tipo **TICK** para o **DONO DO TURNO**, ou seja, se o outro jogador possuir efeitos que são ativados durante o **TICK**, eles só serão ativados durante o turno do mesmo.
+- Exitem efeitos de tipo **TICK** que não possui uma condição de turnos para serem finalizados, sendo assim, o efeito é aplicado e nenhum contador é diminuido por 1 e o efeito sera aplicado em todos os turnos da partida enquanto a carta se manter ativa no tabuleiro. Esses efeitos são chamados de **Efeitos de TICK Eternos** ou **TICK Inderteminado**.
 
 ### **Movimentação (MOVE)**
 
-TODO
+- Esta fase ocorre após todas as aplicações de efeitos do turno de TICK.
+- Nesta fase o **DONO DO TURNO** pode escolher todas as cartas do tipo [unidade](#unidade) no [Tabuleiro](#tabuleiro) e mover 1 espaço para **qualquer direção** (com exceção de cartas que possuem sua direção de movimento limitadas por um efeito).
+- Algumas cartas podem mover mais de 1 espaço, porém isto deve estar explicito no efeito da carta. Se não houver algum efeito que se aplique o movimento da unidade, por padrão ela se move apenas 1 espaço.
+- Uma vez movida a unidade, a mesma só podera ser movida novamente na próxima fase de **MOVE** de seu próximo turno
+- Todo efeito de [Condição Implicita](#condição-implicita) do tipo **MOVE** só pode ser usado durante esta fase.
 
 ### **Combate (BATTLE)**
 
@@ -540,8 +552,42 @@ TODO
 
 ### **Invocação (SPAWN)**
 
-TODO
+- Esta fase ocorre após todos os combates serem finalizados na fase anterior.
+- Durante a fase de SPAWN o **DONO DO TURNO** pode colocar no [tabuleiro](#tabuleiro) 1 carta de cada tipo, sendo eles:
+  [Unidade](#unidade), [Artefato](#artefato) e [Campo](#campo).
+  - Cartas do tipo [Token](#token) são geradas a partir de efeito de outras cartas e não contam como uma Invocação.
+- O jogador deve colocar a carta a ser invocada em um espaço não ocupado por uma carta.
+  - Com exceção de cartas [Campo](#campo) que podem ser ocupadas por qualquer outra carta exceto outro Campo e [Artefatos do tipo Anexo](#ativação-em-anexo-attach) que podem ser colocados em outra carta ativa do tabuleiro.
+- O jogador só pode colocar cartas em sua zona de invocação (**SPAWN ZONE**) ou através de uma ponte de cartas que se conecta a sua SPAWN ZONE (este método é chamado de **BRIDGE SPAWNING**).
+  - SPAWN ZONE é a area colorida referente ao jogador.
+    - Neste simulador todo jogador vê o tabuleiro com a zona azul sendo sua SPAWN ZONE.
+  - Exemplo : Na imagem abaixo é possível visualizar quais locais é possivel invocar uma nova carta a partir de cartas que já estão colocadas no campo.
+    ![Spawn Example](../rules/assets/spawn_example.png "Exemplo de Possiveis Áreas de Invocação")
+    - PS: Somente é possível fazer uma **BRIDGE SPAWN** com cartas que pertencem a você.
+      Cartas do seu adversário que podem ter mudado de dono por um efeito não contam neste quesito.
+    - É possivel bloquear o adversário de invocar qualquer carta se todos os espaços de sua **SPAWN ZONE** estiver ocupados por cartas não pertencentes a ele.
+- Cartas com a [Condição Implicita](#condição-implicita) do tipo SPAWN tem seus efeitos ativados instantaneamente no momento que as mesmas forem invocadas.
+- Algumas cartas possuem uma Condição chamada **SUPER SPAWN**, neste caso a carta só pode ser invocada por um efeito externo de outra carta.
+  - SUPER SPAWN não conta como uma Invocação, logo é possível Invocar outra carta do mesmo tipo.
+  - Algumas cartas possuem SUPER SPAWN e NORMAL SPAWN, logo é possivel escolher se a carta sera invocada normalmente ou por outro efeito, e o efeito da mesma ocorrera dependente do tipo de invocação usada.
+    - Por exemplo: A carta "Dragon of Thassalos" pode ser invocada através de SUPER SPAWN e caso for invocada desta maneira a mesma aplica 3 de Dano e BURN (2 Ticks) para todas as cartas da fileira onde foi invocada. Caso "Dragon of Thassalos" for invocado normalmente, ele também aplica o seu efeito de SUPER SPAWN, porém ele só pode continuar no campo se em todo TICK for sacrificado uma carta do subtipo HUMAN de sua mão ou tabuleiro.
+  - Cartas que possuem SUPER SPAWN mas não possuem a condição NORMAL SPAWN em sua descrição de efeito, só podem ser invocadas via SUPER SPAWN.
+    - Por exemplo: A carta "Sealed Exodus Guardian" só pode ser invocada através de SUPER SPAWN utilizando o efeito Artefato "Sealed Rune". Qualquer outro método não pode alocar essa carta no tabuleiro
 
 ## **Resumo (TL;DR)**
 
-TODO
+- Resumo da partida:
+  1. 2 jogadores 30 cartas cada
+  2. Jogadores jogam "pedra, papel e tesoura"
+  3. O jogador vencedor escolhe se vai jogar primeiro ou em segundo
+  4. Os dois jogadores entra no turno de [RECYCLE](#reciclagem-recycle)
+  5. O primeiro jogador só pode Invocar cartas [SPAWN](#invocação-spawn)
+  6. O segundo jogador pesca ([DRAW](#pesca-draw)) caso tenha reciclado cartas. E só pode Invocar cartas [SPAWN](#invocação-spawn).
+  7. O primeiro jogador inicia seu turno normalmente e segue a ordem para utilizar as cartas que invocou no turno passado. Ele segue a ordem:
+  - [DRAW](#pesca-draw)
+  - [TICK](#tick)
+  - [MOVE](#movimentação-move)
+  - [BATTLE](#combate-battle)
+  - [SPAWN](#invocação-spawn)
+  8. O segundo jogador inicia seu turno normalmente e segue a ordem para utilizar as cartas que invocou no turno passado. Seguindo a mesma ordem acima.
+  9. O jogo se mantem repetindo os passos 7 e 8 até que um jogador declare derrota tendo seus pontos de vida zerado ou verificando que não há mais como recuperar a partida.

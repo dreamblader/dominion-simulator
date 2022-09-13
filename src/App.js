@@ -1,3 +1,4 @@
+import React from "react";
 import { Client, Lobby } from "boardgame.io/react";
 import { Simulator } from "./Game";
 import Arena from "./Client/ui/pages/arena/arena";

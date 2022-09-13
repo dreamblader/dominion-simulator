@@ -17,13 +17,11 @@ const SimulatorClient = Client({
 const Game = () => {
   const [playerID, setPlayerID] = useState(null);
 
-  console.log(process.env);
-
   if (playerID) {
     return <SimulatorClient playerID={playerID} deckID={1} />;
   } else {
     return (
-      <div>
+      <div className="center">
         <p>Play as</p>
         <button onClick={() => setPlayerID("0")}>Player 0</button>
         <button onClick={() => setPlayerID("1")}>Player 1</button>

@@ -33,6 +33,12 @@
 
 **GAMEPLAY**
 
+- Rock (Jokenpo)
+  - <a href="https://game-icons.net/">Rock icon created by Game Icons</a>
+- Paper (Jokenpo)
+  - <a href="https://game-icons.net/">Paper icon created by Game Icons</a>
+- Scissor (Jokenpo)
+  - <a href="https://game-icons.net/">Scissors icon created by Game Icons</a>
 - Defend Atack
   - <a href="https://www.flaticon.com/free-icons/shield" title="shield icons">Shield icons created by Freepik - Flaticon</a>
 - Infinite

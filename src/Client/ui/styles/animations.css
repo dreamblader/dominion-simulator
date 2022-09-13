@@ -6,3 +6,12 @@
     background-position: -960px -960px;
   }
 }
+
+@keyframes glow {
+  from {
+    border: 3px solid black;
+  }
+  to {
+    border: 3px solid yellow;
+  }
+}
