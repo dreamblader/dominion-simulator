@@ -14,6 +14,9 @@ const Rules = () => {
   };
 
   useEffect(() => {
+    //TODO use locale for future
+    let locale = navigator.language[0] ?? "EN";
+
     fetch(rules("BR"))
       .then((response) => response.text())
       .then((text) => {
