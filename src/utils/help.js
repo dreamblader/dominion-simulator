@@ -41,7 +41,7 @@ export const getServer = () => {
 };
 
 export const getRivalID = (myID) => {
-  return !myID;
+  return 1 - myID;
 };
 
 export const getRivalResult = (myResult) => {
