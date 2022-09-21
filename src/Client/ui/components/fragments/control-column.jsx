@@ -1,20 +1,10 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Button from "../general/button";
 import PhaseBar from "../gameplay/phase-bar";
 import ReactImage from "../../images/display/react-img.png";
 import { GameContext } from "Client/context/game";
 
 const ControlColumn = () => {
-  /*
-  ids={[myID, rivalID]}
-        currentPlayer={parseInt(ctx.currentPlayer)}
-        currentStage={ctx.activePlayers[parseInt(ctx.currentPlayer)]}
-        moves={moves}
-        events={events}
-        reveal={G.reveal}
-  */
-
   const {
     myID,
     rivalID,
