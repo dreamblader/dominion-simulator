@@ -1,4 +1,5 @@
 import React from "react";
+import { GameContext } from "Client/context/game";
 import PropTypes from "prop-types";
 import Card from "../card/card";
 import { SelectTypes, Types } from "../../../../models/enums";
@@ -13,18 +14,14 @@ import Place from "models/place";
 import "../../styles/board.css";
 import Combat from "models/combat";
 
-const Board = ({
-  board,
-  ids,
-  moves,
-  selected,
-  combat,
-  life,
-  menuClick,
-  highlight,
-  clear,
-}) => {
-  const [myID, rivalID] = ids;
+const Board = ({ board, selected, menuClick, highlight, clear }) => {
+  const {
+    myID,
+    rivalID,
+    G: { life, combat },
+    moves,
+  } = React.useContext(GameContext);
+
   const dominionIds = myID === 1 ? [4, 3] : [3, 4];
 
   const [refreshKey, setRefreshKey] = React.useState(0);
@@ -76,7 +73,7 @@ const Board = ({
         [selected, isThisTileSelected],
         ["selected", "this"]
       );
-      console.log(extraClass);
+
       if (tile.spawn === 3 || tile.spawn === 4) {
         return getLifeTile(tile.spawn);
       } else {
@@ -236,10 +233,7 @@ const Board = ({
 
 Board.propTypes = {
   board: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.object)),
-  ids: PropTypes.arrayOf(PropTypes.number),
-  moves: PropTypes.object,
   selected: PropTypes.object,
-  life: PropTypes.arrayOf(PropTypes.number),
   menuClick: PropTypes.func,
   highlight: PropTypes.func,
   clear: PropTypes.func,

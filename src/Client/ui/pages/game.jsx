@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Arena from "./arena/arena";
+import Board from "./board/board";
 import { Simulator } from "Game";
 import { Client } from "boardgame.io/react";
 import { SocketIO } from "boardgame.io/multiplayer";
@@ -9,7 +9,7 @@ const server = getServer();
 
 const SimulatorClient = Client({
   game: Simulator,
-  board: Arena,
+  board: Board,
   debug: false,
   multiplayer: SocketIO({ server: server }),
 });

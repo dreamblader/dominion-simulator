@@ -3,19 +3,34 @@ import PropTypes from "prop-types";
 import Button from "../general/button";
 import PhaseBar from "../gameplay/phase-bar";
 import ReactImage from "../../images/display/react-img.png";
+import { GameContext } from "Client/context/game";
 
-const ControlColumn = ({
-  ids,
-  currentPlayer,
-  reveal,
-  moves,
-  events,
-  currentStage,
-}) => {
-  const [myID, rivalID] = ids;
+const ControlColumn = () => {
+  /*
+  ids={[myID, rivalID]}
+        currentPlayer={parseInt(ctx.currentPlayer)}
+        currentStage={ctx.activePlayers[parseInt(ctx.currentPlayer)]}
+        moves={moves}
+        events={events}
+        reveal={G.reveal}
+  */
+
+  const {
+    myID,
+    rivalID,
+    G: { reveal },
+    ctx: { activePlayers, currentPlayer },
+    moves,
+    events,
+  } = React.useContext(GameContext);
+
+  const currentPlayerID = parseInt(currentPlayer);
+  const currentStage = activePlayers[currentPlayerID];
+  const canIReact = reveal[rivalID].length > 0;
+  const isMyTurn = currentPlayerID === myID;
 
   const endMyTurn = () => {
-    if (currentPlayer === myID) {
+    if (currentPlayerID === myID) {
       events.endTurn();
     }
   };
@@ -29,16 +44,12 @@ const ControlColumn = ({
       <div>
         <Button
           click={() => moves.callReact(ReactImage)}
-          hidden={reveal[rivalID].length > 0 || currentPlayer === myID}
+          hidden={canIReact || isMyTurn}
         >
           REACT!
         </Button>
-        <PhaseBar
-          turn={currentPlayer === myID}
-          action={changePhase}
-          stage={currentStage}
-        />
-        <Button click={() => endMyTurn()} hidden={currentPlayer !== myID}>
+        <PhaseBar turn={isMyTurn} action={changePhase} stage={currentStage} />
+        <Button click={() => endMyTurn()} hidden={!isMyTurn}>
           END TURN
         </Button>
         <Button click={() => moves.createToken(myID)}>CREATE TOKEN</Button>
@@ -52,13 +63,6 @@ const ControlColumn = ({
   );
 };
 
-ControlColumn.propTypes = {
-  ids: PropTypes.arrayOf(PropTypes.number),
-  currentPlayer: PropTypes.number,
-  reveal: PropTypes.arrayOf(PropTypes.array),
-  moves: PropTypes.object,
-  events: PropTypes.object,
-  currentStage: PropTypes.string,
-};
+ControlColumn.propTypes = {};
 
 export default ControlColumn;

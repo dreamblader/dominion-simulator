@@ -4,7 +4,6 @@ import MainMenu from "./menu/menu";
 import Game from "./game";
 import Rules from "./rules/rules";
 import { PageLocker } from "dreamblade-react-commons";
-import JokenpoPage from "./jokenpo/jokenpo";
 
 const PageManager = () => {
   const { pageState } = useContext(PageContext);

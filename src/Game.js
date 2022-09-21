@@ -57,6 +57,7 @@ export const Simulator = {
           ...ExtraActions.JOKENPO,
         },
         next: "game",
+        //TODO: make client and set true to test
         //start: true
       },
 

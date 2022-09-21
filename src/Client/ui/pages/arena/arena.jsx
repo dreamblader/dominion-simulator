@@ -1,19 +1,19 @@
-import React, { useState } from "react";
-import { getDeckService } from "service/api";
+import React, { useState, useContext } from "react";
+import { GameContext } from "Client/context/game";
 import MenuLayer from "Client/ui/components/fragments/menu-layer";
 import DeckColumn from "Client/ui/components/fragments/deck-column";
 import HandColumn from "Client/ui/components/fragments/hand-column";
 import ControlColumn from "Client/ui/components/fragments/control-column";
 import StatusColumn from "Client/ui/components/fragments/status-column";
-import DeckActions from "Client/actions/deck";
 import ArenaActions from "Client/handlers/arena";
 import Card from "Client/ui/components/card/card";
 import "./style.css";
 
-const Arena = ({ G, ctx, playerID, deckID, moves, events }) => {
-  const myID = parseInt(playerID);
-  const rivalID = myID === 0 ? 1 : 0;
+const Arena = () => {
+  //TODO remove this after re-implementig this context on their layers
+  const { G, ctx, moves, events, myID, rivalID } = useContext(GameContext);
 
+  //TODO wrap all this useStates in a MenuContext
   const [actionMenu, setActionMenu] = useState(null);
   const [highlightCard, setHighlightCard] = useState(Card("", -1));
   const [listMenu, setListMenu] = useState(null);
@@ -48,17 +48,6 @@ const Arena = ({ G, ctx, playerID, deckID, moves, events }) => {
   const isSelected = (place) =>
     selectToBoard && selectToBoard.origin[place] !== undefined;
 
-  React.useEffect(() => {
-    const deckStart = async () => {
-      let cards = await getDeckService(deckID);
-      moves.setDeck(DeckActions.constructDeck(deckID, cards, myID));
-    };
-
-    if (deckID !== G.deck[myID].id) {
-      deckStart();
-    }
-  }, [moves, deckID, G, myID]);
-
   const clearSelectionCallback = () => {
     setSelectToBoard(null);
   };
@@ -78,22 +67,12 @@ const Arena = ({ G, ctx, playerID, deckID, moves, events }) => {
       />
 
       <DeckColumn
-        ids={[myID, rivalID]}
-        decks={G.deck}
-        dzs={G.destroyZone}
-        out={G.out}
         selection={isSelected}
         highlight={setHighlightCard}
         menu={[deckMenu, dzMenu, oogMenu]}
       />
 
       <HandColumn
-        ids={[myID, rivalID]}
-        life={G.life}
-        hand={G.hand}
-        board={G.board}
-        combat={G.combat}
-        moves={moves}
         actions={[
           handMenu,
           boardMenu,
@@ -103,14 +82,7 @@ const Arena = ({ G, ctx, playerID, deckID, moves, events }) => {
         ]}
       />
 
-      <ControlColumn
-        ids={[myID, rivalID]}
-        currentPlayer={parseInt(ctx.currentPlayer)}
-        currentStage={ctx.activePlayers[parseInt(ctx.currentPlayer)]}
-        moves={moves}
-        events={events}
-        reveal={G.reveal}
-      />
+      <ControlColumn />
 
       <StatusColumn card={highlightCard} />
     </div>
