@@ -57,8 +57,10 @@ const checkIfIWinJokenpo = (myHand, rivalHand) => {
 };
 
 const ExtraActions = {
-  playJokenpo,
-  winnerSelectTurn,
+  JOKENPO: {
+    playJokenpo,
+    winnerSelectTurn,
+  },
 };
 
 export default ExtraActions;

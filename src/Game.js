@@ -40,7 +40,6 @@ export const Simulator = {
     ...OutActions,
     ...BoardActions,
     ...MiscActions,
-    ...ExtraActions,
   },
 
   minPlayers: 2,
@@ -55,7 +54,7 @@ export const Simulator = {
     phases: {
       start: {
         moves: {
-          //TODO jokenpo actions go here
+          ...ExtraActions.JOKENPO,
         },
         next: "game",
         //start: true
