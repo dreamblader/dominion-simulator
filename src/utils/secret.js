@@ -1,4 +1,5 @@
-import JokenpoObject from "models/jokenpo";
+import { GameResult } from "../models/enums";
+import JokenpoObject from "../models/jokenpo";
 import Card from "../models/game-pieces/card";
 import Deck from "../models/game-pieces/deck";
 
@@ -74,9 +75,16 @@ const maskCard = (controllerID) => {
 
 const hideJokenpoResultsBeforeWinnerIsSet = (jokenpoArray, myID, rivalID) => {
   let result = [];
+  let rivalWinResult = result[rivalID].gameResult;
+
   result[myID] = jokenpoArray[myID];
-  result[rivalID] =
-    result[rivalID].winner != null ? result[rivalID] : JokenpoObject();
+
+  if (rivalWinResult === null || rivalWinResult === GameResult.TIE) {
+    result[rivalID] = JokenpoObject(rivalWinResult);
+  } else {
+    result[rivalID] = jokenpoArray[rivalID];
+  }
+
   return result;
 };
 

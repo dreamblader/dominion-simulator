@@ -27,3 +27,9 @@ export const Origin = {
   BOARD: "board",
   NONE: "none",
 };
+
+export const GameResult = {
+  WINNER: "winner",
+  LOSER: "loser",
+  TIE: "tie",
+};

@@ -8,7 +8,8 @@ import DeckActions from "./Server/actions/deck";
 import DestroyActions from "./Server/actions/destroy";
 import OutActions from "./Server/actions/out";
 import MiscActions from "./Server/actions/controls";
-import JokenpoObject from "models/jokenpo";
+import ExtraActions from "./Server/actions/extra";
+import JokenpoObject from "./models/jokenpo";
 import Combat from "./models/combat";
 
 const phases = Consts.phases.reduce((obj, phase) => {
@@ -39,6 +40,7 @@ export const Simulator = {
     ...OutActions,
     ...BoardActions,
     ...MiscActions,
+    ...ExtraActions,
   },
 
   minPlayers: 2,
@@ -55,6 +57,8 @@ export const Simulator = {
         moves: {
           //TODO jokenpo actions go here
         },
+        next: "game",
+        //start: true
       },
 
       game: {},

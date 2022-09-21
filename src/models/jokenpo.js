@@ -4,10 +4,10 @@ export const JokenpoType = {
   SCISSORS: "scissors",
 };
 
-const JokenpoObject = () => {
+const JokenpoObject = (gameResult = null, hand = null) => {
   let obj = {
-    winner: null,
-    type: null,
+    gameResult: gameResult,
+    hand: hand,
   };
 
   return obj;
