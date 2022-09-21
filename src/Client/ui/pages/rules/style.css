@@ -45,9 +45,14 @@
   border-bottom: solid rgb(170, 170, 170) 2px;
 }
 
+.rules > h5 {
+  margin-top: 2rem;
+}
+
 .rules > h2::before,
 .rules > h3::before,
-.rules > h4::before {
+.rules > h4::before,
+.rules > h5::before {
   display: block;
   content: " ";
   margin-top: -10vh;

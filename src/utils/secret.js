@@ -74,8 +74,8 @@ const maskCard = (controllerID) => {
 };
 
 const hideJokenpoResultsBeforeWinnerIsSet = (jokenpoArray, myID, rivalID) => {
+  const rivalWinResult = jokenpoArray[rivalID].gameResult;
   let result = [];
-  let rivalWinResult = result[rivalID].gameResult;
 
   result[myID] = jokenpoArray[myID];
 
