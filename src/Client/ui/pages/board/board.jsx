@@ -4,6 +4,7 @@ import { getDeckService } from "service/api";
 import DeckActions from "Client/actions/deck";
 import Arena from "../arena/arena";
 import "./style.css";
+import JokenpoPage from "../jokenpo/jokenpo";
 
 const Board = ({ G, ctx, moves, events, playerID, deckID }) => {
   const myID = parseInt(playerID);
@@ -20,9 +21,23 @@ const Board = ({ G, ctx, moves, events, playerID, deckID }) => {
     }
   }, [moves, deckID, G, myID]);
 
+  const renderPhase = () => {
+    switch (ctx.phase) {
+      case "preparation":
+        return <JokenpoPage />;
+      case "game":
+        return <Arena />;
+      default:
+        console.error(
+          `No available case for this phase. Current phase is ${ctx.phase}`
+        );
+        return <div />;
+    }
+  };
+
   return (
     <GameProvider globals={{ G, ctx, moves, events, myID, rivalID }}>
-      <Arena />
+      {renderPhase()}
     </GameProvider>
   );
 };

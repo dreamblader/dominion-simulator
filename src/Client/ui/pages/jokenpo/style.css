@@ -1,19 +1,34 @@
-.jokenpo-panel {
+.jokenpo-board {
+  margin: 5rem;
+}
+
+.jokenpo-board,
+.jokenpo-card {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.jokenpo-panel > button {
-  border-radius: 50%;
-  width: 25%;
-  margin: 2rem;
+.jokenpo-panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  margin-left: 30%;
+  margin-right: 30%;
 }
 
-.jokenpo-panel > button:hover {
+.jokenpo-card > button {
+  margin-top: 2rem;
+  border-radius: 50%;
+  width: 85%;
+}
+
+.jokenpo-card > button:hover {
   filter: invert(1);
 }
 
-.jokenpo-panel > button > img {
+.jokenpo-card > button > img {
   width: 90%;
 }

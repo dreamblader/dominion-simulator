@@ -19,7 +19,7 @@ const PageManager = () => {
             label="CLOSED ALPHA"
             hint="Chave de Acesso"
             confirmLabel="Confirmar"
-            mistakeMax="3"
+            mistakeMax={3}
             pass={process.env.REACT_APP_ACCESS_PASS ?? ""}
           >
             <Game />

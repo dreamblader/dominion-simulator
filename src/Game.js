@@ -51,21 +51,23 @@ export const Simulator = {
       G.combat = Combat();
       ctx.events.setActivePlayers({ all: "Draw" });
     },
-    phases: {
-      start: {
-        moves: {
-          ...ExtraActions.JOKENPO,
-        },
-        next: "game",
-        //TODO: make client and set true to test
-        //start: true
-      },
-
-      game: {},
-    },
     stage: {
       ...phases,
     },
+  },
+
+  phases: {
+    preparation: {
+      moves: {
+        setDeck: DeckActions.setDeck,
+        ...ExtraActions.JOKENPO,
+      },
+      next: "game",
+      //TODO: make client and set true to test
+      start: true,
+    },
+
+    game: {},
   },
 
   playerView: HideSecrets,

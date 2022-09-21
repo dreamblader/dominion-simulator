@@ -10,7 +10,7 @@ const server = getServer();
 const SimulatorClient = Client({
   game: Simulator,
   board: Board,
-  debug: false,
+  //debug: false,
   multiplayer: SocketIO({ server: server }),
 });
 
