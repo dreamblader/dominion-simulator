@@ -1,6 +1,8 @@
 :root {
   font-size: 100%;
   --mainText: #f8f9fa;
+  --jokenpoAnimationTime: 3s;
+  --resultAnimationTime: 3s;
 }
 
 html {
@@ -44,7 +46,23 @@ textarea {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
+}
+
+.selected {
+  animation-iteration-count: infinite;
+  animation-name: glow;
+  animation-duration: 0.5s;
+  animation-direction: alternate;
+  transition: border 0.5s;
+}
+
+.selected.this {
+  border: 3px solid red !important;
+}
+
+.selected:hover {
+  border: 3px solid yellow !important;
 }
 
 /*TODO: Remove this style when the game reach OPEN State*/

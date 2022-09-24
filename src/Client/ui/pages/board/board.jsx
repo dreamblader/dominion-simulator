@@ -2,9 +2,10 @@ import React from "react";
 import GameProvider from "Client/context/game";
 import { getDeckService } from "service/api";
 import DeckActions from "Client/actions/deck";
+import Jokenpo from "Client/ui/components/gameplay/jokenpo/jokenpo";
 import Arena from "../arena/arena";
+
 import "./style.css";
-import JokenpoPage from "../jokenpo/jokenpo";
 
 const Board = ({ G, ctx, moves, events, playerID, deckID }) => {
   const myID = parseInt(playerID);
@@ -24,7 +25,7 @@ const Board = ({ G, ctx, moves, events, playerID, deckID }) => {
   const renderPhase = () => {
     switch (ctx.phase) {
       case "preparation":
-        return <JokenpoPage />;
+        return <Jokenpo />;
       case "game":
         return <Arena />;
       default:

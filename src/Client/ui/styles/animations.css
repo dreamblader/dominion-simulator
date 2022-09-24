@@ -15,3 +15,23 @@
     border: 3px solid yellow;
   }
 }
+
+@keyframes showJokenpoResult {
+  from {
+    opacity: 0;
+    transform: translate(0, 20%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

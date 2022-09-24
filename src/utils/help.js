@@ -44,6 +44,14 @@ export const getRivalID = (myID) => {
   return 1 - myID;
 };
 
+export const capitalize = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+export const toStyleSeconds = (milis) => {
+  return `${milis / 1000}s`;
+};
+
 export const getRivalResult = (myResult) => {
   if (Object.values(GameResult).indexOf(myResult) >= 0) {
     switch (myResult) {

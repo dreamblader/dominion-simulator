@@ -1,0 +1,32 @@
+.jokenpo-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.jokenpo-card > h3 {
+  margin-bottom: 2rem;
+}
+
+.jokenpo-card > button {
+  border-radius: 50%;
+  width: 70%;
+}
+
+.jokenpo-card.selected > button,
+.jokenpo-card:not(.selected) > button:not(.disabled):hover {
+  filter: invert(1);
+}
+
+.jokenpo-card.selected {
+  animation: none;
+}
+
+.jokenpo-card.selected:hover {
+  border: none !important;
+}
+
+.jokenpo-card > button > img {
+  width: 90%;
+}
