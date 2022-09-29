@@ -39,8 +39,6 @@ const winnerSelectTurn = (G, ctx, first) => {
   }
 
   ctx.events.endPhase();
-
-  console.log(ctx.currentPlayer, ctx.playerID, first);
 };
 
 const checkIfIWinJokenpo = (myHand, rivalHand) => {
