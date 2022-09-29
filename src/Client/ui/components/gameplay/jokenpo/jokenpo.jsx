@@ -3,8 +3,13 @@ import { JokenpoType } from "models/jokenpo";
 import { GameContext } from "Client/context/game";
 import { ClassNames, getExtraClasses } from "utils/style-class";
 import { toStyleSeconds } from "utils/help";
+import { GameResult } from "models/enums";
 import JokenpoCard from "../jokenpo-card/jokenpo-card";
 import "./jokenpo-style.css";
+import Consts from "utils/consts";
+import MenuSelectTurn from "../../menus/menu-select-turn/menu-select-turn";
+import WaitScreen from "../../general/wait-screen/wait-screen";
+import { jokenpoActions, JokenpoContext } from "Client/context/jokenpo-ctx";
 
 const Jokenpo = () => {
   const {
@@ -14,8 +19,10 @@ const Jokenpo = () => {
     G: { jokenpo },
   } = React.useContext(GameContext);
 
-  const animationTime = 1500;
-  const resultTime = 1000;
+  const { jokenpoDispatch } = React.useContext(JokenpoContext);
+
+  const animationTime = Consts.animationTimes.jokenpoShow;
+  const resultTime = Consts.animationTimes.jokenpoResultShow;
 
   const styleVars = {
     "--jokenpoAnimationTime": toStyleSeconds(animationTime),
@@ -39,12 +46,28 @@ const Jokenpo = () => {
     return jokenpo[myID].hand === hand;
   };
 
+  const checkResult = (result) => {
+    if (result === GameResult.TIE) {
+      moves.clearJokenpoResult();
+    }
+
+    jokenpoDispatch({ type: jokenpoActions.SET_RESULT, payload: result });
+  };
+
   const renderResult = () => {
     const myResult = jokenpo[myID].gameResult;
+
     if (myResult != null) {
       return (
         <div className="jokenpo-result" style={styleVars}>
-          <h1 className={`result-${myResult}`}>{myResult.toUpperCase()}</h1>
+          <h1
+            onAnimationEnd={() => {
+              checkResult(myResult);
+            }}
+            className={`result-${myResult}`}
+          >
+            {myResult.toUpperCase()}
+          </h1>
           <JokenpoCard
             hand={jokenpo[rivalID].hand ?? jokenpo[myID].hand}
             disabled={true}
@@ -52,6 +75,9 @@ const Jokenpo = () => {
         </div>
       );
     } else {
+      if (jokenpo[myID].hand === null) {
+        setLock(false);
+      }
       return <h1>Waiting other player choice...</h1>;
     }
   };

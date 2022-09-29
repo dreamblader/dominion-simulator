@@ -5,7 +5,7 @@ import Arena from "./Client/ui/pages/arena/arena";
 import "./Client/ui/styles/globals.css";
 import "./Client/ui/styles/responsive.css";
 import "./Client/ui/styles/animations.css";
-import PageProvider from "Client/context/page";
+import PageProvider from "Client/context/page-ctx";
 import PageManager from "Client/ui/pages/page-manager";
 
 const lobby = (

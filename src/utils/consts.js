@@ -13,12 +13,18 @@ const VersionName = "Closed Alpha";
 
 const Phases = ["Draw", "Tick", "Move", "Combat", "Spawn"];
 
+const AnimationTimes = {
+  jokenpoShow: 1500,
+  jokenpoResultShow: 1000,
+};
+
 const Consts = {
   deckSize: 30,
   handSize: 4,
   board: board,
   maxLife: 20,
   phases: Phases,
+  animationTimes: AnimationTimes,
   versionName: VersionName,
 };
 

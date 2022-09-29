@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import Button from "../../components/general/button";
-import { PageContext, pageActions } from "Client/context/page";
+import { PageContext, pageActions } from "Client/context/page-ctx";
 import Consts from "utils/consts";
 import { Logo, LogoAnimated } from "dreamblade-react-commons";
 import "./style.css";

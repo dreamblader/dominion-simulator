@@ -12,6 +12,10 @@
   z-index: 3;
 }
 
+.no-input.full {
+  width: 100%;
+}
+
 .no-input .no-input {
   width: auto;
 }

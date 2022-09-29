@@ -2,7 +2,7 @@ import React, { useState, useEffect, createElement, useContext } from "react";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import Button from "../../components/general/button";
-import { PageContext, pageActions } from "Client/context/page";
+import { PageContext, pageActions } from "Client/context/page-ctx";
 import { LogoAnimated } from "dreamblade-react-commons";
 import "./style.css";
 

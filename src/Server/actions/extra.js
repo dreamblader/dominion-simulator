@@ -21,8 +21,8 @@ const playJokenpo = (G, ctx, playHand) => {
   }
 };
 
-const clearJokenpoResult = (G, ctx, id) => {
-  G.jokenpo[id] = JokenpoObject();
+const clearJokenpoResult = (G, ctx) => {
+  G.jokenpo = setupProps(ctx.numPlayers, JokenpoObject());
 };
 
 const winnerSelectTurn = (G, ctx, first) => {

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { PageContext } from "Client/context/page";
+import { PageContext } from "Client/context/page-ctx";
 import MainMenu from "./menu/menu";
 import Game from "./game";
 import Rules from "./rules/rules";
