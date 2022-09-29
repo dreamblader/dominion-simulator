@@ -46,7 +46,7 @@ export const Simulator = {
   maxPlayers: 2,
 
   turn: {
-    order: TurnOrder.DEFAULT,
+    order: TurnOrder.CONTINUE,
     onBegin: (G, ctx) => {
       G.combat = Combat();
       ctx.events.setActivePlayers({ all: "Draw" });
@@ -63,7 +63,6 @@ export const Simulator = {
         ...ExtraActions.JOKENPO,
       },
       next: "game",
-      //TODO: make client and set true to test
       start: true,
     },
 

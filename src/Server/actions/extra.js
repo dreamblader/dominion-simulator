@@ -27,16 +27,20 @@ const clearJokenpoResult = (G, ctx) => {
 
 const winnerSelectTurn = (G, ctx, first) => {
   const win = G.jokenpo[ctx.playerID].gameResult === GameResult.WINNER;
-  const firstPlayerWantsGoSecond = ctx.playerID === 0 && !first;
-  const secondPlayerWantsGoFirst = ctx.playerID === 1 && first;
+  const notCurrentPlayerWantsGoFirst =
+    first && ctx.currentPlayer !== ctx.playerID;
+  const currentPlayerWantsGoSecond =
+    !first && ctx.currentPlayer === ctx.playerID;
 
   if (!win) {
     return INVALID_MOVE;
-  } else if (firstPlayerWantsGoSecond || secondPlayerWantsGoFirst) {
+  } else if (notCurrentPlayerWantsGoFirst || currentPlayerWantsGoSecond) {
     ctx.events.endTurn();
   }
 
   ctx.events.endPhase();
+
+  console.log(ctx.currentPlayer, ctx.playerID, first);
 };
 
 const checkIfIWinJokenpo = (myHand, rivalHand) => {
