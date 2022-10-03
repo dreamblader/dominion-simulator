@@ -5,6 +5,7 @@ import DeckColumn from "Client/ui/components/fragments/deck-column";
 import HandColumn from "Client/ui/components/fragments/hand-column";
 import ControlColumn from "Client/ui/components/fragments/control-column";
 import StatusColumn from "Client/ui/components/fragments/status-column";
+import Starter from "Client/ui/components/starter/starter";
 import ArenaActions from "Client/handlers/arena";
 import Card from "Client/ui/components/card/card";
 import "./style.css";
@@ -20,6 +21,12 @@ const Arena = () => {
   const [statsMenu, setStatsMenu] = useState(null);
   const [lifeMenu, setLifeMenu] = useState(null);
   const [selectToBoard, setSelectToBoard] = useState(null);
+
+  const turnMessage = `It's your ${
+    parseInt(ctx.currentPlayer) === myID ? "own" : "rival's"
+  } turn`;
+
+  console.log(ctx);
 
   const setters = {
     setActionMenu,
@@ -54,6 +61,7 @@ const Arena = () => {
 
   return (
     <div className="arena">
+      <Starter message={turnMessage} />
       <MenuLayer
         actionMenu={actionMenu}
         listMenu={listMenu}

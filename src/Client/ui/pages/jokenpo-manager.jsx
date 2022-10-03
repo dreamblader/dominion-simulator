@@ -12,7 +12,9 @@ const JokenpoManager = () => {
     case GameResult.WINNER:
       return <MenuSelectTurn />;
     case GameResult.LOSER:
-      return <WaitScreen message={"Wait"} />;
+      return (
+        <WaitScreen message={"Waiting other player choose turn order..."} />
+      );
     default:
       return <Jokenpo />;
   }

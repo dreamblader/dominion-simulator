@@ -2,6 +2,8 @@
 
 ## Closed Beta
 
+## 0.5v Semi-Closed Alpha
+
 ## 0.4.1v Closed Alpha
 
 Changed:

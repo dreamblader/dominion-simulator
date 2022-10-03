@@ -1,0 +1,6 @@
+.full > img {
+  margin-top: 1.5rem;
+  height: 50%;
+  filter: invert(1);
+  animation: load 2s infinite;
+}
