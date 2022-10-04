@@ -37,7 +37,7 @@ textarea {
   background-color: gray;
   justify-content: center;
   align-items: center;
-  transition: border 0.5s;
+  transition: 0.5s;
 }
 
 .hoverable:not(.disabled):hover {

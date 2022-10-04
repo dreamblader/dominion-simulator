@@ -142,6 +142,10 @@
   border: none;
 }
 
+.board > .tile-holder:has(.card-holder):hover {
+  transform: scale(1.25);
+}
+
 .board .card-holder.attacker:before,
 .board .card-holder.defender:before {
   position: absolute;

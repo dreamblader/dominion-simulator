@@ -26,8 +26,6 @@ const Arena = () => {
     parseInt(ctx.currentPlayer) === myID ? "own" : "rival's"
   } turn`;
 
-  console.log(ctx);
-
   const setters = {
     setActionMenu,
     setHighlightCard,

@@ -6,6 +6,7 @@ import { Origin } from "../../../../models/enums";
 import { ClassNames, getExtraClasses } from "../../../../utils/style-class";
 import { isEmpty } from "../../../../utils/help";
 import { GameContext } from "Client/context/game";
+import CardStack from "../card/card-stack/card-stack";
 
 const DeckColumn = ({ menu, selection }) => {
   const {
@@ -27,6 +28,7 @@ const DeckColumn = ({ menu, selection }) => {
 
   return (
     <div className="deck-col">
+      <CardStack items={rivalDeck.cards} disabled={true} />
       <Card
         extraClass={
           "disabled " +
