@@ -34,11 +34,16 @@ const CardStack = ({
   //TODO card stack need to stack everything at same place and drift a little to the rigth
   return (
     <div className="card-stack">
-      {trimmedItems.map((item) => {
+      {trimmedItems.map((item, index) => {
+        let offsetX = 0.5 * index;
+        let offsetY = offsetX / 2;
         return (
           <Card
             card={isFlipped ? null : item}
             extraClass={extraClasses}
+            style={{
+              transform: `translate(${offsetX}rem, -${offsetY}rem)`,
+            }}
             click={() => clickHandler()}
           />
         );
