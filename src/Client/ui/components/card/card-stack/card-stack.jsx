@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Card from "../card";
+import CardModel from "models/game-pieces/card";
 import { isEmpty } from "utils/help";
 import { getExtraClasses, ClassNames } from "utils/style-class";
 import "./card-stack-style.css";
@@ -23,32 +24,47 @@ const CardStack = ({
     ]
   );
 
-  const clickHandler = () => {
+  const isDisabled = (index) => {
+    return disabled || index + 1 < itemsView().length;
+  };
+
+  const clickHandler = (e) => {
     if (typeof click === "function" && !disabled && !isEmpty(items)) {
-      click();
+      click(e);
     }
   };
 
-  const trimmedItems = items.length < 5 ? items : items.reverse().slice(0, 5);
+  const itemsView = () => {
+    if (items.length >= 5) {
+      return [...items].reverse().slice(0, 5);
+    } else if (items.length <= 0) {
+      return [CardModel(-1, -1)];
+    } else {
+      return items;
+    }
+  };
 
-  //TODO card stack need to stack everything at same place and drift a little to the rigth
   return (
     <div className="card-stack">
-      {trimmedItems.map((item, index) => {
+      {itemsView().map((item, index) => {
         let offsetX = 0.5 * index;
         let offsetY = offsetX / 2;
         return (
           <Card
+            key={index}
             card={isFlipped ? null : item}
             extraClass={extraClasses}
             style={{
               transform: `translate(${offsetX}rem, -${offsetY}rem)`,
             }}
-            click={() => clickHandler()}
-          />
+            click={(e) => clickHandler(e)}
+          >
+            {index === itemsView().length - 1 && (
+              <div className="counter">{items.length}</div>
+            )}
+          </Card>
         );
       })}
-      <div className="counter">{items.length}</div>
     </div>
   );
 };

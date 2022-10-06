@@ -2,13 +2,11 @@
   display: grid;
 }
 
+.card-stack:hover > .hoverable:not(.disabled) {
+  border-color: white;
+}
+
 .card-stack > .card-holder {
   grid-row: 1;
   grid-column: 1;
-}
-
-.card-stack > .counter {
-  position: relative;
-  top: -375%;
-  left: 70%;
 }

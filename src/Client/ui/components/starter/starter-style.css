@@ -10,4 +10,5 @@
   background-color: rgba(0, 0, 0, 0.75);
   font-size: 3rem;
   animation: fade-in-and-out 2s;
+  z-index: 5;
 }

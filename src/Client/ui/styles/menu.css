@@ -7,6 +7,7 @@
   height: fit-content;
   justify-content: flex-start;
   align-items: center;
+  animation: pop-up 0.5s;
   z-index: 3;
 }
 

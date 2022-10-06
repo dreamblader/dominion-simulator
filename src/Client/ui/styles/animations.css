@@ -43,11 +43,20 @@
   33% {
     opacity: 1;
   }
-  66%{
+  66% {
     opacity: 1;
   }
   100% {
     opacity: 0;
+  }
+}
+
+@keyframes pop-up {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
   }
 }
 
