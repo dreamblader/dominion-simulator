@@ -11,8 +11,10 @@ import {
   getCurrentRange,
 } from "../../../../utils/card";
 import Place from "models/place";
-import "../../styles/board.css";
 import Combat from "models/combat";
+import DefIcon from "../../images/board/def.png";
+import AtkIcon from "../../images/board/atk.png";
+import "../../styles/board.css";
 
 const Board = ({ board, selected, menuClick, highlight, clear }) => {
   const {
@@ -25,6 +27,7 @@ const Board = ({ board, selected, menuClick, highlight, clear }) => {
   const dominionIds = myID === 1 ? [4, 3] : [3, 4];
 
   const [refreshKey, setRefreshKey] = React.useState(0);
+  const [isCombatHovered, setCombatHover] = React.useState(false);
 
   const isInversed = (card) => (card.controller !== myID) !== card.inversed;
 
@@ -34,11 +37,22 @@ const Board = ({ board, selected, menuClick, highlight, clear }) => {
   const isDef = (tile) =>
     tile.originalX === combat.def.x && tile.originalY === combat.def.y;
 
+  const hoverCombat = (e, tile) => {
+    if (tile && (isAtk(tile) || isDef(tile))) {
+      setCombatHover(e.type === "mouseenter");
+    }
+  };
+
   const renderTile = (tile, i, j) => {
     let id = i + "-" + j;
     let typeName = getClassName(tile);
     return (
-      <div className={typeName + " tile-holder"} key={id}>
+      <div
+        className={typeName + " tile-holder"}
+        key={id}
+        onMouseEnter={(e) => hoverCombat(e, tile)}
+        onMouseLeave={(e) => hoverCombat(e, tile)}
+      >
         {getContent(tile)}
       </div>
     );
@@ -132,8 +146,8 @@ const Board = ({ board, selected, menuClick, highlight, clear }) => {
 
     if (card) {
       let extraClass = getExtraClasses(
-        [isInversed(card), isAtk(tile), isDef(tile)],
-        [ClassNames.INVERTED, ClassNames.ATK, ClassNames.DEF]
+        [isInversed(card)],
+        [ClassNames.INVERTED]
       );
 
       return (
@@ -165,6 +179,9 @@ const Board = ({ board, selected, menuClick, highlight, clear }) => {
   const renderInfo = (tile) => {
     let cards = tile.cards;
     let field = isFieldOnTile(cards);
+    let opacity = isCombatHovered ? 1 : 0;
+    let combatStyle = { opacity: opacity };
+
     return (
       <React.Fragment>
         <div className="top-right">
@@ -174,6 +191,16 @@ const Board = ({ board, selected, menuClick, highlight, clear }) => {
             </div>
           )}
         </div>
+        {isDef(tile) && (
+          <div className={ClassNames.DEF}>
+            <img src={DefIcon} style={combatStyle} />
+          </div>
+        )}
+        {isAtk(tile) && (
+          <div className={ClassNames.ATK}>
+            <img src={AtkIcon} style={combatStyle} />
+          </div>
+        )}
         {field && (
           <div
             className="top-left txt-info"

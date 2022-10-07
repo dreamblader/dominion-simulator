@@ -4,6 +4,7 @@ import rehypeRaw from "rehype-raw";
 import Button from "../../components/general/button";
 import { PageContext, pageActions } from "Client/context/page-ctx";
 import { LogoAnimated } from "dreamblade-react-commons";
+import WaitScreen from "Client/ui/components/general/wait-screen/wait-screen";
 import "./style.css";
 
 const Rules = () => {
@@ -42,6 +43,32 @@ const Rules = () => {
     }
   };
 
+  const renderRules = () => {
+    if (text) {
+      return (
+        <div className="rules-container">
+          <div className="rules">
+            <ReactMarkdown
+              components={{
+                h1: HeadingRenderer,
+                h2: HeadingRenderer,
+                h3: HeadingRenderer,
+                h4: HeadingRenderer,
+                h5: HeadingRenderer,
+                h6: HeadingRenderer,
+              }}
+              rehypePlugins={[rehypeRaw]}
+            >
+              {text}
+            </ReactMarkdown>
+          </div>
+        </div>
+      );
+    } else {
+      return <WaitScreen message={"Loading Rules..."} />;
+    }
+  };
+
   return (
     <React.Fragment>
       <div className="top-bar">
@@ -50,23 +77,7 @@ const Rules = () => {
         </Button>
         <LogoAnimated />
       </div>
-      <div className="rules-container">
-        <div className="rules">
-          <ReactMarkdown
-            components={{
-              h1: HeadingRenderer,
-              h2: HeadingRenderer,
-              h3: HeadingRenderer,
-              h4: HeadingRenderer,
-              h5: HeadingRenderer,
-              h6: HeadingRenderer,
-            }}
-            rehypePlugins={[rehypeRaw]}
-          >
-            {text}
-          </ReactMarkdown>
-        </div>
-      </div>
+      {renderRules()}
     </React.Fragment>
   );
 };

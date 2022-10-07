@@ -43,6 +43,8 @@
   - <a href="https://www.flaticon.com/free-icons/shield" title="shield icons">Shield icons created by Freepik - Flaticon</a>
 - Infinite
   - <a href="https://www.flaticon.com/free-icons/infinity" title="infinity icons">Infinity icons created by edt.im - Flaticon</a>
+- Out Of Game Jar
+  - <a href="https://www.svgrepo.com/svg/327263/trash-bin-sharp" title="trash bin icons">Trash bin icons created by Ionicons Sharp Interface Icons</a>
 
 **ELEMENTS**
 

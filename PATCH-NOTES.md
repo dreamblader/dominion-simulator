@@ -2,7 +2,21 @@
 
 ## Closed Beta
 
-## 0.5v Semi-Closed Alpha
+## 0.5v Closed Beta
+
+Added:
+
+- Game:
+  - Added main menu to select rules or play the game
+  - Added RULES.md to Portuguese (BR) readers.
+  - Added Rules page.
+  - Added redirect function that look your url path and redirect to rules page.
+  - Added animations to simple actions to make the gameplay more smooth
+  - Added Jokenpo game at the start
+    - The winner select if they will be the first or second turn player
+  - Added Card Stack effect to the both players Decks and DZs
+  - Added Password Lock to Closed Beta-Testers
+    - **This feature will be removed on future releases**
 
 ## 0.4.1v Closed Alpha
 

@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Card from "../card/card";
 import Jar from "../gameplay/jar";
 import { Origin } from "../../../../models/enums";
 import { ClassNames, getExtraClasses } from "../../../../utils/style-class";
@@ -35,12 +34,7 @@ const DeckColumn = ({ menu, selection }) => {
         isInverted={true}
         click={() => dzMenu(rivalID, false)}
       />
-      <Jar
-        extraClass={getExtraClasses(isEmpty(out), ClassNames.DISABLED)}
-        click={() => oogMenu()}
-      >
-        OUT
-      </Jar>
+      <Jar disabled={isEmpty(out)} click={() => oogMenu()} />
       <CardStack
         items={myDZ}
         disabled={isEmpty(myDZ)}
