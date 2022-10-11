@@ -12,6 +12,7 @@ Added:
   - Added Rules page.
   - Added redirect function that look your url path and redirect to rules page.
   - Added animations to simple actions to make the gameplay more smooth
+  - Added Range Selection showing when selecting an Unity to Attack
   - Added Jokenpo game at the start
     - The winner select if they will be the first or second turn player
   - Added Card Stack effect to the both players Decks and DZs

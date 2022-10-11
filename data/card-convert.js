@@ -109,12 +109,15 @@ const paddingNumber = (num, size) => {
   return result;
 };
 
-//TODO inserting bits wrong
 const getDirectionsCode = (data) => {
+  console.log(data);
   let code = "";
   for (let direction in K.Directions) {
+    console.log(direction);
+    console.log(data[direction]);
     code += data[direction] === "X" ? "1" : "0";
   }
+  console.log(code);
   return code;
 };
 
