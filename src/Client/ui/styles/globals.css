@@ -57,7 +57,7 @@ textarea {
   transition: border 0.5s;
 }
 
-.selected.this {
+.this {
   border: 3px solid red !important;
 }
 

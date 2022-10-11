@@ -1,4 +1,4 @@
-import { Types } from "../enums";
+import { Directions, Types } from "../enums";
 
 const Card = (id, playerID) => {
   let obj = {
@@ -70,28 +70,28 @@ const getDirection = (code) => {
     if (bit === "1") {
       switch (index) {
         case 0:
-          result.push("N");
+          result.push(Directions.NORTH);
           return;
         case 1:
-          result.push("NE");
+          result.push(Directions.NORTH_EAST);
           return;
         case 2:
-          result.push("E");
+          result.push(Directions.EAST);
           return;
         case 3:
-          result.push("SE");
+          result.push(Directions.SOUTH_EAST);
           return;
         case 4:
-          result.push("S");
+          result.push(Directions.SOUTH);
           return;
         case 5:
-          result.push("SW");
+          result.push(Directions.SOUTH_WEST);
           return;
         case 6:
-          result.push("W");
+          result.push(Directions.WEST);
           return;
         case 7:
-          result.push("NW");
+          result.push(Directions.NORTH_WEST);
           return;
         default:
           return;

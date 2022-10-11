@@ -5,6 +5,7 @@ import Card from "../card/card";
 import { SelectTypes, Types } from "../../../../models/enums";
 import { ClassNames, getExtraClasses } from "../../../../utils/style-class";
 import { isFieldOnTile } from "utils/board";
+import { isInRange } from "utils/range";
 import {
   getCurrentHP,
   getCurrentATK,
@@ -77,6 +78,41 @@ const Board = ({ board, selected, menuClick, highlight, clear }) => {
     }
   };
 
+  const handleSelection = (tile) => {
+    if (selected) {
+      switch (selected.type) {
+        case SelectTypes.TO_ATTACK:
+          return handleCombatSelection(
+            selected.card.direction ?? [],
+            selected.card.range ?? 0,
+            Place(tile.originalX, tile.originalY),
+            Place(selected.x, selected.y)
+          );
+        default:
+          return true;
+      }
+    }
+  };
+
+  const handleCombatSelection = (directions, range, tilePlace, originPlace) => {
+    const isFlipped = myID !== 0;
+
+    if (directions.length > 0) {
+      for (let direction of directions) {
+        //TODO card-convert is the source of bug
+        if (isInRange(originPlace, tilePlace, direction, range, isFlipped)) {
+          console.log(
+            `TARGET( ${tilePlace.x}, ${tilePlace.y}) OK! Range:${range}. Direction:${direction}`
+          );
+          return true;
+        }
+      }
+      return false;
+    } else {
+      return true;
+    }
+  };
+
   const getContent = (tile) => {
     if (tile) {
       let isThisTileSelected =
@@ -84,7 +120,7 @@ const Board = ({ board, selected, menuClick, highlight, clear }) => {
         tile.originalX === selected.x &&
         tile.originalY === selected.y;
       let extraClass = getExtraClasses(
-        [selected, isThisTileSelected],
+        [handleSelection(tile), isThisTileSelected],
         ["selected", "this"]
       );
 
@@ -191,12 +227,12 @@ const Board = ({ board, selected, menuClick, highlight, clear }) => {
             </div>
           )}
         </div>
-        {isDef(tile) && (
+        {isDef(tile) && !isAtk(tile) && (
           <div className={ClassNames.DEF}>
             <img src={DefIcon} style={combatStyle} />
           </div>
         )}
-        {isAtk(tile) && (
+        {isAtk(tile) && !isDef(tile) && (
           <div className={ClassNames.ATK}>
             <img src={AtkIcon} style={combatStyle} />
           </div>

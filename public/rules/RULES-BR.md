@@ -540,7 +540,7 @@ Observações:
 
 ### **Movimentação (MOVE)**
 
-- Esta fase ocorre após todas as aplicações de efeitos do turno de TICK.
+- Esta fase ocorre obrigatoriamente após todas as aplicações de efeitos do turno de TICK.
 - Nesta fase o **DONO DO TURNO** pode escolher todas as cartas do tipo [unidade](#unidade) no [Tabuleiro](#tabuleiro) e mover 1 espaço para **qualquer direção** (com exceção de cartas que possuem sua direção de movimento limitadas por um efeito).
 - Algumas cartas podem mover mais de 1 espaço, porém isto deve estar explicito no efeito da carta. Se não houver algum efeito que se aplique o movimento da unidade, por padrão ela se move apenas 1 espaço.
 - Uma vez movida a unidade, a mesma só podera ser movida novamente na próxima fase de **MOVE** de seu próximo turno
@@ -548,11 +548,19 @@ Observações:
 
 ### **Combate (BATTLE)**
 
-TODO
+- Esta fase ocorre obrigatoriamente após todas as unidades no campo moverem de MOVE.
+- Nesta fase o **DONO DO TURNO** pode escolher todas as cartas do tipo [unidade](#unidade) no [Tabuleiro](#tabuleiro) e declarar uma ataque a outra carta adversária de qualquer tipo (até cartas viradas para baixo).
+- Para poder declarar um ataque sua carta do tipo [unidade](#unidade) deve estar no alcance e na direção correta da carta alvo.
+- Toda carta possui alcance (RANGE) 0. Ou seja, a mesma só pode atacar cartas adjacentes a ela.
+  - Algumas unidades possuem uma especificação numeral de RANGE em seus status. Esse numéro é o alcance da carta em sua direção tomando como base que o RANGE 0 é estar adjacente a carta.
+- Toda carta do tipo [unidade](#unidade) possui em volta de sua arte setas cardinais que indicam seu alcance direcional (DIRECTION RANGE). Para a mesma poder escolher um alvo, o mesmo deve estar em seu RANGE designado e ao mesmo tempo deve estar na direção onde suas setas em vermelho apontar.
+  - TODO
+- Uma vez a unidade ter declarado um ataque, a mesma só podera declarar outro ataque novamente na próxima fase de **BATTLE** de seu próximo turno.
+- Todo efeito de [Condição Implicita](#condição-implicita) do tipo **BATTLE** só pode ser usado durante esta fase.
 
 ### **Invocação (SPAWN)**
 
-- Esta fase ocorre após todos os combates serem finalizados na fase anterior.
+- Esta fase ocorre obrigatoriamente após todos os combates serem finalizados na fase anterior.
 - Durante a fase de SPAWN o **DONO DO TURNO** pode colocar no [tabuleiro](#tabuleiro) 1 carta de cada tipo, sendo eles:
   [Unidade](#unidade), [Artefato](#artefato) e [Campo](#campo).
   - Cartas do tipo [Token](#token) são geradas a partir de efeito de outras cartas e não contam como uma Invocação.
