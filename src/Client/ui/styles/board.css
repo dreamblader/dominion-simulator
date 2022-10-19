@@ -47,6 +47,11 @@
   width: 100%;
 }
 
+.tile-holder:has(.this) {
+  --hoverBorder: red;
+  border: 5px solid var(--hoverBorder) !important;
+}
+
 .back_card {
   position: relative;
   height: 100%;

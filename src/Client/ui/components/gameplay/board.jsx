@@ -99,11 +99,7 @@ const Board = ({ board, selected, menuClick, highlight, clear }) => {
 
     if (directions.length > 0) {
       for (let direction of directions) {
-        //TODO card-convert is the source of bug
         if (isInRange(originPlace, tilePlace, direction, range, isFlipped)) {
-          console.log(
-            `TARGET( ${tilePlace.x}, ${tilePlace.y}) OK! Range:${range}. Direction:${direction}`
-          );
           return true;
         }
       }

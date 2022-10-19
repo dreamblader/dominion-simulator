@@ -12,13 +12,13 @@ export const isInRange = (
   const checkRangeY = (start, end) => {
     const rangeMax = originPlace.y + Math.max(start, end);
     const rangeMin = originPlace.y + Math.min(start, end);
-    return rangeMin >= targetPlace.y && rangeMax <= targetPlace.y;
+    return rangeMin <= targetPlace.y && targetPlace.y <= rangeMax;
   };
 
   const checkRangeX = (start, end) => {
     const rangeMax = originPlace.x + Math.max(start, end);
     const rangeMin = originPlace.x + Math.min(start, end);
-    return rangeMin >= targetPlace.x && rangeMax <= targetPlace.x;
+    return rangeMin <= targetPlace.x && targetPlace.x <= rangeMax;
   };
 
   const getRealVec = (num) => {

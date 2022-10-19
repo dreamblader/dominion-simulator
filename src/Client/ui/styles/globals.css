@@ -1,5 +1,6 @@
 :root {
   font-size: 100%;
+  --hoverBorder: white;
   --mainText: #f8f9fa;
   --jokenpoAnimationTime: 3s;
   --resultAnimationTime: 3s;
@@ -42,7 +43,7 @@ textarea {
 
 .hoverable:not(.disabled):hover {
   cursor: pointer;
-  border: 3px solid white !important;
+  border: 3px solid var(--hoverBorder) !important;
 }
 
 .hidden {
@@ -55,10 +56,6 @@ textarea {
   animation-duration: 0.5s;
   animation-direction: alternate;
   transition: border 0.5s;
-}
-
-.this {
-  border: 3px solid red !important;
 }
 
 .selected:hover {
