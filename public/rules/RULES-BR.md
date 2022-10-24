@@ -10,7 +10,7 @@ onde deve ser colocado na parte dos comentários a descrição em detalhes da du
 
 ## Versionamento
 
-Revisão 1 - Manual Foi Criado (06/06/2022)
+Revisão 1 - Manual Foi Criado (06/06/2022) e Finalizado (24/10/2022)
 
 ## Indice
 
@@ -554,7 +554,8 @@ Observações:
 - Toda carta possui alcance (RANGE) 0. Ou seja, a mesma só pode atacar cartas adjacentes a ela.
   - Algumas unidades possuem uma especificação numeral de RANGE em seus status. Esse numéro é o alcance da carta em sua direção tomando como base que o RANGE 0 é estar adjacente a carta.
 - Toda carta do tipo [unidade](#unidade) possui em volta de sua arte setas cardinais que indicam seu alcance direcional (DIRECTION RANGE). Para a mesma poder escolher um alvo, o mesmo deve estar em seu RANGE designado e ao mesmo tempo deve estar na direção onde suas setas em vermelho apontar.
-  - TODO
+  - Segue abaixo um exemplo ilustrativo de algumas cartas e quais são seus espaços corretos para declaração de um alvo de acordo com seu alcance e direção.
+    ![Combat Range Examples](../rules/assets/combat_example.png "Exemplos de Tipos de Alcance")
 - Uma vez a unidade ter declarado um ataque, a mesma só podera declarar outro ataque novamente na próxima fase de **BATTLE** de seu próximo turno.
 - Todo efeito de [Condição Implicita](#condição-implicita) do tipo **BATTLE** só pode ser usado durante esta fase.
 
