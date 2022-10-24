@@ -1,6 +1,9 @@
 const { exec } = require("child_process");
 
-const build = "npm run react-build";
+const build =
+  process.env.LOW_MEMORY === true
+    ? "npm run react-build "
+    : "npm run react-build-low-memory";
 const convert = "npm run converter";
 const runDB = "npm run start-db";
 const runServer = "npm run server";
