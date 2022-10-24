@@ -1,9 +1,6 @@
 const { exec } = require("child_process");
 
-const build =
-  process.env.LOW_MEMORY === true
-    ? "npm run react-build "
-    : "npm run react-build-low-memory";
+const build = "npm run react-build ";
 const convert = "npm run converter";
 const runDB = "npm run start-db";
 const runServer = "npm run server";
@@ -35,16 +32,19 @@ const consoleCallback = (name, error, stdout, stderr, onSucces = () => {}) => {
   console.log(`[${name}] - stdout:\n${stdout}`);
 };
 
-const run = () => {
+const setLock = () => {
   process.env["REACT_APP_ACCESS_PASS"] = generatePassCode(8, "#");
-
   console.log("Setting Alpha Lock: " + process.env.REACT_APP_ACCESS_PASS);
+};
 
+const executeReact = () => {
   console.log("Executing React Build.");
   exec(build, (error, stdout, stderr) =>
     consoleCallback("REACT-BUILD", error, stdout, stderr, () => {})
   );
+};
 
+const executeDatabase = () => {
   console.log("Executing CSV Converter.");
   exec(convert, (error, stdout, stderr) =>
     consoleCallback("CSV-CONVERTER", error, stdout, stderr, () => {
@@ -54,11 +54,19 @@ const run = () => {
       );
     })
   );
+};
 
+const executeServer = () => {
   console.log("Executing Server Start.");
   exec(runServer, (error, stdout, stderr) =>
     consoleCallback("SERVER-START", error, stdout, stderr)
   );
+};
+
+const run = () => {
+  executeDatabase();
+  executeServer();
+  setLock();
 };
 
 run();
