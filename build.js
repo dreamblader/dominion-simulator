@@ -64,9 +64,9 @@ const executeServer = () => {
 };
 
 const run = () => {
-  executeDatabase();
-  executeServer();
   setLock();
+  executeReact();
+  executeDatabase();
 };
 
 run();
