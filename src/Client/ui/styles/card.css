@@ -1,12 +1,3 @@
-@keyframes glow {
-  from {
-    border: 3px solid black;
-  }
-  to {
-    border: 3px solid yellow;
-  }
-}
-
 .card-holder {
   position: relative;
   background: url("../images/card_back_hd.png") no-repeat center center;
@@ -46,20 +37,4 @@
 
 .rival-border {
   border: 3px solid red !important;
-}
-
-.selected {
-  animation-iteration-count: infinite;
-  animation-name: glow;
-  animation-duration: 0.5s;
-  animation-direction: alternate;
-  transition: border 0.5s;
-}
-
-.selected.this {
-  border: 3px solid red !important;
-}
-
-.selected:hover {
-  border: 3px solid yellow !important;
 }

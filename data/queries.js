@@ -23,7 +23,7 @@ const UnityQuery = (unity) => {
         ${unity.HP},
         ${unity.RANGE},
         "${unity.EFFECT}",
-        ${unity.DIRECTIONS},
+        "${unity.DIRECTIONS}",
         "${unity.ART}",
         ${unity.STAR}
     );

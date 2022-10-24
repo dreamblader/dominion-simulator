@@ -17,7 +17,7 @@ const TickLabel = ({ content, click }) => {
       {content.duration > 0 ? (
         <h3>{content.duration}</h3>
       ) : (
-        <img src={infinite} />
+        <img src={infinite} alt="infinite symbol" />
       )}
       <h3>x</h3>
       <Tick content={content} extraClass="disabled" click={click} />

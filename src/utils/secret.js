@@ -1,13 +1,21 @@
+import { GameResult } from "../models/enums";
+import JokenpoObject from "../models/jokenpo";
 import Card from "../models/game-pieces/card";
 import Deck from "../models/game-pieces/deck";
 
 const HideSecrets = (G, ctx, playerID) => {
   const result = { ...G };
-  const rivalID = parseInt(playerID) === 0 ? 1 : 0;
+  const myID = parseInt(playerID);
+  const rivalID = myID === 0 ? 1 : 0;
 
-  result.deck = hideRivalDeck(result.deck, parseInt(playerID), rivalID);
-  result.hand = hideRivalArray(result.hand, parseInt(playerID), rivalID);
-  result.board = hideBoardRivalFlippedCard(result.board, parseInt(playerID));
+  result.deck = hideRivalDeck(result.deck, myID, rivalID);
+  result.hand = hideRivalArray(result.hand, myID, rivalID);
+  result.board = hideBoardRivalFlippedCard(result.board, myID);
+  result.jokenpo = hideJokenpoResultsBeforeWinnerIsSet(
+    result.jokenpo,
+    myID,
+    rivalID
+  );
 
   return result;
 };
@@ -63,6 +71,21 @@ const maskCard = (controllerID) => {
   let maskCard = Card("", controllerID);
   maskCard.flipped = true;
   return maskCard;
+};
+
+const hideJokenpoResultsBeforeWinnerIsSet = (jokenpoArray, myID, rivalID) => {
+  const rivalWinResult = jokenpoArray[rivalID].gameResult;
+  let result = [];
+
+  result[myID] = jokenpoArray[myID];
+
+  if (rivalWinResult === null || rivalWinResult === GameResult.TIE) {
+    result[rivalID] = JokenpoObject(rivalWinResult);
+  } else {
+    result[rivalID] = jokenpoArray[rivalID];
+  }
+
+  return result;
 };
 
 export default HideSecrets;

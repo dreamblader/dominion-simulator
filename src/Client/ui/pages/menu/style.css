@@ -1,0 +1,43 @@
+.main-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 80vh;
+}
+
+.menu-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-block > button {
+  margin-bottom: 2rem;
+}
+
+.bottom-bar {
+  display: flex;
+  position: fixed;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  bottom: 0;
+  background-color: blueviolet;
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.bottom-bar .brand {
+  margin-top: -13vh;
+}
+
+.brand p {
+  margin-bottom: -2vh;
+}
+
+#svg5 {
+  height: 10vh;
+  width: auto;
+}

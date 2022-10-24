@@ -2,6 +2,7 @@ export const ClassNames = {
   DISABLED: "disabled",
   NO_COVER: "no-cover",
   SELECTED: "selected",
+  HIDDEN: "hidden",
   INVERTED: "inverted",
   ATK: "attacker",
   DEF: "defender",

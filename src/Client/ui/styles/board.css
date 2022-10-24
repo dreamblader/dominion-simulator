@@ -10,7 +10,7 @@
   }
 }
 
-@keyframes appear {
+@keyframes combat-appear {
   0% {
     transform: scale(1.5);
     opacity: 1;
@@ -45,6 +45,11 @@
   align-items: center;
   height: 100%;
   width: 100%;
+}
+
+.tile-holder:has(.this) {
+  --hoverBorder: red;
+  border: 5px solid var(--hoverBorder) !important;
 }
 
 .back_card {
@@ -121,45 +126,44 @@
 }
 
 .user {
-  background-color: blue !important;
+  background-color: rgba(25, 25, 250, 1) !important;
 }
 
 .rival {
-  background-color: red !important;
+  background-color: rgba(250, 25, 25, 1) !important;
 }
 
 .dominion {
   border: 3px solid white;
-  transition: border 0.5s;
+  transition: 0.5s;
 }
 
 .dominion:hover {
   cursor: pointer;
-  border: 3px solid purple;
+  font-weight: bolder;
+  font-size: 2.5rem;
+}
+
+.dominion.user:hover {
+  animation: health-blink 1s infinite;
+  border: 0.5rem solid red;
 }
 
 .board > * .hoverable {
   border: none;
 }
 
-.board .card-holder.attacker:before,
-.board .card-holder.defender:before {
+.board > .tile-holder:has(.card-holder):hover {
+  transform: scale(1.25);
+}
+
+.attacker > img,
+.defender > img {
   position: absolute;
-  animation: appear 4s, icon-glow 2s infinite;
+  top: 0.5rem;
+  animation: combat-appear 4s, icon-glow 2s infinite;
   transform: scale(var(--scale-size));
+  z-index: 1;
   opacity: 0;
-}
-
-.board .card-holder.attacker:hover:before,
-.board .card-holder.attacker:hover ~ .card-holder.defender:before,
-.board .card-holder.defender:hover:before {
-  opacity: 1;
-}
-
-.board .card-holder.attacker:not(.defender):before {
-  content: url("../images/board/atk.png");
-}
-
-.board .card-holder.defender:not(.attacker):before {
-  content: url("../images/board/def.png");
+  transition: 0.5s;
 }

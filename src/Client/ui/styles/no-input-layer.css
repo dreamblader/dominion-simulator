@@ -5,11 +5,16 @@
   left: 0;
   right: 0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.75);
   width: 80%;
   z-index: 3;
+}
+
+.no-input.full {
+  width: 100%;
 }
 
 .no-input .no-input {

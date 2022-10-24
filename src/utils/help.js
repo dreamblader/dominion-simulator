@@ -1,3 +1,5 @@
+import { GameResult } from "../models/enums";
+
 export const randomInt = (maxNumber, ctx) => {
   return parseInt(ctx.random.Number() * maxNumber);
 };
@@ -36,4 +38,30 @@ export const getServer = () => {
   const { protocol, hostname } = window.location;
   const port = process.env.REACT_APP_DEV ? 8000 : window.location.port;
   return `${protocol}//${hostname}:${port}`;
+};
+
+export const getRivalID = (myID) => {
+  return 1 - myID;
+};
+
+export const capitalize = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+export const toStyleSeconds = (milis) => {
+  return `${milis / 1000}s`;
+};
+
+export const getRivalResult = (myResult) => {
+  if (Object.values(GameResult).indexOf(myResult) >= 0) {
+    switch (myResult) {
+      case GameResult.WINNER:
+        return GameResult.LOSER;
+      case GameResult.LOSER:
+        return GameResult.WINNER;
+      case GameResult.TIE:
+        return GameResult.TIE;
+    }
+  }
+  return null;
 };

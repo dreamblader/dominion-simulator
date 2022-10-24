@@ -1,7 +1,8 @@
 {
-    "compilerOptions": {
-      "baseUrl": "src",
-      "jsx": "react"
-    },
-    "include": ["src"]
+  "moduleResolution": "node",
+  "compilerOptions": {
+    "baseUrl": "src",
+    "jsx": "react"
+  },
+  "include": ["src"]
 }

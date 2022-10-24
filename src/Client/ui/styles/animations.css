@@ -1,0 +1,106 @@
+@keyframes animatedBackground {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -960px -960px;
+  }
+}
+
+@keyframes glow {
+  from {
+    border: 3px solid black;
+  }
+  to {
+    border: 3px solid yellow;
+  }
+}
+
+@keyframes showJokenpoResult {
+  from {
+    opacity: 0;
+    transform: translate(0, 20%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-and-out {
+  0% {
+    opacity: 0;
+  }
+  33% {
+    opacity: 1;
+  }
+  66% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes pop-up {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-25deg);
+  }
+  50% {
+    transform: rotate(25deg);
+  }
+  75% {
+    transform: rotate(-25deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes health-blink {
+  0% {
+    color: white;
+  }
+  50% {
+    color: red;
+  }
+  100% {
+    color: white;
+  }
+}
+
+@keyframes load {
+  0% {
+    transform: scale(0.5) rotate(0deg);
+  }
+  33% {
+    transform: scale(1) rotate(180deg);
+  }
+  66% {
+    transform: scale(0.5) rotate(360deg);
+  }
+  100% {
+    transform: scale(0.5) rotate(360deg);
+  }
+}

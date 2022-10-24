@@ -9,7 +9,14 @@ const board = [
   [-1, -1, -1, 0, -1, -1, -1],
 ];
 
+const VersionName = "Closed Alpha";
+
 const Phases = ["Draw", "Tick", "Move", "Combat", "Spawn"];
+
+const AnimationTimes = {
+  jokenpoShow: 1500,
+  jokenpoResultShow: 1000,
+};
 
 const Consts = {
   deckSize: 30,
@@ -17,6 +24,8 @@ const Consts = {
   board: board,
   maxLife: 20,
   phases: Phases,
+  animationTimes: AnimationTimes,
+  versionName: VersionName,
 };
 
 export default Consts;

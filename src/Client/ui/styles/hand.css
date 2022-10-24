@@ -10,3 +10,7 @@
   height: 7.5rem;
   width: 5.25rem;
 }
+
+.hand .card-holder:hover {
+  transform: translateY(-1.5rem) scale(1.5);
+}

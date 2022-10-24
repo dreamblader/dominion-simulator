@@ -1,33 +1,34 @@
 import React from "react";
+import { GameContext } from "Client/context/game";
 import PropTypes from "prop-types";
 import Card from "../card/card";
 import { SelectTypes, Types } from "../../../../models/enums";
 import { ClassNames, getExtraClasses } from "../../../../utils/style-class";
-import { getTileCard, isFieldOnTile } from "utils/board";
+import { isFieldOnTile } from "utils/board";
+import { isInRange } from "utils/range";
 import {
   getCurrentHP,
   getCurrentATK,
   getCurrentRange,
 } from "../../../../utils/card";
 import Place from "models/place";
-import "../../styles/board.css";
 import Combat from "models/combat";
+import DefIcon from "../../images/board/def.png";
+import AtkIcon from "../../images/board/atk.png";
+import "../../styles/board.css";
 
-const Board = ({
-  board,
-  ids,
-  moves,
-  selected,
-  combat,
-  life,
-  menuClick,
-  highlight,
-  clear,
-}) => {
-  const [myID, rivalID] = ids;
+const Board = ({ board, selected, menuClick, highlight, clear }) => {
+  const {
+    myID,
+    rivalID,
+    G: { life, combat },
+    moves,
+  } = React.useContext(GameContext);
+
   const dominionIds = myID === 1 ? [4, 3] : [3, 4];
 
   const [refreshKey, setRefreshKey] = React.useState(0);
+  const [isCombatHovered, setCombatHover] = React.useState(false);
 
   const isInversed = (card) => (card.controller !== myID) !== card.inversed;
 
@@ -37,11 +38,22 @@ const Board = ({
   const isDef = (tile) =>
     tile.originalX === combat.def.x && tile.originalY === combat.def.y;
 
+  const hoverCombat = (e, tile) => {
+    if (tile && (isAtk(tile) || isDef(tile))) {
+      setCombatHover(e.type === "mouseenter");
+    }
+  };
+
   const renderTile = (tile, i, j) => {
     let id = i + "-" + j;
     let typeName = getClassName(tile);
     return (
-      <div className={typeName + " tile-holder"} key={id}>
+      <div
+        className={typeName + " tile-holder"}
+        key={id}
+        onMouseEnter={(e) => hoverCombat(e, tile)}
+        onMouseLeave={(e) => hoverCombat(e, tile)}
+      >
         {getContent(tile)}
       </div>
     );
@@ -66,6 +78,37 @@ const Board = ({
     }
   };
 
+  const handleSelection = (tile) => {
+    if (selected) {
+      switch (selected.type) {
+        case SelectTypes.TO_ATTACK:
+          return handleCombatSelection(
+            selected.card.direction ?? [],
+            selected.card.range ?? 0,
+            Place(tile.originalX, tile.originalY),
+            Place(selected.x, selected.y)
+          );
+        default:
+          return true;
+      }
+    }
+  };
+
+  const handleCombatSelection = (directions, range, tilePlace, originPlace) => {
+    const isFlipped = myID !== 0;
+
+    if (directions.length > 0) {
+      for (let direction of directions) {
+        if (isInRange(originPlace, tilePlace, direction, range, isFlipped)) {
+          return true;
+        }
+      }
+      return false;
+    } else {
+      return true;
+    }
+  };
+
   const getContent = (tile) => {
     if (tile) {
       let isThisTileSelected =
@@ -73,10 +116,10 @@ const Board = ({
         tile.originalX === selected.x &&
         tile.originalY === selected.y;
       let extraClass = getExtraClasses(
-        [selected, isThisTileSelected],
+        [handleSelection(tile), isThisTileSelected],
         ["selected", "this"]
       );
-      console.log(extraClass);
+
       if (tile.spawn === 3 || tile.spawn === 4) {
         return getLifeTile(tile.spawn);
       } else {
@@ -135,8 +178,8 @@ const Board = ({
 
     if (card) {
       let extraClass = getExtraClasses(
-        [isInversed(card), isAtk(tile), isDef(tile)],
-        [ClassNames.INVERTED, ClassNames.ATK, ClassNames.DEF]
+        [isInversed(card)],
+        [ClassNames.INVERTED]
       );
 
       return (
@@ -168,6 +211,9 @@ const Board = ({
   const renderInfo = (tile) => {
     let cards = tile.cards;
     let field = isFieldOnTile(cards);
+    let opacity = isCombatHovered ? 1 : 0;
+    let combatStyle = { opacity: opacity };
+
     return (
       <React.Fragment>
         <div className="top-right">
@@ -177,6 +223,16 @@ const Board = ({
             </div>
           )}
         </div>
+        {isDef(tile) && !isAtk(tile) && (
+          <div className={ClassNames.DEF}>
+            <img src={DefIcon} style={combatStyle} />
+          </div>
+        )}
+        {isAtk(tile) && !isDef(tile) && (
+          <div className={ClassNames.ATK}>
+            <img src={AtkIcon} style={combatStyle} />
+          </div>
+        )}
         {field && (
           <div
             className="top-left txt-info"
@@ -196,7 +252,6 @@ const Board = ({
   };
 
   const renderStats = (card) => {
-    let ticks = card.status.length;
     let isCardTypeWithStatus =
       card.type === Types.UNITY || card.type === Types.TOKEN;
     if (!card.flipped && isCardTypeWithStatus) {
@@ -237,10 +292,7 @@ const Board = ({
 
 Board.propTypes = {
   board: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.object)),
-  ids: PropTypes.arrayOf(PropTypes.number),
-  moves: PropTypes.object,
   selected: PropTypes.object,
-  life: PropTypes.arrayOf(PropTypes.number),
   menuClick: PropTypes.func,
   highlight: PropTypes.func,
   clear: PropTypes.func,

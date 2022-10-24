@@ -1,6 +1,9 @@
 :root {
   font-size: 100%;
+  --hoverBorder: white;
   --mainText: #f8f9fa;
+  --jokenpoAnimationTime: 3s;
+  --resultAnimationTime: 3s;
 }
 
 html {
@@ -19,6 +22,7 @@ body {
   background-color: #000;
   background-repeat: repeat;
   color: var(--mainText);
+  animation: animatedBackground 10s linear infinite;
 }
 
 body,
@@ -34,14 +38,39 @@ textarea {
   background-color: gray;
   justify-content: center;
   align-items: center;
-  transition: border 0.5s;
+  transition: 0.5s;
 }
 
 .hoverable:not(.disabled):hover {
   cursor: pointer;
-  border: 3px solid white !important;
+  border: 3px solid var(--hoverBorder) !important;
 }
 
 .hidden {
-  display: none;
+  display: none !important;
+}
+
+.selected {
+  animation-iteration-count: infinite;
+  animation-name: glow;
+  animation-duration: 0.5s;
+  animation-direction: alternate;
+  transition: border 0.5s;
+}
+
+.selected:hover {
+  border: 3px solid yellow !important;
+}
+
+/*TODO: Remove this style when the game reach OPEN State*/
+.center,
+.locker {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 95vh;
+}
+
+.center > * {
+  margin-right: 1rem;
 }

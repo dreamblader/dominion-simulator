@@ -1,7 +1,20 @@
 .jar {
-  border-radius: 50%;
-  font-weight: bold;
+  filter: invert(1);
   margin-left: 1rem;
   width: 5rem;
   height: 5rem;
+  transition: 0.5s;
+}
+
+.jar > img {
+  width: 100%;
+}
+
+.jar:not(.disabled):hover > img {
+  cursor: pointer;
+  animation: shake 1s infinite;
+}
+
+.jar.disabled {
+  opacity: 0.25;
 }

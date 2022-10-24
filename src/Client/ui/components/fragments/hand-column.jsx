@@ -3,9 +3,15 @@ import PropTypes from "prop-types";
 import Hand from "../gameplay/hand";
 import Board from "../gameplay/board";
 import { renderBoard } from "../../../../utils/board";
+import { GameContext } from "Client/context/game";
 
-const HandColumn = ({ ids, hand, board, life, moves, combat, actions }) => {
-  const [myID, rivalID] = ids;
+const HandColumn = ({ actions }) => {
+  const {
+    myID,
+    rivalID,
+    G: { hand, board },
+  } = React.useContext(GameContext);
+
   const [myHand, rivalHand] = [hand[myID], hand[rivalID]];
   const [
     handMenu,
@@ -21,11 +27,7 @@ const HandColumn = ({ ids, hand, board, life, moves, combat, actions }) => {
       <Board
         board={renderBoard(board, myID)}
         menuClick={boardMenu}
-        ids={[myID, rivalID]}
-        life={life}
         selected={selectToBoard}
-        combat={combat}
-        moves={moves}
         highlight={setHighlightCard}
         clear={clearSelectionCallback}
       />
@@ -41,11 +43,6 @@ const HandColumn = ({ ids, hand, board, life, moves, combat, actions }) => {
 };
 
 Hand.propTypes = {
-  ids: PropTypes.arrayOf(PropTypes.number),
-  hand: PropTypes.arrayOf(PropTypes.object),
-  board: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)),
-  life: PropTypes.arrayOf(PropTypes.number),
-  moves: PropTypes.object,
   actions: PropTypes.object,
 };
 

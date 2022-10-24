@@ -8,6 +8,8 @@ import DeckActions from "./Server/actions/deck";
 import DestroyActions from "./Server/actions/destroy";
 import OutActions from "./Server/actions/out";
 import MiscActions from "./Server/actions/controls";
+import ExtraActions from "./Server/actions/extra";
+import JokenpoObject from "./models/jokenpo";
 import Combat from "./models/combat";
 
 const phases = Consts.phases.reduce((obj, phase) => {
@@ -28,6 +30,7 @@ export const Simulator = {
     combat: Combat(),
     reveal: setupProps(ctx.numPlayers, []),
     board: setupBoard(Consts.board),
+    jokenpo: setupProps(ctx.numPlayers, JokenpoObject()),
   }),
 
   moves: {
@@ -43,7 +46,7 @@ export const Simulator = {
   maxPlayers: 2,
 
   turn: {
-    order: TurnOrder.DEFAULT,
+    order: TurnOrder.CONTINUE,
     onBegin: (G, ctx) => {
       G.combat = Combat();
       ctx.events.setActivePlayers({ all: "Draw" });
@@ -51,6 +54,19 @@ export const Simulator = {
     stage: {
       ...phases,
     },
+  },
+
+  phases: {
+    preparation: {
+      moves: {
+        setDeck: DeckActions.setDeck,
+        ...ExtraActions.JOKENPO,
+      },
+      next: "game",
+      start: true,
+    },
+
+    game: {},
   },
 
   playerView: HideSecrets,

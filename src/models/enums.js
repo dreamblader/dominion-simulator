@@ -27,3 +27,20 @@ export const Origin = {
   BOARD: "board",
   NONE: "none",
 };
+
+export const GameResult = {
+  WINNER: "winner",
+  LOSER: "loser",
+  TIE: "tie",
+};
+
+export const Directions = {
+  NORTH: "N",
+  NORTH_EAST: "NE",
+  EAST: "E",
+  SOUTH_EAST: "SE",
+  SOUTH: "S",
+  SOUTH_WEST: "SW",
+  WEST: "W",
+  NORTH_WEST: "NW",
+};
