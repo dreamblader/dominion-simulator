@@ -1,18 +1,66 @@
 NAME,ELEMENT,TAG,ATK,HP,RANGE,EFFECT,North,North-Right,Right,South-Right,South,South-Left,Left,North-Left,LAYOUT,ART,NUM,STAR
 Generic Unit,NONE,,?,?,,This is a <b>TOKEN</b> Card,,,,,,,,,token.png,generic_unit.png,T0001,
-Azros King of Thassalos,EARTH,HUMAN &#124 ROYAL,2,5,,<b>Once Per Turn:</b><br/><strong>ACTION</strong><br>Select a HUMAN card <br>Apply + 1 ATK and SHIELD to it<br><br>This effect last until you select another card to apply this blessing <br><br><story>Drunk from power Azros declared war against all worlds</story>,X,X,X,X,X,X,X,X,earth.png,azros.png,U0001,S
+Azros King of Thassalos,EARTH,HUMAN &#124 ROYAL,2,5,,<b>Once Per Turn:</b><br/><strong>ACTION</strong><br>Select a HUMAN card <br>Apply + 1 ATK and SHIELD to it<br><br>This effect last until you select another card to apply this blessing,X,X,X,X,X,X,X,X,earth.png,azros.png,U0001,S
 Kingdom Guardian,EARTH,HUMAN &#124 GUARDIAN,0,6,,<b>IF This cards is attacked from it ATK DIRECTION RANGE:</b><br>Reduced the battle DMG to 0,,X,X,X,,,,,earth.png,guardian.png,U0002,
 Soldier Bombardier,FIRE,HUMAN &#124 SOLDIER,3,1,2,<b>EXPLOSIVE</b><br>(when this card dies: apply it current ATK to DMG all cards linked to it),,,X,,,,X,,fire.png,bombardier.png,U0003,
 Kingdom Duelist,EARTH,HUMAN,2,3,,<b>IF this card ATK a PAYBACK card<br>AND<br>their ATK is equal or higher than this card:</b><br>Ignore the PAYBACK DMG,X,,X,,X,,X,,earth.png,kingdom_duelist.png,U0004,
-Field Flag-bearer,EARTH,HUMAN &#124 SOLDIER,1,5,,<b>IF a FIELD is placed on Board:</b><br>SPAWN this card on the top of the placed FIELD card,X,,X,,X,,X,,earth.png,flag_bearer.png,U0005,
+Field Flag-bearer,EARTH,HUMAN &#124 SOLDIER,1,5,,<b>IF a FIELD is placed on Board:</b><br>SPAWN this card on the top of the placed FIELD card<br>,X,,X,,X,,X,,earth.png,flag_bearer.png,U0005,
 Army of Thassalos,EARTH,HUMAN &#124 SOLDIER &#124 TEAM,?,10,,Cannot be Healed<br>This card ATK is equal to its health<br><br><b>END OF TURN:</b><br>Lose -1 Health<br>SPAWN linked to this card a SOLDIER (1/1) *EARTH*,,,X,,,,,,earth.png,army_thassalos.png,U0006,
 Kingdom Spearman,EARTH,HUMAN &#124 SOLDIER,2,2,1,"<b>DASH</b><br>(Can MOVE 2 tiles without changing direction, but it cannot ATK after it)<br><b>PIERCE</b><br>(Apply DMG to all cards in Range of the selected ATK DIRECTION)",,,X,,,,,,earth.png,spearman.png,U0007,
-Crossroads Thief,EARTH,HUMAN &#124 THIEF,3,2,,<b>STEALTH</b><br>(This card can be SPAWN face-down. It require to be flipped face-up to ATK or activate it effect)<br><br><b>IF an enemy unity linked to this card MOVE:</b><br>STUN it for 1 TURN,,X,,X,,X,,X,earth.png,crossroads_thief.png,U0008,
-Dragon of Thassalos,FIRE,DRAGON,3,7,,<b>SUPER SPAWN:</b><br>DMG all cards in this spawn row by 3 and apply BURN<br>(2 turns)<br><br><b>NORMAL SPAWN:<br></b>Apply the above effect.<br>This card can only be alive on board <b>IF</b> you:<br><br><b>TICK:</b><br>Destroy a HUMAN Unity from your Board or Hand.,,X,X,X,,,,,fire.png,dragon_thassalos.png,U0009,
+Crossroads Thief,EARTH,HUMAN &#124 THIEF,3,2,,<b>STEALTH</b><br>(This card can be SPAWN face-down. It require to be flipped face-up to ATK or activate it effect)<br><br><b>IF an enemy unity linked to this card MOVE:</b><br>STUN it for 1 Tick,,X,,X,,X,,X,earth.png,crossroads_thief.png,U0008,
+Dragon of Thassalos,FIRE,DRAGON,3,7,,<b>SUPER SPAWN:</b><br>DMG all cards in this spawn row by 3 and apply BURN<br>(2 Ticks)<br><br><b>NORMAL SPAWN:<br></b>Apply the above effect.<br>This card can only be alive on board<br><br><b>IF</b><br><b>TICK:</b><br>Destroy a HUMAN Unity from your Board or Hand.,,X,X,X,,,,,fire.png,dragon_thassalos.png,U0009,
 Gem Prospector ,EARTH,HUMAN,1,5,,<b>SPAWN:</b><br>Draw 3 cards<br>And then Discard 2 cards from your hand,X,,X,,X,,X,,earth.png,gem_prospector.png,U0010,
-Nightmare Seer,VOID,HUMAN,2,3,,<b>IF this cards damage an enemy unity or LP:</b><br>Select a card from your enemy hand<br>they must reveal the selected card,X,,X,,,,X,,void.png,nightmare_seer.png,U0011,
+Nightmare Seer,VOID,HUMAN &#124 MAGE,2,3,,<b>IF this cards damage an enemy unity or LP:</b><br>Select a card from your enemy hand<br>they must reveal the selected card,X,,X,,,,X,,void.png,nightmare_seer.png,U0011,
 Berserk Soldier,EARTH,HUMAN &#124 SOLDIER,2,3,,<b>IF this card gets damaged</b><br>Get +2 ATK,,X,X,X,,X,X,X,earth.png,berserk_soldier.png,U0012,
-War Mage,EARTH,HUMAN &#124 MAGE,2,4,,<b>BATTLE:</b><br>Select any unity at it ATK DIRECTION RANGE at 2 Range MAX<br>Apply +2 ATK or -2 ATK to the selected unity for 1 turn<br>(You cannot perform a BATTLE action with this card if you choose this effect),X,,X,,X,,X,,earth.png,war_mage.png,U0013,
+War Mage,EARTH,HUMAN &#124 MAGE,2,4,,<b>BATTLE:</b><br>Select any unity at it ATK DIRECTION RANGE at 2 Range MAX<br>Apply +2 ATK or -2 ATK to the selected unity for 1 Tick<br>(You cannot perform a BATTLE action with this card if you choose this effect),X,,X,,X,,X,,earth.png,war_mage.png,U0013,
 Armor Thief,EARTH,HUMAN &#124 THIEF,3,1,,<b>IF this card have no artifacts attached to it:</b><br><b>ACTION</b><br>Select an attached artifact in the board<br>Attach the selected card to this unity instead,,,,X,,,,X,earth.png,armor_thief.png,U0014,
-Sealed Exodus Guardian,VOID,HUMAN &#124 DIMENSIONAL,?,?,,"<b>IF you use the effect of ""Sealed Rune"" and discard this at cost:</b><br><b>SUPER SPAWN:</b><br>This card mimics the HP and the ATK of the target that triggered the ""Sealed Rune"" effect and Spawn at the artifact location<br><br><b>ONCE PER TURN:<br>ACTION:</b><br>Select a unity card<br>Swap it ATK and HP values for 1 turn",X,X,X,X,X,X,X,X,void.png,exodus.png,U0015,
+Sealed Exodus Guardian,VOID,HUMAN &#124 DIMENSIONAL,?,?,,"<b>IF you use the effect of ""Sealed Rune"" and discard this at cost:</b><br><b>SUPER SPAWN:</b><br>This card mimics the HP and the ATK of the target that triggered the ""Sealed Rune"" effect and Spawn at the artifact location<br><br><b>ONCE PER TURN:<br>ACTION:</b><br>Select a unity card<br>Swap it ATK and HP values for 1 turn",X,X,X,X,X,X,X,X,void.png,exodus.png,U0015,S
 Artifact Collector,EARTH,HUMAN &#124 MAGE,1,1,,"<b>SPAWN:</b><br>Select an enemy artifact<br>Destroy it<br><br><b>IF the selected card is face-down:</b><br>Flip face-up and aplly the effect if it is an artifact, else this does nothing",,,,X,X,X,,,earth.png,artifact_collector.png,U0016,
+Ryu The Twilight Archer,EARTH,ELF &#124 TWILIGHT &#124 RANGER,3,3,3,"<b>DASH</b><br>(Can MOVE 2 tiles without changing direction, but it cannot ATK after it)<br><br><b>COMBO (x3)</b><br>(Can BATTLE 3 times in this turn IF this card did not MOVE before)<br><br><b>BATTLE:</b><br>This card does -1 ATK for each RANGE used in combat",,X,X,X,,X,X,X,earth.png,ryu_archer.png,U0017,S
+Orian Echo of the Twilight,VOID,ELF &#124 TWILIGHT,2,4,,If a TWILIGHT card is destroyed in BATTLE you can MOVE Orian from your HAND to the destroyed card slot instantly,,,,,,,,,void.png,,U0018,
+Twilight Enraged Beast,EARTH,TWILIGHT &#124 BEAST,1,3,,Everytime a TWILIGHT card is destroyed:  \13\This card get +1 ATK,,,,,,,,,earth.png,,U0019,
+Spirit of the Forest,EARTH,SPIRIT &#124 NATURE,0,6,,If any EARTH card is ATKed:  \13\Spawn this card from your hand to take the DMG instead of the target.  \13\Can only spawn if the target have any linked space empty,,,,,,,,,earth.png,,U0020,
+Spirit of the Wind,AIR,SPIRIT &#124 NATURE,6,2,,FRIENDLY-FIRE  \13\Can only be DMG in BATTLE by SPIRIT cards or WIND element cards,,,,,,,,,air.png,,U0021,
+Spirit of the Water,WATER,SPIRIT &#124 NATURE,1,3,,<b>BATTLE:</b><br>You can TARGET ally Unitys AND apply this ATK as healing<br|><b>IF the targeted ally have an affliction:</b><br>Remove all afflictions instead of healing,,,X,X,X,X,X,,water.png,water_spirit.png,U0022,
+Moon Bird,AIR,BIRD &#124 TWILIGHT &#124 NATURE,2,2,,<b>FLY</b><br>(Can SPAWN anywhere in the board as long is linked to an allied card) <br><br><b>BATTLE:</b><br>FEAR (2 Ticks) all linked cards,,,X,X,X,X,,,air.png,moon_bird.png,U0023,
+Miracle Bug,EARTH,INSECT &#124 TWILIGHT,1,4,,If any INSECT card is targeted in battle:  \13\Toss a coin and call  \13\If you're right: The ATK is canceled  \13\If you're wrong: DMG this card instead of the target,,,,,,,,,earth.png,,U0024,
+Twilight Firefly,FIRE,INSECT &#124 TWILIGHT,3,1,,PAYBACK  \13\Apply BURN when it ATKs (last 3 Ticks),,,,,,,,,fire.png,,U0025,
+Mirror Butterfly ,AIR,INSECT &#124 MIRROR,1,1,,FLY  \13\Redirect all ranges ATKs that target this card,,,,,,,,,air.png,,U0026,
+Sniper Elf,EARTH,ELF &#124 TWILIGHT &#124 RANGER,2,2,4,Declare an ATK and throw a die. If the number is greater than the range distance + 1:  \13\Do Double DMG,,,,,,,,,earth.png,,U0027,
+Tribal Twilight Elf,EARTH,ELF &#124 TWILIGHT,2,3,,This card can perform a 2 distance ranged ATK  \13\This ATK can cause 1 DMG and POISON the target,,,,,,,,,earth.png,,U0028,
+Witch of the Forest,VOID,TWILIGHT &#124 NATURE &#124 MAGE,1,4,,Select a card and apply -2/-2 on it. This effect last until this card is in the board  \13\This affliction cannot kill cards  \13\ \13\If the card have less then 2 HP this affliction gets it to 1 HP,,,,,,,,,void.png,,U0029,
+Nature Fairy,EARTH,NATURE &#124 FAIRY,1,4,,Instead of ATKing it can HEAL +2 to all friendly unities in ATK Direction Range +1 extra HEAL to EARTH unities,,,,,,,,,earth.png,,U0030,
+Pale Twilight Fairy,EARTH,TWILIGHT &#124 FAIRY,2,2,,This card apply CURSE to the unity that destroy it in BATTLE,,,,,,,,,earth.png,,U0031,
+Great Ent,EARTH,NATURE &#124 TWILIGHT,2,5,,CANNOT MOVE  \13\Instead of ATKing it can Heal +2 to any unity in ATK Direction Range,,,,,,,,,earth.png,,U0032,
+Mountain Golem,EARTH,NATURE &#124 GOLEM,0,7,,,,,,,,,,,earth.png,,U0033,
+Twilight Giant Moth,AIR,TWILIGHT &#124 INSECT,2,5,,FLY  \13\The ATKer of this card gets STUN (1 Tick),,,,,,,,,air.png,,U0034,
+Remove Trap Elf Squad,EARTH,ELF &#124 TWILIGHT &#124 TEAM,2,5,,"When a trap Artifact is triggered by this card:  \13\Negate it and destroy it, take 1 DMG by activating this effect",,,,,,,,,earth.png,,U0035,
+Twilight Dragon,EARTH,TWILIGHT &#124 DRAGON,7,7,,"Can only be summoned by ""Mystical Egg""  \13\When this card spawns:  \13\HEAL all TWILIGHT cards and restore they HP",,,,,,,,,earth.png,,U0036,
+Nyarla Elf Assassin,EARTH,ELF &#124 TWILIGHT &#124 THIEF,5,1,,STEALTH  \13\PAYBACK,,,,,,,,,earth.png,,U0037,
+Cryonix,ICE,BIRD,3,7,,"DIE:
+Freeze all linked cards (3 Ticks) 
+Get a ""Extemely Cold Egg"" from ANYWHERE to hand",,X,X,X,,X,X,X,ice.png,,U0038,S
+Penguin Ball,ICE,PENGUIN,0,5,,"STEALTH
+DMGD:
+Bounce the ATKer back to it owner hand",,,,,,,,,ice.png,,U0039,
+Penguinossauros,ICE,PENGUIN  &#124 KAIJU,2,10,,,,X,X,X,,,X,,ice.png,,U0040,
+Penguin Dragon,ICE,PENGUIN  &#124 DRAGON,3,7,1,"Also is WATER
+
+SUPER:
+Select 3 PENGUIN cards from your DZ
+Put back into your Deck
+
+SPAWN:
+Select 3 PENGUIN cards from ANYWHERE
+put them OUT OF THE GAME",,,,,,,,,ice.png,,U0041,
+Snowman GoGo,ICE,NATURE,2,2,2,<b>CANNOT MOVE</b><br><br><b>BATTLE:</b><br>FREEZE (2 Tick) the damaged card,X,,X,,X,,X,,ice.png,snowman_gogo.png,U0042,
+Deadly Spirit of Frostbite,ICE,SPIRIT,1,1,,"Can only be DMGd by SPIRIT or ICE cards
+If this card DMG a FROZEN card:
+Destroy the card",,,,,,,,,ice.png,,U0043,
+Snow Fairy Plum,ICE,FAIRY,0,2,,"ACTION:
+Target a Unity.
+If targeted is ICE:
+Give +3 ATK
+Else:
+FREEZE (1 Tick)",,,,,,,,,ice.png,,U0044,
+Anomalous Mind Trigger,THUNDER,PSYCHIC  &#124 MACHINE,3,1,,<b>SPAWN:</b><br>Select an unity with EXPLOSIVE <b>AND</b> Destroy that card,,X,X,,,X,X,,thunder.png,anomalous_mind_trigger.png,U0045,

@@ -9,9 +9,9 @@ const board = [
   [-1, -1, -1, 0, -1, -1, -1],
 ];
 
-const VersionName = "Closed Alpha";
+const VersionName = "Closed Beta";
 
-const Phases = ["Draw", "Tick", "Move", "Combat", "Spawn"];
+const Phases = ["Draw", "Tick", "Move", "Battle", "Spawn"];
 
 const AnimationTimes = {
   jokenpoShow: 1500,
@@ -22,7 +22,7 @@ const Consts = {
   deckSize: 30,
   handSize: 4,
   board: board,
-  maxLife: 20,
+  maxLife: 10,
   phases: Phases,
   animationTimes: AnimationTimes,
   versionName: VersionName,

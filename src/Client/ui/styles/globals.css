@@ -22,7 +22,7 @@ body {
   background-color: #000;
   background-repeat: repeat;
   color: var(--mainText);
-  animation: animatedBackground 10s linear infinite;
+  animation: animatedBackground 60s linear infinite;
 }
 
 body,

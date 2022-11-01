@@ -11,6 +11,7 @@ onde deve ser colocado na parte dos comentários a descrição em detalhes da du
 ## Versionamento
 
 Revisão 1 - Manual Foi Criado (06/06/2022) e Finalizado (24/10/2022)
+Revisão 2 - Cartas Artefato do Tipo ATTACH podem ser colocadas viradas para baixo (01/11/2022)
 
 ## Indice
 
@@ -272,10 +273,11 @@ Toda carta Artefato possui apenas um dos seguintes tipos de ativação:
 
 <img align="left" width="40%" style="margin-right:2rem" src="../rules/assets/attach_activation_example.png" alt ='White Flag of Surrender' title = 'Exemplo de Carta Artefato do Tipo ATTACH'>
 
-- Artefatos do tipo **ATTACH** devem ser colocados em anexo a uma outra carta durante o turno de [SPAWN](#invocação-spawn) já ativados (virado para cima).
+- Artefatos do tipo **ATTACH** devem ser colocados em anexo a uma outra carta durante o turno de [SPAWN](#invocação-spawn) já ativados (virado para cima) ou virado para baixo (dormente).
 - Artefatos do tipo **ATTACH** contam como 1 [SPAWN](#invocação-spawn) de artefato.
 - Artefatos do tipo **ATTACH** pode ser invocado em anexo a qualquer carta desde que a mesma satisfaça sua condição de efeito.
-- Artefatos do tipo **ATTACH** não precisam respeitar a [regra de invocação base ou ponte](#invocação-spawn).
+- Artefatos do tipo **ATTACH** não precisam respeitar a [regra de invocação base ou ponte](#invocação-spawn) se forem colocados virado para cima, caso o contrario devem respeita-la.
+- Uma vez ativado um artefato do tipo **ATTACH** virado para baixo o mesmo deve ser anexado a uma carta imediatamente.
 - Uma vez anexado o artefato se move junto com a sua carta principal (caso a mesma possa ser movida).
 - Uma vez anexado o artefato é destruido junto de sua carta principal.
 - O artefato permanece ativo desde sua invocação.
