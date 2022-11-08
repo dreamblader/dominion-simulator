@@ -98,11 +98,11 @@ const tickCard = (G, ctx, place, index = 0) => {
 };
 
 const bounceCard = (G, ctx, place, index = 0) => {
-  removeBoardCardTo(G.board, G.hand[ctx.playerID], place, index);
+  removeBoardCardTo(G.board, G.hand, place, index);
 };
 
 const destroyCard = (G, ctx, place, index = 0) => {
-  removeBoardCardTo(G.board, G.destroyZone[ctx.playerID], place, index);
+  removeBoardCardTo(G.board, G.destroyZone, place, index);
 };
 
 const finishCard = (G, ctx, place, index = 0) => {
@@ -112,8 +112,12 @@ const finishCard = (G, ctx, place, index = 0) => {
 const removeBoardCardTo = (board, to, from, index) => {
   let card = resetStats(getTileCard(board, from, index));
   let cardList = getTileCardsArray(board, from);
-  if (card.type !== Types.TOKEN) {
-    to.push(card);
+  if (card.type !== Types.TOKEN && Array.isArray(to)) {
+    if (Array.isArray(to[0])) {
+      to[card.controller].push(card);
+    } else {
+      to.push(card);
+    }
   }
   cardList.splice(index, 1);
 };

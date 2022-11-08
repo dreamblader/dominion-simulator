@@ -34,7 +34,7 @@
   margin-top: 0.2rem;
   margin-bottom: 0.2rem;
   padding: 0.5rem 9rem 0.5rem 9.25rem;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.75);
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: auto 1fr;
 }
