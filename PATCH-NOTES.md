@@ -2,6 +2,19 @@
 
 ## Closed Beta
 
+## 0.5.1v Closed Beta
+
+Changed:
+
+- Game:
+  - Changed background move speed to cause less motion-sickness
+  - Changed starting life points to 10 (as the rule described)
+
+Fixed:
+
+- Fixed a Bug that another player could send a Board card to their DZ/Hand without being the original owner of it.
+- Fixed a Bug that DZ Card-Stack started showing the wrong cards in stack after passing the visible treshold.
+
 ## 0.5v Closed Beta
 
 Added:
