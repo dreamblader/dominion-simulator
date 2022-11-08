@@ -35,8 +35,12 @@ const CardStack = ({
   };
 
   const itemsView = () => {
-    if (items.length >= 5) {
-      return [...items].reverse().slice(0, 5);
+    const stackTreshold = 5;
+
+    if (items.length >= stackTreshold) {
+      const start = items.length - stackTreshold;
+      const end = items.length;
+      return [...items].slice(start, end);
     } else if (items.length <= 0) {
       return [CardModel(-1, -1)];
     } else {
