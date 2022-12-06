@@ -2,6 +2,13 @@
 
 ## Closed Beta
 
+## 0.6v Closed Beta
+
+Added:
+
+- QoL
+  - Added Unit Testing Server Functions with Mocha.
+
 ## 0.5.1v Closed Beta
 
 Changed:

@@ -4,6 +4,10 @@ export const randomInt = (maxNumber, ctx) => {
   return parseInt(ctx.random.Number() * maxNumber);
 };
 
+export const isValueInEnum = (enumObject, value) => {
+  return Object.values(enumObject).indexOf(value) >= 0;
+};
+
 export const moveToArray = (origin, destination, index, reverse = false) => {
   let item = origin.splice(index, 1)[0];
   if (reverse) {
@@ -53,7 +57,7 @@ export const toStyleSeconds = (milis) => {
 };
 
 export const getRivalResult = (myResult) => {
-  if (Object.values(GameResult).indexOf(myResult) >= 0) {
+  if (isValueInEnum(GameResult, myResult)) {
     switch (myResult) {
       case GameResult.WINNER:
         return GameResult.LOSER;

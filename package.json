@@ -13,8 +13,8 @@
     "dreamblade-react-commons": "^1.1.4",
     "esm": "^3.2.25",
     "koa-static": "^5.0.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
     "react-html-parser": "^2.0.2",
     "react-markdown": "^8.0.3",
     "react-scripts": "^4.0.3",
@@ -31,7 +31,8 @@
     "dev-server": "nodemon -r esm src/Server/server.js",
     "start-db": "node data/start-db.js",
     "converter": "node data/card-convert.js",
-    "test": "react-scripts test",
+    "test": "mocha",
+    "react-test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

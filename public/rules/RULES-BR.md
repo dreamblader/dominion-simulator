@@ -10,8 +10,8 @@ onde deve ser colocado na parte dos comentários a descrição em detalhes da du
 
 ## Versionamento
 
-Revisão 1 - Manual Foi Criado (06/06/2022) e Finalizado (24/10/2022)
-Revisão 2 - Cartas Artefato do Tipo ATTACH podem ser colocadas viradas para baixo (01/11/2022)
+- Revisão 1 - Manual Foi Criado (06/06/2022) e Finalizado (24/10/2022)
+- Revisão 2 - Cartas Artefato do Tipo ATTACH podem ser colocadas viradas para baixo (01/11/2022)
 
 ## Indice
 

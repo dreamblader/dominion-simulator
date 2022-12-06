@@ -1,11 +1,11 @@
 import { INVALID_MOVE } from "boardgame.io/core";
 import { GameResult } from "../../models/enums";
 import JokenpoObject, { JokenpoType } from "../../models/jokenpo";
-import { getRivalID, getRivalResult } from "../../utils/help";
+import { getRivalID, getRivalResult, isValueInEnum } from "../../utils/help";
 import { setupProps } from "./setup";
 
 const playJokenpo = (G, ctx, playHand) => {
-  if (Object.values(JokenpoType).indexOf(playHand) >= 0) {
+  if (isValueInEnum(JokenpoType, playHand)) {
     const rivalID = getRivalID(ctx.playerID);
     const rivalHand = G.jokenpo[rivalID].hand;
     let myResult = null;

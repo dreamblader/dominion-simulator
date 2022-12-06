@@ -97,7 +97,9 @@ Prototype Layout for simulator:
 ## NPM Commands
 
 - npm start:
-  - Run build.js script that runs all the starter commands (for Heroku deploy purposes)
+  - Start server (Used for initializing app on Render)
+- npm run build:
+  - Run build.js script that runs all the environment starter commands: Create and instance the Database, populate Card data, Build React Front-end.
 - npm run react-start:
   - Start the React Client application (similar to npm start on pure React applications)
 - npm run react-build:
