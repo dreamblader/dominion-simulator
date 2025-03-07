@@ -1,169 +1,169 @@
 @keyframes icon-glow {
-  0% {
-    filter: brightness(0);
-  }
-  50% {
-    filter: brightness(100%);
-  }
-  100% {
-    filter: brightness(0);
-  }
+	0% {
+		filter: brightness(0);
+	}
+	50% {
+		filter: brightness(100%);
+	}
+	100% {
+		filter: brightness(0);
+	}
 }
 
 @keyframes combat-appear {
-  0% {
-    transform: scale(1.5);
-    opacity: 1;
-  }
-  40% {
-    transform: scale(var(--scale-size));
-  }
-  80% {
-    transform: scale(var(--scale-size));
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
+	0% {
+		transform: scale(1.5);
+		opacity: 1;
+	}
+	40% {
+		transform: scale(var(--scale-size));
+	}
+	80% {
+		transform: scale(var(--scale-size));
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
 }
 
 .board {
-  --scale-size: 0.75;
-  display: grid;
-  width: fit-content;
-  margin-top: 0.2rem;
-  margin-bottom: 0.2rem;
-  padding: 0.5rem 9rem 0.5rem 9.25rem;
-  background-color: rgba(0, 0, 0, 0.75);
-  grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: auto 1fr;
+	--scale-size: 0.75;
+	display: grid;
+	width: fit-content;
+	margin-top: 0.2rem;
+	margin-bottom: 0.2rem;
+	padding: 0.5rem 9rem 0.5rem 9.25rem;
+	background-color: rgba(0, 0, 0, 0.75);
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: auto 1fr;
 }
 
 .tile-holder .content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 100%;
 }
 
 .tile-holder:has(.this) {
-  --hoverBorder: red;
-  border: 5px solid var(--hoverBorder) !important;
+	--hoverBorder: red;
+	border: 5px solid var(--hoverBorder) !important;
 }
 
 .back_card {
-  position: relative;
-  height: 100%;
-  width: 100%;
-  background: url("../images/card_back_hd.png") no-repeat center center;
-  background-size: cover;
+	position: relative;
+	height: 100%;
+	width: 100%;
+	background: url("../images/card_back_hd.png") no-repeat center center;
+	background-size: cover;
 }
 
 .overlay {
-  position: absolute;
-  height: 100%;
-  width: 100%;
+	position: absolute;
+	height: 100%;
+	width: 100%;
 }
 
 .overlay > .tick {
-  position: absolute;
-  top: 20%;
-  right: 0;
-  border: 1px solid black;
-  color: #000;
-  font-weight: bold;
-  font-size: 1rem;
-  padding: 0.1rem 0.2rem;
-  width: fit-content;
-  height: auto;
-  background-color: rgb(233, 249, 250);
+	position: absolute;
+	top: 20%;
+	right: 0;
+	border: 1px solid black;
+	color: #000;
+	font-weight: bold;
+	font-size: 1rem;
+	padding: 0.1rem 0.2rem;
+	width: fit-content;
+	height: auto;
+	background-color: rgb(233, 249, 250);
 }
 
 .section > .txt-info {
-  margin-right: 0.3rem;
+	margin-right: 0.3rem;
 }
 
 .tile-holder .bottom {
-  position: absolute;
-  width: 100%;
-  bottom: 0;
+	position: absolute;
+	width: 100%;
+	bottom: 0;
 }
 
 .tile-holder .top-right {
-  position: absolute;
-  right: 0.25rem;
-  top: 0;
+	position: absolute;
+	right: 0.25rem;
+	top: 0;
 }
 
 .tile-holder .top-left {
-  position: absolute;
-  left: 0.25rem;
-  top: 0;
+	position: absolute;
+	left: 0.25rem;
+	top: 0;
 }
 
 .txt-info {
-  font-size: 1rem;
-  font-weight: bold;
-  text-align: center;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
-    1px 1px 0 #000;
+	font-size: 1rem;
+	font-weight: bold;
+	text-align: center;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+		1px 1px 0 #000;
 }
 
 .inverted > img {
-  transform: rotate(180deg);
+	transform: rotate(180deg);
 }
 
 .back_card > img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
 
 .tile-holder {
-  height: 6rem;
-  width: 4rem;
+	height: 6rem;
+	width: 4rem;
 }
 
 .user {
-  background-color: rgba(25, 25, 250, 1) !important;
+	background-color: rgba(25, 25, 250, 1) !important;
 }
 
 .rival {
-  background-color: rgba(250, 25, 25, 1) !important;
+	background-color: rgba(250, 25, 25, 1) !important;
 }
 
 .dominion {
-  border: 3px solid white;
-  transition: 0.5s;
+	border: 3px solid white;
+	transition: 0.5s;
 }
 
 .dominion:hover {
-  cursor: pointer;
-  font-weight: bolder;
-  font-size: 2.5rem;
+	cursor: pointer;
+	font-weight: bolder;
+	font-size: 2.5rem;
 }
 
 .dominion.user:hover {
-  animation: health-blink 1s infinite;
-  border: 0.5rem solid red;
+	animation: health-blink 1s infinite;
+	border: 0.5rem solid red;
 }
 
 .board > * .hoverable {
-  border: none;
+	border: none;
 }
 
 .board > .tile-holder:has(.card-holder):hover {
-  transform: scale(1.25);
+	transform: scale(1.25);
 }
 
 .attacker > img,
 .defender > img {
-  position: absolute;
-  top: 0.5rem;
-  animation: combat-appear 4s, icon-glow 2s infinite;
-  transform: scale(var(--scale-size));
-  z-index: 1;
-  opacity: 0;
-  transition: 0.5s;
+	position: absolute;
+	top: 0.5rem;
+	animation: combat-appear 4s, icon-glow 2s infinite;
+	transform: scale(var(--scale-size));
+	z-index: 1;
+	opacity: 0;
+	transition: 0.5s;
 }

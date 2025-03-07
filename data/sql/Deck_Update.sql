@@ -265,5 +265,23 @@ INSERT OR REPLACE INTO "DeckCardRelation" (
 )
 VALUES (
     1, 
-    "F0001"
+    "D0001"
+);
+
+INSERT OR REPLACE INTO "DeckCardRelation" (
+    DECK_ID, 
+    CARD_ID
+)
+VALUES (
+    1, 
+    "D0002"
+);
+
+INSERT OR REPLACE INTO "DeckCardRelation" (
+    DECK_ID, 
+    CARD_ID
+)
+VALUES (
+    1, 
+    "D0003"
 );

@@ -1,5 +1,5 @@
 const UnityQuery = (unity) => {
-  return `INSERT OR REPLACE INTO "Cards" (
+	return `INSERT OR REPLACE INTO "Cards" (
         "ID", 
         "NAME", 
         "TYPE", 
@@ -9,7 +9,6 @@ const UnityQuery = (unity) => {
         "HP", 
         "RANGE", 
         "DESCRIPTION", 
-        "DIRECTION_RANGE", 
         "ART", 
         "UNIQUE"
     )
@@ -23,7 +22,6 @@ const UnityQuery = (unity) => {
         ${unity.HP},
         ${unity.RANGE},
         "${unity.EFFECT}",
-        "${unity.DIRECTIONS}",
         "${unity.ART}",
         ${unity.STAR}
     );
@@ -31,7 +29,7 @@ const UnityQuery = (unity) => {
 };
 
 const ArtifactQuery = (artifact) => {
-  return `INSERT OR REPLACE INTO "Cards" (
+	return `INSERT OR REPLACE INTO "Cards" (
     "ID", 
     "NAME", 
     "TYPE", 
@@ -54,29 +52,31 @@ const ArtifactQuery = (artifact) => {
   `;
 };
 
-const FieldQuery = (field) => {
-  return `INSERT OR REPLACE INTO "Cards" (
+const DomainQuery = (field) => {
+	return `INSERT OR REPLACE INTO "Cards" (
     "ID", 
     "NAME", 
     "TYPE", 
     "TAGS",
     "DESCRIPTION", 
-    "ART", 
+    "ART",
+    "CHARGE", 
     "UNIQUE"
   )
   VALUES (
       "${field.NUM}", 
       "${field.NAME}", 
-      "Field",
+      "Domain",
       "${field.TAG}",
       "${field.EFFECT}",
       "${field.ART}",
+      ${field.CHARGES},
       ${field.STAR}
   );`;
 };
 
 module.exports = {
-  UnityQuery,
-  ArtifactQuery,
-  FieldQuery,
+	UnityQuery,
+	ArtifactQuery,
+	DomainQuery,
 };

@@ -285,7 +285,7 @@ const Board = ({ board, selected, menuClick, highlight, clear }) => {
 
   return (
     <div className="board">
-      {board.map((row, i) => row.map((tile, j) => renderTile(tile, i, j)))}
+      {board.map((row, i) => row.map((tile, j) => {return renderTile(tile, i, j)}))}
     </div>
   );
 };

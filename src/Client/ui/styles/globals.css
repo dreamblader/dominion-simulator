@@ -1,76 +1,76 @@
 :root {
-  font-size: 100%;
-  --hoverBorder: white;
-  --mainText: #f8f9fa;
-  --jokenpoAnimationTime: 3s;
-  --resultAnimationTime: 3s;
+	font-size: 100%;
+	--hoverBorder: white;
+	--mainText: #f8f9fa;
+	--jokenpoAnimationTime: 3s;
+	--resultAnimationTime: 3s;
 }
 
 html {
-  scroll-behavior: smooth;
+	scroll-behavior: smooth;
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  user-select: none;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	user-select: none;
 }
 
 body {
-  background-image: url("../images/back.jpg");
-  background-color: #000;
-  background-repeat: repeat;
-  color: var(--mainText);
-  animation: animatedBackground 60s linear infinite;
+	background-image: url("../images/back.jpg");
+	background-color: #000;
+	background-repeat: repeat;
+	color: var(--mainText);
+	/*animation: animatedBackground 60s linear infinite;*/
 }
 
 body,
 input,
 button,
 textarea {
-  font: 500 1.6rem Poppins;
+	font: 500 1.6rem Poppins;
 }
 
 .hoverable {
-  display: flex;
-  border: 3px solid rgb(73, 70, 70);
-  background-color: gray;
-  justify-content: center;
-  align-items: center;
-  transition: 0.5s;
+	display: flex;
+	border: 3px solid rgb(73, 70, 70);
+	background-color: gray;
+	justify-content: center;
+	align-items: center;
+	transition: 0.5s;
 }
 
 .hoverable:not(.disabled):hover {
-  cursor: pointer;
-  border: 3px solid var(--hoverBorder) !important;
+	cursor: pointer;
+	border: 3px solid var(--hoverBorder) !important;
 }
 
 .hidden {
-  display: none !important;
+	display: none !important;
 }
 
 .selected {
-  animation-iteration-count: infinite;
-  animation-name: glow;
-  animation-duration: 0.5s;
-  animation-direction: alternate;
-  transition: border 0.5s;
+	animation-iteration-count: infinite;
+	animation-name: glow;
+	animation-duration: 0.5s;
+	animation-direction: alternate;
+	transition: border 0.5s;
 }
 
 .selected:hover {
-  border: 3px solid yellow !important;
+	border: 3px solid yellow !important;
 }
 
 /*TODO: Remove this style when the game reach OPEN State*/
 .center,
 .locker {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 95vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 95vh;
 }
 
 .center > * {
-  margin-right: 1rem;
+	margin-right: 1rem;
 }

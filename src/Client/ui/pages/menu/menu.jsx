@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import Button from "../../components/general/button";
 import { PageContext, pageActions } from "Client/context/page-ctx";
 import Consts from "utils/consts";
-import { Logo, LogoAnimated } from "dreamblade-react-commons";
+import { LogoAnimated } from "dreamblade-react-commons";
 import "./style.css";
 
 const MainMenu = () => {
