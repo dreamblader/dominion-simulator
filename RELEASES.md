@@ -38,6 +38,16 @@
 - [ ] Link 1 extra Deck for P2
 - [ ] DEPLOY
 
+## 0.6v Closed Beta NewGen
+- [x] Add new cards
+- [x] Change board layout
+- [ ] New Board Mehcanics
+  - [ ] New LifeSystem Mechanics
+  - [ ] Add Attaching Mechanics
+  - [ ] New Movement Mechanics
+  - [ ] (MAYBE) Spawn Mechanics Update
+- [ ] (MAYBE) Second Deck for P2
+
 ## Backlog
 
 ### Feature
