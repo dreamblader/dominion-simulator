@@ -16,18 +16,18 @@ const lobbyConfig = {
 const sqlite3 = require("sqlite3").verbose();
 
 const database = new sqlite3.Database("./data/game.db", (err) => {
-  if (err) {
-    console.log("Could not connect to database", err);
-  } else {
-    console.log("Connected to database");
-  }
+	if (err) {
+		console.log("Could not connect to database", err);
+	} else {
+		console.log("Connected to database");
+	}
 });
 
 const server = Server({
-  games: [Simulator],
-  origins: [Origins.LOCALHOST],
-  apiOrigins: [Origins.LOCALHOST],
-  /*
+	games: [Simulator],
+	origins: [Origins.LOCALHOST],
+	apiOrigins: [Origins.LOCALHOST],
+	/*
   https: {
     cert: "",
     key: "",
@@ -37,19 +37,19 @@ const server = Server({
 });
 
 server.router.get("/deck/:id/cards", async (ctx, next) => {
-  ctx.body = await getMyDeckCards(database, ctx.params.id);
+	ctx.body = await getMyDeckCards(database, ctx.params.id);
 });
 
 server.app.use(serve(frontEndAppBuildPath));
 
 server.run(PORT, () => {
-  server.app.use(
-    async (ctx, next) =>
-      await serve(frontEndAppBuildPath)(
-        Object.assign(ctx, { path: "index.html" }),
-        next
-      )
-  );
+	server.app.use(
+		async (ctx, next) =>
+			await serve(frontEndAppBuildPath)(
+				Object.assign(ctx, { path: "index.html" }),
+				next
+			)
+	);
 });
 
 //server.run({ port: 8000, lobbyConfig });

@@ -50,8 +50,15 @@ export const renderBoard = (board, playerID) => {
 const flip = (board) => {
 	let flippedBoard = [];
 	const rowLength = board.length;
-	for (let y = rowLength - 1; y >= 0; y--) {
-		flippedBoard.push(board[y]);
+	let flippedY = 0;
+	for (let y = 0; y < rowLength; y++) {
+		const columnLength = board[y].length;
+		flippedBoard.push([]);
+		for (let x = columnLength - 1; x >= 0; x--) {
+			flippedBoard[flippedY].push(board[y][x]);
+		}
+		flippedY++;
 	}
+
 	return flippedBoard;
 };

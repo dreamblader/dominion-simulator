@@ -1,10 +1,9 @@
-const Deck = (id = 0, cards = []) => {
-  let obj = {
-    id: id,
-    cards: cards,
-  };
-
-  return obj;
+const Deck = (id = 0, cards = [], dominionCards = []) => {
+	return {
+		id: id,
+		cards: cards,
+		dominionCards: dominionCards,
+	};
 };
 
 export default Deck;

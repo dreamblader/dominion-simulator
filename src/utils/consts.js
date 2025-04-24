@@ -1,8 +1,8 @@
 //Game Constants
 const board = [
-	[3, 1, 0, 0, -1, 0, 0, 2, 4],
-	[3, 1, 0, 0, -1, 0, 0, 2, 4],
-	[3, 1, 0, 0, -1, 0, 0, 2, 4],
+	[2, 1, 0, 0, -1, 0, 0, 1, 2],
+	[2, 1, 0, 0, -1, 0, 0, 1, 2],
+	[2, 1, 0, 0, -1, 0, 0, 1, 2],
 ];
 
 const VersionName = "Closed Beta";
@@ -16,9 +16,9 @@ const AnimationTimes = {
 
 const Consts = {
 	deckSize: 30,
-	handSize: 4,
+	handSize: 5,
 	board: board,
-	maxLife: 10,
+	maxLife: 20,
 	phases: Phases,
 	animationTimes: AnimationTimes,
 	versionName: VersionName,

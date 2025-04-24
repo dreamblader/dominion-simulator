@@ -39,8 +39,10 @@
 - [ ] DEPLOY
 
 ## 0.6v Closed Beta NewGen
+- [ ] Upgrade system for new Node versions
 - [x] Add new cards
 - [x] Change board layout
+- [ ] Charge Mechanincs on Domain Cards
 - [ ] New Board Mehcanics
   - [ ] New LifeSystem Mechanics
   - [ ] Add Attaching Mechanics

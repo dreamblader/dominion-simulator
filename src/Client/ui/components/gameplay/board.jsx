@@ -25,8 +25,6 @@ const Board = ({ board, selected, menuClick, highlight, clear }) => {
     moves,
   } = React.useContext(GameContext);
 
-  const dominionIds = myID === 1 ? [4, 3] : [3, 4];
-
   const [refreshKey, setRefreshKey] = React.useState(0);
   const [isCombatHovered, setCombatHover] = React.useState(false);
 
@@ -46,7 +44,7 @@ const Board = ({ board, selected, menuClick, highlight, clear }) => {
 
   const renderTile = (tile, i, j) => {
     let id = i + "-" + j;
-    let typeName = getClassName(tile);
+    let typeName = getClassName(tile, j);
     return (
       <div
         className={typeName + " tile-holder"}
@@ -59,23 +57,23 @@ const Board = ({ board, selected, menuClick, highlight, clear }) => {
     );
   };
 
-  const getClassName = (tile) => {
+  const getClassName = (tile, col) => {
+    let result = ""
     if (tile) {
-      switch (tile.spawn) {
-        case myID + 1:
-          return "hoverable user";
-        case rivalID + 1:
-          return "hoverable rival";
-        case dominionIds[0]:
-          return "dominion user";
-        case dominionIds[1]:
-          return "dominion rival";
-        default:
-          return "hoverable";
+      if(tile.spawn === 2){
+        result += "dominion"
+      } else {
+        result += "hoverable"
       }
-    } else {
-      return "";
-    }
+      //FIXME Board is not a matrix nad I need to remember how it behave
+      if(col === 1){
+        result += " user"
+      } else if(col === board[0].length-2){
+        result += " rival"
+      }
+    } 
+
+    return result
   };
 
   const handleSelection = (tile) => {
@@ -121,6 +119,7 @@ const Board = ({ board, selected, menuClick, highlight, clear }) => {
       );
 
       if (tile.spawn === 3 || tile.spawn === 4) {
+        //TODO LifeTile will change places
         return getLifeTile(tile.spawn);
       } else {
         return (
@@ -138,6 +137,7 @@ const Board = ({ board, selected, menuClick, highlight, clear }) => {
   };
 
   const getLifeTile = (spawn) => {
+    /*
     if (spawn === dominionIds[0]) {
       return (
         <div className="content" onClick={() => moves.myLifeMenu()}>
@@ -147,6 +147,7 @@ const Board = ({ board, selected, menuClick, highlight, clear }) => {
     } else if (spawn === dominionIds[1]) {
       return <div className="content">{life[rivalID]}</div>;
     }
+      */
   };
 
   const clickSpawnTile = (x, y) => {
